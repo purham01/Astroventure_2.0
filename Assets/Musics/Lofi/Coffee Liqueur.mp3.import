@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do7i5sb45wy5m"
+path="res://.godot/imported/Coffee Liqueur.mp3-d622c8bf9f44fd15e93f1155c07b13a8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Lofi/Coffee Liqueur.mp3"
+dest_files=["res://.godot/imported/Coffee Liqueur.mp3-d622c8bf9f44fd15e93f1155c07b13a8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

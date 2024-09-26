@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bh2oh2kcuhp4w"]
+
+[ext_resource type="Shader" path="res://Aesthethics/Shaders/OutlineShader.gdshader" id="1_2h013"]
+
+[resource]
+shader = ExtResource("1_2h013")
+shader_parameter/color = Color(0.615686, 0.0588235, 0.152941, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = true

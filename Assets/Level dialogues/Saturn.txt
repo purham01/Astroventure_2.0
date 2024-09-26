@@ -1,0 +1,9 @@
+Saturn's most notable feature are certainly it's rings.
+These rings are divided into sections, and our target element lies in a notable gap between rings A and B...
+...the Cassini Division.
+Unfortunately, the rings are comprised mostly of dust, so we will have to land you on a moonlet embedded near the edge of the B ring.
+Though Saturn's gravity is similar to Earth's on the surface,...
+...the gravity near the Cassini Division is more akin to Mars or Mercury.
+You will use this fact to scale the B ring and reach the Division.
+But be careful! The particles are made almost entirely of ice...
+...and there are no stable spaces for checkpoints, so there could be a long fall back to the moonlet!

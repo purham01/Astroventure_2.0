@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://beaja6sbffrub"]
+
+[ext_resource type="Texture2D" uid="uid://1popf8prsden" path="res://Assets/AnomaBall.png" id="1_16j73"]
+[ext_resource type="Script" path="res://Scenes/Level Assets/Hazards/anoma_ball.gd" id="1_kcnhr"]
+[ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_rnpcl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0v0j"]
+radius = 6.0
+
+[node name="AnomaBall" type="Path2D"]
+script = ExtResource("1_kcnhr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+texture = ExtResource("1_16j73")
+
+[node name="HazardArea" parent="PathFollow2D" instance=ExtResource("2_rnpcl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/HazardArea"]
+shape = SubResource("CircleShape2D_e0v0j")

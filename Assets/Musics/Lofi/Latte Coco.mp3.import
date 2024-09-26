@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ytq0ioli27k0"
+path="res://.godot/imported/Latte Coco.mp3-cc6ebb1cd9b1a66ee93c74214982b522.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Lofi/Latte Coco.mp3"
+dest_files=["res://.godot/imported/Latte Coco.mp3-cc6ebb1cd9b1a66ee93c74214982b522.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

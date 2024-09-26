@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbxitpfb3kgxa"]
+
+[ext_resource type="Texture2D" uid="uid://b2r41lkcilorg" path="res://Assets/spikes.png" id="1_44uhb"]
+[ext_resource type="Script" path="res://Scenes/Level Assets/moving_spikes.gd" id="1_hi60s"]
+[ext_resource type="Texture2D" uid="uid://bfbytecnnvgyh" path="res://Assets/spikes_anim.png" id="2_eodsu"]
+[ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_iap5r"]
+
+[sub_resource type="Animation" id="Animation_22a58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_blcoj"]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_collision"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_top5n"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_collision"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy7xw"]
+_data = {
+"RESET": SubResource("Animation_22a58"),
+"hide": SubResource("Animation_blcoj"),
+"show": SubResource("Animation_top5n")
+}
+
+[node name="MovingSpikes" type="Node2D"]
+position = Vector2(168, 94)
+script = ExtResource("1_hi60s")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_vy7xw")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, -8)
+texture = ExtResource("1_44uhb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = ExtResource("2_eodsu")
+hframes = 5
+frame = 1
+
+[node name="HazardArea" parent="." instance=ExtResource("2_iap5r")]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HazardArea"]
+polygon = PackedVector2Array(0, 0, 0, -4, 1, -4, 1, -6, 2, -6, 2, -8, 3, -8, 3, -9, 4, -9, 4, -8, 5, -8, 5, -6, 6, -6, 6, -4, 7, -4, 7, -2, 8, -2, 8, -4, 9, -4, 9, -6, 10, -6, 10, -8, 11, -8, 11, -9, 12, -9, 12, -8, 13, -8, 13, -7, 13, -6, 14, -6, 14, -4, 15, -4, 15, -2, 16, -2, 16, 0)
+
+[node name="RetractExtendTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="RetractExtendTimer" to="." method="_on_retract_extend_timer_timeout"]

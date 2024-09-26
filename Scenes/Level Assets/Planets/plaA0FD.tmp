@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ytv2b5seb1r"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/SelectScript.gd" id="1_knuwc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_faio2"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilif4"]
+radius = 73.0
+
+[node name="Planet" type="Area2D"]
+script = ExtResource("1_knuwc")
+speed = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_faio2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.43051e-06, 0.5)
+scale = Vector2(2.5, 2.55)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Marker" type="Marker2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Marker"]
+unique_name_in_owner = true
+visible = false
+offset_left = -19.0
+offset_top = 2.0
+offset_right = 21.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+text = "Earth"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GravityArea" type="Area2D" parent="."]
+gravity_space_override = 3
+gravity_point_unit_distance = 0.328
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_ilif4")

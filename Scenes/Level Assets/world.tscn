@@ -1,0 +1,190 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkkor7cqf3sc2"]
+
+[ext_resource type="Script" path="res://Scenes/Level Assets/world.gd" id="1_mrn2n"]
+[ext_resource type="PackedScene" uid="uid://bmj1urynsj1ph" path="res://Scenes/Player/character.tscn" id="2_iwlls"]
+[ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="2_yvx81"]
+[ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="3_2b7md"]
+[ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="4_h2cwe"]
+[ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="5_rl5ou"]
+[ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="5_sx1wa"]
+[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="6_ocvd1"]
+
+[sub_resource type="Animation" id="Animation_8ywv5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartIn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartIn/CenterContainer/StartInLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Start in: 3"]
+}
+
+[sub_resource type="Animation" id="Animation_haihy"]
+resource_name = "countdown"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartIn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartIn/CenterContainer/StartInLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Start in: 3", "Start in: 2", "Start in: 1", "Go!"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qs7am"]
+_data = {
+"RESET": SubResource("Animation_8ywv5"),
+"countdown": SubResource("Animation_haihy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyip4"]
+size = Vector2(1483, 20)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frchr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hpmb2"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_mrn2n")
+level_best_time = 300.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_yvx81")
+autoplay = true
+
+[node name="ScriptNode" type="Node" parent="."]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="Background" type="TextureRect" parent="CanvasLayer2"]
+offset_right = 360.0
+offset_bottom = 180.0
+texture = ExtResource("6_ocvd1")
+expand_mode = 5
+
+[node name="Player" parent="." instance=ExtResource("2_iwlls")]
+
+[node name="Hearts" type="Node" parent="."]
+
+[node name="Spikey bois" type="Node" parent="."]
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="EndLevelItemContainer" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_2b7md")]
+visible = false
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_sx1wa")]
+visible = false
+
+[node name="StartIn" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StartIn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartInLabel" type="Label" parent="CanvasLayer/StartIn/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start in: 3"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 10.0
+grow_horizontal = 2
+
+[node name="LevelTimeLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="LevelTileMap" parent="." instance=ExtResource("4_h2cwe")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_qs7am")
+}
+
+[node name="HazardArea" parent="." instance=ExtResource("5_rl5ou")]
+position = Vector2(-19, 253)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+position = Vector2(458.5, 0)
+shape = SubResource("RectangleShape2D_cyip4")
+
+[node name="WorldBoundary" type="Area2D" parent="."]
+position = Vector2(-65, -9)
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D_Left" type="CollisionShape2D" parent="WorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_frchr")
+
+[node name="CollisionShape2D_Right" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(-7.62939e-06, -132)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_hpmb2")
+
+[node name="DelayEndLevel" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="main_menu" from="CanvasLayer/PauseMenu" to="." method="go_to_main_menu"]
+[connection signal="map_screen" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_map_screen"]
+[connection signal="retry" from="CanvasLayer/PauseMenu" to="." method="_on_level_completed_retry"]
+[connection signal="next_level" from="CanvasLayer/LevelCompleted" to="." method="go_to_next_level"]
+[connection signal="retry" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_retry"]
+[connection signal="area_entered" from="WorldBoundary" to="Player" method="_on_world_boundary_area_entered"]

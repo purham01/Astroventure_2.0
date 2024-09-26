@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=3 uid="uid://e5byije8qotb"]
+
+[ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_r6ycr"]
+[ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="2_6ekna"]
+[ext_resource type="StyleBox" uid="uid://c5wwtvvt0may2" path="res://Aesthethics/Black9Slice.tres" id="3_gryay"]
+
+[node name="PauseMenu" type="ColorRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.215686)
+script = ExtResource("1_r6ycr")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenuTab" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PauseMenuTab"]
+layout_mode = 2
+theme = ExtResource("2_6ekna")
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Resume"
+
+[node name="RetryButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Retry"
+
+[node name="MapScreenButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Map Screen"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Options" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsMenuTab" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenuTab"]
+layout_mode = 2
+theme = ExtResource("2_6ekna")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/OptionsMenuTab"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Back"
+
+[node name="AntiGravityCheck" type="CheckBox" parent="CenterContainer/OptionsMenuTab"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_6ekna")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/pressed = ExtResource("3_gryay")
+theme_override_styles/hover_pressed = ExtResource("3_gryay")
+theme_override_styles/focus = ExtResource("3_gryay")
+text = "Inverted Antigravity Controls"
+alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/OptionsMenuTab"]
+layout_mode = 2
+text = "Camera zoom:"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CenterContainer/OptionsMenuTab"]
+layout_mode = 2
+
+[node name="CameraZoom" type="HSlider" parent="CenterContainer/OptionsMenuTab/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.25
+max_value = 1.0
+step = 0.01
+value = 0.75
+
+[node name="CameraZoomValue" type="Label" parent="CenterContainer/OptionsMenuTab/HFlowContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0.75x"
+clip_text = true
+
+[node name="SaveSettings" type="Button" parent="CenterContainer/OptionsMenuTab"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Apply"
+
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/MapScreenButton" to="." method="_on_map_screen_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuTab/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenuTab/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenuTab/AntiGravityCheck" to="." method="_on_anti_gravity_check_pressed"]
+[connection signal="value_changed" from="CenterContainer/OptionsMenuTab/HFlowContainer/CameraZoom" to="." method="_on_camera_zoom_value_changed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenuTab/SaveSettings" to="." method="_on_save_settings_pressed"]

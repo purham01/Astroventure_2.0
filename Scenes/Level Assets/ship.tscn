@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://deuo0m6mfokye"]
+
+[ext_resource type="Script" path="res://Scenes/ship/ship.gd" id="1_r37o7"]
+[ext_resource type="Texture2D" uid="uid://3icksrm8q0vn" path="res://Assets/Main Ship - Base - Full health-sheet.png" id="2_5n4ew"]
+[ext_resource type="Texture2D" uid="uid://b6oypjj2qcd8i" path="res://Assets/ship.png" id="2_ojjix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cli44"]
+atlas = ExtResource("2_ojjix")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_554lj"]
+atlas = ExtResource("2_ojjix")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_605ts"]
+atlas = ExtResource("2_5n4ew")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dse54"]
+atlas = ExtResource("2_ojjix")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8tbp"]
+atlas = ExtResource("2_ojjix")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2btc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cli44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_554lj")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_605ts")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dse54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8tbp")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("camera")]
+z_index = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_r37o7")
+camera = NodePath("Camera2D")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g2btc")
+animation = &"boost"
+autoplay = "default"
+frame_progress = 0.359378
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0.528931, -12.4483, 14.5289, 5.55171, 14.5289, 10.5517, 2.52893, 12.5517, -2.47107, 12.5517, -14.4711, 10.5517, -14.4711, 5.55171, -0.471069, -12.4483)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

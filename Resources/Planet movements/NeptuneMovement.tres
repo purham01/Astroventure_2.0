@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://cw0030l4te537"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovementData.gd" id="1_gta4c"]
+
+[resource]
+script = ExtResource("1_gta4c")
+speed = 90.0
+accelaration = 600
+friction = 800
+jump_velocity = -200.0
+gravity_scale = 0.525
+air_resistance = 200
+air_accelaration = 400

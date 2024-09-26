@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cacxkj3u4648n"
+path="res://.godot/imported/Vanilla Shake.mp3-a25d92506ccab89d84ed78381a3286ac.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Lofi/Vanilla Shake.mp3"
+dest_files=["res://.godot/imported/Vanilla Shake.mp3-a25d92506ccab89d84ed78381a3286ac.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

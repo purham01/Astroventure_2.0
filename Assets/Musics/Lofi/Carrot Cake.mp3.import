@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://53xrcmybdv7t"
+path="res://.godot/imported/Carrot Cake.mp3-7b2d6067294fb44bb242c680f5973abc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Lofi/Carrot Cake.mp3"
+dest_files=["res://.godot/imported/Carrot Cake.mp3-7b2d6067294fb44bb242c680f5973abc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

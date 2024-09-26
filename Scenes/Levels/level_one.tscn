@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dknxrvmxxk67g"]
+
+[ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_vbw0e"]
+[ext_resource type="PackedScene" uid="uid://bcbfpkfgin4kh" path="res://Scenes/Levels/level_two.tscn" id="2_mhpo1"]
+[ext_resource type="PackedScene" uid="uid://dvx2tbb5lba8s" path="res://Scenes/Level Assets/spikes.tscn" id="2_smena"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="3_evfnj"]
+[ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="4_sawnk"]
+[ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_x77cx"]
+
+[node name="World" instance=ExtResource("1_vbw0e")]
+next_level = ExtResource("2_mhpo1")
+timer = true
+level_best_time = 10.0
+
+[node name="Player" parent="." index="2"]
+position = Vector2(28, 112)
+floor_snap_length = 1.5
+
+[node name="Heart" parent="Hearts" index="0" instance=ExtResource("3_evfnj")]
+position = Vector2(104, 98)
+
+[node name="Heart2" parent="Hearts" index="1" instance=ExtResource("3_evfnj")]
+position = Vector2(280, 67)
+
+[node name="Heart3" parent="Hearts" index="2" instance=ExtResource("3_evfnj")]
+position = Vector2(251, 26)
+
+[node name="Heart4" parent="Hearts" index="3" instance=ExtResource("3_evfnj")]
+position = Vector2(306, -15)
+
+[node name="Heart5" parent="Hearts" index="4" instance=ExtResource("3_evfnj")]
+position = Vector2(25, 44)
+
+[node name="EndLevelItem" parent="Hearts" index="5" instance=ExtResource("4_x77cx")]
+position = Vector2(233, -16)
+
+[node name="Spikes" parent="Spikey bois" index="0" instance=ExtResource("2_smena")]
+position = Vector2(112, 144)
+
+[node name="Spikes2" parent="Spikey bois" index="1" instance=ExtResource("2_smena")]
+position = Vector2(128, 144)
+
+[node name="Spikes3" parent="Spikey bois" index="2" instance=ExtResource("2_smena")]
+position = Vector2(256, 144)
+
+[node name="Spikes4" parent="Spikey bois" index="3" instance=ExtResource("2_smena")]
+position = Vector2(272, 144)
+
+[node name="LevelTileMap2" parent="." index="5" instance=ExtResource("4_sawnk")]
+layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 1, 131072, 131072, 1, 196608, 131072, 1, 262144, 131072, 1, 327680, 131072, 1, 393216, 131072, 1, 458752, 327680, 2, 524288, 65536, 1, 589824, 65536, 2, 589825, 65536, 2, 589826, 65536, 2, 589827, 65536, 2, 589828, 65536, 2, 589829, 65536, 2, 589830, 327680, 3, 589831, 65536, 3, 589832, 65536, 3, 589833, 393216, 3, 589834, 65536, 2, 589835, 65536, 2, 589836, 65536, 2, 589837, 65536, 2, 589838, 65536, 2, 589839, 327680, 3, 589840, 65536, 3, 589841, 65536, 3, 589842, 393216, 3, 524306, 0, 1, 458770, 0, 1, 393234, 0, 1, 327698, 0, 1, 262162, 0, 1, 196626, 0, 1, 131090, 0, 1, 65554, 0, 1, 18, 0, 0, 14, 196608, 0, 65550, 196608, 1, 131086, 196608, 2, 524302, 393216, 2, 524303, 131072, 1, 524301, 65536, 0, 524300, 65536, 0, 524299, 65536, 0, 524298, 327680, 2, 524297, 0, 1, 458761, 0, 0, 458762, 131072, 0, 458758, 196608, 0, 524294, 458752, 2, 524293, 65536, 0, 524292, 65536, 0, 524291, 65536, 0, 524290, 327680, 2, 524289, 65536, 1, 458753, 65536, 0, 458754, 131072, 0, 458767, 131072, 0, 458766, 0, 0, 19, 131072, 0, 65555, 131072, 1, 131091, 131072, 1, 196627, 131072, 1, 262163, 131072, 1, 327699, 131072, 1, 393235, 131072, 1, 458771, 131072, 1, 524307, 131072, 1, 589843, 131072, 2, 65535, 0, 0, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 655359, 0, 2, 589823, 0, 1)
+layer_1/tile_data = PackedInt32Array(458763, 393218, 0, 458756, 196609, 0, 458757, 262145, 0, 458758, 131072, 0, 524293, 65536, 1, 524292, 393216, 2, 524294, 131072, 1, 458762, 65536, 0, 524299, 327680, 2, 524298, 65536, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

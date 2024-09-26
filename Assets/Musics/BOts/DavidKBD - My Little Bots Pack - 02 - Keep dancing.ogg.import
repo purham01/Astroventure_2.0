@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://n6eh6v5prcqh"
+path="res://.godot/imported/DavidKBD - My Little Bots Pack - 02 - Keep dancing.ogg-5ea8a110ef26714c8fc84f3cbe847dbe.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Musics/BOts/DavidKBD - My Little Bots Pack - 02 - Keep dancing.ogg"
+dest_files=["res://.godot/imported/DavidKBD - My Little Bots Pack - 02 - Keep dancing.ogg-5ea8a110ef26714c8fc84f3cbe847dbe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

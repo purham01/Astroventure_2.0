@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl6sxjrdixn2f"
+path="res://.godot/imported/DavidKBD - My Little Bots Pack - 05 - Low battery.ogg-63c8663a61d81db9e0b462555cf84b2e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Musics/BOts/DavidKBD - My Little Bots Pack - 05 - Low battery.ogg"
+dest_files=["res://.godot/imported/DavidKBD - My Little Bots Pack - 05 - Low battery.ogg-63c8663a61d81db9e0b462555cf84b2e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

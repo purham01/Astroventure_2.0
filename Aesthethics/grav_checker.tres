@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://v4o1q0vv7kr3"]
+
+[ext_resource type="Texture2D" uid="uid://mf7atxoj73w3" path="res://Assets/GravNomalySpritesheet.png" id="1_sndh8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lvb6"]
+atlas = ExtResource("1_sndh8")
+region = Rect2(132, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2sot"]
+atlas = ExtResource("1_sndh8")
+region = Rect2(154, 0, 22, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_6lvb6")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_v2sot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

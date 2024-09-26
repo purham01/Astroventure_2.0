@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsa4vij0ot46u"]
+
+[ext_resource type="Script" path="res://Scenes/Level Assets/disappearing_tiles.gd" id="1_0v4ml"]
+[ext_resource type="Texture2D" uid="uid://d6uhndfptwhy" path="res://Assets/cloud.png" id="2_q7xp7"]
+
+[node name="DisappearingTiles" type="Node2D" groups=["disappearing_tiles"]]
+position = Vector2(96, 70)
+script = ExtResource("1_0v4ml")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = ExtResource("2_q7xp7")
+
+[node name="CollisionArea" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PackedVector2Array(0, -2, 0, -16, 16, -16, 16, -1, 11, -1, 11, -2, 8, -2, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, 4, -5, 4, -4, 3, -4, 3, -3, 2, -3, 2, -2)
+
+[node name="DisappearTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ActivatorArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ActivatorArea"]
+position = Vector2(-9.53674e-07, -0.218748)
+scale = Vector2(1, 1.0625)
+polygon = PackedVector2Array(0, -2, 0, -16, 16, -16, 16, -1, 11, -1, 11, -2, 8, -2, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, 4, -5, 4, -4, 3, -4, 3, -3, 2, -3, 2, -2)
+
+[connection signal="timeout" from="DisappearTimer" to="." method="_on_disappear_timer_timeout"]
+[connection signal="area_entered" from="ActivatorArea" to="." method="_on_activator_area_area_entered"]

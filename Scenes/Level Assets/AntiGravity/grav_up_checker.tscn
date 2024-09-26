@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5w7n2c5dadc6"]
+
+[ext_resource type="Script" path="res://Scenes/Level Assets/AntiGravity/grav_up_checker.gd" id="1_qkiok"]
+[ext_resource type="SpriteFrames" uid="uid://v4o1q0vv7kr3" path="res://Aesthethics/grav_checker.tres" id="2_4e6ak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5n5n"]
+size = Vector2(10, 16)
+
+[node name="GravUpChecker" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_qkiok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r5n5n")
+
+[node name="Sprite2d" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 0)
+sprite_frames = ExtResource("2_4e6ak")
+autoplay = "default"
+frame_progress = 0.255178
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

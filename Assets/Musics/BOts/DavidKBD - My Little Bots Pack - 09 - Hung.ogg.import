@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dctjqfb2m10es"
+path="res://.godot/imported/DavidKBD - My Little Bots Pack - 09 - Hung.ogg-c209a42f4eebad0ae55e27fc12d80f42.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Musics/BOts/DavidKBD - My Little Bots Pack - 09 - Hung.ogg"
+dest_files=["res://.godot/imported/DavidKBD - My Little Bots Pack - 09 - Hung.ogg-c209a42f4eebad0ae55e27fc12d80f42.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

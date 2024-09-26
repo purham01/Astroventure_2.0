@@ -1,0 +1,349 @@
+[gd_scene load_steps=31 format=3 uid="uid://c20by7l4tiaml"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/MapScreen.gd" id="1_058mk"]
+[ext_resource type="PackedScene" uid="uid://deuo0m6mfokye" path="res://Scenes/Level Assets/ship.tscn" id="1_lgnu1"]
+[ext_resource type="Texture2D" uid="uid://d3ymlsjvv4cgn" path="res://Assets/Stars 2.png" id="3_38j7l"]
+[ext_resource type="PackedScene" uid="uid://bukvrsgmj0cs4" path="res://Scenes/Level Assets/Planets/mercury.tscn" id="3_aswoj"]
+[ext_resource type="Curve2D" uid="uid://e35xfv8uj64m" path="res://Scenes/Level Assets/Planets/circle.tres" id="3_u58ap"]
+[ext_resource type="PackedScene" uid="uid://ctkfjm18a7q21" path="res://Scenes/Level Assets/Planets/venus.tscn" id="5_tdnmj"]
+[ext_resource type="PackedScene" uid="uid://dxbokkpntvafe" path="res://Scenes/Levels/mercury.tscn" id="6_abkxv"]
+[ext_resource type="PackedScene" uid="uid://bn6n6p7mpq8kw" path="res://Scenes/Level Assets/Planets/sun.tscn" id="7_sueuh"]
+[ext_resource type="PackedScene" uid="uid://bvh8cpfcqqx5t" path="res://Scenes/Levels/LevelVenusV2.tscn" id="8_cm10p"]
+[ext_resource type="PackedScene" uid="uid://bgto26pd61fic" path="res://Scenes/Level Assets/Planets/mars.tscn" id="9_17ieb"]
+[ext_resource type="PackedScene" uid="uid://dt1nnv6uygko1" path="res://Scenes/Levels/LevelEarthv2.tscn" id="9_amfx0"]
+[ext_resource type="PackedScene" uid="uid://cg35qg6nmwyem" path="res://Scenes/Level Assets/Planets/saturn.tscn" id="10_vhbnl"]
+[ext_resource type="PackedScene" uid="uid://cv6d2x8w5d2tc" path="res://Scenes/Level Assets/Planets/jupiter.tscn" id="10_vwetg"]
+[ext_resource type="FontFile" uid="uid://db0nhncrd0qq2" path="res://Aesthethics/pixel_font.ttf" id="11_odxjm"]
+[ext_resource type="PackedScene" uid="uid://hywo20p2fyay" path="res://Scenes/Levels/LevelMarsSafeMode.tscn" id="12_3unv2"]
+[ext_resource type="PackedScene" uid="uid://bkvs6f6irfekt" path="res://Scenes/Level Assets/Planets/earth.tscn" id="13_d0emp"]
+[ext_resource type="PackedScene" uid="uid://beno8wpaludfw" path="res://Scenes/Levels/LevelSaturn.tscn" id="14_2xjxq"]
+[ext_resource type="PackedScene" uid="uid://hj7yxl4lnnor" path="res://Scenes/UI/ui_level_select.tscn" id="14_10y4k"]
+[ext_resource type="PackedScene" uid="uid://d2elyao4vvkwk" path="res://Scenes/Levels/LevelJupiter.tscn" id="15_ttmmn"]
+[ext_resource type="PackedScene" uid="uid://7a8w0j1m350r" path="res://Scenes/Level Assets/Planets/uranus.tscn" id="16_6fiog"]
+[ext_resource type="PackedScene" uid="uid://bjbrkn1uecc05" path="res://Scenes/Level Assets/Planets/neptune.tscn" id="16_s6ejm"]
+[ext_resource type="PackedScene" uid="uid://brvg1g3uxenjl" path="res://Scenes/Levels/LevelUran.tscn" id="17_3lup7"]
+[ext_resource type="PackedScene" uid="uid://b1jlpjoke3a3l" path="res://Scenes/Levels/LevelNeptune2.tscn" id="17_q8e5f"]
+[ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="22_y8gi4"]
+[ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="25_e0pxr"]
+
+[sub_resource type="Curve2D" id="Curve2D_l5f74"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 19.509, -98.0785, 0, 0, 0, 0, 38.2683, -92.3879, 0, 0, 0, 0, 55.557, -83.147, 0, 0, 0, 0, 70.7107, -70.7107, 0, 0, 0, 0, 76.2857, -64.7857, 0, 0, 0, 0, 83.147, -55.557, 0, 0, 0, 0, 92.3879, -38.2683, 0, 0, 0, 0, 98.0785, -19.509, 0, 0, 0, 0, 100, 4.37114e-06, 0, 0, 0, 0, 98.0785, 19.509, 0, 0, 0, 0, 92.388, 38.2683, 0, 0, 0, 0, 83.147, 55.557, 0, 0, 0, 0, 70.7107, 70.7107, 0, 0, 0, 0, 55.557, 83.147, 0, 0, 0, 0, 38.2683, 92.3879, 0, 0, 0, 0, 19.509, 98.0785, 0, 0, 0, 0, -8.74228e-06, 100, 0, 0, 0, 0, -19.509, 98.0785, 0, 0, 0, 0, -38.2683, 92.3879, 0, 0, 0, 0, -55.557, 83.147, 0, 0, 0, 0, -70.7107, 70.7107, 0, 0, 0, 0, -83.1469, 55.557, 0, 0, 0, 0, -92.3879, 38.2684, 0, 0, 0, 0, -98.0785, 19.509, 0, 0, 0, 0, -100, -1.19249e-06, 0, 0, 0, 0, -98.0785, -19.509, 0, 0, 0, 0, -92.3879, -38.2684, 0, 0, 0, 0, -83.147, -55.557, 0, 0, 0, 0, -70.7107, -70.7107, 0, 0, 0, 0, -55.557, -83.147, 0, 0, 0, 0, -38.2683, -92.388, 0, 0, 0, 0, -19.509, -98.0785, 0, 0, 0, 0, 0, -100)
+}
+point_count = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_dn4oe"]
+font = ExtResource("11_odxjm")
+outline_size = 1
+outline_color = Color(0.0470588, 0.188235, 0.462745, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_1iops"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 19.509, -98.0785, 0, 0, 0, 0, 38.2683, -92.3879, 0, 0, 0, 0, 55.557, -83.147, 0, 0, 0, 0, 70.7107, -70.7107, 0, 0, 0, 0, 83.147, -55.557, 0, 0, 0, 0, 92.3879, -38.2683, 0, 0, 0, 0, 98.0785, -19.509, 0, 0, 0, 0, 100, 4.37114e-06, 0, 0, 0, 0, 98.0785, 19.509, 0, 0, 0, 0, 92.388, 38.2683, 0, 0, 0, 0, 83.147, 55.557, 0, 0, 0, 0, 70.7107, 70.7107, 0, 0, 0, 0, 55.557, 83.147, 0, 0, 0, 0, 38.2683, 92.3879, 0, 0, 0, 0, 19.509, 98.0785, 0, 0, 0, 0, -8.74228e-06, 100, 0, 0, 0, 0, -19.509, 98.0785, 0, 0, 0, 0, -38.2683, 92.3879, 0, 0, 0, 0, -55.557, 83.147, 0, 0, 0, 0, -70.7107, 70.7107, 0, 0, 0, 0, -83.1469, 55.557, 0, 0, 0, 0, -92.3879, 38.2684, 0, 0, 0, 0, -98.0785, 19.509, 0, 0, 0, 0, -100, -1.19249e-06, 0, 0, 0, 0, -98.0785, -19.509, 0, 0, 0, 0, -92.3879, -38.2684, 0, 0, 0, 0, -83.147, -55.557, 0, 0, 0, 0, -70.7107, -70.7107, 0, 0, 0, 0, -55.557, -83.147, 0, 0, 0, 0, -38.2683, -92.388, 0, 0, 0, 0, -19.509, -98.0785, 0, 0, 0, 0, 0, -100)
+}
+point_count = 33
+
+[sub_resource type="Curve2D" id="Curve2D_rnkow"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 19.509, -98.0785, 0, 0, 0, 0, 38.2683, -92.3879, 0, 0, 0, 0, 55.557, -83.147, 0, 0, 0, 0, 70.7107, -70.7107, 0, 0, 0, 0, 83.147, -55.557, 0, 0, 0, 0, 92.3879, -38.2683, 0, 0, 0, 0, 98.0785, -19.509, 0, 0, 0, 0, 100, 4.37114e-06, 0, 0, 0, 0, 98.0785, 19.509, 0, 0, 0, 0, 92.388, 38.2683, 0, 0, 0, 0, 83.147, 55.557, 0, 0, 0, 0, 70.7107, 70.7107, 0, 0, 0, 0, 55.557, 83.147, 0, 0, 0, 0, 38.2683, 92.3879, 0, 0, 0, 0, 19.509, 98.0785, 0, 0, 0, 0, -8.74228e-06, 100, 0, 0, 0, 0, -19.509, 98.0785, 0, 0, 0, 0, -38.2683, 92.3879, 0, 0, 0, 0, -55.557, 83.147, 0, 0, 0, 0, -70.7107, 70.7107, 0, 0, 0, 0, -83.1469, 55.557, 0, 0, 0, 0, -92.3879, 38.2684, 0, 0, 0, 0, -98.0785, 19.509, 0, 0, 0, 0, -100, -1.19249e-06, 0, 0, 0, 0, -98.0785, -19.509, 0, 0, 0, 0, -92.3879, -38.2684, 0, 0, 0, 0, -83.147, -55.557, 0, 0, 0, 0, -70.7107, -70.7107, 0, 0, 0, 0, -55.557, -83.147, 0, 0, 0, 0, -38.2683, -92.388, 0, 0, 0, 0, -19.509, -98.0785, 0, 0, 0, 0, 0, -100)
+}
+point_count = 33
+
+[sub_resource type="Curve2D" id="Curve2D_k8tto"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 19.509, -98.0785, 0, 0, 0, 0, 38.2683, -92.3879, 0, 0, 0, 0, 55.557, -83.147, 0, 0, 0, 0, 70.7107, -70.7107, 0, 0, 0, 0, 83.147, -55.557, 0, 0, 0, 0, 92.3879, -38.2683, 0, 0, 0, 0, 98.0785, -19.509, 0, 0, 0, 0, 100, 4.37114e-06, 0, 0, 0, 0, 98.0785, 19.509, 0, 0, 0, 0, 92.388, 38.2683, 0, 0, 0, 0, 83.147, 55.557, 0, 0, 0, 0, 70.7107, 70.7107, 0, 0, 0, 0, 55.557, 83.147, 0, 0, 0, 0, 38.2683, 92.3879, 0, 0, 0, 0, 19.509, 98.0785, 0, 0, 0, 0, -8.74228e-06, 100, 0, 0, 0, 0, -19.509, 98.0785, 0, 0, 0, 0, -38.2683, 92.3879, 0, 0, 0, 0, -55.557, 83.147, 0, 0, 0, 0, -70.7107, 70.7107, 0, 0, 0, 0, -83.1469, 55.557, 0, 0, 0, 0, -92.3879, 38.2684, 0, 0, 0, 0, -98.0785, 19.509, 0, 0, 0, 0, -100, -1.19249e-06, 0, 0, 0, 0, -98.0785, -19.509, 0, 0, 0, 0, -92.3879, -38.2684, 0, 0, 0, 0, -83.147, -55.557, 0, 0, 0, 0, -70.7107, -70.7107, 0, 0, 0, 0, -55.557, -83.147, 0, 0, 0, 0, -38.2683, -92.388, 0, 0, 0, 0, -19.509, -98.0785, 0, 0, 0, 0, 0, -100)
+}
+point_count = 33
+
+[node name="MapScreen" type="Node2D"]
+script = ExtResource("1_058mk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 776.0
+offset_top = -432.0
+offset_right = 914.0
+offset_bottom = -405.0
+scale = Vector2(7.28175, 7.28175)
+text = "Press WASD to move
+Hold SHIFT to boost
+Press Space to interact with planets"
+
+[node name="Ship" parent="." instance=ExtResource("1_lgnu1")]
+position = Vector2(1114, -85)
+rotation_speed = 2.5
+
+[node name="Sun" parent="." instance=ExtResource("7_sueuh")]
+scale = Vector2(14, 14)
+
+[node name="Sun2" parent="." instance=ExtResource("7_sueuh")]
+scale = Vector2(14, 14)
+
+[node name="PlanetLabels" type="Node" parent="."]
+
+[node name="MercuryLabel" type="Label" parent="PlanetLabels"]
+offset_left = -48.0
+offset_top = -672.0
+offset_right = 30.0
+offset_bottom = -652.0
+scale = Vector2(5.49028, 4.54226)
+text = "Mercury"
+
+[node name="EarthLabel" type="Label" parent="PlanetLabels"]
+offset_left = 1816.0
+offset_top = -832.0
+offset_right = 1894.0
+offset_bottom = -812.0
+scale = Vector2(5.49028, 4.54226)
+text = "Earth"
+
+[node name="VenusLabel" type="Label" parent="PlanetLabels"]
+offset_left = -1332.0
+offset_top = 356.0
+offset_right = -1254.0
+offset_bottom = 376.0
+scale = Vector2(5.49028, 4.54226)
+text = "Venus"
+
+[node name="MarsLabel" type="Label" parent="PlanetLabels"]
+offset_left = -288.0
+offset_top = -2784.0
+offset_right = -210.0
+offset_bottom = -2764.0
+scale = Vector2(5.49028, 4.54226)
+text = "Mars"
+
+[node name="JupiterLabel" type="Label" parent="PlanetLabels"]
+offset_left = -432.0
+offset_top = -3624.0
+offset_right = -354.0
+offset_bottom = -3604.0
+scale = Vector2(5.49028, 4.54226)
+text = "Jupiter"
+
+[node name="SaturnLabel" type="Label" parent="PlanetLabels"]
+offset_left = -516.0
+offset_top = -4668.0
+offset_right = -438.0
+offset_bottom = -4648.0
+scale = Vector2(5.49028, 4.54226)
+text = "Saturn"
+
+[node name="UranusLabel" type="Label" parent="PlanetLabels"]
+offset_left = -480.0
+offset_top = -5576.0
+offset_right = -402.0
+offset_bottom = -5556.0
+scale = Vector2(5.49028, 4.54226)
+text = "Uranus"
+
+[node name="NeptuneLabel" type="Label" parent="PlanetLabels"]
+offset_left = -429.107
+offset_top = -6365.11
+offset_right = -351.107
+offset_bottom = -6345.11
+scale = Vector2(5.49028, 4.54226)
+text = "Neptune"
+
+[node name="MercuryPath" type="Path2D" parent="."]
+position = Vector2(26, 81)
+scale = Vector2(8, 8)
+curve = ExtResource("3_u58ap")
+
+[node name="MercuryPathFollow2D" type="PathFollow2D" parent="MercuryPath"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Mercury" parent="MercuryPath/MercuryPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("3_aswoj")]
+scale = Vector2(0.2, 0.2)
+level = ExtResource("6_abkxv")
+speed = 15
+ship = NodePath("../../../Ship")
+
+[node name="MercuryMarker" type="Marker2D" parent="MercuryPath/MercuryPathFollow2D"]
+position = Vector2(-9.25, 5.875)
+
+[node name="VenusPath" type="Path2D" parent="."]
+position = Vector2(80, -57)
+scale = Vector2(14, 14)
+curve = SubResource("Curve2D_l5f74")
+
+[node name="VenusPathFollow2D" type="PathFollow2D" parent="VenusPath"]
+position = Vector2(-97.2683, 22.1868)
+progress = 448.11
+rotates = false
+
+[node name="Venus" parent="VenusPath/VenusPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("5_tdnmj")]
+scale = Vector2(0.25, 0.25)
+level = ExtResource("8_cm10p")
+speed = 10
+ship = NodePath("../../../Ship")
+
+[node name="Label2" type="Label" parent="VenusPath/VenusPathFollow2D"]
+visible = false
+offset_left = -3.3031
+offset_top = 6.74174
+offset_right = 50.6969
+offset_bottom = 26.7417
+scale = Vector2(0.138587, 0.138587)
+text = "Venus"
+label_settings = SubResource("LabelSettings_dn4oe")
+
+[node name="VenusMarker" type="Marker2D" parent="VenusPath/VenusPathFollow2D"]
+position = Vector2(-3.58887, 7.31316)
+
+[node name="EarthPath" type="Path2D" parent="."]
+position = Vector2(68, -59)
+scale = Vector2(20, 20)
+curve = SubResource("Curve2D_1iops")
+
+[node name="EarthPathFollow2D" type="PathFollow2D" parent="EarthPath"]
+position = Vector2(89.7702, -43.1658)
+progress = 112.037
+rotates = false
+
+[node name="Earth" parent="EarthPath/EarthPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("13_d0emp")]
+scale = Vector2(0.15, 0.15)
+level = ExtResource("9_amfx0")
+ship = NodePath("../../../Ship")
+
+[node name="Label2" type="Label" parent="EarthPath/EarthPathFollow2D"]
+visible = false
+offset_left = -1.97015
+offset_top = 3.91577
+offset_right = 49.0298
+offset_bottom = 23.9158
+scale = Vector2(0.0874454, 0.0874454)
+text = "Earth"
+label_settings = SubResource("LabelSettings_dn4oe")
+
+[node name="EarthMarker" type="Marker2D" parent="EarthPath/EarthPathFollow2D"]
+position = Vector2(-2.37016, 4.51579)
+
+[node name="MarsPath" type="Path2D" parent="."]
+position = Vector2(-248, -63)
+scale = Vector2(28, 28)
+curve = SubResource("Curve2D_rnkow")
+
+[node name="MarsPathFollow2D" type="PathFollow2D" parent="MarsPath"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Mars" parent="MarsPath/MarsPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("9_17ieb")]
+scale = Vector2(0.09, 0.09)
+level = ExtResource("12_3unv2")
+speed = 2
+ship = NodePath("../../../Ship")
+planet_name = 3
+
+[node name="MarsMarker" type="Marker2D" parent="MarsPath/MarsPathFollow2D"]
+position = Vector2(-1.42857, 2.82143)
+
+[node name="JupiterPath2D" type="Path2D" parent="."]
+position = Vector2(-368, 142)
+scale = Vector2(40, 40)
+curve = SubResource("Curve2D_k8tto")
+
+[node name="JupiterPathFollow2D" type="PathFollow2D" parent="JupiterPath2D"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Jupiter" parent="JupiterPath2D/JupiterPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("10_vwetg")]
+scale = Vector2(0.2, 0.2)
+level = ExtResource("15_ttmmn")
+speed = 2
+ship = NodePath("../../../Ship")
+planet_name = 4
+
+[node name="JupiterMarker" type="Marker2D" parent="JupiterPath2D/JupiterPathFollow2D"]
+position = Vector2(-1.6, 5.85001)
+
+[node name="SaturnPath2D" type="Path2D" parent="."]
+position = Vector2(-466, 108)
+scale = Vector2(50, 50)
+curve = ExtResource("3_u58ap")
+
+[node name="SaturnPathFollow2D" type="PathFollow2D" parent="SaturnPath2D"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Saturn" parent="SaturnPath2D/SaturnPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("10_vhbnl")]
+scale = Vector2(0.1, 0.1)
+level = ExtResource("14_2xjxq")
+speed = 1
+ship = NodePath("../../../Ship")
+planet_name = 5
+
+[node name="SaturnMarker" type="Marker2D" parent="SaturnPath2D/SaturnPathFollow2D"]
+position = Vector2(-1, 4.48)
+
+[node name="UranusPath2D" type="Path2D" parent="."]
+position = Vector2(-423, 182)
+scale = Vector2(59.6131, 59.6131)
+curve = ExtResource("3_u58ap")
+
+[node name="UranusPathFollow2D" type="PathFollow2D" parent="UranusPath2D"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Uranus" parent="UranusPath2D/UranusPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("16_6fiog")]
+scale = Vector2(0.11404, 0.11404)
+level = ExtResource("17_3lup7")
+speed = 1
+ship = NodePath("../../../Ship")
+
+[node name="UranusMarker" type="Marker2D" parent="UranusPath2D/UranusPathFollow2D"]
+position = Vector2(-0.956166, 3.41048)
+
+[node name="NeptunePath2D" type="Path2D" parent="."]
+position = Vector2(-359, 293)
+scale = Vector2(68.2893, 68.2893)
+curve = ExtResource("3_u58ap")
+
+[node name="NeptunePathFollow2D" type="PathFollow2D" parent="NeptunePath2D"]
+position = Vector2(0, -100)
+rotates = false
+
+[node name="Neptune" parent="NeptunePath2D/NeptunePathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("16_s6ejm")]
+scale = Vector2(0.0911031, 0.0911031)
+level = ExtResource("17_q8e5f")
+speed = 1
+ship = NodePath("../../../Ship")
+
+[node name="NeptuneMarker" type="Marker2D" parent="NeptunePath2D/NeptunePathFollow2D"]
+position = Vector2(-1.02662, 2.50146)
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_38j7l")
+expand_mode = 2
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(360, 180)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(360, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(0, 180)
+
+[node name="UI" parent="." instance=ExtResource("14_10y4k")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("22_y8gi4")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("25_e0pxr")
+autoplay = true
+
+[editable path="CanvasLayer/PauseMenu"]

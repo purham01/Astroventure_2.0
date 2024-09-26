@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkbccvep5acik"]
+
+[ext_resource type="Script" path="res://Scenes/Level Assets/AntiGravity/grav_left_checker.gd" id="1_21g2k"]
+[ext_resource type="Texture2D" uid="uid://mf7atxoj73w3" path="res://Assets/GravNomalySpritesheet.png" id="2_drxb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5n5n"]
+size = Vector2(10, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvae4"]
+atlas = ExtResource("2_drxb5")
+region = Rect2(22, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xefmh"]
+atlas = ExtResource("2_drxb5")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mk0qb"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_mvae4")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_xefmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GravLeftChecker" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_21g2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r5n5n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_mk0qb")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
