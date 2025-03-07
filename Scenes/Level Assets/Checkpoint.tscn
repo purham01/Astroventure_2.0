@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckccbppd7eifa"]
 
 [ext_resource type="Texture2D" uid="uid://dl7sgtjyf3xlg" path="res://Assets/Flag.png" id="1_866gq"]
-[ext_resource type="Script" path="res://Scenes/Level Assets/Checkpoint.gd" id="1_rmt1u"]
+[ext_resource type="Script" uid="uid://c4rklote4pkwm" path="res://Scenes/Level Assets/Checkpoint.gd" id="1_rmt1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_54qfq"]
 atlas = ExtResource("1_866gq")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ia1hkm7age5"]
+
+[ext_resource type="Script" uid="uid://bdxboq0r0gu3m" path="res://Scenes/Player/Player_rework_1/States/climb.gd" id="1_36bsq"]
+
+[node name="CLIMB" type="Node"]
+script = ExtResource("1_36bsq")

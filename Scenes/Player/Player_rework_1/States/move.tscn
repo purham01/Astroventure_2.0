@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duwu28lw0hjt2"]
+
+[ext_resource type="Script" uid="uid://b2y4sfve7dfj2" path="res://Scenes/Player/Player_rework_1/States/move.gd" id="1_hgsxd"]
+
+[node name="MOVE" type="Node"]
+script = ExtResource("1_hgsxd")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_68jp3"]
 [ext_resource type="AudioStream" uid="uid://cacxkj3u4648n" path="res://Assets/Musics/Lofi/Vanilla Shake.mp3" id="2_4yw8f"]
-[ext_resource type="Script" path="res://Scenes/Levels/EarthScript.gd" id="2_jhq21"]
+[ext_resource type="Script" uid="uid://widba2n6781n" path="res://Scenes/Levels/EarthScript.gd" id="2_jhq21"]
 [ext_resource type="PackedScene" uid="uid://bbxitpfb3kgxa" path="res://Scenes/Level Assets/moving_spikes.tscn" id="3_1i5cu"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="3_8p4bm"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="4_5upas"]

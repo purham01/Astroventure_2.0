@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0rryvfnobbvp"]
 
-[ext_resource type="Script" path="res://Scenes/Singletons/level_transition.gd" id="1_6yjxk"]
+[ext_resource type="Script" uid="uid://b5pqgcaw58uxm" path="res://Scenes/Singletons/level_transition.gd" id="1_6yjxk"]
 
 [sub_resource type="Animation" id="Animation_3vuy2"]
 resource_name = "FadeFromBlack"
@@ -66,10 +66,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gpb4g"]
 _data = {
-"FadeFromBlack": SubResource("Animation_3vuy2"),
-"FadeToBlack": SubResource("Animation_v6u1s"),
-"FadeToBlack_Menu": SubResource("Animation_ofl2q"),
-"RESET": SubResource("Animation_xkh8j")
+&"FadeFromBlack": SubResource("Animation_3vuy2"),
+&"FadeToBlack": SubResource("Animation_v6u1s"),
+&"FadeToBlack_Menu": SubResource("Animation_ofl2q"),
+&"RESET": SubResource("Animation_xkh8j")
 }
 
 [node name="LevelTransition" type="CanvasLayer"]

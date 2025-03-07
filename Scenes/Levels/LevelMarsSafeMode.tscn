@@ -2,20 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_djg7w"]
 [ext_resource type="Resource" uid="uid://btop77c1so5py" path="res://Resources/Planet movements/MercuryMarsMovement.tres" id="2_16oep"]
-[ext_resource type="Script" path="res://Scenes/Levels/Wind.gd" id="2_vftrt"]
+[ext_resource type="Script" uid="uid://dmxq00qw110jy" path="res://Scenes/Levels/Wind.gd" id="2_vftrt"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="3_u3s5x"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_p5vkw"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="5_rele7"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8256"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(103.625, 105.33, 1)
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 42.56
 initial_velocity_max = 105.27
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6sub"]
 size = Vector2(861, 1418)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=40 format=3 uid="uid://brvg1g3uxenjl"]
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_ouxty"]
-[ext_resource type="Script" path="res://Scenes/Levels/DisappearingTilesScript.gd" id="2_0y5fl"]
+[ext_resource type="Script" uid="uid://b371os08yv8t8" path="res://Scenes/Levels/DisappearingTilesScript.gd" id="2_0y5fl"]
 [ext_resource type="PackedScene" uid="uid://beaja6sbffrub" path="res://Scenes/Level Assets/Hazards/anoma_ball.tscn" id="2_l3dhl"]
 [ext_resource type="AudioStream" uid="uid://bg44484616lko" path="res://Assets/Musics/Lofi/Chantilly.mp3" id="3_718es"]
 [ext_resource type="PackedScene" uid="uid://r7ntx6orfvyd" path="res://Scenes/Level Assets/disappearing_tilesV2.tscn" id="3_cybth"]
-[ext_resource type="Script" path="res://Scenes/Levels/FinalCheckpointUran.gd" id="4_jia2n"]
+[ext_resource type="Script" uid="uid://blef6vthxfxwe" path="res://Scenes/Levels/FinalCheckpointUran.gd" id="4_jia2n"]
 [ext_resource type="Resource" uid="uid://krjikwb6osnb" path="res://Resources/Planet movements/VenusUranusMovement.tres" id="4_w4t87"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="5_4e6fm"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="5_rxemn"]

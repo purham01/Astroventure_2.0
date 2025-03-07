@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://iqsopd1ey4aw"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/heart.gd" id="1_goris"]
+[ext_resource type="Script" uid="uid://cunwcekkq7xhp" path="res://Scenes/Level Assets/heart.gd" id="1_goris"]
 [ext_resource type="Texture2D" uid="uid://pepdxjguqg82" path="res://Assets/heart.png" id="1_ldhbm"]
 [ext_resource type="PackedScene" uid="uid://dnhhfl0gqabx0" path="res://Scenes/Effects/floating_text.tscn" id="2_fohhl"]
 [ext_resource type="Texture2D" uid="uid://c5xpo4f0v14f7" path="res://Assets/FX/Smoke/FX001/FX001_01.png" id="3_3trh5"]
@@ -17,12 +17,10 @@ colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_w7itr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6m02h"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 5.0
-particle_flag_disable_z = true
 gravity = Vector3(0, 9.8, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 color = Color(0.435294, 1, 0.92549, 1)
 color_ramp = SubResource("GradientTexture1D_6e0tu")
 
@@ -239,9 +237,9 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brgku"]
 _data = {
-"Float": SubResource("Animation_ja34t"),
-"RESET": SubResource("Animation_fe1cf"),
-"pickup": SubResource("Animation_0hf5x")
+&"Float": SubResource("Animation_ja34t"),
+&"RESET": SubResource("Animation_fe1cf"),
+&"pickup": SubResource("Animation_0hf5x")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rbbec"]

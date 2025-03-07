@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="4_hlxr6"]
 [ext_resource type="PackedScene" uid="uid://bsfimydkpnvog" path="res://Scenes/Level Assets/SafeZones/sigurna_zona.tscn" id="6_5qijd"]
 [ext_resource type="Texture2D" uid="uid://cnb2affsu4dxb" path="res://Assets/Stars 3.png" id="9_pxyhu"]
-[ext_resource type="Script" path="res://Scenes/Levels/daynightcycle.gd" id="10_avtf7"]
+[ext_resource type="Script" uid="uid://tlddodk2igeq" path="res://Scenes/Levels/daynightcycle.gd" id="10_avtf7"]
 [ext_resource type="Texture2D" uid="uid://bhnqefwa7dall" path="res://Assets/daynightcycle-gradient-texture.tres" id="11_xdaev"]
 [ext_resource type="Texture2D" uid="uid://pepdxjguqg82" path="res://Assets/heart.png" id="13_a12fb"]
 
@@ -87,9 +87,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3hg8g"]
 _data = {
-"RESET": SubResource("Animation_wqg6a"),
-"flashing": SubResource("Animation_44o3j"),
-"red_flashing": SubResource("Animation_afp33")
+&"RESET": SubResource("Animation_wqg6a"),
+&"flashing": SubResource("Animation_44o3j"),
+&"red_flashing": SubResource("Animation_afp33")
 }
 
 [node name="World" instance=ExtResource("1_ocyqg")]

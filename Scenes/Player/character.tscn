@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bmj1urynsj1ph"]
 
-[ext_resource type="Script" path="res://Scenes/Player/player_antigrav_v2.gd" id="1_4r3eb"]
+[ext_resource type="Script" uid="uid://ch44bo03u2vm2" path="res://Scenes/Player/player_antigrav_v2.gd" id="1_4r3eb"]
 [ext_resource type="Resource" uid="uid://b1rkom08snay1" path="res://Resources/SlowMovementData.tres" id="2_eofbi"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="3_wn5jf"]
 [ext_resource type="PackedScene" uid="uid://dhlrcql7c28e2" path="res://Scenes/Player/terrain_detector.tscn" id="4_7dsbk"]
@@ -91,8 +91,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wi07s"]
 _data = {
-"RESET": SubResource("Animation_g1ca6"),
-"end_level": SubResource("Animation_aybdw")
+&"RESET": SubResource("Animation_g1ca6"),
+&"end_level": SubResource("Animation_aybdw")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]

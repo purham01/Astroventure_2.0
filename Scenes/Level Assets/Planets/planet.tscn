@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1ytv2b5seb1r"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/SelectScript.gd" id="1_knuwc"]
+[ext_resource type="Script" uid="uid://bmqw3cfpsoaes" path="res://Scenes/Levels/SelectScript.gd" id="1_knuwc"]
 [ext_resource type="SpriteFrames" uid="uid://dli4a8csxhv4n" path="res://Scenes/Level Assets/Planets/earth.tres" id="3_bp0un"]
 
 [sub_resource type="Shader" id="Shader_fmcrq"]
@@ -130,9 +130,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hscd5"]
 _data = {
-"RESET": SubResource("Animation_t4fw5"),
-"hide_outline": SubResource("Animation_j83nk"),
-"show_outline": SubResource("Animation_l18no")
+&"RESET": SubResource("Animation_t4fw5"),
+&"hide_outline": SubResource("Animation_j83nk"),
+&"show_outline": SubResource("Animation_l18no")
 }
 
 [node name="Planet" type="Area2D"]

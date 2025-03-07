@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://c5x6p3febuudq"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/world.gd" id="1_t31v4"]
+[ext_resource type="Script" uid="uid://txafawdi5cx2" path="res://Scenes/Level Assets/world.gd" id="1_t31v4"]
 [ext_resource type="Resource" uid="uid://krjikwb6osnb" path="res://Resources/Planet movements/VenusUranusMovement.tres" id="3_rh8eo"]
 [ext_resource type="PackedScene" uid="uid://bmj1urynsj1ph" path="res://Scenes/Player/character.tscn" id="4_3n3c6"]
-[ext_resource type="Script" path="res://Scripts/VenusAtmosphere.gd" id="5_ew3r3"]
+[ext_resource type="Script" uid="uid://cby36txjbmldm" path="res://Scripts/VenusAtmosphere.gd" id="5_ew3r3"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="7_vndwo"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="8_bed2g"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="8_ek45y"]
@@ -67,8 +67,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qs7am"]
 _data = {
-"RESET": SubResource("Animation_8ywv5"),
-"countdown": SubResource("Animation_haihy")
+&"RESET": SubResource("Animation_8ywv5"),
+&"countdown": SubResource("Animation_haihy")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xuik"]

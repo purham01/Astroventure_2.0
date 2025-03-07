@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6xhdwbngx7xn"]
+
+[ext_resource type="Script" uid="uid://cvcarqj25ukwm" path="res://Scenes/Player/Player_rework_1/States/slide.gd" id="1_i3qy3"]
+
+[node name="SLIDE" type="Node"]
+script = ExtResource("1_i3qy3")
+climb_speed = null
+slide_friction = null
+
+[node name="WallSlideStickyTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallSlideCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

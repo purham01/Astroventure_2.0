@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsfimydkpnvog"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/SafeZones/sigurna_zona.gd" id="1_pml4m"]
+[ext_resource type="Script" uid="uid://dll1qf0k3g3d" path="res://Scenes/Level Assets/SafeZones/sigurna_zona.gd" id="1_pml4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acbkq"]
 size = Vector2(20, 40)

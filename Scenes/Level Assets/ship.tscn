@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://deuo0m6mfokye"]
 
-[ext_resource type="Script" path="res://Scenes/ship/ship.gd" id="1_r37o7"]
+[ext_resource type="Script" uid="uid://blcef4lwppk3a" path="res://Scenes/ship/ship.gd" id="1_r37o7"]
 [ext_resource type="Texture2D" uid="uid://3icksrm8q0vn" path="res://Assets/Main Ship - Base - Full health-sheet.png" id="2_5n4ew"]
 [ext_resource type="Texture2D" uid="uid://b6oypjj2qcd8i" path="res://Assets/ship.png" id="2_ojjix"]
 

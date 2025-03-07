@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dkkor7cqf3sc2"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/world.gd" id="1_mrn2n"]
+[ext_resource type="Script" uid="uid://txafawdi5cx2" path="res://Scenes/Level Assets/world.gd" id="1_mrn2n"]
 [ext_resource type="PackedScene" uid="uid://bmj1urynsj1ph" path="res://Scenes/Player/character.tscn" id="2_iwlls"]
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="2_yvx81"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="3_2b7md"]
@@ -66,8 +66,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qs7am"]
 _data = {
-"RESET": SubResource("Animation_8ywv5"),
-"countdown": SubResource("Animation_haihy")
+&"RESET": SubResource("Animation_8ywv5"),
+&"countdown": SubResource("Animation_haihy")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyip4"]

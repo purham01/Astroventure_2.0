@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1ytv2b5seb1r" path="res://Scenes/Level Assets/Planets/planet.tscn" id="1_0a6vj"]
 [ext_resource type="SpriteFrames" uid="uid://n5qw5f54y6wf" path="res://Scenes/Level Assets/Planets/jupiter.tres" id="2_brt0d"]
-[ext_resource type="Shader" path="res://Aesthethics/Shaders/OutlineShader.gdshader" id="2_tj6w1"]
+[ext_resource type="Shader" uid="uid://dgh4uo2o4k0fy" path="res://Aesthethics/Shaders/OutlineShader.gdshader" id="2_tj6w1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnbb7"]
 shader = ExtResource("2_tj6w1")

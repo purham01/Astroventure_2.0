@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c8yd44clm2sy4"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/end_level_item.gd" id="1_wh40d"]
+[ext_resource type="Script" uid="uid://bfnyn168obu1p" path="res://Scenes/Level Assets/end_level_item.gd" id="1_wh40d"]
 [ext_resource type="Texture2D" uid="uid://d0ub0jc2sj6ar" path="res://Assets/star/sprite_00.png" id="2_s3bb0"]
 
 [sub_resource type="Gradient" id="Gradient_b75hx"]
@@ -10,12 +10,10 @@ colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_b75hx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x3u3n"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 5.0
-particle_flag_disable_z = true
 gravity = Vector3(0, 9.8, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 color = Color(0.435294, 1, 0.92549, 1)
 color_ramp = SubResource("GradientTexture1D_6e0tu")
 
@@ -55,8 +53,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brgku"]
 _data = {
-"Float": SubResource("Animation_ja34t"),
-"RESET": SubResource("Animation_fe1cf")
+&"Float": SubResource("Animation_ja34t"),
+&"RESET": SubResource("Animation_fe1cf")
 }
 
 [node name="EndLevelItem" type="Area2D" groups=["EndLevel"]]

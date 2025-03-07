@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d3ymlsjvv4cgn" path="res://Assets/Stars 2.png" id="1_koott"]
 [ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="1_npgw1"]
-[ext_resource type="Script" path="res://Scenes/UI/ui_level_select.gd" id="1_nr0i6"]
+[ext_resource type="Script" uid="uid://gtwmu5a1uhpi" path="res://Scenes/UI/ui_level_select.gd" id="1_nr0i6"]
 [ext_resource type="SpriteFrames" uid="uid://dli4a8csxhv4n" path="res://Scenes/Level Assets/Planets/earth.tres" id="2_wekf4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t707c"]
@@ -46,9 +46,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk4a8"]
 _data = {
-"RESET": SubResource("Animation_v341w"),
-"Show_UI": SubResource("Animation_3ceuv"),
-"animate_dialogue_prompt": SubResource("Animation_kt1gy")
+&"RESET": SubResource("Animation_v341w"),
+&"Show_UI": SubResource("Animation_3ceuv"),
+&"animate_dialogue_prompt": SubResource("Animation_kt1gy")
 }
 
 [node name="UI" type="CanvasLayer"]

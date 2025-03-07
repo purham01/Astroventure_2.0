@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgg7ik74nny1u"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/AntiGravity/grav_right_checker.gd" id="1_ai44x"]
+[ext_resource type="Script" uid="uid://dmer7w66l2rht" path="res://Scenes/Level Assets/AntiGravity/grav_right_checker.gd" id="1_ai44x"]
 [ext_resource type="Texture2D" uid="uid://mf7atxoj73w3" path="res://Assets/GravNomalySpritesheet.png" id="2_1w8ly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5n5n"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://e5byije8qotb"]
 
-[ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_r6ycr"]
+[ext_resource type="Script" uid="uid://gx0qtn2k1qeg" path="res://Scenes/UI/pause_menu.gd" id="1_r6ycr"]
 [ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="2_6ekna"]
 [ext_resource type="StyleBox" uid="uid://c5wwtvvt0may2" path="res://Aesthethics/Black9Slice.tres" id="3_gryay"]
 

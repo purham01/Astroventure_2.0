@@ -2,27 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_8g07i"]
 [ext_resource type="PackedScene" uid="uid://bbxitpfb3kgxa" path="res://Scenes/Level Assets/moving_spikes.tscn" id="2_joad8"]
-[ext_resource type="Script" path="res://Scenes/Levels/JupiterScript.gd" id="2_v8wpg"]
+[ext_resource type="Script" uid="uid://8yb5euy3bpf6" path="res://Scenes/Levels/JupiterScript.gd" id="2_v8wpg"]
 [ext_resource type="Resource" uid="uid://dvpeq0psv81p" path="res://Resources/Planet movements/JupiterMovement.tres" id="2_wph2m"]
 [ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="4_dwq2p"]
 [ext_resource type="PackedScene" uid="uid://r7ntx6orfvyd" path="res://Scenes/Level Assets/disappearing_tilesV2.tscn" id="5_p54yk"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="6_2j0hh"]
-[ext_resource type="Script" path="res://Scenes/Levels/JupiterProgressBar.gd" id="6_smkgj"]
+[ext_resource type="Script" uid="uid://ccy5fhwoq65s3" path="res://Scenes/Levels/JupiterProgressBar.gd" id="6_smkgj"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="7_k307s"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="7_uha7l"]
-[ext_resource type="Script" path="res://Scenes/Levels/JupiterProgressBarCold.gd" id="9_ylt8u"]
-[ext_resource type="Script" path="res://Scenes/Levels/JupiterWind.gd" id="11_jns2e"]
-[ext_resource type="Script" path="res://Scenes/Levels/JupiterWindRight.gd" id="12_g8nsq"]
+[ext_resource type="Script" uid="uid://bpx4u331g2oyj" path="res://Scenes/Levels/JupiterProgressBarCold.gd" id="9_ylt8u"]
+[ext_resource type="Script" uid="uid://c6q5r4s0l5lc3" path="res://Scenes/Levels/JupiterWind.gd" id="11_jns2e"]
+[ext_resource type="Script" uid="uid://bwpvmy2jqymuf" path="res://Scenes/Levels/JupiterWindRight.gd" id="12_g8nsq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bobk"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(103.625, 105.33, 1)
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 42.56
 initial_velocity_max = 105.27
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la4cq"]
 size = Vector2(719, 444)

@@ -1,27 +1,25 @@
 [gd_scene load_steps=24 format=3 uid="uid://deuutoajy7t6y"]
 
-[ext_resource type="Script" path="res://Scenes/Level Assets/world.gd" id="1_wsc5t"]
+[ext_resource type="Script" uid="uid://txafawdi5cx2" path="res://Scenes/Level Assets/world.gd" id="1_wsc5t"]
 [ext_resource type="PackedScene" uid="uid://c20by7l4tiaml" path="res://Scenes/Levels/MapScreen.tscn" id="2_q3a30"]
 [ext_resource type="PackedScene" uid="uid://bmj1urynsj1ph" path="res://Scenes/Player/character.tscn" id="3_y0l8h"]
 [ext_resource type="Resource" uid="uid://btop77c1so5py" path="res://Resources/Planet movements/MercuryMarsMovement.tres" id="4_hlv08"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="5_81ump"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="6_clu2l"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="7_cckod"]
-[ext_resource type="Script" path="res://Scenes/Levels/Wind.gd" id="7_h7sic"]
+[ext_resource type="Script" uid="uid://dmxq00qw110jy" path="res://Scenes/Levels/Wind.gd" id="7_h7sic"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="8_62nmo"]
 [ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="9_w7d02"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="10_5ffkk"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="11_bt1ex"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdwj7"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(103.625, 105.33, 1)
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 42.56
 initial_velocity_max = 105.27
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_8ywv5"]
 length = 0.001
@@ -80,8 +78,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qs7am"]
 _data = {
-"RESET": SubResource("Animation_8ywv5"),
-"countdown": SubResource("Animation_haihy")
+&"RESET": SubResource("Animation_8ywv5"),
+&"countdown": SubResource("Animation_haihy")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyip4"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cv1202d8pg8ct"]
 
-[ext_resource type="Script" path="res://Scenes/UI/level_completed.gd" id="1_4voqc"]
+[ext_resource type="Script" uid="uid://cclkqltklw375" path="res://Scenes/UI/level_completed.gd" id="1_4voqc"]
 [ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="2_h54kp"]
 
 [sub_resource type="Animation" id="Animation_dn1g0"]
@@ -176,13 +176,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j0y6p"]
 _data = {
-"RESET": SubResource("Animation_dn1g0"),
-"show": SubResource("Animation_yyyw5"),
-"show_deaths": SubResource("Animation_n7tcw"),
-"show_goal_time": SubResource("Animation_6gbu7"),
-"show_hearts": SubResource("Animation_gf70s"),
-"show_score": SubResource("Animation_sh7m1"),
-"show_time": SubResource("Animation_fbi2q")
+&"RESET": SubResource("Animation_dn1g0"),
+&"show": SubResource("Animation_yyyw5"),
+&"show_deaths": SubResource("Animation_n7tcw"),
+&"show_goal_time": SubResource("Animation_6gbu7"),
+&"show_hearts": SubResource("Animation_gf70s"),
+&"show_score": SubResource("Animation_sh7m1"),
+&"show_time": SubResource("Animation_fbi2q")
 }
 
 [node name="LevelCompleted" type="ColorRect"]
