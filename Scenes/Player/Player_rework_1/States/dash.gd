@@ -1,11 +1,10 @@
 extends "state.gd"
 
 var dash_direction = Vector2.ZERO
-var dash_speed = 200.0
 var dashing = false
-@export var dash_duration = 0.2
+@export var dash_speed = 200
+@export var dash_duration = 0.15
 @onready var dash_timer: Timer = $DashTimer
-
 
 func update(delta):
 	if !dashing:
@@ -23,7 +22,6 @@ func enter_state():
 	
 func exit_state():
 	dashing = false
-
 
 func _on_timer_timeout() -> void:
 	dashing = false

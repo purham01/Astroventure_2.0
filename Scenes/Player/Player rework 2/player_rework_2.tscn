@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://chxosd8pyafmj" path="res://Scenes/Player/Player_rework_1/States/fall.tscn" id="6_fiuax"]
 [ext_resource type="PackedScene" uid="uid://cn73llpiy8jhu" path="res://Scenes/Player/Player_rework_1/States/dash.tscn" id="7_gcjax"]
 [ext_resource type="PackedScene" uid="uid://5ia1hkm7age5" path="res://Scenes/Player/Player_rework_1/States/climb.tscn" id="8_6y61a"]
-[ext_resource type="PackedScene" uid="uid://b6xhdwbngx7xn" path="res://Scenes/Player/Player_rework_1/States/slide.tscn" id="9_yiat2"]
+[ext_resource type="PackedScene" uid="uid://b6xhdwbngx7xn" path="res://Scenes/Player/Player_rework_1/States/wall_slide.tscn" id="9_yiat2"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="10_5uotx"]
 [ext_resource type="PackedScene" uid="uid://dhlrcql7c28e2" path="res://Scenes/Player/terrain_detector.tscn" id="11_43sno"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://u0n6wc1k3cuo"]
+[gd_scene load_steps=29 format=3 uid="uid://u0n6wc1k3cuo"]
 
 [ext_resource type="Script" uid="uid://bmfn5bj1epfaa" path="res://Scenes/Player/Player_rework_1/player_character_rework_1.gd" id="1_kqp0r"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="2_a8ty3"]
@@ -10,7 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://duwu28lw0hjt2" path="res://Scenes/Player/Player_rework_1/States/move.tscn" id="5_a8vq3"]
 [ext_resource type="PackedScene" uid="uid://cn73llpiy8jhu" path="res://Scenes/Player/Player_rework_1/States/dash.tscn" id="7_gqjnu"]
 [ext_resource type="PackedScene" uid="uid://5ia1hkm7age5" path="res://Scenes/Player/Player_rework_1/States/climb.tscn" id="8_qiv1m"]
-[ext_resource type="PackedScene" uid="uid://b6xhdwbngx7xn" path="res://Scenes/Player/Player_rework_1/States/slide.tscn" id="9_wmd5h"]
+[ext_resource type="PackedScene" uid="uid://b6xhdwbngx7xn" path="res://Scenes/Player/Player_rework_1/States/wall_slide.tscn" id="9_wmd5h"]
+[ext_resource type="PackedScene" uid="uid://fl0bwbbwh7j3" path="res://Scenes/Player/Player_rework_1/States/wall_jump.tscn" id="10_qj43w"]
+[ext_resource type="Script" uid="uid://b6khm0rv4i6lr" path="res://Scenes/Player/Player_rework_1/gravity states/GRAVITY_STATES.gd" id="11_iydpg"]
+[ext_resource type="PackedScene" uid="uid://dn86crhgylqix" path="res://Scenes/Player/Player_rework_1/gravity states/down.tscn" id="12_7ubbk"]
+[ext_resource type="Script" uid="uid://dw0bs6ox14xeg" path="res://Scenes/Player/Player_rework_1/gravity states/down.gd" id="13_6xkw4"]
+[ext_resource type="PackedScene" uid="uid://dbhgokf44durj" path="res://Scenes/Player/Player_rework_1/gravity states/up.tscn" id="14_ougty"]
+[ext_resource type="Script" uid="uid://cl8q4ujt6gx8s" path="res://Scenes/Player/Player_rework_1/gravity states/up.gd" id="15_edhhf"]
+[ext_resource type="PackedScene" uid="uid://u1my3qpfqtx3" path="res://Scenes/Player/Player_rework_1/gravity states/left.tscn" id="16_6xtkv"]
+[ext_resource type="Script" uid="uid://dh3mxd61uu5ck" path="res://Scenes/Player/Player_rework_1/gravity states/left.gd" id="17_jnrrg"]
+[ext_resource type="PackedScene" uid="uid://cs4jm5xdw3qee" path="res://Scenes/Player/Player_rework_1/gravity states/right.tscn" id="18_j20j7"]
+[ext_resource type="Script" uid="uid://gscb1mjscrdc" path="res://Scenes/Player/Player_rework_1/gravity states/right.gd" id="19_vpm28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pagqt"]
 size = Vector2(10, 15)
@@ -109,8 +119,8 @@ collision_mask = 9
 floor_constant_speed = true
 safe_margin = 0.1
 script = ExtResource("1_kqp0r")
-max_jump_height = 3.2
-min_jump_height = 0.8
+max_jump_height = 6.2
+min_jump_height = 2.0
 jump_time_to_peak = 0.5
 jump_time_to_fall = 0.25
 
@@ -129,11 +139,26 @@ script = ExtResource("2_rx16d")
 
 [node name="CLIMB" parent="STATES" instance=ExtResource("8_qiv1m")]
 
-[node name="SLIDE" parent="STATES" instance=ExtResource("9_wmd5h")]
-climb_speed = 96
-slide_friction = 0.7
+[node name="WALL_SLIDE" parent="STATES" instance=ExtResource("9_wmd5h")]
+
+[node name="WALL_JUMP" parent="STATES" instance=ExtResource("10_qj43w")]
 
 [node name="GRAVITY STATES" type="Node" parent="."]
+script = ExtResource("11_iydpg")
+
+[node name="DOWN" parent="GRAVITY STATES" instance=ExtResource("12_7ubbk")]
+script = ExtResource("13_6xkw4")
+
+[node name="UP" parent="GRAVITY STATES" instance=ExtResource("14_ougty")]
+script = ExtResource("15_edhhf")
+
+[node name="LEFT" parent="GRAVITY STATES" instance=ExtResource("16_6xtkv")]
+script = ExtResource("17_jnrrg")
+
+[node name="RIGHT" parent="GRAVITY STATES" instance=ExtResource("18_j20j7")]
+script = ExtResource("19_vpm28")
+
+[node name="TERRAIN STATE MANAGER" type="Node" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_a8ty3")
@@ -185,6 +210,38 @@ position = Vector2(-12, -15)
 
 [node name="HeartLocation" type="Marker2D" parent="HeartsContainer"]
 
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Raycasts"]
+
+[node name="TopLeft" type="RayCast2D" parent="Raycasts/Left"]
+position = Vector2(0, -16)
+target_position = Vector2(-6.5, 0)
+
+[node name="MiddleLeft" type="RayCast2D" parent="Raycasts/Left"]
+position = Vector2(0, -8)
+target_position = Vector2(-6.5, 0)
+
+[node name="BottomLeft" type="RayCast2D" parent="Raycasts/Left"]
+target_position = Vector2(-6.5, 0)
+
+[node name="Right" type="Node2D" parent="Raycasts"]
+
+[node name="TopRight" type="RayCast2D" parent="Raycasts/Right"]
+position = Vector2(0, -16)
+target_position = Vector2(6.5, 0)
+
+[node name="MiddleRight" type="RayCast2D" parent="Raycasts/Right"]
+position = Vector2(0, -8)
+target_position = Vector2(6.5, 0)
+
+[node name="BottomRight" type="RayCast2D" parent="Raycasts/Right"]
+target_position = Vector2(6.5, 0)
+
+[node name="WallSlideCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="PickupDelay" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -221,33 +278,14 @@ text = "Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Raycasts" type="Node2D" parent="."]
-
-[node name="Left" type="Node2D" parent="Raycasts"]
-
-[node name="TopLeft" type="RayCast2D" parent="Raycasts/Left"]
-position = Vector2(0, -16)
-target_position = Vector2(-8, 0)
-
-[node name="MiddleLeft" type="RayCast2D" parent="Raycasts/Left"]
-position = Vector2(0, -8)
-target_position = Vector2(-8, 0)
-
-[node name="BottomLeft" type="RayCast2D" parent="Raycasts/Left"]
-target_position = Vector2(-8, 0)
-
-[node name="Right" type="Node2D" parent="Raycasts"]
-
-[node name="TopRight" type="RayCast2D" parent="Raycasts/Right"]
-position = Vector2(0, -16)
-target_position = Vector2(8, 0)
-
-[node name="MiddleRight" type="RayCast2D" parent="Raycasts/Right"]
-position = Vector2(0, -8)
-target_position = Vector2(8, 0)
-
-[node name="BottomRight" type="RayCast2D" parent="Raycasts/Right"]
-target_position = Vector2(8, 0)
+[node name="StaminaInfo" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = -41.0
+text = "Stamina"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="ResetMovementSpeedJump Timer" to="." method="_on_reset_movement_speed_timer_timeout"]

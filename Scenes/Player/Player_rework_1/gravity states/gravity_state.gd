@@ -1,6 +1,6 @@
 extends Node
 
-var STATES : Node = null
+var GRAVITY_STATES : Node = null
 var Player : CharacterBody2D = null
 
 func enter_state():
