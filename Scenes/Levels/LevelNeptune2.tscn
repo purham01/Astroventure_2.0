@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_gq74u"]
 [ext_resource type="AudioStream" uid="uid://c3tdxiqi2w2qr" path="res://Assets/Musics/Lofi/Sofa.mp3" id="2_eokjg"]
-[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="2_i8in4"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="2_i8in4"]
 [ext_resource type="PackedScene" uid="uid://c5w7n2c5dadc6" path="res://Scenes/Level Assets/AntiGravity/grav_up_checker.tscn" id="2_mltdr"]
 [ext_resource type="PackedScene" uid="uid://cgg7ik74nny1u" path="res://Scenes/Level Assets/AntiGravity/grav_right_checker.tscn" id="3_68y00"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="3_dpuur"]

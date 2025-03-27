@@ -27,7 +27,7 @@ func _load_options():
 		camera_zoom.value = config.get_value("Settings","CameraZoom")
 
 func _input(event):
-	if event.is_action_pressed("ui_end"):
+	if event.is_action_pressed("ui_cancel"):
 		print("Pause")
 		if visible == false:
 			get_tree().paused = true

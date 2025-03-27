@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_ni2jd"]
 [ext_resource type="Resource" uid="uid://c8dyugthue73i" path="res://Resources/Planet movements/SaturnMovement.tres" id="2_hqp0r"]
 [ext_resource type="AudioStream" uid="uid://oetj4cd76geo" path="res://Assets/Musics/Lofi/Milkshake.mp3" id="2_w1rwo"]
-[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="3_wsjvx"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_wsjvx"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_nepc6"]
 
 [node name="World" instance=ExtResource("1_ni2jd")]

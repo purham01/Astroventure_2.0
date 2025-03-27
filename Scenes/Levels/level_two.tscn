@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcbfpkfgin4kh"]
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_sdtsa"]
-[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="2_2xmwb"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="2_2xmwb"]
 [ext_resource type="PackedScene" uid="uid://dvx2tbb5lba8s" path="res://Scenes/Level Assets/spikes.tscn" id="3_6tkv1"]
 
 [node name="World" instance=ExtResource("1_sdtsa")]

@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dvpeq0psv81p" path="res://Resources/Planet movements/JupiterMovement.tres" id="2_wph2m"]
 [ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="4_dwq2p"]
 [ext_resource type="PackedScene" uid="uid://r7ntx6orfvyd" path="res://Scenes/Level Assets/disappearing_tilesV2.tscn" id="5_p54yk"]
-[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="6_2j0hh"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="6_2j0hh"]
 [ext_resource type="Script" uid="uid://ccy5fhwoq65s3" path="res://Scenes/Levels/JupiterProgressBar.gd" id="6_smkgj"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="7_k307s"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="7_uha7l"]

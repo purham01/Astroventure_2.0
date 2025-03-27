@@ -8,3 +8,5 @@ extends Node
 @onready var climb: Node = $CLIMB
 @onready var wall_slide: Node = $WALL_SLIDE
 @onready var wall_jump: Node = $WALL_JUMP
+@onready var dead: Node = $DEAD
+@onready var transition: Node = $TRANSITION

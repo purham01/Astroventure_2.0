@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://u0n6wc1k3cuo"]
+[gd_scene load_steps=41 format=3 uid="uid://u0n6wc1k3cuo"]
 
 [ext_resource type="Script" uid="uid://bmfn5bj1epfaa" path="res://Scenes/Player/Player_rework_1/player_character_rework_1.gd" id="1_kqp0r"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="2_a8ty3"]
@@ -13,26 +13,31 @@
 [ext_resource type="PackedScene" uid="uid://b6xhdwbngx7xn" path="res://Scenes/Player/Player_rework_1/States/wall_slide.tscn" id="9_wmd5h"]
 [ext_resource type="PackedScene" uid="uid://fl0bwbbwh7j3" path="res://Scenes/Player/Player_rework_1/States/wall_jump.tscn" id="10_qj43w"]
 [ext_resource type="Script" uid="uid://b6khm0rv4i6lr" path="res://Scenes/Player/Player_rework_1/gravity states/GRAVITY_STATES.gd" id="11_iydpg"]
+[ext_resource type="PackedScene" uid="uid://dcxk63lth4eyc" path="res://Scenes/Player/Player_rework_1/States/dead.tscn" id="11_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://dn86crhgylqix" path="res://Scenes/Player/Player_rework_1/gravity states/down.tscn" id="12_7ubbk"]
 [ext_resource type="Script" uid="uid://dw0bs6ox14xeg" path="res://Scenes/Player/Player_rework_1/gravity states/down.gd" id="13_6xkw4"]
+[ext_resource type="PackedScene" uid="uid://bcskm82lwlhuv" path="res://Scenes/Player/Player_rework_1/States/transition.tscn" id="13_vpm28"]
 [ext_resource type="PackedScene" uid="uid://dbhgokf44durj" path="res://Scenes/Player/Player_rework_1/gravity states/up.tscn" id="14_ougty"]
 [ext_resource type="Script" uid="uid://cl8q4ujt6gx8s" path="res://Scenes/Player/Player_rework_1/gravity states/up.gd" id="15_edhhf"]
 [ext_resource type="PackedScene" uid="uid://u1my3qpfqtx3" path="res://Scenes/Player/Player_rework_1/gravity states/left.tscn" id="16_6xtkv"]
 [ext_resource type="Script" uid="uid://dh3mxd61uu5ck" path="res://Scenes/Player/Player_rework_1/gravity states/left.gd" id="17_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://cs4jm5xdw3qee" path="res://Scenes/Player/Player_rework_1/gravity states/right.tscn" id="18_j20j7"]
 [ext_resource type="Script" uid="uid://gscb1mjscrdc" path="res://Scenes/Player/Player_rework_1/gravity states/right.gd" id="19_vpm28"]
+[ext_resource type="PackedScene" uid="uid://ceqk0mth14hfw" path="res://Scenes/Player/Player_rework_1/terrain_sm.tscn" id="22_jnrrg"]
+[ext_resource type="PackedScene" uid="uid://c1ukhf4rqiy2t" path="res://Scenes/Player/Player_rework_1/follower_controller.tscn" id="23_jnrrg"]
+[ext_resource type="PackedScene" uid="uid://dxpncgwyh5be5" path="res://Scenes/Player/Player_rework_1/particle_manager.tscn" id="24_j20j7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pagqt"]
 size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_327wf"]
-size = Vector2(6, 13)
+size = Vector2(8, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egt18"]
 size = Vector2(4, 2)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbywd"]
-size = Vector2(10, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xkw4"]
+size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_g1ca6"]
 length = 0.001
@@ -112,6 +117,98 @@ _data = {
 &"end_level": SubResource("Animation_aybdw")
 }
 
+[sub_resource type="Animation" id="Animation_edhhf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ougty"]
+resource_name = "dash_start"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j20j7"]
+resource_name = "dash_stop"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_edhhf"]
+_data = {
+&"RESET": SubResource("Animation_edhhf"),
+&"dash_start": SubResource("Animation_ougty"),
+&"dash_stop": SubResource("Animation_j20j7")
+}
+
+[sub_resource type="Animation" id="Animation_jnrrg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6xtkv"]
+resource_name = "stamina_flashing"
+length = 0.139
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.729412, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnrrg"]
+_data = {
+&"RESET": SubResource("Animation_jnrrg"),
+&"stamina_flashing": SubResource("Animation_6xtkv")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 2
@@ -121,7 +218,7 @@ safe_margin = 0.1
 script = ExtResource("1_kqp0r")
 max_jump_height = 6.2
 min_jump_height = 2.0
-jump_time_to_peak = 0.5
+jump_time_to_peak = 0.25
 jump_time_to_fall = 0.25
 
 [node name="STATES" type="Node" parent="."]
@@ -143,6 +240,10 @@ script = ExtResource("2_rx16d")
 
 [node name="WALL_JUMP" parent="STATES" instance=ExtResource("10_qj43w")]
 
+[node name="DEAD" parent="STATES" instance=ExtResource("11_jnrrg")]
+
+[node name="TRANSITION" parent="STATES" instance=ExtResource("13_vpm28")]
+
 [node name="GRAVITY STATES" type="Node" parent="."]
 script = ExtResource("11_iydpg")
 
@@ -158,7 +259,11 @@ script = ExtResource("17_jnrrg")
 [node name="RIGHT" parent="GRAVITY STATES" instance=ExtResource("18_j20j7")]
 script = ExtResource("19_vpm28")
 
-[node name="TERRAIN STATE MANAGER" type="Node" parent="."]
+[node name="TERRAIN SM" parent="." instance=ExtResource("22_jnrrg")]
+
+[node name="FollowerController" parent="." instance=ExtResource("23_jnrrg")]
+
+[node name="ParticleManager" parent="." instance=ExtResource("24_j20j7")]
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_a8ty3")
@@ -170,16 +275,7 @@ offset = Vector2(0, -10)
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_pagqt")
 
-[node name="ResetMovementSpeedJump Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -24)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
 [node name="HazardDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 4
 priority = 1
@@ -195,55 +291,80 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector"]
 shape = SubResource("RectangleShape2D_egt18")
 
-[node name="SafeZoneDetector" type="Area2D" parent="."]
+[node name="RoomDetector" type="Area2D" parent="."]
 visible = false
-position = Vector2(0, -8)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZoneDetector"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_jbywd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_6xkw4")
 
-[node name="HeartsContainer" type="Node2D" parent="."]
+[node name="StarContainer" type="Node2D" parent="."]
 position = Vector2(-12, -15)
 
-[node name="HeartLocation" type="Marker2D" parent="HeartsContainer"]
+[node name="StarLocation" type="Marker2D" parent="StarContainer"]
 
 [node name="Raycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="Left" type="Node2D" parent="Raycasts"]
 
 [node name="TopLeft" type="RayCast2D" parent="Raycasts/Left"]
-position = Vector2(0, -16)
-target_position = Vector2(-6.5, 0)
+position = Vector2(0, -15)
+target_position = Vector2(-7, 0)
 
 [node name="MiddleLeft" type="RayCast2D" parent="Raycasts/Left"]
 position = Vector2(0, -8)
-target_position = Vector2(-6.5, 0)
+target_position = Vector2(-7, 0)
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts/Left"]
-target_position = Vector2(-6.5, 0)
+position = Vector2(0, -1)
+target_position = Vector2(-7, 0)
 
 [node name="Right" type="Node2D" parent="Raycasts"]
 
 [node name="TopRight" type="RayCast2D" parent="Raycasts/Right"]
-position = Vector2(0, -16)
-target_position = Vector2(6.5, 0)
+position = Vector2(0, -15)
+target_position = Vector2(7, 0)
 
 [node name="MiddleRight" type="RayCast2D" parent="Raycasts/Right"]
 position = Vector2(0, -8)
-target_position = Vector2(6.5, 0)
+target_position = Vector2(7, 0)
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts/Right"]
-target_position = Vector2(6.5, 0)
+position = Vector2(0, -1)
+target_position = Vector2(7, 0)
+
+[node name="CornerCheckRaycasts" type="Node2D" parent="."]
+visible = false
+
+[node name="LeftOuter" type="RayCast2D" parent="CornerCheckRaycasts"]
+position = Vector2(-5, -15)
+target_position = Vector2(0, -5)
+
+[node name="LeftInner" type="RayCast2D" parent="CornerCheckRaycasts"]
+position = Vector2(-2, -15)
+target_position = Vector2(0, -5)
+
+[node name="RightInner" type="RayCast2D" parent="CornerCheckRaycasts"]
+position = Vector2(2, -15)
+target_position = Vector2(0, -5)
+
+[node name="RightOuter" type="RayCast2D" parent="CornerCheckRaycasts"]
+position = Vector2(5, -15)
+target_position = Vector2(0, -5)
 
 [node name="WallSlideCooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
-[node name="PickupDelay" type="Timer" parent="."]
-wait_time = 0.5
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashBuffer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -251,46 +372,57 @@ libraries = {
 &"": SubResource("AnimationLibrary_wi07s")
 }
 
-[node name="StateInfo" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -24.0
-offset_right = 20.0
-offset_bottom = -18.0
-text = "STATE"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_edhhf")
+}
+autoplay = "RESET"
 
-[node name="JumpActuationInfo" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -32.0
-offset_right = 20.0
-offset_bottom = -26.0
-text = "Act"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="JumpInfo" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-offset_bottom = -34.0
-text = "Jump"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="FlashingAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jnrrg")
+}
 
 [node name="StaminaInfo" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -47.0
+offset_top = -46.0
 offset_right = 20.0
-offset_bottom = -41.0
+offset_bottom = -40.0
 text = "Stamina"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StateInfo" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = -33.0
+text = "STATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XSpeed" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = -26.0
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YSpeed" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -18.0
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
-[connection signal="timeout" from="ResetMovementSpeedJump Timer" to="." method="_on_reset_movement_speed_timer_timeout"]
-[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
-[connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
-[connection signal="terrain_entered" from="TerrainDetector" to="." method="_on_terrain_detector_terrain_entered"]
-[connection signal="area_entered" from="SafeZoneDetector" to="." method="_on_safe_zone_detector_area_entered"]
-[connection signal="area_exited" from="SafeZoneDetector" to="." method="_on_safe_zone_detector_area_exited"]
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_entered"]
+[connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]
+[connection signal="terrain_entered" from="TerrainDetector" to="TERRAIN SM" method="_on_terrain_detector_terrain_entered"]
+[connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]

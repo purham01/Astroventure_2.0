@@ -1,14 +1,14 @@
 [gd_scene load_steps=19 format=3 uid="uid://iqsopd1ey4aw"]
 
-[ext_resource type="Script" uid="uid://cunwcekkq7xhp" path="res://Scenes/Level Assets/heart.gd" id="1_goris"]
-[ext_resource type="Texture2D" uid="uid://pepdxjguqg82" path="res://Assets/heart.png" id="1_ldhbm"]
-[ext_resource type="PackedScene" uid="uid://dnhhfl0gqabx0" path="res://Scenes/Effects/floating_text.tscn" id="2_fohhl"]
-[ext_resource type="Texture2D" uid="uid://c5xpo4f0v14f7" path="res://Assets/FX/Smoke/FX001/FX001_01.png" id="3_3trh5"]
-[ext_resource type="Texture2D" uid="uid://d0ub0jc2sj6ar" path="res://Assets/star/sprite_00.png" id="4_at2xt"]
-[ext_resource type="Texture2D" uid="uid://ctnwvfxxl47bg" path="res://Assets/FX/Smoke/FX001/FX001_02.png" id="4_nmsli"]
-[ext_resource type="Texture2D" uid="uid://i1n855pquwvf" path="res://Assets/FX/Smoke/FX001/FX001_03.png" id="5_035km"]
-[ext_resource type="Texture2D" uid="uid://kvvrl6t4n37s" path="res://Assets/FX/Smoke/FX001/FX001_04.png" id="6_e74s4"]
-[ext_resource type="Texture2D" uid="uid://jeiijbotteg1" path="res://Assets/FX/Smoke/FX001/FX001_05.png" id="7_sqfct"]
+[ext_resource type="Script" uid="uid://cunwcekkq7xhp" path="res://Scenes/Level Assets/star.gd" id="1_2xx1f"]
+[ext_resource type="PackedScene" uid="uid://dnhhfl0gqabx0" path="res://Scenes/Effects/floating_text.tscn" id="2_f8woq"]
+[ext_resource type="Texture2D" uid="uid://pepdxjguqg82" path="res://Assets/heart.png" id="3_524uy"]
+[ext_resource type="Texture2D" uid="uid://d0ub0jc2sj6ar" path="res://Assets/star/sprite_00.png" id="4_xmlot"]
+[ext_resource type="Texture2D" uid="uid://c5xpo4f0v14f7" path="res://Assets/FX/Smoke/FX001/FX001_01.png" id="5_1ava1"]
+[ext_resource type="Texture2D" uid="uid://ctnwvfxxl47bg" path="res://Assets/FX/Smoke/FX001/FX001_02.png" id="6_7k7c7"]
+[ext_resource type="Texture2D" uid="uid://i1n855pquwvf" path="res://Assets/FX/Smoke/FX001/FX001_03.png" id="7_gi3wt"]
+[ext_resource type="Texture2D" uid="uid://kvvrl6t4n37s" path="res://Assets/FX/Smoke/FX001/FX001_04.png" id="8_dcorc"]
+[ext_resource type="Texture2D" uid="uid://jeiijbotteg1" path="res://Assets/FX/Smoke/FX001/FX001_05.png" id="9_vutrk"]
 
 [sub_resource type="Gradient" id="Gradient_w7itr"]
 colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
@@ -246,34 +246,34 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3trh5")
+"texture": ExtResource("5_1ava1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_nmsli")
+"texture": ExtResource("6_7k7c7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_035km")
+"texture": ExtResource("7_gi3wt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_e74s4")
+"texture": ExtResource("8_dcorc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_sqfct")
+"texture": ExtResource("9_vutrk")
 }],
 "loop": false,
 "name": &"poof",
 "speed": 10.0
 }]
 
-[node name="Heart" type="Area2D" groups=["Hearts"]]
+[node name="Star" type="Area2D" groups=["Stars"]]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_goris")
-floating_text = ExtResource("2_fohhl")
+script = ExtResource("1_2xx1f")
+floating_text = ExtResource("2_f8woq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_ldhbm")
+texture = ExtResource("3_524uy")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 3)
@@ -282,17 +282,17 @@ process_material = SubResource("ParticleProcessMaterial_6m02h")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(1, -1)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_at2xt")
+texture = ExtResource("4_xmlot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_pc1w0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Float"
 libraries = {
-"": SubResource("AnimationLibrary_brgku")
+&"": SubResource("AnimationLibrary_brgku")
 }
+autoplay = "Float"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

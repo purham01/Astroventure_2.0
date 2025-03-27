@@ -7,6 +7,9 @@ func update(delta):
 	#Variable jump
 	Player.current_gs.variable_jump()
 	
+	if Player.dash_input and Player.can_dash:
+		return STATES.dash
+	
 	if Player.wall_direction != 0 and Player.climb_input and Player.prev_state != STATES.climb:
 		return STATES.climb
 		
@@ -15,9 +18,6 @@ func update(delta):
 		
 	if Player.velocity.y > 0:
 		return STATES.fall
-		
-	if Player.dash_input and Player.can_dash:
-		return STATES.dash
 		
 	return null
 

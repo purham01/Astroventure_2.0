@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_ocyqg"]
 [ext_resource type="Resource" uid="uid://btop77c1so5py" path="res://Resources/Planet movements/MercuryMarsMovement.tres" id="2_k6tkx"]
 [ext_resource type="PackedScene" uid="uid://dlm6l3ap225j8" path="res://Scenes/Level Assets/SafeZones/sigurna_zona_medium.tscn" id="3_aat10"]
-[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/heart.tscn" id="3_hj3ex"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_hj3ex"]
 [ext_resource type="PackedScene" uid="uid://bk7dqiarkbwq5" path="res://Scenes/Level Assets/Asteroids/asteroid.tscn" id="3_y830s"]
 [ext_resource type="PackedScene" uid="uid://dmqkrm6q5rijx" path="res://Scenes/Level Assets/SafeZones/sigurna_zona_big.tscn" id="4_2ydyn"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_hcfgs"]

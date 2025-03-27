@@ -76,9 +76,9 @@ position = Vector2(-1.64605, 2.11798)
 shape = SubResource("CircleShape2D_pc1w0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Float"
 libraries = {
-"": SubResource("AnimationLibrary_brgku")
+&"": SubResource("AnimationLibrary_brgku")
 }
+autoplay = "Float"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

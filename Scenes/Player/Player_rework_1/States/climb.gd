@@ -3,6 +3,9 @@ extends "state.gd"
 func update(delta):
 	Player.current_gs.climb_movement(delta)
 	
+	if Player.dash_input and Player.can_dash:
+		return STATES.dash
+	
 	#stamina check
 	if Player.current_stamina <= 0:
 		if sign(Player.movement_input.x) == -sign(Player.wall_direction):

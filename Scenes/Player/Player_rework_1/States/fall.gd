@@ -8,12 +8,15 @@ func update(delta):
 	Player.current_gs.gravity(delta)
 	Player.player_movement(delta)
 	
-	if Player.is_on_floor():
+	if  Player.dash_input and Player.can_dash:
+		return STATES.dash
+	
+	if Player.is_on_floor() and !Player.jump_buffer.is_stopped():
+		return STATES.jump
+		
+	elif Player.is_on_floor():
 		Player.animated_sprite.scale = Vector2(Player.squash_x, Player.squash_y)
 		return STATES.idle
-		
-	if Player.dash_input and Player.can_dash:
-		return STATES.dash
 		
 	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0:
 		return STATES.climb

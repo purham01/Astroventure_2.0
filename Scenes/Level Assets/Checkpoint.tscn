@@ -46,6 +46,7 @@ collision_mask = 2
 script = ExtResource("1_rmt1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(4, -8)
 sprite_frames = SubResource("SpriteFrames_lc6m0")
 animation = &"Active"

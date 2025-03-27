@@ -4,6 +4,9 @@ func update(delta):
 	Player.current_gs.gravity(delta)
 	Player.player_movement(delta)
 	
+	if Player.dash_input and Player.can_dash:
+		return STATES.dash
+	
 	if Player.velocity.x == 0:
 		return STATES.idle
 		
@@ -12,10 +15,7 @@ func update(delta):
 		
 	if Player.jump_input_actuation:
 		return STATES.jump
-		
-	if Player.dash_input and Player.can_dash:
-		return STATES.dash
-		
+
 	if Player.wall_direction != 0 and Player.climb_input:
 		return STATES.climb
 		

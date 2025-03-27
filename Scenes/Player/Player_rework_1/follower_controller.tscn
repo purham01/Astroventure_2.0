@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ukhf4rqiy2t"]
+
+[ext_resource type="Script" uid="uid://dtl0kbvxe2s2" path="res://Scenes/Player/Player_rework_1/follower_controller.gd" id="1_ixdlf"]
+
+[node name="FollowerController" type="Node"]
+script = ExtResource("1_ixdlf")
+
+[node name="PickupDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

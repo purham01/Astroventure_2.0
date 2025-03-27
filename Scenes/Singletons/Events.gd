@@ -8,6 +8,6 @@ signal player_safe(value)
 
 signal player_dead()
 
-signal pickup_hearts()
+signal pickup_stars()
 
 signal settings_changed()

@@ -36,8 +36,8 @@ func _ready():
 		await animation_player.animation_finished
 	get_tree().paused = false
 	start_level_msec = Time.get_ticks_msec() #vrijeme od pocetka u ms
-	if not next_level is PackedScene:
-		level_completed.next_level_button.text = "Map screen"
+	#if not next_level is PackedScene:
+	#	level_completed.next_level_button.text = "Map screen"
 	addObjects()
 
 func addObjects():
@@ -79,11 +79,11 @@ func _process(delta):
 		level_time_label.text = str(level_time / 1000.0)
 
 func show_level_completed():
-	player._end_level_anim()
-	await(player.animation_player.animation_finished)
-	await(player.animated_sprite.animation_finished)
-	$DelayEndLevel.start()
-	await($DelayEndLevel.timeout)
+	#player._end_level_anim()
+	#await(player.animation_player.animation_finished)
+	#await(player.animated_sprite.animation_finished)
+	#$DelayEndLevel.start()
+	#await($DelayEndLevel.timeout)
 	level_time_label.hide()
 	level_completed.show_data(heartsCollected, heartsMax, float(level_time_label.text), level_best_time)
 	get_tree().paused = true

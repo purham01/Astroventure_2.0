@@ -167,7 +167,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wi07s")
+&"": SubResource("AnimationLibrary_wi07s")
 }
 
 [node name="WallSlideSticky" type="Timer" parent="."]

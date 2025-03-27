@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxpncgwyh5be5"]
+
+[ext_resource type="Script" uid="uid://bls16drt2ipla" path="res://Scenes/Player/Player_rework_1/particle_manager.gd" id="1_qqoys"]
+[ext_resource type="PackedScene" uid="uid://fcgi8uskjnju" path="res://Scenes/Player/Player_rework_1/Ghost.tscn" id="2_jl8pw"]
+
+[node name="ParticleManager" type="Node"]
+script = ExtResource("1_qqoys")
+ghost_node = ExtResource("2_jl8pw")
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]

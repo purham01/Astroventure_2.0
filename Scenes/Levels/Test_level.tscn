@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://br2aite2suv0n"]
+
+[ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_sfeck"]
+[ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="2_104i5"]
+[ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_02d5s"]
+[ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_hy0i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w2cn"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02d5s"]
+resource_local_to_scene = true
+size = Vector2(88, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hy0i3"]
+resource_local_to_scene = true
+b = Vector2(24, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk8a6"]
+resource_local_to_scene = true
+size = Vector2(320, 181.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy0i3"]
+resource_local_to_scene = true
+size = Vector2(41, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rl6y3"]
+resource_local_to_scene = true
+b = Vector2(40, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maf2v"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl6y3"]
+resource_local_to_scene = true
+size = Vector2(119, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3w2cn"]
+resource_local_to_scene = true
+b = Vector2(32, 0)
+
+[node name="World" instance=ExtResource("1_sfeck")]
+
+[node name="Player" parent="." index="3"]
+position = Vector2(25, 144)
+ACCELARATION = 600.0
+FRICTION = 600.0
+max_jump_height = 3.2
+min_jump_height = 0.2
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_3w2cn")
+
+[node name="Checkpoint" parent="Rooms/Room/Checkpoints" index="0"]
+position = Vector2(24, 144)
+
+[node name="CollisionShape2D" parent="Rooms/Room/DeathZones/HazardArea" index="0"]
+position = Vector2(111, 14)
+shape = SubResource("RectangleShape2D_02d5s")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_hy0i3")
+
+[node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_104i5")]
+position = Vector2(240, -180)
+
+[node name="CollisionShape2D" parent="Rooms/Room2" index="0"]
+position = Vector2(160, 89.25)
+shape = SubResource("RectangleShape2D_qk8a6")
+
+[node name="Checkpoint" parent="Rooms/Room2/Checkpoints" index="0"]
+position = Vector2(26, 164)
+
+[node name="CollisionShape2D" parent="Rooms/Room2/DeathZones/HazardArea" index="0"]
+position = Vector2(-11, 10)
+shape = SubResource("RectangleShape2D_hy0i3")
+
+[node name="CheckIfFromBelow" parent="Rooms/Room2" index="4"]
+position = Vector2(8, 180)
+
+[node name="CollisionShape2D" parent="Rooms/Room2/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_rl6y3")
+
+[node name="Room3" parent="Rooms" index="2" instance=ExtResource("2_104i5")]
+position = Vector2(240, -180)
+
+[node name="CollisionShape2D" parent="Rooms/Room3" index="0"]
+position = Vector2(416, -90)
+shape = SubResource("RectangleShape2D_maf2v")
+
+[node name="Checkpoint" parent="Rooms/Room3/Checkpoints" index="0"]
+position = Vector2(290, -12)
+
+[node name="CollisionShape2D" parent="Rooms/Room3/DeathZones/HazardArea" index="0"]
+position = Vector2(219, -169)
+shape = SubResource("RectangleShape2D_rl6y3")
+
+[node name="CheckIfFromBelow" parent="Rooms/Room3" index="4"]
+position = Vector2(272, 0)
+
+[node name="CollisionShape2D" parent="Rooms/Room3/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_3w2cn")
+
+[node name="Star" parent="Stars" index="0" instance=ExtResource("3_02d5s")]
+position = Vector2(334, -151)
+
+[node name="Star2" parent="Stars" index="1" instance=ExtResource("3_02d5s")]
+position = Vector2(781, -243)
+
+[node name="EndLevelItem" parent="EndLevelItemContainer" index="0" instance=ExtResource("4_hy0i3")]
+position = Vector2(777, -339)
+
+[editable path="Rooms/Room"]
+[editable path="Rooms/Room2"]
+[editable path="Rooms/Room3"]

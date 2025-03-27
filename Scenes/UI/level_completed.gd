@@ -47,7 +47,8 @@ func show_data(heartsCollectedTemp, heartsMaxTemp, levelTimeTemp, levelBestTimeT
 
 
 func show_heart_label():
-	text_timer.wait_time = 1/heartsCollected
+	if heartsCollected != 0:
+		text_timer.wait_time = 1/heartsCollected
 	hearts.text = hearts_text % [0,heartsMax]
 	animation_player.play("show_hearts")
 	await(animation_player.animation_finished)
