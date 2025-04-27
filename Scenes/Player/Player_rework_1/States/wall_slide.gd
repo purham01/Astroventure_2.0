@@ -6,7 +6,7 @@ func update(delta):
 	if Player.dash_input and Player.can_dash:
 		return STATES.dash
 	
-	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0:
+	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0 and Player.is_on_wall():
 		return STATES.climb
 		
 	#first part, fall off wall when not holding towards wall, second part, dont fall off wall when holding climb and dont have stamina
@@ -20,6 +20,9 @@ func update(delta):
 		return STATES.idle
 	
 	return null
+
+func enter_state():
+	Player.terrain_sm.instant_reset_movement_values()
 
 func exit_state():
 	Player.wall_slide_cooldown.start()

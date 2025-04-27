@@ -11,3 +11,6 @@ func exit_state():
 
 func update(delta):
 	return null
+
+func change_animation():
+	pass

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccbleybg3v3i8"]
+
+[ext_resource type="Shader" uid="uid://obrcgbgio3sy" path="res://Scenes/Singletons/ShaderEffect/CRT.gdshader" id="1_cuiba"]
+[ext_resource type="Shader" uid="uid://chx38oorf4g22" path="res://Scenes/Singletons/ShaderEffect/Chromatic.gdshader" id="2_yhyho"]
+[ext_resource type="Shader" uid="uid://cw6ie7q6qoejh" path="res://Scenes/Singletons/ShaderEffect/Grayscale.gdshader" id="3_836r3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_836r3"]
+shader = ExtResource("1_cuiba")
+shader_parameter/curvature = 7.0
+shader_parameter/vignette_multiplier = 2.0
+shader_parameter/brightness = 1.25
+
+[sub_resource type="QuadMesh" id="QuadMesh_836r3"]
+size = Vector2(320, 180)
+center_offset = Vector3(160, 90, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhyho"]
+shader = ExtResource("2_yhyho")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n1we"]
+shader = ExtResource("3_836r3")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.0
+
+[node name="ShaderEffect" type="Node2D"]
+
+[node name="CRT" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CRT"]
+material = SubResource("ShaderMaterial_836r3")
+mesh = SubResource("QuadMesh_836r3")
+
+[node name="Chromatic" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Chromatic"]
+material = SubResource("ShaderMaterial_yhyho")
+mesh = SubResource("QuadMesh_836r3")
+
+[node name="Grayscale" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Grayscale"]
+material = SubResource("ShaderMaterial_1n1we")
+mesh = SubResource("QuadMesh_836r3")

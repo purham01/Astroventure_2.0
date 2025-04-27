@@ -19,11 +19,11 @@ func enter_state():
 	Player.can_dash = false
 	#Player.dash_buffer.stop()
 	dashing = true
-	Player.particle_manager.ghost_timer.start()
+	Player.particle_manager.dash_ghost_timer.start()
 	dash_timer.start(dash_duration)
 	#Player.shader_animation_player.play("dash_start") 
 	
-	FreezeFrameManager.freeze_frame(0.15)
+	FreezeFrameManager.freeze_frame(0.1)
 	if Player.movement_input != Vector2.ZERO:
 		dash_direction = Player.movement_input
 	else:
@@ -36,7 +36,10 @@ func enter_state():
 func exit_state():
 	Player.velocity = dash_direction.normalized() * end_dash_speed
 	dashing = false
-	Player.particle_manager.ghost_timer.stop()
+	Player.particle_manager.dash_ghost_timer.stop()
+	
+	if Player.terrain_sm.current_terrain_type == 1 or Player.terrain_sm.current_terrain_type == -1:
+		Player.terrain_sm.instant_reset_movement_values()
 	#Player.shader_animation_player.play("dash_stop")
 	
 	

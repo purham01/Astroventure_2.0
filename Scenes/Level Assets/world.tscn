@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://73u2mwbq763g" path="res://Scenes/Camera/player_camera.tscn" id="4_y0kcu"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="5_rl5ou"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="5_sx1wa"]
-[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="6_ocvd1"]
+[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Backgrounds/Space Background (14).png" id="6_ocvd1"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="9_73jjr"]
 
 [sub_resource type="Animation" id="Animation_8ywv5"]

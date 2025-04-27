@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8hxdce3kvrhk"]
+
+[node name="LabelInput" type="Label"]
+mouse_filter = 1
+text = "input key"
+vertical_alignment = 1

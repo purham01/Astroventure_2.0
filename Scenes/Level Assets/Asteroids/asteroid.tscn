@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://bk7dqiarkbwq5"]
 
-[ext_resource type="Texture2D" uid="uid://b6tu4rmuweuyb" path="res://Assets/meteor.png" id="1_nna4i"]
+[ext_resource type="Texture2D" uid="uid://b6tu4rmuweuyb" path="res://Assets/Level assets/meteors/meteor.png" id="1_nna4i"]
 [ext_resource type="Script" uid="uid://bggyupj5ledia" path="res://Scenes/Level Assets/Asteroids/asteroid.gd" id="1_nppom"]
-[ext_resource type="Texture2D" uid="uid://d3skw8a281rgy" path="res://Assets/bigMeteor.png" id="2_l28yk"]
-[ext_resource type="Texture2D" uid="uid://dgjsdqdrc2rpk" path="res://Assets/smallMetheor.png" id="3_0uqlt"]
+[ext_resource type="Texture2D" uid="uid://d3skw8a281rgy" path="res://Assets/Level assets/meteors/bigMeteor.png" id="2_l28yk"]
+[ext_resource type="Texture2D" uid="uid://dgjsdqdrc2rpk" path="res://Assets/Level assets/meteors/smallMetheor.png" id="3_0uqlt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2eiy"]
 atlas = ExtResource("2_l28yk")

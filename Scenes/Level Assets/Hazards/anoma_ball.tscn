@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://beaja6sbffrub"]
 
-[ext_resource type="Texture2D" uid="uid://1popf8prsden" path="res://Assets/AnomaBall.png" id="1_16j73"]
+[ext_resource type="Texture2D" uid="uid://1popf8prsden" path="res://Assets/Level assets/AnomaBall.png" id="1_16j73"]
 [ext_resource type="Script" uid="uid://bwnjt56e3k1du" path="res://Scenes/Level Assets/Hazards/anoma_ball.gd" id="1_kcnhr"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_rnpcl"]
 

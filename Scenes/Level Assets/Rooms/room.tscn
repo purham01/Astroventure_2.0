@@ -40,6 +40,10 @@ shape = SubResource("RectangleShape2D_a16lv")
 
 [node name="Objects" type="Node2D" parent="."]
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Objects"]
+position = Vector2(160, 90.5)
+scale = Vector2(16, 9.05)
+
 [node name="CheckIfFromBelow" type="Area2D" parent="."]
 position = Vector2(0, 181)
 collision_layer = 0

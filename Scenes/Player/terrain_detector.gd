@@ -6,7 +6,8 @@ const bitmask : int = 255
 
 enum TerrainType {
 	NORMAL = 1,
-	ICE = 2
+	ICE = 2,
+	MUD = 4
 }
 
 var current_tilemap_layer : TileMapLayer

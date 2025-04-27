@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://rgqyrmwg1sxi"]
+
+[ext_resource type="Script" uid="uid://nyxq5nq87ycf" path="res://Scenes/Level Assets/Moving platforms/moving_platform.gd" id="1_cvlcv"]
+[ext_resource type="Texture2D" uid="uid://cyd2vndcj4wr8" path="res://Assets/Tilesets/Terrain (16x16).png" id="1_o84ea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o84ea"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvlcv"]
+size = Vector2(48, 2)
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_cvlcv")
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(0, 4)
+texture = ExtResource("1_o84ea")
+region_enabled = true
+region_rect = Rect2(272, 32, 48, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_o84ea")
+
+[node name="PlayerOnTop" type="Area2D" parent="Platform"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnTop"]
+shape = SubResource("RectangleShape2D_cvlcv")
+
+[node name="StartPoint" type="Marker2D" parent="."]
+
+[node name="DestinationPoint" type="Marker2D" parent="."]
+position = Vector2(97, 1)
+
+[node name="WiggleRoomTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="Platform/PlayerOnTop" to="." method="_on_player_on_top_body_entered"]
+[connection signal="body_exited" from="Platform/PlayerOnTop" to="." method="_on_player_on_top_body_exited"]

@@ -212,7 +212,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 2
-collision_mask = 9
+collision_mask = 73
 floor_constant_speed = true
 safe_margin = 0.1
 script = ExtResource("1_kqp0r")
@@ -286,7 +286,7 @@ shape = SubResource("RectangleShape2D_327wf")
 
 [node name="TerrainDetector" parent="." instance=ExtResource("3_vhr42")]
 visible = false
-collision_layer = 0
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector"]
 shape = SubResource("RectangleShape2D_egt18")
@@ -301,6 +301,7 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_6xkw4")
 
 [node name="StarContainer" type="Node2D" parent="."]
+visible = false
 position = Vector2(-12, -15)
 
 [node name="StarLocation" type="Marker2D" parent="StarContainer"]

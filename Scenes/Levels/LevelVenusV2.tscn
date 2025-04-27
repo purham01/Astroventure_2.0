@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_kk6hj"]
 [ext_resource type="Resource" uid="uid://krjikwb6osnb" path="res://Resources/Planet movements/VenusUranusMovement.tres" id="2_hugsq"]
-[ext_resource type="Texture2D" uid="uid://bxcvd6wid5jsy" path="res://Assets/Orange-bg.png" id="2_qduqy"]
+[ext_resource type="Texture2D" uid="uid://bxcvd6wid5jsy" path="res://Assets/Backgrounds/Orange-bg.png" id="2_qduqy"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="3_l20vf"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_wa2b3"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="5_8qt6p"]

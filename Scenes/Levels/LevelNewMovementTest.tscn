@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://txafawdi5cx2" path="res://Scenes/Level Assets/world.gd" id="1_4s1a3"]
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="2_hrr6c"]
-[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="3_ipg7y"]
+[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Backgrounds/Space Background (14).png" id="3_ipg7y"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="4_aurip"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="5_bbc38"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="6_en7bi"]

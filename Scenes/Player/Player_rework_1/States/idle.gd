@@ -10,13 +10,13 @@ func update(delta):
 	if Player.jump_input_actuation == true:
 		return STATES.jump
 	
-	if Player.velocity.y > 0:
+	if Player.current_gs.velocity_y_greater_than():
 		return STATES.fall
 	
 	if Player.dash_input and Player.can_dash:
 		return STATES.dash
 	
-	if Player.wall_direction != 0 and Player.climb_input:
+	if Player.wall_direction != 0 and Player.climb_input and Player.is_on_wall():
 		return STATES.climb
 	
 	return null

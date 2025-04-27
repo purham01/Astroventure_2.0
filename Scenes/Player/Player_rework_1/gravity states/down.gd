@@ -9,7 +9,7 @@ func enter_state():
 
 func gravity(delta):
 	if not Player.is_on_floor():
-		var mult = .5 if abs(Player.velocity.y) < Player.half_grav_threshhold and Input.is_action_pressed("Jump") else 1.0
+		var mult = .5 if abs(Player.velocity.y) < Player.half_grav_threshhold and (Input.is_action_pressed("Jump") or Input.is_action_pressed("JumpC")) else 1.0
 		
 		Player.velocity.y = move_toward(Player.velocity.y, Player.max_fall, get_my_gravity() * mult * delta)
 
@@ -61,8 +61,7 @@ func wall_jump():
 		
 	wall_jump_velocity.x *= -Player.wall_direction
 	Player.velocity = wall_jump_velocity
-	if sign(Player.movement_input.x) != sign(Player.wall_direction):
-		Player.animated_sprite.flip_h = (Player.wall_direction>0)
+
 
 func jump():
 	Player.velocity.x += Player.jump_h_boost * Player.movement_input.x;
@@ -70,12 +69,12 @@ func jump():
 	Player.animated_sprite.scale = Vector2(Player.squish_x, Player.squish_y)
 
 func variable_jump():
-	if Input.is_action_just_released("Jump") and Player.velocity.y < Player.min_jump_velocity:
+	if  (Input.is_action_just_released("Jump") or Input.is_action_just_released("JumpC")) and Player.velocity.y < Player.min_jump_velocity:
 		Player.velocity.y = Player.min_jump_velocity
 
 func slide_movement(delta):
 	#Player.player_movement(delta)
-	Player.velocity.y = Player.climb_down_speed
+	Player.velocity.y = Player.slide_down_speed
 
 func climb_movement(delta):
 	if Player.movement_input.y < 0:
@@ -89,6 +88,7 @@ func climb_movement(delta):
 
 func climb_edge():
 	Player.velocity.y = -120
+	await get_tree().create_timer(0.05).timeout
 	Player.velocity.x = 100 * Player.last_direction.x
 	
 
@@ -108,6 +108,26 @@ func vertical_boost():
 	Player.change_state(Player.STATES.transition)
 	Player.velocity.x = 0
 	Player.velocity.y = -250
-	
-	
-	
+
+func jump_pad():
+	Player.velocity.y = -325
+	Player.terrain_sm.instant_reset_movement_values()
+	Player.can_dash = true
+
+func velocity_y_less_than():
+	if Player.velocity.y < 0:
+		return true
+	else:
+		return false
+
+func velocity_y_greater_than():
+	if Player.velocity.y > 0:
+		return true
+	else:
+		return false
+
+func velocity_x_equals():
+	if Player.velocity.x == 0:
+		return true
+	else:
+		return false

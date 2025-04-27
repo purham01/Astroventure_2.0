@@ -34,4 +34,3 @@ func _physics_process(delta):
 	rotation += rotation_direction * rotation_speed * delta
 	velocity *= 0.95
 	move_and_slide()
-

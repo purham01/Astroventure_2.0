@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3vq6pqyijpqj"]
 
 [ext_resource type="Script" uid="uid://dtex3vqh6j8cc" path="res://Scenes/Level Assets/AntiGravity/grav_down_checker.gd" id="1_piya5"]
-[ext_resource type="Texture2D" uid="uid://mf7atxoj73w3" path="res://Assets/GravNomalySpritesheet.png" id="2_h27y5"]
+[ext_resource type="Texture2D" uid="uid://mf7atxoj73w3" path="res://Assets/Level assets/GravNomalySpritesheet.png" id="2_h27y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5n5n"]
 size = Vector2(12, 16)

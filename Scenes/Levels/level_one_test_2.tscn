@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="3_g0v8i"]
 [ext_resource type="Script" uid="uid://b371os08yv8t8" path="res://Scenes/Levels/DisappearingTilesScript.gd" id="4_kfid8"]
 [ext_resource type="PackedScene" uid="uid://r7ntx6orfvyd" path="res://Scenes/Level Assets/disappearing_tilesV2.tscn" id="5_tirjo"]
-[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Space Background (14).png" id="6_rcrcj"]
+[ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Backgrounds/Space Background (14).png" id="6_rcrcj"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="7_ya4xr"]
 [ext_resource type="PackedScene" uid="uid://dvx2tbb5lba8s" path="res://Scenes/Level Assets/spikes.tscn" id="8_f8wlb"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="9_lcldt"]

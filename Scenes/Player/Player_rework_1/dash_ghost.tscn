@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://fcgi8uskjnju"]
+
+[ext_resource type="Shader" uid="uid://bn2mblv3cfyd" path="res://shaders/stamina_flash.tres" id="1_0dmi4"]
+[ext_resource type="Texture2D" uid="uid://cd854eibutrgo" path="res://Assets/Player/playerAstronaut.png" id="2_8mdma"]
+[ext_resource type="Script" uid="uid://bmhjvyfu0fy0s" path="res://Scenes/Player/Player_rework_1/dash_ghost.gd" id="3_j7orq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pemnj"]
+shader = ExtResource("1_0dmi4")
+shader_parameter/BooleanParameter = false
+shader_parameter/ColorParameter = Color(0.670588, 0.231373, 0, 1)
+
+[node name="dash_ghost" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.568627)
+material = SubResource("ShaderMaterial_pemnj")
+texture = ExtResource("2_8mdma")
+hframes = 7
+frame = 6
+script = ExtResource("3_j7orq")

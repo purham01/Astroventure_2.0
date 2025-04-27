@@ -20,8 +20,10 @@ func update(delta):
 		Player.current_stamina -= Player.jump_stamina
 		return STATES.jump
 		
-	if Player.wall_direction == 0:
+	if Player.wall_direction == 0 and Player.current_gs.velocity_y_less_than():
 		Player.current_gs.climb_edge()
+		return STATES.fall
+	elif Player.wall_direction == 0:
 		return STATES.fall
 		
 	if !Player.climb_input:
@@ -31,3 +33,6 @@ func update(delta):
 		if Player.wall_direction == 0 or Player.movement_input.x != Player.wall_direction:
 			return STATES.fall
 	return null
+
+func enter_state():
+	Player.terrain_sm.instant_reset_movement_values()

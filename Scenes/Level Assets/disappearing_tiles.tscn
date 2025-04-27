@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsa4vij0ot46u"]
 
 [ext_resource type="Script" uid="uid://cu8bcwfpbvc4g" path="res://Scenes/Level Assets/disappearing_tiles.gd" id="1_0v4ml"]
-[ext_resource type="Texture2D" uid="uid://d6uhndfptwhy" path="res://Assets/cloud.png" id="2_q7xp7"]
+[ext_resource type="Texture2D" uid="uid://d6uhndfptwhy" path="res://Assets/Tilesets/Single blocks/cloud.png" id="2_q7xp7"]
 
 [node name="DisappearingTiles" type="Node2D" groups=["disappearing_tiles"]]
 position = Vector2(96, 70)

@@ -5,6 +5,7 @@ extends "state.gd"
 
 func update(delta):
 	Player.current_gs.gravity(delta)
+	Player.player_movement(delta)
 	if !Player.inTransition or Player.is_on_floor():
 		return STATES.idle
 

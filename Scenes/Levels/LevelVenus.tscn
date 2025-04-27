@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="8_bed2g"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="8_ek45y"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="9_7ncet"]
-[ext_resource type="Texture2D" uid="uid://bxcvd6wid5jsy" path="res://Assets/Orange-bg.png" id="9_axogk"]
+[ext_resource type="Texture2D" uid="uid://bxcvd6wid5jsy" path="res://Assets/Backgrounds/Orange-bg.png" id="9_axogk"]
 
 [sub_resource type="Animation" id="Animation_8ywv5"]
 length = 0.001

@@ -7,3 +7,5 @@ script = ExtResource("1_noomi")
 
 [node name="ResetMovementSpeedJump Timer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="timeout" from="ResetMovementSpeedJump Timer" to="." method="_on_reset_movement_speed_jump_timer_timeout"]

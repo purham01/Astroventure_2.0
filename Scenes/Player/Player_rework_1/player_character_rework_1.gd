@@ -39,7 +39,7 @@ const FAST_MAX_ACCEL = 300.0
 var max_fall = 160
 
 const jump_h_boost = 20
-var wall_jump_h_speed = SPEED/2 + jump_h_boost/2 +10
+var wall_jump_h_speed = SPEED + 2*jump_h_boost
 
 #wall jumping
 @onready var wall_slide_cooldown: Timer = $WallSlideCooldown
@@ -70,6 +70,7 @@ var can_dash = true
 @export var slide_friction = 0.9
 @export var climb_up_speed = -45
 @export var climb_down_speed = 80
+@export var slide_down_speed = 40
 @onready var follower_controller: Node = $FollowerController
 @onready var particle_manager: Node = $ParticleManager
 
@@ -139,6 +140,7 @@ func _ready() -> void:
 	#print(min_jump_velocity)
 	#print(jump_gravity)
 	#print(fall_gravity)
+	
 
 func _physics_process(delta: float) -> void:
 	squish_reset(delta)
@@ -164,10 +166,13 @@ func _physics_process(delta: float) -> void:
 		#print("Wall direction: ", sign(wall_direction))
 		#print("Movement input x: ", sign(movement_input.x))
 		current_gs._assign_animation(delta)
+	#print(is_on_wall())
+
 
 func stamina_reset_check():
 	if current_stamina < 20 and !flashing_animation_player.is_playing():
 		flashing_animation_player.play("stamina_flashing")
+		
 	if is_on_floor():
 		stamina_reset()
 
@@ -177,12 +182,20 @@ func stamina_reset():
 		flashing_animation_player.stop()
 
 func player_input():
-	movement_input.x = Input.get_axis("MoveLeft","MoveRight")
-	movement_input.y = Input.get_axis("MoveUp","MoveDown")
-	jump_input_actuation = Input.is_action_just_pressed("Jump")
-	jump_input = Input.is_action_pressed("Jump")
-	dash_input = Input.is_action_just_pressed("Dash")
-	climb_input = Input.is_action_pressed("Climb")
+	if ConfigFileHandler.input_type == 0:
+		movement_input.x = Input.get_axis("MoveLeft","MoveRight")
+		movement_input.y = Input.get_axis("MoveUp","MoveDown")
+		jump_input_actuation = Input.is_action_just_pressed("Jump")
+		jump_input = Input.is_action_pressed("Jump")
+		dash_input = Input.is_action_just_pressed("Dash")
+		climb_input = Input.is_action_pressed("Climb")
+	else:
+		movement_input.x = Input.get_axis("MoveLeftC","MoveRightC")
+		movement_input.y = Input.get_axis("MoveUpC","MoveDownC")
+		jump_input_actuation = Input.is_action_just_pressed("JumpC")
+		jump_input = Input.is_action_pressed("JumpC")
+		dash_input = Input.is_action_just_pressed("DashC")
+		climb_input = Input.is_action_pressed("ClimbC")
 
 func update_last_direction():
 	if movement_input.x > 0:
@@ -239,7 +252,7 @@ func calc_max_fall_speed(delta):
 	var mf = MAX_FALL
 	var fmf = FAST_MAX_FALL
 	
-	if (Input.is_action_pressed("MoveDown")) and current_state == STATES.fall:
+	if (ConfigFileHandler.input_type == 0 and Input.is_action_pressed("MoveDown") or (ConfigFileHandler.input_type == 1 and Input.is_action_pressed("MoveDownC"))) and current_state == STATES.fall:
 		max_fall = move_toward(max_fall, fmf, FAST_MAX_ACCEL*delta)
 		animated_sprite.scale.x = move_toward(animated_sprite.scale.x,squish_x, 0.025);
 		animated_sprite.scale.y = move_toward(animated_sprite.scale.y,squish_y, 0.025);

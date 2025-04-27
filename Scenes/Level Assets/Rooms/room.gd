@@ -22,3 +22,7 @@ func _on_check_if_from_below_body_entered(body: Node2D) -> void:
 
 func _on_check_if_from_below_area_entered(area: Area2D) -> void:
 	entrance_from_below = true
+
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	print("Im working yooo")

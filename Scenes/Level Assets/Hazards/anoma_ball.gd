@@ -17,4 +17,3 @@ func _process(delta):
 		if path.progress_ratio == 0:
 			await get_tree().create_timer(time_to_turn).timeout
 			reverse = false
-		

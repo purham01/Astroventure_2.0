@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://dl3ymlg6n87id"]
 
-[ext_resource type="Texture2D" uid="uid://cd854eibutrgo" path="res://Assets/playerAstronaut.png" id="1_5mq62"]
-[ext_resource type="Texture2D" uid="uid://dx47pqdu521cq" path="res://Assets/Player_respawn.png" id="2_2aq1d"]
+[ext_resource type="Texture2D" uid="uid://cd854eibutrgo" path="res://Assets/Player/playerAstronaut.png" id="1_5mq62"]
+[ext_resource type="Texture2D" uid="uid://dx47pqdu521cq" path="res://Assets/Player/Player_respawn.png" id="2_2aq1d"]
 [ext_resource type="Texture2D" uid="uid://c5xpo4f0v14f7" path="res://Assets/FX/Smoke/FX001/FX001_01.png" id="2_j4fqk"]
 [ext_resource type="Texture2D" uid="uid://ctnwvfxxl47bg" path="res://Assets/FX/Smoke/FX001/FX001_02.png" id="3_dvksk"]
 [ext_resource type="Texture2D" uid="uid://i1n855pquwvf" path="res://Assets/FX/Smoke/FX001/FX001_03.png" id="4_l5t87"]
