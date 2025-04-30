@@ -1597,6 +1597,11 @@ autoplay = true
 script = ExtResource("3_00xho")
 disappearing_tiles = ExtResource("4_5l86q")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+light_mask = 3
+color = Color(0, 0, 0, 1)
+
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -3
 
@@ -1605,11 +1610,6 @@ offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("3_cf2l8")
 expand_mode = 5
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-light_mask = 3
-color = Color(0, 0, 0, 1)
 
 [node name="PlayerGhost" parent="." instance=ExtResource("6_dkgty")]
 
@@ -1637,6 +1637,7 @@ shape = SubResource("SegmentShape2D_4rxrd")
 
 [node name="Ground" type="TileMapLayer" parent="TileMap"]
 tile_set = SubResource("TileSet_5l86q")
+occlusion_enabled = false
 
 [node name="DisappearingTiles" type="TileMapLayer" parent="TileMap"]
 tile_set = SubResource("TileSet_00xho")
