@@ -19,3 +19,10 @@ func _on_start_game_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_continue_button_button_up() -> void:
+	await LevelTransition.fade_to_black_menu()
+	get_tree().change_scene_to_file("res://Scenes/Levels/MapScreen.tscn")
+	LevelTransition.fade_from_black()
+	

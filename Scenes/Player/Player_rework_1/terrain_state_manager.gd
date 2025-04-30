@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func _on_terrain_detector_terrain_entered(terrain_type):
 	reset_movement_speed_jump_timer.stop()
 	
-	print("Terrain type entered: ", terrain_type)
+	#print("Terrain type entered: ", terrain_type)
 
 	current_terrain_type = terrain_type
 	
@@ -55,13 +55,13 @@ func _on_terrain_detector_terrain_entered(terrain_type):
 func reset_movement_values(delta):
 	
 	if reset_movement:
-		print("Resetting movement")
+		#print("Resetting movement")
 		speed_multiplier = move_toward(speed_multiplier, base_speed_multiplier, 0.5*delta)
 		friction_multiplier = move_toward(friction_multiplier,base_friction_multiplier, 0.5*delta)
 		acceleration_multiplier = move_toward(acceleration_multiplier, base_acceleration_multiplier, 0.5*delta)
 		
 		if speed_multiplier == 1 and friction_multiplier == 1 and acceleration_multiplier == 1:
-			print("Movement fully reset")
+			#print("Movement fully reset")
 			reset_movement = false
 
 

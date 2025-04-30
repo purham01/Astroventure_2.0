@@ -48,6 +48,7 @@ FreezeFrameManager="*res://Scenes/Singletons/FreezeFrameManager.gd"
 ConfigFileHandler="*res://Scenes/Singletons/ConfigFileHandler.gd"
 GUI="*res://Scenes/Singletons/gui_autoload.gd"
 ShaderEffect="*res://Scenes/Singletons/ShaderEffect/ShaderEffect.tscn"
+Save="*res://Scenes/Singletons/Save.gd"
 
 [display]
 

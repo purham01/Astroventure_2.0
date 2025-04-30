@@ -64,31 +64,31 @@ var reset_movement = false
 var inverted_anti_gravity_controls = false
 var endLevel = false
 
-func _ready():
-	Events.settings_changed.connect(update_settings)
-	update_settings()
+#func _ready():
+	#Events.settings_changed.connect(update_settings)
+	#update_settings()
 
-func update_settings():
-	var config = ConfigFile.new()
-	var err = config.load("user://settings.cfg")
-	print("Loading settings")
-	
-	if err != OK:
-		print("Failed to load")
-		return
-	else:
-		print("Loaded settings")
-		inverted_anti_gravity_controls = config.get_value("Settings", "AntiGravityInverted")
-		if can_change_camera_zoom:
-			camera_zoom = config.get_value("Settings","CameraZoom")
-	
-	camera_2d.zoom = Vector2(camera_zoom,camera_zoom)
+#func update_settings():
+	#var config = ConfigFile.new()
+	#var err = config.load("user://settings.cfg")
+	#print("Loading settings")
+	#
+	#if err != OK:
+		#print("Failed to load")
+		#return
+	#else:
+		#print("Loaded settings")
+		#inverted_anti_gravity_controls = config.get_value("Settings", "AntiGravityInverted")
+		#if can_change_camera_zoom:
+			#camera_zoom = config.get_value("Settings","CameraZoom")
+	#
+	#camera_2d.zoom = Vector2(camera_zoom,camera_zoom)
 
 
 func _physics_process(delta):
 	if not playerDead:
 		#print("Velocity: "+str(abs(velocity.x)))
-		var input_axis = Input.get_axis("ui_left", "ui_right")
+		var input_axis = Input.get_axis("MoveLeft", "MoveRight")
 		apply_gravity(delta)
 
 		handle_wall_jump(input_axis)
@@ -165,7 +165,7 @@ func handle_jump(input_axis):
 		air_jump = true
 	# Handle Jump.
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("Jump"):
 			animated_sprite.scale = Vector2(squish_x, squish_y)
 			if speed_multiplier > 1:
 				if abs(velocity.x) <= movement_data.speed*(ice_acceleration_multiplier)-10:
@@ -179,7 +179,7 @@ func handle_jump(input_axis):
 			coyote_jump_timer.stop()
 
 	elif not is_on_floor():
-		if Input.is_action_just_released("jump"):
+		if Input.is_action_just_released("Jump"):
 			if not GravityX:
 				if velocity.y < movement_data.jump_velocity/2: 
 					velocity.y = movement_data.jump_velocity/2 
@@ -188,7 +188,7 @@ func handle_jump(input_axis):
 				if velocity.x < movement_data.jump_velocity/2: 
 					velocity.x = movement_data.jump_velocity/2
 
-		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
+		if Input.is_action_just_pressed("Jump") and air_jump and not just_wall_jumped:
 			animated_sprite.scale = Vector2(0.7, 1.3)
 #			if acceleration_multiplier == ice_acceleration_multiplier:
 #				acceleration_multiplier = 0.4
@@ -216,7 +216,7 @@ func handle_wall_jump(input_axis):
 	if wall_jump_timer.time_left > 0.0:
 		wall_normal = was_wall_normal
 		
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("Jump"):
 		animated_sprite.scale = Vector2(0.7, 1.3)
 		
 		friction_multiplier = base_friction_multiplier

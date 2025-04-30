@@ -203,7 +203,6 @@ offset_left = 192.0
 offset_top = 5.0
 offset_right = -7.0
 offset_bottom = -7.0
-leaderboard_id = "astroventure-earth-XkZ5"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

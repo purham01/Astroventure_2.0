@@ -308,6 +308,7 @@ position = Vector2(-12, -15)
 [node name="StarLocation" type="Marker2D" parent="StarContainer"]
 
 [node name="Raycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="Left" type="Node2D" parent="Raycasts"]
 
@@ -355,9 +356,6 @@ target_position = Vector2(0, -5)
 [node name="RightOuter" type="RayCast2D" parent="CornerCheckRaycasts"]
 position = Vector2(5, -15)
 target_position = Vector2(0, -5)
-
-[node name="GhostMarker" type="Marker2D" parent="."]
-position = Vector2(0, -9)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -8)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wr2wk4qcaavh"]
 
 [ext_resource type="Script" uid="uid://cjnxr5kaynvn1" path="res://Scenes/Mechanics/Player ghost/player_ghost.gd" id="1_s36gv"]
-[ext_resource type="Texture2D" uid="uid://bdbh6bjyb2q6a" path="res://icon.svg" id="2_pt51t"]
+[ext_resource type="Texture2D" uid="uid://cd854eibutrgo" path="res://Assets/Player/playerAstronaut.png" id="2_pt51t"]
 
 [node name="PlayerGhost" type="Node2D"]
 script = ExtResource("1_s36gv")
@@ -9,6 +9,6 @@ script = ExtResource("1_s36gv")
 [node name="Visual" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.454902)
 top_level = true
-position = Vector2(0, 5.96046e-08)
-scale = Vector2(0.125, 0.109375)
 texture = ExtResource("2_pt51t")
+region_enabled = true
+region_rect = Rect2(145, 0, 23, 20)

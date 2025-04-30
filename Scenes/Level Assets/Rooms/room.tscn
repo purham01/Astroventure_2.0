@@ -19,6 +19,7 @@ b = Vector2(37, 0)
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_a16lv")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(160, 90)

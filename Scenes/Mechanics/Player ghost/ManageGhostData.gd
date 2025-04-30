@@ -3,12 +3,25 @@ extends Node
 var _ghost_data = []
 var _running_time = 0
 
+var player_first_move = false
+@export var player : CharacterBody2D
 
+func _ready() -> void:
+	Events.connect("player_first_move", start_recording)
+
+func _physics_process(delta: float) -> void:
+	if player_first_move:
+		var data : GhostData = GhostData.new()
+		data.global_position = player.ghost_marker.global_position
+		add_ghost_data(data, delta)
+
+func start_recording():
+	player_first_move = true
 
 func add_ghost_data(data : GhostData, delta : float):
 	if _ghost_data.size() == 0:
 		_running_time = 0
-		data.time
+		data.time = 0
 	else:
 		_running_time += delta
 		data.time = _running_time
@@ -16,6 +29,6 @@ func add_ghost_data(data : GhostData, delta : float):
 	_ghost_data.append(data)
 
 func save_data_to_file():
-	var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
+	var file = FileAccess.open("user://ghost_data.dat", FileAccess.WRITE)
 	for g in _ghost_data:
 		file.store_string(g.to_line())

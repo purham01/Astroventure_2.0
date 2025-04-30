@@ -55,7 +55,7 @@ func _load_default_settings():
 	load_default_keyboard_controls()
 	load_default_controller_controls()
 	
-	print(DisplayServer.screen_get_size())
+	#print(DisplayServer.screen_get_size())
 	
 	config.set_value("general", "vibration", 2)
 	config.set_value("general", "camera_shake", 2)
@@ -158,11 +158,11 @@ func erase_keybinding(action):
 	var events = InputMap.action_get_events(action)
 	var i = 0
 	
-	print(events)
+	#print(events)
 	
 	for e in events:
 		var erase = action +"_"+ str(i)
-		print(erase)
+		#print(erase)
 		ConfigFileHandler.config.erase_section_key("keybindings", erase)
 		i+=1
 		
@@ -172,11 +172,11 @@ func erase_controller_button(action):
 	var events = InputMap.action_get_events(action)
 	var i = 0
 	
-	print(events)
+	#print(events)
 	
 	for e in events:
 		var erase = action +"_"+ str(i)
-		print(erase)
+		#print(erase)
 		ConfigFileHandler.config.erase_section_key("controller", erase)
 		i+=1
 		
@@ -207,21 +207,21 @@ func load_controller_buttons():
 		var input_event
 		var event_str : String = config.get_value("controller", key)
 		
-		print("")
-		print("Loading keybind: ", event_str)
+		#print("")
+		#print("Loading keybind: ", event_str)
 		
 		if event_str.contains("Motion"):
 			input_event = InputEventJoypadMotion.new()
 			var axis = event_str.substr(event_str.find("Axis") + 5, 1)
 			var axis_value = event_str.substr(event_str.find("Value") + 6)
-			print("Axis: ",axis)
-			print("Axis value: ",axis_value)
+			#print("Axis: ",axis)
+			#print("Axis value: ",axis_value)
 			input_event.axis = int(axis)
 			input_event.axis_value = float(axis_value) 
 		else:
 			input_event = InputEventJoypadButton.new()
 			var button_index = event_str.substr(event_str.find("Button") + 7, 2)
-			print("Button index: ",button_index)
+			#print("Button index: ",button_index)
 			input_event.button_index = int(button_index)
 	
 		keybindings[key] = input_event

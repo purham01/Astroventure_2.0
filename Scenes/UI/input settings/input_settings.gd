@@ -169,13 +169,13 @@ func _on_input_button_pressed(button, action):
 		key_label_text.text = input_actions[action]
 
 func _on_input_button_focus_entered(button,action):
-	print("Button focused")
+	#print("Button focused")
 	focused_button = [button,action]
-	print(focused_button)
+	#print(focused_button)
 
 func _on_input_button_focus_exited():
-	print("Button unfocused")
-	print(focused_button)
+	#print("Button unfocused")
+	#print(focused_button)
 	focused_button = null
 
 func _input(event):
@@ -241,7 +241,7 @@ func _input(event):
 			
 
 func _update_action_list(button, event):
-	print(event.as_text())
+	#print(event.as_text())
 	var key_name = event.as_text().trim_suffix(" (Physical)")
 	#button.find_child("LabelInput").text = key_name
 	
@@ -259,8 +259,8 @@ func _update_action_list(button, event):
 		var key_anim_sprite = key_icon_instance.find_child("AnimKeySprite")
 		button.find_child("keyIcons").add_child(key_icon_instance)
 		key_anim_sprite.play("wide_keys")
-		print(key_anim_sprite.animation)
-		print(wide_key_icons[key_name])
+		#print(key_anim_sprite.animation)
+		#print(wide_key_icons[key_name])
 		key_anim_sprite.frame = wide_key_icons[key_name]
 	
 

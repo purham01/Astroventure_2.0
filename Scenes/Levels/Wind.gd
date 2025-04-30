@@ -6,20 +6,17 @@ extends GPUParticles2D
 
 var timer = 0
 var active = false
-var rng = RandomNumberGenerator.new()
 
 @onready var mat : ParticleProcessMaterial = get_process_material()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if active:
 		timer += delta
-		if timer >= average_time + rng.randf_range(-4.0, 4.0):
+		if timer >= average_time:
 			timer = 0
 			windspeed *= -1
 			mat.direction.x *= -1

@@ -142,7 +142,6 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_327wf")
 
 [node name="TerrainDetector" parent="." instance=ExtResource("4_7dsbk")]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector"]
 shape = SubResource("RectangleShape2D_egt18")

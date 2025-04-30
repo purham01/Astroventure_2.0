@@ -133,27 +133,28 @@ func _input(event):
 			event is InputEventJoypadButton
 			or event is InputEventJoypadMotion 
 		):
-			print("Adding action: ", action_to_remap)
-			print("Keybind: ", event.as_text())
+			#print("Adding action: ", action_to_remap)
+			#print("Keybind: ", event.as_text())
 			#turn double click into single click
 			#if event is InputEventMouseButton and event.double_click:
 			#	event.double_click = false
 
-			print(event)
+			#print(event)
 			
 			if event is InputEventJoypadMotion:
 				if event.axis_value < 0.0:
-					print("Value is less than")
+					#print("Value is less than")
 					event.axis_value = -1.00
 				elif event.axis_value > 0.0:
-					print("value is greater than")
+					#print("value is greater than")
 					event.axis_value = 1.00
 
 			var events = InputMap.action_get_events(action_to_remap)
 			var event_name = event.as_text()
 			var action_found = false
 			
-			print(event_name)
+			
+			#print(event_name)
 			
 			for e in events:
 				if e.as_text() == event_name:
@@ -201,7 +202,7 @@ func _input(event):
 func _update_action_list(button, event):
 	
 	var key_name = event.as_text()
-	print(key_name)
+	#print(key_name)
 	#button.find_child("LabelInput").text = key_name
 	
 	

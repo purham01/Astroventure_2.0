@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crvqb588f1wim"]
+
+[ext_resource type="Script" uid="uid://dp2jfqax5lfhq" path="res://Scenes/Mechanics/Player ghost/ManageGhostData.gd" id="1_x4lq8"]
+
+[node name="GhostRecorder" type="Node2D"]
+script = ExtResource("1_x4lq8")

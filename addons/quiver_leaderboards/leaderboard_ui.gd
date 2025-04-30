@@ -38,7 +38,7 @@ extends Control
 
 func _ready() -> void:
 	score_list.set_column_expand_ratio(1, 3)
-	var column_names := ["Rank", "Name", "Score"]
+	var column_names := ["Rank", "Name", "Time"]
 	for column_index in range(column_names.size()):
 		var cname: String = column_names[column_index]
 		score_list.set_column_title(column_index, cname)

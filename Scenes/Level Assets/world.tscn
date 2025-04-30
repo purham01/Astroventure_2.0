@@ -1,15 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkkor7cqf3sc2"]
+[gd_scene load_steps=18 format=3 uid="uid://dkkor7cqf3sc2"]
 
 [ext_resource type="Script" uid="uid://txafawdi5cx2" path="res://Scenes/Level Assets/world.gd" id="1_mrn2n"]
 [ext_resource type="PackedScene" uid="uid://bmj1urynsj1ph" path="res://Scenes/Player/character.tscn" id="2_iwlls"]
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="2_yvx81"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="3_2b7md"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="4_h2cwe"]
-[ext_resource type="PackedScene" uid="uid://73u2mwbq763g" path="res://Scenes/Camera/player_camera.tscn" id="4_y0kcu"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="5_rl5ou"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="5_sx1wa"]
 [ext_resource type="Texture2D" uid="uid://c3tuhvud34a5g" path="res://Assets/Backgrounds/Space Background (14).png" id="6_ocvd1"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="9_73jjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5r67o"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_y0kcu"]
+resource_local_to_scene = true
+b = Vector2(37, 0)
 
 [sub_resource type="Animation" id="Animation_8ywv5"]
 length = 0.001
@@ -99,13 +106,17 @@ offset_bottom = 180.0
 texture = ExtResource("6_ocvd1")
 expand_mode = 5
 
-[node name="PlayerCamera" parent="." instance=ExtResource("4_y0kcu")]
-
 [node name="Player" parent="." instance=ExtResource("2_iwlls")]
 
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Room" parent="Rooms" instance=ExtResource("9_73jjr")]
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_5r67o")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_y0kcu")
 
 [node name="Hearts" type="Node" parent="."]
 

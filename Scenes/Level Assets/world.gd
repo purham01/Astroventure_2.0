@@ -24,11 +24,15 @@ var heartsMax = 0
 var heartsCollected = 0
 
 
+
 func _ready():
 	heartsMax = get_tree().get_nodes_in_group("Hearts").size()
 	RenderingServer.set_default_clear_color(Color.BLACK)
+	
 	Events.level_completed.connect(show_level_completed)
 	Events.update_score.connect(update_score)
+	
+	
 	get_tree().paused = true
 	LevelTransition.fade_from_black()
 	if countdown:
@@ -74,6 +78,7 @@ func place_scene_tile(place_at, cellLayer, cellAlt):
 		scene_tile_instance.position = place_at
 
 func _process(delta):
+
 	level_time = Time.get_ticks_msec() - start_level_msec
 	if timer:
 		level_time_label.text = str(level_time / 1000.0)

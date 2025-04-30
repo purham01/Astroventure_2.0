@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+var has_first_moved = false
+var has_first_moved_after_respawn = false 
+
 #player input
 var movement_input = Vector2.ZERO
 var jump_input = false
 var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
+
 
 #player movement
 const SPEED = 90.0
@@ -67,12 +71,14 @@ var prev_state = null
 
 #mechanics
 var can_dash = true
+var is_dashing = false
 @export var slide_friction = 0.9
 @export var climb_up_speed = -45
 @export var climb_down_speed = 80
 @export var slide_down_speed = 40
 @onready var follower_controller: Node = $FollowerController
 @onready var particle_manager: Node = $ParticleManager
+@onready var ghost_marker: Marker2D = $GhostMarker
 
 
 #stamina
@@ -159,9 +165,13 @@ func _physics_process(delta: float) -> void:
 		state_info.text = str(current_state.get_name())
 		x_speed.text = str(velocity.x)
 		y_speed.text = str(velocity.y)
-		stamina_info.text =str(current_stamina)
+		stamina_info.text = str(current_stamina)
 		
-		move_and_slide()
+		if is_dashing:
+			move_and_collide(velocity * delta)
+		else:
+			move_and_slide()
+			
 		#print("player velocity: ", velocity)
 		#print("Wall direction: ", sign(wall_direction))
 		#print("Movement input x: ", sign(movement_input.x))
@@ -180,6 +190,18 @@ func stamina_reset():
 	current_stamina = max_stamina
 	if flashing_animation_player.is_playing():
 		flashing_animation_player.stop()
+
+func _input(event: InputEvent) -> void:
+	#add condition to check if valid actions in the input map are pressed, not any action
+	if (event is InputEventKey 
+		or event is InputEventJoypadButton
+		or event is InputEventJoypadMotion): 
+		if !has_first_moved:
+			has_first_moved = true
+			Events.emit_signal("player_first_move") 
+		if !has_first_moved_after_respawn:
+			has_first_moved_after_respawn = true
+			Events.emit_signal("player_first_move_after_respawn") 
 
 func player_input():
 	if ConfigFileHandler.input_type == 0:
@@ -234,6 +256,7 @@ func _update_wall_direction():
 		wall_direction = movement_input.x
 	else:
 		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
+	
 
 func _check_is_valid_wall(wall_raycasts):
 	for raycast : RayCast2D in wall_raycasts.get_children():
@@ -281,7 +304,7 @@ func handle_jump_buffer():
 	if !is_on_floor() and jump_input_actuation:
 		jump_buffer.start()
 
-func handle_dash_buffer():
+func handle__buffer():
 	if can_dash and dash_input:
 		dash_buffer.start()
 

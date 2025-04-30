@@ -9,6 +9,7 @@ extends ColorRect
 @onready var deaths = $CenterContainer/VBoxContainer/Deaths
 @onready var text_timer = $TextTimer
 @onready var animation_player = $AnimationPlayer
+@onready var leaderboard: LeaderboardUI = $LeaderboardUI
 
 signal retry()
 signal next_level()
@@ -27,6 +28,7 @@ var level_best_time
 
 func _ready():
 	Events.player_dead.connect(increase_player_deaths)
+	
 
 func show_data(heartsCollectedTemp, heartsMaxTemp, levelTimeTemp, levelBestTimeTemp):
 	heartsCollected =heartsCollectedTemp

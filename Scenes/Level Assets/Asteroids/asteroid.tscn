@@ -163,11 +163,13 @@ radius = 16.0
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_nppom")
+size = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_6hb72")
 animation = &"bigMeteor"
+frame_progress = 0.985826
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

@@ -1,10 +1,10 @@
 class_name GhostData
 
 var time : float = 0.0
-var global_position : Vector2
+var global_position : Vector2 = Vector2.ZERO
 
 func to_line():
-	return "%s / %s " % [var_to_str(time), var_to_str(global_position)]
+	return "%s / %s \n" % [var_to_str(time), var_to_str(global_position)]
 
 static func from_line(line : String):
 	var g : GhostData = GhostData.new()
@@ -16,3 +16,6 @@ static func from_line(line : String):
 		push_error("Incorrect ghost_data line format. Data size was %d" %data.size())
 		
 	return g
+
+func _to_string() -> String:
+	return "%s / %s \n" % [var_to_str(time), var_to_str(global_position)]

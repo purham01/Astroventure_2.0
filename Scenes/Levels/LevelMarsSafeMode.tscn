@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://hywo20p2fyay"]
+[gd_scene load_steps=17 format=3 uid="uid://hywo20p2fyay"]
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_djg7w"]
 [ext_resource type="Resource" uid="uid://btop77c1so5py" path="res://Resources/Planet movements/MercuryMarsMovement.tres" id="2_16oep"]
-[ext_resource type="Script" uid="uid://dmxq00qw110jy" path="res://Scenes/Levels/Wind.gd" id="2_vftrt"]
+[ext_resource type="Script" uid="uid://dmxq00qw110jy" path="res://Scenes/Levels/Wind.gd" id="2_ppdid"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="3_u3s5x"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_p5vkw"]
 [ext_resource type="PackedScene" uid="uid://dv1p5jxki2fse" path="res://Scenes/Level Assets/LevelTileMap.tscn" id="5_rele7"]
@@ -14,6 +14,14 @@ emission_box_extents = Vector3(103.625, 105.33, 1)
 initial_velocity_min = 42.56
 initial_velocity_max = 105.27
 gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppdid"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pg5io"]
+resource_local_to_scene = true
+b = Vector2(37, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6sub"]
 size = Vector2(861, 1418)
@@ -39,20 +47,23 @@ size = Vector2(618, 5301.75)
 [node name="World" instance=ExtResource("1_djg7w")]
 level_best_time = 500.0
 
-[node name="WindParticles" type="GPUParticles2D" parent="CanvasLayer2" index="1" node_paths=PackedStringArray("player")]
+[node name="WindParticles" type="GPUParticles2D" parent="CanvasLayer2" index="1"]
 position = Vector2(173, 90)
 scale = Vector2(1.865, 0.905)
 emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_y8256")
-script = ExtResource("2_vftrt")
-player = NodePath("../../Player")
-windspeed = 8.0
-average_time = 7.0
+script = ExtResource("2_ppdid")
 
 [node name="Player" parent="." index="3"]
-position = Vector2(3, 93)
+position = Vector2(416, -736)
 movement_data = ExtResource("2_16oep")
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_ppdid")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_pg5io")
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_u3s5x")]
 position = Vector2(592, -480)
@@ -128,3 +139,5 @@ shape = SubResource("RectangleShape2D_y2rqp")
 
 [connection signal="body_entered" from="Wind" to="CanvasLayer2/WindParticles" method="_on_wind_body_entered"]
 [connection signal="body_exited" from="Wind" to="CanvasLayer2/WindParticles" method="_on_wind_body_exited"]
+
+[editable path="Rooms/Room"]

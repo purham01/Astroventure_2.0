@@ -76,22 +76,39 @@ theme_override_constants/separation = 4
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../QuitButton")
-text = "Start game"
+text = "Continue
+"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "New game"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Options
+"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartGameButton")
+focus_neighbor_top = NodePath("../NewGameButton")
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fpw74")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_pressed"]
+[connection signal="button_up" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

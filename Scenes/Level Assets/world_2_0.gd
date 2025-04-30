@@ -9,6 +9,8 @@ extends Node2D
 @onready var player = $Player
 @onready var music_player = $MusicPlayer
 
+@onready var ghost_recorder: Node2D = $GhostRecorder
+
 
 
 @export var next_level: PackedScene
@@ -17,27 +19,40 @@ extends Node2D
 @export var scene_tile_name : PackedScene
 @export var level_best_time : float
 @export var music : AudioStreamOggVorbis
+@export var leaderboard_id : String 
+
+@export_category("Medals")
+@export var diamond_medal_time = 60.0
+@export var gold_medal_time = 90.0
+@export var silver_medal_time = 120.0
+@export var bronze_medal_time = 240.0
 
 var level_time = 0.0
 var start_level_msec = 0.0
-var heartsMax = 0
-var heartsCollected = 0
+var starsMax = 0
+var starsCollected = 0
 
+var player_has_first_moved = false
+var level_complete = false
 
 func _ready():
-	heartsMax = get_tree().get_nodes_in_group("Stars").size()
+	starsMax = get_tree().get_nodes_in_group("Stars").size()
 	RenderingServer.set_default_clear_color(Color.BLACK)
+	
 	Events.level_completed.connect(show_level_completed)
 	Events.update_score.connect(update_score)
+	Events.player_first_move.connect(start_level_timer)
+	
 	get_tree().paused = true
 	LevelTransition.fade_from_black()
 	if countdown:
 		animation_player.play("countdown")
 		await animation_player.animation_finished
 	get_tree().paused = false
-	start_level_msec = Time.get_ticks_msec() #vrijeme od pocetka u ms
-	#if not next_level is PackedScene:
-	#	level_completed.next_level_button.text = "Map screen"
+	#start_level_msec = Time.get_ticks_msec() #vrijeme od pocetka u ms
+	if not next_level is PackedScene:
+		level_completed.next_level_button.text = "Map screen"
+	level_completed.leaderboard.leaderboard_id = leaderboard_id
 	#addObjects()
 #
 #func addObjects():
@@ -74,18 +89,24 @@ func _ready():
 		#scene_tile_instance.position = place_at
 
 func _process(delta):
-	level_time = Time.get_ticks_msec() - start_level_msec
-	if timer:
-		level_time_label.text = str(level_time / 1000.0)
+	if player_has_first_moved and !level_complete:
+		level_time = Time.get_ticks_msec() - start_level_msec
+		if timer:
+			level_time_label.text = str(level_time / 1000.0)
 
 func show_level_completed():
+	level_complete = true
 	player._end_level_anim()
 	await(player.animation_player.animation_finished)
 	await(player.animated_sprite.animation_finished)
 	$DelayEndLevel.start()
 	await($DelayEndLevel.timeout)
 	level_time_label.hide()
-	level_completed.show_data(heartsCollected, heartsMax, float(level_time_label.text), level_best_time)
+	level_completed.show_data(starsCollected, starsMax, float(level_time_label.text), level_best_time)
+	
+	var success: bool = await Leaderboards.post_guest_score(leaderboard_id, level_time, Save.player_name)
+	ghost_recorder.save_data_to_file()
+	
 	get_tree().paused = true
 
 func go_to_next_level():
@@ -102,5 +123,10 @@ func _on_level_completed_retry():
 
 
 func update_score():
-	heartsCollected+=1
-	print(heartsCollected)
+	starsCollected+=1
+	print(starsCollected)
+
+func start_level_timer():
+	player_has_first_moved = true
+	start_level_msec = Time.get_ticks_msec()
+	

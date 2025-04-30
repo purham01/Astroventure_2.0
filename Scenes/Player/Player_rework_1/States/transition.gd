@@ -11,6 +11,9 @@ func update(delta):
 
 func enter_state():
 	Player.inTransition = true
+	Player.can_dash = true
+	Player.current_stamina = Player.max_stamina
+	Player.flashing_animation_player.stop()
 	transition_timer.start(transition_duration)
 	
 	

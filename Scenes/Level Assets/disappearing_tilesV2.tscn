@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://r7ntx6orfvyd"]
 
 [ext_resource type="Script" uid="uid://b5t8s388uvck6" path="res://Scenes/Level Assets/disappearing_tilesV2.gd" id="1_70r84"]
-[ext_resource type="Texture2D" uid="uid://d6uhndfptwhy" path="res://Assets/Tilesets/Single blocks/cloud.png" id="2_18nos"]
-[ext_resource type="Texture2D" uid="uid://bd2re6er0tdm8" path="res://Assets/Tilesets/Single blocks/cloud_outline.png" id="3_s88ta"]
+[ext_resource type="Texture2D" uid="uid://bqa6apy138023" path="res://Assets/Tilesets/disappering_tiles.png" id="2_etnh7"]
+[ext_resource type="Texture2D" uid="uid://b8m5j267w6ap3" path="res://Assets/Tilesets/disappering_tiles_outline.png" id="3_etnh7"]
 
 [sub_resource type="Animation" id="Animation_dpww7"]
 length = 0.001
@@ -39,7 +39,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/3/type = "value"
@@ -91,7 +91,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [false, true]
 }
 tracks/3/type = "value"
@@ -142,7 +142,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [false, true]
 }
 tracks/3/type = "value"
@@ -166,39 +166,32 @@ _data = {
 }
 
 [node name="DisappearingTiles" type="Node2D" groups=["disappearing_tiles"]]
-position = Vector2(96, 70)
 script = ExtResource("1_70r84")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(8, -8)
-texture = ExtResource("2_18nos")
+texture = ExtResource("2_etnh7")
 
 [node name="Outline" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(8, -8)
-texture = ExtResource("3_s88ta")
+texture = ExtResource("3_etnh7")
 
 [node name="CollisionArea" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
-polygon = PackedVector2Array(0, -2, 0, -16, 16, -16, 16, -1, 11, -1, 11, -2, 8, -2, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, 4, -5, 4, -4, 3, -4, 3, -3, 2, -3, 2, -2)
-one_way_collision = true
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 3, -4, 3)
 
 [node name="ActivatorArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ActivatorArea"]
-visible = false
 position = Vector2(-9.53674e-07, -0.218748)
 scale = Vector2(1, 1.0625)
-polygon = PackedVector2Array(0, -2, 0, -16, 16, -16, 16, -1, 11, -1, 11, -2, 8, -2, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, 4, -5, 4, -4, 3, -4, 3, -3, 2, -3, 2, -2)
+polygon = PackedVector2Array(-5, -4.5, 5, -4.5, 5, 3.02941, -5, 3.02941)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

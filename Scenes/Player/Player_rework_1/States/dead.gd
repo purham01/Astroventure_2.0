@@ -27,5 +27,6 @@ func enter_state():
 	
 	Player.animated_sprite.position.y-=1
 	Player.collision_shape_2d.set_deferred("disabled", false)
+	Player.has_first_moved_after_respawn = false
 	Player.playerDead = false
 	Player.animated_sprite.play("idle")

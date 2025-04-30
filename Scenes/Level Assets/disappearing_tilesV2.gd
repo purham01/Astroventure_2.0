@@ -9,10 +9,11 @@ extends Node2D
 
 func _ready():
 	reset_tiles()
+	
 
-func _process(delta):
-	if get_tree().get_root().get_node("World/Player").get("playerDead") and !animation_player.is_playing():
-		reset_tiles()
+#func _process(delta):
+	#if get_tree().get_root().get_node("World/Player").get("playerDead") and !animation_player.is_playing():
+	#	reset_tiles()
 
 func reset_tiles():
 	if activator_area_active == false:

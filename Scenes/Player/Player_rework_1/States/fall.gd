@@ -18,7 +18,7 @@ func update(delta):
 		Player.animated_sprite.scale = Vector2(Player.squash_x, Player.squash_y)
 		return STATES.idle
 		
-	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0:
+	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0 and (Player.is_on_wall() or Player.wall_direction != 0):
 		return STATES.climb
 	
 	#no stamina wall slide
