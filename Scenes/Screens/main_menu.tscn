@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1llbuplgaq0g"]
+[gd_scene load_steps=12 format=3 uid="uid://d1llbuplgaq0g"]
 
 [ext_resource type="Script" uid="uid://c8j05r0h1csu3" path="res://Scenes/Screens/main_menu.gd" id="1_4lr2w"]
-[ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="2_ct3br"]
 [ext_resource type="Texture2D" uid="uid://dcoyclq8dtwjm" path="res://Assets/Backgrounds/Main Menu background/Space Background (11).png" id="3_61u4g"]
 [ext_resource type="Shader" uid="uid://be7hwch7dpxgp" path="res://Aesthethics/Shaders/starfield.gdshader" id="3_obgim"]
 [ext_resource type="FontFile" uid="uid://y40yurqaewrq" path="res://Crang.ttf" id="4_a4oju"]
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="6_fpw74"]
+[ext_resource type="PackedScene" uid="uid://b1whiv3y38xsy" path="res://Scenes/UI/options_menu.tscn" id="6_ip1ff"]
+[ext_resource type="PackedScene" uid="uid://b5u7j0j7vil4q" path="res://Scenes/UI/info_labels_keyboard.tscn" id="8_u5uru"]
+[ext_resource type="PackedScene" uid="uid://dtx87k5yhexec" path="res://Scenes/UI/info_labels_controller.tscn" id="9_uj0d6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qypt2"]
 shader = ExtResource("3_obgim")
@@ -25,14 +27,16 @@ shader_parameter/additional_scroll_speed = 0.05
 font = ExtResource("4_a4oju")
 font_size = 24
 
-[node name="MainMenu" type="CenterContainer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5uru"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_ct3br")
 script = ExtResource("1_4lr2w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -54,44 +58,61 @@ offset_bottom = 180.0
 texture = ExtResource("3_61u4g")
 expand_mode = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="NewGameCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="ColorRect" parent="NewGameCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainMenuLayer" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 267.0
+offset_bottom = 147.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuLayer"]
 layout_mode = 2
 theme_override_constants/separation = 90
 
-[node name="Label" type="Label" parent="VBoxContainer2"]
+[node name="Label" type="Label" parent="MainMenuLayer/VBoxContainer2"]
 layout_mode = 2
 text = "Astroventure"
 label_settings = SubResource("LabelSettings_y4tm3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2"]
+[node name="Control" type="Control" parent="MainMenuLayer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuLayer"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="MainMenuLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="MainMenuLayer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../QuitButton")
+disabled = true
 text = "Continue
 "
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="MainMenuLayer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../QuitButton")
 text = "New game"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MainMenuLayer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
@@ -99,16 +120,93 @@ focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options
 "
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainMenuLayer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_top = NodePath("../NewGameButton")
 text = "Quit"
+
+[node name="NewGameStartLayer" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 101.0
+offset_top = 64.0
+offset_right = -104.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameStartLayer" type="CenterContainer" parent="NewGameStartLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGameStartLayer/NewGameStartLayer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NewGameStartLayer/NewGameStartLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "What is your name?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnterName" type="LineEdit" parent="NewGameStartLayer/NewGameStartLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+placeholder_text = "Enter..."
+
+[node name="OptionsMenuLayer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_u5uru")
+
+[node name="SecondaryMenuContainer" parent="OptionsMenuLayer" node_paths=PackedStringArray("root_tab") instance=ExtResource("6_ip1ff")]
+unique_name_in_owner = true
+layout_mode = 2
+root_tab = NodePath("../../MainMenuLayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fpw74")
 autoplay = true
+bus = &"Music"
 
-[connection signal="button_up" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]
-[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="InfoLabelsKeyboardEnterName" parent="." instance=ExtResource("8_u5uru")]
+visible = false
+layout_mode = 1
+
+[node name="AnimKeySprite" parent="InfoLabelsKeyboardEnterName/ConfirmIcon" index="0"]
+animation = &"wide_keys"
+frame = 7
+
+[node name="AnimKeySprite" parent="InfoLabelsKeyboardEnterName/BackIcon" index="0"]
+frame = 0
+
+[node name="InfoLabelsKeyboard" parent="." instance=ExtResource("8_u5uru")]
+layout_mode = 1
+
+[node name="InfoLabelsController" parent="." instance=ExtResource("9_uj0d6")]
+layout_mode = 1
+offset_left = -74.0
+offset_top = -15.0
+
+[connection signal="button_up" from="MainMenuLayer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/NewGameButton" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="text_submitted" from="NewGameStartLayer/NewGameStartLayer/VBoxContainer/EnterName" to="." method="_on_enter_name_text_submitted"]
+
+[editable path="InfoLabelsKeyboardEnterName"]

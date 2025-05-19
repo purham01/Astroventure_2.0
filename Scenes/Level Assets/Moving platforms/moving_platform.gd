@@ -12,6 +12,7 @@ extends Node2D
 @onready var platform: AnimatableBody2D = $Platform
 @onready var wiggle_room_timer: Timer = $WiggleRoomTimer
 
+@onready var player_camera := get_tree().current_scene.get_node("PlayerCamera")
 
 var speed = 0.0
 var moving_forward = false
@@ -43,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	
 	#print(platform.position.direction_to(destination_point.position))
 	if moving_forward and platform.position.direction_to(destination_point.position) == Vector2.ZERO:
+		player_camera.apply_shake(2 * ConfigFileHandler.camera_shake) 
 		platform.position = destination_point.position
 		print("Reached end, going back")
 		speed = 0.0
@@ -114,9 +116,9 @@ func _on_player_on_top_body_exited(body: Node2D) -> void:
 		var platform_speed = PhysicsServer2D.body_get_state(platform.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY)
 		#print("platform velocity: ", platform_speed)
 
-		#if !wiggle_room_timer.is_stopped():
-			#print("Last velocity ", last_velocity)
-			#player_on_top.velocity += last_velocity
+		if !wiggle_room_timer.is_stopped():
+			print("Last velocity ", last_velocity)
+			player_on_top.velocity += last_velocity
 		player_on_top = null
 		#print("Player left platform")
 		

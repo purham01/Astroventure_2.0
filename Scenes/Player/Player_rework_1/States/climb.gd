@@ -1,6 +1,9 @@
 extends "state.gd"
 
+var was_looking_back = false
+
 func update(delta):
+	change_animation()
 	Player.current_gs.climb_movement(delta)
 	
 	if Player.dash_input and Player.can_dash:
@@ -35,4 +38,28 @@ func update(delta):
 	return null
 
 func enter_state():
+	print(Player.last_direction)
+	print(Player.wall_direction)
 	Player.terrain_sm.instant_reset_movement_values()
+
+func exit_state():
+	was_looking_back = false
+
+func change_animation():
+	if Player.movement_input.y < 0:
+		#going up
+		Player.animated_sprite.play("climb")
+		was_looking_back = false
+	else:
+		if !was_looking_back and Player.movement_input.x == -Player.wall_direction:
+			was_looking_back = true
+			Player.animated_sprite.play("climb_look_back")
+		elif was_looking_back:
+			if Player.movement_input.x != -Player.wall_direction:
+				#var temp_frame = Player.animated_sprite.frame
+				Player.animated_sprite.play_backwards("climb_look_back")
+				#Player.animated_sprite.frame = temp_frame
+				await Player.animated_sprite.animation_finished
+				was_looking_back = false
+		else:
+			Player.animated_sprite.play("wallslide")

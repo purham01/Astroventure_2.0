@@ -10,10 +10,10 @@ func update(delta):
 	if Player.wall_direction != 0 and Player.jump_input_actuation:
 		return STATES.wall_jump
 	
-	if Player.wall_direction != 0 and Player.climb_input and Player.wall_slide_cooldown.is_stopped() and Player.is_on_wall():
+	if Player.climb_input and Player.wall_slide_cooldown.is_stopped() and (Player.is_on_wall() or Player.wall_direction != 0):
 		return STATES.climb
 		
-	if Player.current_gs.velocity_y_greater_than:
+	if Player.current_gs.velocity_y_greater_than():
 		return STATES.fall
 		
 	if Player.dash_input and Player.can_dash:
@@ -22,6 +22,10 @@ func update(delta):
 	return null
 
 func enter_state():
+	Player.last_direction = Vector2(-Player.wall_direction,0)
+	
+	Player.animated_sprite.play("jump")
+	
 	Player.terrain_sm.instant_reset_movement_values()
 	Player.current_gs.wall_jump()
 	Player.wall_slide_cooldown.start()

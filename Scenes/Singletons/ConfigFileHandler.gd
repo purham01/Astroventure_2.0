@@ -28,10 +28,17 @@ var window_modes = [
 
 var input_type = 0
 
+var controller_vibration = 1
+var camera_shake = 1
+var show_tutorials = true
+var show_player_ghost = true
+
+
 func _ready() -> void:
 	_load_settings()
 
 func _input(event: InputEvent) -> void:
+	#input type 0 for keyboard, 1 for gamepad
 	if  input_type != 0 and event is InputEventKey :
 		input_type = 0
 		input_type_changed.emit()
@@ -46,22 +53,34 @@ func _load_settings():
 	if err != OK:
 		print("Failed to load")
 		_load_default_settings()
-		
+		var general_settings = load_general_settings()
+		change_window_mode(general_settings.get("window_mode"))
+		#set_resolution(resolutions.get(general_settings.get("resolution")))
 		return
 	else:
+		var general_settings = load_general_settings()
+		controller_vibration = general_settings.get("controller_vibration")
+		camera_shake = general_settings.get("camera_shake")
+		show_player_ghost = general_settings.get("show_player_ghost")
+		show_tutorials = general_settings.get("show_tutorials")
+		change_window_mode(general_settings.get("window_mode"))
+		#set_resolution(resolutions.get(general_settings.get("resolution")))
+		
 		print("Loaded settings")
 
 func _load_default_settings():
 	load_default_keyboard_controls()
 	load_default_controller_controls()
 	
-	#print(DisplayServer.screen_get_size())
+	print(DisplayServer.screen_get_size())
 	
-	config.set_value("general", "vibration", 2)
-	config.set_value("general", "camera_shake", 2)
+	config.set_value("general", "controller_vibration", 1)
+	config.set_value("general", "camera_shake", 1)
+	config.set_value("general", "show_tutorials", true)
+	config.set_value("general", "show_player_ghost", true)
 	
-	config.set_value("video", "window_mode", 0)
-	config.set_value("video", "resolution", DisplayServer.screen_get_size())
+	config.set_value("video", "window_mode", 1)
+	config.set_value("video", "resolution", "1280x720")
 	
 	config.set_value("audio", "master_volume", 0.75)
 	config.set_value("audio", "music_volume", 0.75)
@@ -71,7 +90,8 @@ func _load_default_settings():
 	print("Loaded default settings")
 
 func load_default_keyboard_controls():
-	config.erase_section("keybindings")
+	if config.has_section("keybindings"):
+		config.erase_section("keybindings")
 	
 	config.set_value("keybindings", "MoveLeft_0", "A")
 	config.set_value("keybindings", "MoveLeft_1", "Left")
@@ -89,7 +109,8 @@ func load_default_keyboard_controls():
 	config.save(SETTINGS_FILE_PATH)
 
 func load_default_controller_controls():
-	config.erase_section("controller")
+	if config.has_section("controller"):
+		config.erase_section("controller")
 	
 	config.set_value("controller", "MoveLeftC_0", "Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value -1.00")
 	config.set_value("controller", "MoveLeftC_1", "Joypad Button 13 (D-pad Left)")
@@ -248,3 +269,19 @@ func change_window_mode(index):
 		3: #fullscreen borderless
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+
+
+func set_resolution(value):
+	get_window().size = value
+	ConfigFileHandler.center_window()
+
+
+func save_general_settings(key : String, value):
+	config.set_value("general", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_general_settings():
+	var general_settings = {}
+	for key in config.get_section_keys("general"):
+		general_settings[key] = config.get_value("general", key)
+	return general_settings

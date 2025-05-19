@@ -11,7 +11,6 @@ func _ready():
 
 func addObjects():
 	var usedCells = tilemap.get_used_cells()
-	var cellSrcId
 	var place_at
 	var placed_positions = []
 	var placed_tiles = []

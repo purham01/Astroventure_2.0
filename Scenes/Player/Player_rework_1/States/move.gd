@@ -23,4 +23,7 @@ func update(delta):
 
 
 func enter_state():
-	Player.can_dash = true
+	if !Player.can_dash:
+		Player.can_dash = true
+		Player.change_fuel_tank_state_full()
+	Player.animated_sprite.play("run")

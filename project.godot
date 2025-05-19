@@ -26,50 +26,56 @@ DSP/dsp_buffer_count=4
 "3D Settings/distance_factor"=1.0
 "3D Settings/rolloff_scale"=1.0
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="Astroventure"
-run/main_scene="uid://br2aite2suv0n"
+run/main_scene="uid://d1llbuplgaq0g"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
 
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+LootLockerSDK="*res://addons/LootLockerSDK/LootLockerSDK.gd"
+Save="*res://Scenes/Singletons/Save.gd"
 Events="*res://Scenes/Singletons/Events.gd"
 LevelTransition="*res://Scenes/Singletons/level_transition.tscn"
 Globals="*res://Scenes/Singletons/Globals.gd"
-Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
 PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
 Analytics="*res://addons/quiver_analytics/analytics.tscn"
-Console="*res://addons/console/console.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 FreezeFrameManager="*res://Scenes/Singletons/FreezeFrameManager.gd"
 ConfigFileHandler="*res://Scenes/Singletons/ConfigFileHandler.gd"
 GUI="*res://Scenes/Singletons/gui_autoload.gd"
 ShaderEffect="*res://Scenes/Singletons/ShaderEffect/ShaderEffect.tscn"
-Save="*res://Scenes/Singletons/Save.gd"
+Console="*res://addons/console/console.gd"
+LeaderboardManager="*res://Scenes/Mechanics/Leaderboards/LeaderboardManager.tscn"
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+CameraShake="*res://Scenes/Singletons/CameraShake.gd"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/resizable=false
-window/size/borderless=true
-window/size/always_on_top=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/quiver_analytics/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
+enabled=PackedStringArray("res://addons/LootLockerSDK/plugin.cfg", "res://addons/console/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/quiver_analytics/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
 
 [gui]
 
-theme/custom="uid://dejvr5rqllmfx"
-theme/custom_font="uid://c0v5xrpar3ub6"
-theme/default_font_subpixel_positioning=0
+theme/default_theme_scale=0.5
+theme/custom="uid://df3cix25a47i3"
+theme/custom_font="uid://sph0kotu777o"
 
 [input]
 

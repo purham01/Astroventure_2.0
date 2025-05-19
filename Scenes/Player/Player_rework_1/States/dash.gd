@@ -1,9 +1,7 @@
 extends "state.gd"
 
-var dash_direction = Vector2.ZERO
+
 var dashing = false
-@export var dash_speed = 220
-@export var end_dash_speed = 140
 @export var dash_duration = 0.15
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
@@ -12,38 +10,44 @@ var dashing = false
 
 
 func update(delta):
-	Player.apply_floor_snap()
-	if !dashing and Player.is_on_floor():
-		return STATES.idle
-	elif !dashing:
+	#Player.apply_floor_snap()
+	#if !dashing and Player.is_on_floor():
+		#return STATES.idle
+	if !dashing:
 		return STATES.fall
 		
 func enter_state():
+	Player.animated_sprite.play("dash")
+	
 	Player.is_dashing = true
 	Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_DO_NOTHING
 	Player.can_dash = false
 	#Player.dash_buffer.stop()
 	dashing = true
 	Player.particle_manager.dash_ghost_timer.start()
+	Player.dash_particles.emitting = true
 	dash_timer.start(dash_duration)
+
 	#Player.shader_animation_player.play("dash_start") 
 	
 	FreezeFrameManager.freeze_frame(0.1)
-	if Player.movement_input != Vector2.ZERO:
-		dash_direction = Player.movement_input
-	else:
-		dash_direction = Player.last_direction
-	#Player.velocity = dash_direction.normalized() * dash_speed + Player.get_platform_velocity()
-	Player.velocity = dash_direction.normalized() * dash_speed 
-	Player.player_camera.apply_shake(2)
-	Input.start_joy_vibration(0, 1, 1, 0.2)
-	Input.start_joy_vibration(0, 1, 0, 0.4)
+	Player.current_gs.dash()
+	
+	
+	Player.change_fuel_tank_state_empty()
+	Player.player_camera.apply_shake(2 * ConfigFileHandler.camera_shake) 
+	if ConfigFileHandler.input_type:
+		Input.start_joy_vibration(0, 1 * ConfigFileHandler.controller_vibration, 1 * ConfigFileHandler.controller_vibration, 0.2)
+		Input.start_joy_vibration(0, 1 * ConfigFileHandler.controller_vibration, 0, 0.4)
 	
 func exit_state():
-	Player.velocity = dash_direction.normalized() * end_dash_speed
+	Player.animated_sprite.play("fall")
+
+	Player.current_gs.end_dash()
 	#Player.velocity -= (dash_direction + Player.get_platform_velocity().normalized()).normalized() * (dash_speed - end_dash_speed) 
 	dashing = false
 	Player.is_dashing = false
+	Player.dash_particles.emitting = false
 	Player.particle_manager.dash_ghost_timer.stop()
 	
 	if Player.terrain_sm.current_terrain_type == 1 or Player.terrain_sm.current_terrain_type == -1:

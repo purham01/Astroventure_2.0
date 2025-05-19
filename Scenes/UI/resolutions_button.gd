@@ -3,6 +3,11 @@ extends OptionButton
 func _ready() -> void:
 	add_resolutions()
 	update_button_values()
+	var video_settings = ConfigFileHandler.load_video_settings()
+	var window_mode = video_settings.get("window_mode")
+	if window_mode == 0 or window_mode == 3:
+		disabled = true
+	
 
 func add_resolutions():
 	for r in ConfigFileHandler.resolutions:
@@ -18,6 +23,5 @@ func _on_item_selected(index: int) -> void:
 	var key = get_item_text(index)
 	var value = (ConfigFileHandler.resolutions[key])
 	get_window().size = value
-	#get_window().set_content_scale_size(ConfigFileHandler.resolutions[key])
 	ConfigFileHandler.center_window()
 	ConfigFileHandler.save_video_settings("resolution", value)

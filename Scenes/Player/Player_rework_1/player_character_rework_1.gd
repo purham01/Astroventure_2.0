@@ -43,21 +43,25 @@ const FAST_MAX_ACCEL = 300.0
 var max_fall = 160
 
 const jump_h_boost = 20
-var wall_jump_h_speed = SPEED + 2*jump_h_boost
+@export var wall_jump_h_speed = 130
+@export var wall_jump_v_speed = -150
+
 
 #wall jumping
 @onready var wall_slide_cooldown: Timer = $WallSlideCooldown
 @onready var right_wall_raycasts: Node2D = $Raycasts/Right
 @onready var left_wall_raycasts: Node2D = $Raycasts/Left
-var WALL_JUMP_VELOCITY = Vector2(wall_jump_h_speed, -215)
-var WALL_JUMP_VELOCITY_NEUTRAL = Vector2(wall_jump_h_speed/2, -150)
+@onready var WALL_JUMP_VELOCITY = Vector2(wall_jump_h_speed, wall_jump_v_speed)
+@onready var WALL_JUMP_VELOCITY_NEUTRAL = Vector2(wall_jump_h_speed/2.0, wall_jump_v_speed)
 var wall_direction = 1
 
 #animation
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var flashing_animation_player: AnimationPlayer = $FlashingAnimationPlayer
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
+@onready var animated_sprite: AnimatedSprite2D = $Spaceman
+@onready var fuel_tank: AnimatedSprite2D = $Spaceman/FuelTank
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
+@onready var gravity_rotation_animation_player: AnimationPlayer = $GravityRotationAnimationPlayer
 
 @export_group("Squash")
 @export var squish_x = 0.7
@@ -72,6 +76,11 @@ var prev_state = null
 #mechanics
 var can_dash = true
 var is_dashing = false
+var dash_direction = Vector2.ZERO
+@export var dash_speed = 220
+@export var end_dash_speed = 140
+@export var grav_portal_boost = 250.0
+
 @export var slide_friction = 0.9
 @export var climb_up_speed = -45
 @export var climb_down_speed = 80
@@ -101,6 +110,8 @@ var prev_gs = null
 @onready var dash_buffer: Timer = $DashBuffer
 @onready var player_camera := get_tree().current_scene.get_node("PlayerCamera")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var dash_particles: GPUParticles2D = $DashParticles
+
 
 #debug
 @onready var state_info: Label = $StateInfo
@@ -125,6 +136,43 @@ var playerDead = false
 var endLevel = false
 
 var inTransition = false
+var starting_level = true
+
+var fuel_tank_offset = {
+	"idle,0" : Vector2(0,-10),
+	"run,0" : Vector2(0,-10),
+	"run,1" : Vector2(0,-9),
+	"run,2" : Vector2(0,-9),
+	"run,3" : Vector2(0,-9),
+	"run,4" : Vector2(0,-10),
+	"run,5" : Vector2(0,-10),
+	"run,6" : Vector2(0,-9),
+	"run,7" : Vector2(0,-9),
+	"run,8" : Vector2(0,-9),
+	"run,9" : Vector2(0,-9),
+	"run,10" : Vector2(0,-10),
+	"run,11" : Vector2(0,-10),
+	"jump,0" : Vector2(0,-10),
+	"jump,1" : Vector2(0,-10),
+	"fall,0" : Vector2(1,-10),
+	"fall,1" : Vector2(1,-10),
+	"dash,0" : Vector2(1,-9),
+	"dash,1" : Vector2(1,-9),
+	"dash,2" : Vector2(1,-9),
+	"dash,3" : Vector2(1,-9),
+	"wallslide,0" : Vector2(2,-10),
+	"climb,0" : Vector2(2,-10),
+	"climb,1" : Vector2(2,-10),
+	"climb,2" : Vector2(2,-10),
+	"climb,3" : Vector2(2,-10),
+	"climb,4" : Vector2(2,-10),
+	"climb,5" : Vector2(2,-10),
+	"climb_look_back,0" : Vector2(2,-10),
+	"climb_look_back,1" : Vector2(2,-10),
+	"climb_look_back,2" : Vector2(2,-10),
+	"climb_look_back,3" : Vector2(2,-10)
+	
+}
 
 func _ready() -> void:
 	for state in STATES.get_children():
@@ -140,32 +188,36 @@ func _ready() -> void:
 	prev_gs = GRAVITY_STATES.down
 	
 	follower_controller.Player = self
-	particle_manager.Player = self
-	
 	#print(max_jump_velocity)
 	#print(min_jump_velocity)
 	#print(jump_gravity)
 	#print(fall_gravity)
+
+func _process(delta: float) -> void:
+	manage_fuel_tank_anim()
 	
+	#debug
+	state_info.text = str(current_state.get_name())
+	x_speed.text = str(velocity.x)
+	y_speed.text = str(velocity.y)
+	stamina_info.text = str(current_stamina)
 
 func _physics_process(delta: float) -> void:
-	squish_reset(delta)
+	
+	if current_state != STATES.gravity_transition:
+		squish_reset(delta)
+	change_state(current_state.update(delta))
+	
 	if !playerDead:
 		player_input()
 		_update_wall_direction()
 		stamina_reset_check()
-		change_state(current_state.update(delta))
+		
 		calc_max_fall_speed(delta)
 		#current_gs.corner_correction(corner_correction_amount)
-		current_gs.attempt_correction(3)
+		current_gs.attempt_correction_up(3)
 		
 		handle_jump_buffer()
-		
-		#debug
-		state_info.text = str(current_state.get_name())
-		x_speed.text = str(velocity.x)
-		y_speed.text = str(velocity.y)
-		stamina_info.text = str(current_stamina)
 		
 		if is_dashing:
 			move_and_collide(velocity * delta)
@@ -178,6 +230,25 @@ func _physics_process(delta: float) -> void:
 		current_gs._assign_animation(delta)
 	#print(is_on_wall())
 
+func manage_fuel_tank_anim():
+	if animated_sprite.animation == "poof" and fuel_tank.visible:
+		fuel_tank.hide()
+	elif animated_sprite.animation != "poof" and !fuel_tank.visible:
+		fuel_tank.show()
+	fuel_tank.flip_h = animated_sprite.flip_h
+	var fetch = animated_sprite.animation + "," + str(animated_sprite.frame)
+	#print(fetch)
+	if fuel_tank_offset.get(fetch) != null:
+		var value = fuel_tank_offset.get(fetch)
+		if fuel_tank.flip_h:
+			value.x *= -1
+		fuel_tank.offset = value
+
+func change_fuel_tank_state_empty():
+	fuel_tank.play("change_state")
+
+func change_fuel_tank_state_full():
+	fuel_tank.play_backwards("change_state")
 
 func stamina_reset_check():
 	if current_stamina < 20 and !flashing_animation_player.is_playing():
@@ -241,7 +312,7 @@ func change_state(input_state):
 		current_state.enter_state()
 
 func change_gravity_state(input_state):
-	if (input_state != null) and input_state!=current_gs:
+	if (input_state != null):
 		prev_gs = current_gs
 		current_gs = input_state
 		
@@ -257,14 +328,15 @@ func _update_wall_direction():
 	else:
 		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
 	
+	#print("wall direction: ", wall_direction)
 
 func _check_is_valid_wall(wall_raycasts):
 	for raycast : RayCast2D in wall_raycasts.get_children():
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
-			var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
-			if dot > PI * 0.35 && dot < PI * 0.55: 
-				return true
+			#var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
+			#if dot > PI * 0.35 && dot < PI * 0.55: 
+			return true
 	return false
 
 func squish_reset(delta):
@@ -287,14 +359,11 @@ func _on_room_detector_area_entered(area: Area2D) -> void:
 	# Gets collision shape and size of room
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
- 
-
 	
 	# Changes camera's current room and size. check camera script for more info
 	player_camera.change_room(collision_shape.global_position, size)
 	
 	#adds vertical boost if coming from below
-	#TODO
 	if area.entrance_from_below:
 		current_gs.vertical_boost()
 		area.entrance_from_below = false
@@ -304,9 +373,9 @@ func handle_jump_buffer():
 	if !is_on_floor() and jump_input_actuation:
 		jump_buffer.start()
 
-func handle__buffer():
-	if can_dash and dash_input:
-		dash_buffer.start()
+#func handle_dash_buffer():
+	#if can_dash and dash_input:
+		#dash_buffer.start()
 
 func _on_hazard_detector_entered(area: Area2D) -> void:
 	respawn()
@@ -317,7 +386,7 @@ func _on_hazard_detector_body_entered(body: Node2D) -> void:
 func respawn():
 	change_state(STATES.dead)
 	
-func set_spawn(new_position):
+func set_spawn(new_position, spawn_gravity_dir):
 	starting_position = new_position
 	
 func _end_level_anim():

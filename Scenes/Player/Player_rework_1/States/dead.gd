@@ -18,15 +18,19 @@ func enter_state():
 	Player.current_stamina = Player.max_stamina
 	Player.flashing_animation_player.stop()
 	Player.velocity = Vector2.ZERO
+	#Player.fuel_tank.hide()
 	Player.animated_sprite.play("poof") #sometimes this just doesn't play, dunno why
 	Player.animated_sprite.position.y += 1
 	await(Player.animated_sprite.animation_finished)
 	Player.global_position = Player.starting_position
-	Player.animated_sprite.play("respawn")
+	Player.animated_sprite.play_backwards("poof")
 	await(Player.animated_sprite.animation_finished)
 	
 	Player.animated_sprite.position.y-=1
 	Player.collision_shape_2d.set_deferred("disabled", false)
 	Player.has_first_moved_after_respawn = false
 	Player.playerDead = false
+	#Player.fuel_tank.show()
+	
 	Player.animated_sprite.play("idle")
+	

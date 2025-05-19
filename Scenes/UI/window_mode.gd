@@ -9,9 +9,10 @@ func add_resolutions():
 		add_item(r)
 
 func update_button_values():
-	pass
-	#selected = ConfigFileHandler.window_mode_index
+	var video_settings = ConfigFileHandler.load_video_settings()
+	selected = video_settings.get("window_mode")
 
 func _on_item_selected(index: int) -> void:
 	ConfigFileHandler.change_window_mode(index)
 	ConfigFileHandler.save_video_settings("window_mode", index)
+	

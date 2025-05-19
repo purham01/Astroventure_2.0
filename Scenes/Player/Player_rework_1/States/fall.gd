@@ -18,7 +18,7 @@ func update(delta):
 		Player.animated_sprite.scale = Vector2(Player.squash_x, Player.squash_y)
 		return STATES.idle
 		
-	if Player.wall_direction != 0 and Player.climb_input and Player.current_stamina > 0 and (Player.is_on_wall() or Player.wall_direction != 0):
+	if sign(Player.last_direction.x) == sign(Player.wall_direction) and Player.climb_input and Player.current_stamina > 0 and (Player.is_on_wall() or Player.wall_direction != 0):
 		return STATES.climb
 	
 	#no stamina wall slide
@@ -36,9 +36,12 @@ func update(delta):
 		return STATES.jump
 		
 	return null
-#
+
 
 func enter_state():
+
+	Player.animated_sprite.play("fall")
+
 	if Player.prev_state == STATES.idle or Player.prev_state == STATES.move or Player.prev_state == STATES.wall_slide:
 		can_jump = true
 		coyote_time.start(coyote_duration)

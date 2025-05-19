@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxpncgwyh5be5"]
+[gd_scene load_steps=4 format=3 uid="uid://dxpncgwyh5be5"]
 
 [ext_resource type="Script" uid="uid://bls16drt2ipla" path="res://Scenes/Player/Player_rework_1/particle_manager.gd" id="1_qqoys"]
-[ext_resource type="PackedScene" uid="uid://fcgi8uskjnju" path="res://Scenes/Player/Player_rework_1/dash_ghost.tscn" id="2_jl8pw"]
+[ext_resource type="PackedScene" uid="uid://b32j6ds0uduwo" path="res://Scenes/Player/Player_rework_1/dash_ghost_ghost.tscn" id="2_jl8pw"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jl8pw"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="ParticleManager" type="Node"]
 script = ExtResource("1_qqoys")
@@ -9,5 +13,9 @@ ghost_node = ExtResource("2_jl8pw")
 
 [node name="DashGhostTimer" type="Timer" parent="."]
 wait_time = 0.05
+
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_jl8pw")
 
 [connection signal="timeout" from="DashGhostTimer" to="." method="_on_ghost_timer_timeout"]

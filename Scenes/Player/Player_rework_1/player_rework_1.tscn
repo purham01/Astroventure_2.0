@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://u0n6wc1k3cuo"]
+[gd_scene load_steps=57 format=3 uid="uid://u0n6wc1k3cuo"]
 
 [ext_resource type="Script" uid="uid://bmfn5bj1epfaa" path="res://Scenes/Player/Player_rework_1/player_character_rework_1.gd" id="1_kqp0r"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="2_a8ty3"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dcxk63lth4eyc" path="res://Scenes/Player/Player_rework_1/States/dead.tscn" id="11_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://dn86crhgylqix" path="res://Scenes/Player/Player_rework_1/gravity states/down.tscn" id="12_7ubbk"]
 [ext_resource type="Script" uid="uid://dw0bs6ox14xeg" path="res://Scenes/Player/Player_rework_1/gravity states/down.gd" id="13_6xkw4"]
+[ext_resource type="PackedScene" uid="uid://by52oe8di7tar" path="res://Scenes/Player/Player_rework_1/States/transition_2.tscn" id="13_27udp"]
 [ext_resource type="PackedScene" uid="uid://bcskm82lwlhuv" path="res://Scenes/Player/Player_rework_1/States/transition.tscn" id="13_vpm28"]
 [ext_resource type="PackedScene" uid="uid://dbhgokf44durj" path="res://Scenes/Player/Player_rework_1/gravity states/up.tscn" id="14_ougty"]
 [ext_resource type="Script" uid="uid://cl8q4ujt6gx8s" path="res://Scenes/Player/Player_rework_1/gravity states/up.gd" id="15_edhhf"]
@@ -26,7 +27,66 @@
 [ext_resource type="PackedScene" uid="uid://ceqk0mth14hfw" path="res://Scenes/Player/Player_rework_1/terrain_sm.tscn" id="22_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://c1ukhf4rqiy2t" path="res://Scenes/Player/Player_rework_1/follower_controller.tscn" id="23_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://dxpncgwyh5be5" path="res://Scenes/Player/Player_rework_1/particle_manager.tscn" id="24_j20j7"]
+[ext_resource type="Texture2D" uid="uid://ccnkqphxc85uw" path="res://Assets/Player/Astronaut/fueltank.png" id="26_vpm28"]
 [ext_resource type="Texture2D" uid="uid://bvrixyehvqh47" path="res://Assets/Light/light32x32.png" id="27_j20j7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpm28"]
+atlas = ExtResource("26_vpm28")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27udp"]
+atlas = ExtResource("26_vpm28")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yne2c"]
+atlas = ExtResource("26_vpm28")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gynca"]
+atlas = ExtResource("26_vpm28")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1px0k"]
+atlas = ExtResource("26_vpm28")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yne2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpm28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27udp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yne2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gynca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1px0k")
+}],
+"loop": false,
+"name": &"change_state",
+"speed": 30.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_j20j7"]
+offsets = PackedFloat32Array(0, 0.361186)
+colors = PackedColorArray(0.141176, 0.360784, 0.65098, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vpm28"]
+gradient = SubResource("Gradient_j20j7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_27udp"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, 9.8, 0)
+color = Color(0.66925, 0.878765, 0.996094, 1)
+color_ramp = SubResource("GradientTexture1D_vpm28")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pagqt"]
 size = Vector2(10, 15)
@@ -45,19 +105,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/path = NodePath("Spaceman:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite:rotation")
+tracks/1/path = NodePath("Spaceman:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -73,19 +133,19 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/path = NodePath("Spaceman:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20)]
+"values": [Vector2(0, -6), Vector2(0, -26)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite:rotation")
+tracks/1/path = NodePath("Spaceman:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,7 +157,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite")
+tracks/2/path = NodePath("Spaceman")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -123,7 +183,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/path = NodePath("Spaceman:material:shader_parameter/BooleanParameter")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +199,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/path = NodePath("Spaceman:material:shader_parameter/BooleanParameter")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -155,7 +215,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:material:shader_parameter/BooleanParameter")
+tracks/0/path = NodePath("Spaceman:material:shader_parameter/BooleanParameter")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -177,7 +237,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath("Spaceman:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -194,7 +254,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath("Spaceman:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,6 +268,60 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_jnrrg"),
 &"stamina_flashing": SubResource("Animation_6xtkv")
+}
+
+[sub_resource type="Animation" id="Animation_yne2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceman:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_27udp"]
+resource_name = "grav_change"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceman:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gynca"]
+resource_name = "grav_change_2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceman:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yne2c"]
+_data = {
+&"RESET": SubResource("Animation_yne2c"),
+&"grav_change": SubResource("Animation_27udp"),
+&"grav_change_2": SubResource("Animation_gynca")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -245,6 +359,8 @@ script = ExtResource("2_rx16d")
 
 [node name="TRANSITION" parent="STATES" instance=ExtResource("13_vpm28")]
 
+[node name="GRAVITY_TRANSITION" parent="STATES" instance=ExtResource("13_27udp")]
+
 [node name="GRAVITY STATES" type="Node" parent="."]
 script = ExtResource("11_iydpg")
 
@@ -264,19 +380,34 @@ script = ExtResource("19_vpm28")
 
 [node name="FollowerController" parent="." instance=ExtResource("23_jnrrg")]
 
-[node name="ParticleManager" parent="." instance=ExtResource("24_j20j7")]
+[node name="ParticleManager" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("24_j20j7")]
+animated_sprite = NodePath("../Spaceman")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="Spaceman" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
 sprite_frames = ExtResource("2_a8ty3")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -10)
 
+[node name="FuelTank" type="AnimatedSprite2D" parent="Spaceman"]
+sprite_frames = SubResource("SpriteFrames_yne2c")
+animation = &"change_state"
+offset = Vector2(0, -10)
+
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -9)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_27udp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_pagqt")
 
 [node name="HazardDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 4
 priority = 1
@@ -312,7 +443,7 @@ position = Vector2(-12, -15)
 [node name="Left" type="Node2D" parent="Raycasts"]
 
 [node name="TopLeft" type="RayCast2D" parent="Raycasts/Left"]
-position = Vector2(0, -15)
+position = Vector2(0, -14)
 target_position = Vector2(-7, 0)
 
 [node name="MiddleLeft" type="RayCast2D" parent="Raycasts/Left"]
@@ -320,13 +451,13 @@ position = Vector2(0, -8)
 target_position = Vector2(-7, 0)
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts/Left"]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 target_position = Vector2(-7, 0)
 
 [node name="Right" type="Node2D" parent="Raycasts"]
 
 [node name="TopRight" type="RayCast2D" parent="Raycasts/Right"]
-position = Vector2(0, -15)
+position = Vector2(0, -14)
 target_position = Vector2(7, 0)
 
 [node name="MiddleRight" type="RayCast2D" parent="Raycasts/Right"]
@@ -334,7 +465,7 @@ position = Vector2(0, -8)
 target_position = Vector2(7, 0)
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts/Right"]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 target_position = Vector2(7, 0)
 
 [node name="CornerCheckRaycasts" type="Node2D" parent="."]
@@ -357,7 +488,7 @@ position = Vector2(5, -15)
 target_position = Vector2(0, -5)
 
 [node name="GhostMarker" type="Marker2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -16)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -8)
@@ -399,7 +530,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_jnrrg")
 }
 
+[node name="GravityRotationAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yne2c")
+}
+
 [node name="StaminaInfo" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -46.0
 offset_right = 20.0
@@ -409,6 +546,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StateInfo" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -39.0
 offset_right = 20.0
@@ -437,8 +575,10 @@ text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="animation_finished" from="Spaceman" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="animation_finished" from="Spaceman/FuelTank" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]
 [connection signal="terrain_entered" from="TerrainDetector" to="TERRAIN SM" method="_on_terrain_detector_terrain_entered"]
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]
+[connection signal="animation_finished" from="GravityRotationAnimationPlayer" to="STATES/GRAVITY_TRANSITION" method="_on_gravity_rotation_animation_player_animation_finished"]

@@ -6,5 +6,6 @@
 script = ExtResource("1_71qrl")
 
 [node name="TransitionTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

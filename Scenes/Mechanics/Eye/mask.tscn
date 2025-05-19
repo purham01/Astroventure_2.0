@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://clujxrm1w4sgn"]
+
+[ext_resource type="Script" uid="uid://bmogrmdjdfc5f" path="res://Scenes/Mechanics/Eye/mask.gd" id="1_c17w6"]
+[ext_resource type="Texture2D" uid="uid://ckpvutqir2c17" path="res://Assets/Level assets/mask.png" id="1_n5hd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c17w6"]
+atlas = ExtResource("1_n5hd5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y074k"]
+atlas = ExtResource("1_n5hd5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5syo"]
+atlas = ExtResource("1_n5hd5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8irf"]
+atlas = ExtResource("1_n5hd5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lauon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c17w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y074k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5syo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8irf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Mask" type="Node2D"]
+script = ExtResource("1_c17w6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lauon")

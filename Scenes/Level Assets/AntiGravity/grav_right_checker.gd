@@ -1,16 +1,14 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		body.set_gravity_right()
+		body.change_gravity_state(body.GRAVITY_STATES.right)
+		animation_player.play("enter_portal")
+		await Events.enter_portal
+		body.global_position = global_position
+		Events.emit_signal("change_gravity", 270)
+		
+		await Events.exit_portal
+		animation_player.play("exit_portal")

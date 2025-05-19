@@ -4,3 +4,6 @@
 
 [node name="PlayerCamera" type="Camera2D"]
 script = ExtResource("1_pek5s")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

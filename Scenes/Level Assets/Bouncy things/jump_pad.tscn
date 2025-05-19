@@ -1,10 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpqt3q3yiqvyw"]
 
 [ext_resource type="Script" uid="uid://dlqdbwas8hdra" path="res://Scenes/Level Assets/Bouncy things/jump_pad.gd" id="1_vpgp3"]
-[ext_resource type="Texture2D" uid="uid://bdbh6bjyb2q6a" path="res://icon.svg" id="2_h2csv"]
+[ext_resource type="Texture2D" uid="uid://l43ybkj7haw2" path="res://Assets/Level assets/bouncy boi.png" id="2_h2csv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ye8ko"]
-size = Vector2(12, 4)
+size = Vector2(14, 3.9823)
+
+[sub_resource type="Animation" id="Animation_jdrff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_h2csv"]
 resource_name = "squish"
@@ -19,22 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.0936305, 0.0309753), Vector2(0.105774, 0.0269668), Vector2(0.0936305, 0.0309753)]
-}
-
-[sub_resource type="Animation" id="Animation_jdrff"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.0936305, 0.0309753)]
+"values": [Vector2(1, 1), Vector2(1, 0.5), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdrff"]
@@ -47,8 +47,7 @@ _data = {
 script = ExtResource("1_vpgp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.0109183, -1.51503)
-scale = Vector2(0.0936305, 0.0309753)
+position = Vector2(0, -8)
 texture = ExtResource("2_h2csv")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -56,7 +55,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1.50885)
+position = Vector2(0, -2.00885)
 shape = SubResource("RectangleShape2D_ye8ko")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

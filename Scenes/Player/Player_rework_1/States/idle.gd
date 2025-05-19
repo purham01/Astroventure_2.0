@@ -16,10 +16,13 @@ func update(delta):
 	if Player.dash_input and Player.can_dash:
 		return STATES.dash
 	
-	if Player.wall_direction != 0 and Player.climb_input and Player.is_on_wall():
+	if sign(Player.last_direction.x) == sign(Player.wall_direction) and Player.climb_input and (Player.is_on_wall() or Player.wall_direction != 0):
 		return STATES.climb
 	
 	return null
 
 func enter_state():
-	Player.can_dash = true
+	if !Player.can_dash:
+		Player.can_dash = true
+		Player.change_fuel_tank_state_full()
+	Player.animated_sprite.play("idle")

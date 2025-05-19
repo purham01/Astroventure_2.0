@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwsb7utpqgxk6"]
+
+[ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="1_r7qxx"]
+[ext_resource type="Script" uid="uid://0lyaej4yknb7" path="res://addons/quiver_leaderboards/leaderboard_ui.gd" id="2_gf2ha"]
+
+[node name="LeaderboardUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_r7qxx")
+script = ExtResource("2_gf2ha")
+leaderboard_id = "astroventure-earth-4Wzz"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 6
+text = "Leaderboards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nav" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="PanelContainer/VBoxContainer/Nav"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = " < "
+
+[node name="ScoresLabel" type="Label" parent="PanelContainer/VBoxContainer/Nav"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Scores"
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="PanelContainer/VBoxContainer/Nav"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = " > "
+
+[node name="ScoreList" type="Tree" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_r7qxx")
+theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/title_button_font_size = 6
+columns = 3
+column_titles_visible = true
+allow_reselect = true
+allow_search = false
+hide_folding = true
+hide_root = true
+select_mode = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Nav/PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Nav/NextButton" to="." method="_on_next_button_pressed"]

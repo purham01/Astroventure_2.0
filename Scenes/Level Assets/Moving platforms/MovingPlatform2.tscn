@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://rgqyrmwg1sxi"]
+[gd_scene load_steps=7 format=3 uid="uid://dkj3rnw1dt08h"]
 
-[ext_resource type="Script" uid="uid://nyxq5nq87ycf" path="res://Scenes/Level Assets/Moving platforms/moving_platform.gd" id="1_cvlcv"]
-[ext_resource type="Texture2D" uid="uid://cyd2vndcj4wr8" path="res://Assets/Tilesets/Terrain (16x16).png" id="1_o84ea"]
+[ext_resource type="Script" uid="uid://nyxq5nq87ycf" path="res://Scenes/Level Assets/Moving platforms/moving_platform.gd" id="1_v4tu0"]
+[ext_resource type="Texture2D" uid="uid://b6kvhlp1qyebm" path="res://Assets/Level assets/Moving platforms/moving_platform2.png" id="2_v4tu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o84ea"]
-size = Vector2(48, 16)
+size = Vector2(24, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvlcv"]
-size = Vector2(45.8927, 2)
+size = Vector2(24, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsty"]
 size = Vector2(2.1228, 15.9965)
@@ -16,25 +16,27 @@ size = Vector2(2.1228, 15.9965)
 size = Vector2(2.1228, 15.9311)
 
 [node name="MovingPlatform" type="Node2D"]
-script = ExtResource("1_cvlcv")
+script = ExtResource("1_v4tu0")
 metadata/_edit_group_ = true
 
 [node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(12, 0)
 
 [node name="DestinationPoint" type="Marker2D" parent="."]
 position = Vector2(97, 1)
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
+position = Vector2(12, 0)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
-position = Vector2(0, 4)
-texture = ExtResource("1_o84ea")
-region_enabled = true
+position = Vector2(-12, 0)
+texture = ExtResource("2_v4tu0")
+centered = false
 region_rect = Rect2(272, 32, 48, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(0, 8)
+position = Vector2(4.76837e-07, 8)
 shape = SubResource("RectangleShape2D_o84ea")
 
 [node name="PlayerOnTop" type="Area2D" parent="Platform"]
@@ -42,7 +44,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnTop"]
-position = Vector2(-0.0141401, 0)
+position = Vector2(4.76837e-07, 0)
 shape = SubResource("RectangleShape2D_cvlcv")
 
 [node name="PlayerOnSide" type="Area2D" parent="Platform"]
@@ -50,7 +52,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide"]
-position = Vector2(-23.938, 8.00174)
+position = Vector2(-12, 8)
 shape = SubResource("RectangleShape2D_5dsty")
 
 [node name="PlayerOnSide2" type="Area2D" parent="Platform"]
@@ -59,7 +61,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide2"]
-position = Vector2(0, 0.534457)
+position = Vector2(-11.9427, 0.51578)
 shape = SubResource("RectangleShape2D_5pqbr")
 
 [node name="WiggleRoomTimer" type="Timer" parent="."]

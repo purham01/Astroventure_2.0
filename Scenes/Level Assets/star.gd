@@ -12,14 +12,29 @@ var follow_player = false
 var speed = 20
 #@onready var player = get_tree().get_root().get_node("World/Player")
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var sprite_2d: Sprite2D = $Sprite2D2
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 var star_location
 var player
 var can_pick_up = false
 var picking_up = false
+@export var collected = false
+var id = 0
+var level_codename = ""
 
 func _ready():
 	Events.pickup_stars.connect(pickup)
 	Events.player_dead.connect(reset_position)
+	#if collected:
+		#set_as_collected()
+
+func set_as_collected():
+	collected = true
+	sprite_2d.modulate = Color(1,1,1,0.5)
+	gpu_particles_2d.modulate = Color(1,1,1,0.5)
+	animated_sprite_2d.modulate = Color(1,1,1,0.5)
 
 func _physics_process(delta):
 	if !picking_up:
@@ -68,8 +83,17 @@ func pickup():
 		print(stars.size())
 		animation_player.play("pickup")
 		pick_up.emit()
-		Events.update_score.emit()
+		if !collected:
+			Events.update_score.emit()
+			save_star_data()
 
+func save_star_data():
+	var dict : Dictionary = Save.save_data.get(level_codename)
+	var stars_list = dict.get("Stars")
+	stars_list[id] = true
+	dict.set("Stars", stars_list)
+	Save.save_data.set(level_codename, dict)
+	Save.save_game()
 
 func _on_animated_sprite_2d_animation_finished():
 	if star_location != null:
@@ -80,5 +104,7 @@ func _on_animated_sprite_2d_animation_finished():
 func show_popup():
 	var text = floating_text.instantiate()
 	text.position = $TextMarker.global_position
+	if collected:
+		text.modulate = Color(1,1,1,0.75)
 	
 	get_tree().current_scene.add_child(text)

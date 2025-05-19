@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bprbfwwmf1daq"]
+
+[ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_a5l2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5l2g"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j6i3b"]
+resource_local_to_scene = true
+b = Vector2(24, 0)
+
+[node name="Earth" instance=ExtResource("1_a5l2g")]
+
+[node name="Player" parent="." index="8"]
+position = Vector2(26, 173)
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_a5l2g")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_j6i3b")
+
+[editable path="Rooms/Room"]

@@ -1,8 +1,14 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dejvr5rqllmfx"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dejvr5rqllmfx"]
 
 [ext_resource type="StyleBox" uid="uid://c5wwtvvt0may2" path="res://Aesthethics/Black9Slice.tres" id="1_8udwc"]
 [ext_resource type="FontFile" uid="uid://c0v5xrpar3ub6" path="res://Assets/UI/Fonts/monogram/ttf/monogram.ttf" id="1_qhudf"]
 [ext_resource type="StyleBox" uid="uid://bf28nlcvgo3ly" path="res://Aesthethics/WhiteSliceTexture.tres" id="1_w36qi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx4e5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhudf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqj1i"]
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -17,7 +23,14 @@ Button/styles/normal = ExtResource("1_w36qi")
 Button/styles/pressed = ExtResource("1_w36qi")
 Label/font_sizes/font_size = 7
 Label/fonts/font = ExtResource("1_qhudf")
+OptionButton/font_sizes/font_size = 8
+PopupMenu/colors/font_hover_color = Color(0, 0, 0, 1)
+PopupMenu/styles/hover = ExtResource("1_w36qi")
+PopupMenu/styles/panel = ExtResource("1_8udwc")
 RichTextLabel/constants/line_separation = 3
 RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/mono_font = ExtResource("1_qhudf")
 RichTextLabel/fonts/normal_font = ExtResource("1_qhudf")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_cx4e5")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_qhudf")
+Tree/styles/focus = SubResource("StyleBoxEmpty_jqj1i")
