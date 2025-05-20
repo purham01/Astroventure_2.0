@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c20by7l4tiaml"]
+[gd_scene load_steps=25 format=3 uid="uid://c20by7l4tiaml"]
 
 [ext_resource type="Script" uid="uid://p5vko0wka2xq" path="res://Scenes/Levels/MapScreen.gd" id="1_058mk"]
 [ext_resource type="PackedScene" uid="uid://deuo0m6mfokye" path="res://Scenes/Level Assets/ship.tscn" id="1_lgnu1"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://db0nhncrd0qq2" path="res://Aesthethics/pixel_font.ttf" id="11_odxjm"]
 [ext_resource type="PackedScene" uid="uid://bkvs6f6irfekt" path="res://Scenes/Level Assets/Planets/earth.tscn" id="13_d0emp"]
 [ext_resource type="PackedScene" uid="uid://hj7yxl4lnnor" path="res://Scenes/UI/ui_level_select.tscn" id="14_10y4k"]
+[ext_resource type="PackedScene" uid="uid://bmapv4seantau" path="res://Scenes/NewLevels/Neptune.tscn" id="15_h8kd6"]
 [ext_resource type="PackedScene" uid="uid://7a8w0j1m350r" path="res://Scenes/Level Assets/Planets/uranus.tscn" id="16_6fiog"]
 [ext_resource type="PackedScene" uid="uid://bjbrkn1uecc05" path="res://Scenes/Level Assets/Planets/neptune.tscn" id="16_s6ejm"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="22_y8gi4"]
@@ -297,6 +298,7 @@ rotates = false
 
 [node name="Neptune" parent="NeptunePath2D/NeptunePathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("16_s6ejm")]
 scale = Vector2(0.0911031, 0.0911031)
+level = ExtResource("15_h8kd6")
 speed = 1
 ship = NodePath("../../../Ship")
 

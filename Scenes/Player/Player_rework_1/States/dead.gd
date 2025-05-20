@@ -18,11 +18,17 @@ func enter_state():
 	Player.current_stamina = Player.max_stamina
 	Player.flashing_animation_player.stop()
 	Player.velocity = Vector2.ZERO
+	
 	#Player.fuel_tank.hide()
 	Player.animated_sprite.play("poof") #sometimes this just doesn't play, dunno why
 	Player.animated_sprite.position.y += 1
 	await(Player.animated_sprite.animation_finished)
+	Events.enter_portal.emit()
+	
+	
+	reset_spawn_gravity()
 	Player.global_position = Player.starting_position
+	
 	Player.animated_sprite.play_backwards("poof")
 	await(Player.animated_sprite.animation_finished)
 	
@@ -33,4 +39,10 @@ func enter_state():
 	#Player.fuel_tank.show()
 	
 	Player.animated_sprite.play("idle")
-	
+
+func reset_spawn_gravity():
+	if Player.starting_gravity == Player.current_gs:
+		return
+	else:
+		Player.change_gravity_state(Player.starting_gravity)
+		Events.emit_signal("enter_portal")

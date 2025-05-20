@@ -27,6 +27,7 @@ var level_codename = ""
 func _ready():
 	Events.pickup_stars.connect(pickup)
 	Events.player_dead.connect(reset_position)
+	Events.connect("change_gravity", change_gravity)
 	#if collected:
 		#set_as_collected()
 
@@ -107,4 +108,31 @@ func show_popup():
 	if collected:
 		text.modulate = Color(1,1,1,0.75)
 	
+	text.rotation = rotation
+	
 	get_tree().current_scene.add_child(text)
+
+
+func change_gravity(new_rotation_degrees):
+	
+	if new_rotation_degrees == 0:
+		gpu_particles_2d.process_material.gravity = Vector3(0, 9.81, 0)
+	elif new_rotation_degrees == 180:
+		gpu_particles_2d.process_material.gravity = Vector3(0, -9.81, 0)
+	elif new_rotation_degrees == 90:
+		gpu_particles_2d.process_material.gravity = Vector3(-9.81, 0, 0)
+	elif new_rotation_degrees == 270:
+		gpu_particles_2d.process_material.gravity = Vector3(9.81, 0, 0)
+	
+	var tween = get_tree().create_tween()
+	
+	if new_rotation_degrees == 0 and rotation_degrees == 270:
+		new_rotation_degrees = 360
+	elif abs(rotation_degrees - new_rotation_degrees) > 180:
+		new_rotation_degrees = new_rotation_degrees - 360
+
+	
+	tween.tween_property(self, "rotation_degrees", new_rotation_degrees, CameraShake.camera_transition_duration)
+	await tween.finished
+	if rotation_degrees == -360 or rotation_degrees == 360:
+		rotation_degrees = 0

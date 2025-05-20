@@ -16,7 +16,7 @@ var player_first_move = false
 var _ghost_data = []
 var i = 0
 var _running_time = 0
-var dont_run = false
+@export var dont_run = false
 
 var fuel_tank_offset = {
 	"idle,0" : Vector2(0,0),
@@ -54,8 +54,11 @@ var fuel_tank_offset = {
 	
 }
 
+var ready_to_run = true
 
 func _ready() -> void:
+	ready_to_run = false
+	Events.connect("player_first_move", start_moving)
 	if ConfigFileHandler.show_player_ghost == false:
 		dont_run = true
 		visible = false
@@ -63,7 +66,6 @@ func _ready() -> void:
 	
 	if Save.player_UID == "":
 		await Events.player_logged_in
-	Events.connect("player_first_move", start_moving)
 	
 	if LeaderboardManager.player_ghost_name != "":
 		player_name_label.text = LeaderboardManager.player_ghost_name
@@ -78,14 +80,16 @@ func _ready() -> void:
 		print("Ghost data to load: ", Save.player_UID)
 		load_data_from_file(get_parent().name, Save.player_UID)
 	#print(_ghost_data)
-	if !dont_run and !disable:
+	if !disable:
 		global_transform = _ghost_data[0].global_transform
 		visual.global_transform = _ghost_data[0].global_transform
-	else:
-		visible = false
+		visible = true
+		ready_to_run = true
 
 func _process(delta: float) -> void:
 	visual.global_position = visual.global_position.lerp(global_position, pow(0.5, delta * _JITTER_LERP_SPEED))
+	visual.rotation = rotation
+	#visual.global_transform.interpolate_with(global_transform,pow(0.5, delta * _JITTER_LERP_SPEED))
 	manage_fuel_tank_anim()
 
 func _physics_process(delta: float) -> void:
@@ -131,4 +135,4 @@ func load_data_from_file(levelName : String, player_id = Save.player_UID):
 			if line != "":
 				_ghost_data.append(GhostData.from_line(line))
 	else:
-		dont_run = true
+		disable = true

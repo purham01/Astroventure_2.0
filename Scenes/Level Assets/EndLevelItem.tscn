@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8yd44clm2sy4"]
+[gd_scene load_steps=18 format=3 uid="uid://c8yd44clm2sy4"]
 
 [ext_resource type="Script" uid="uid://bfnyn168obu1p" path="res://Scenes/Level Assets/end_level_item.gd" id="1_wh40d"]
-[ext_resource type="Texture2D" uid="uid://d0ub0jc2sj6ar" path="res://Assets/star/sprite_00.png" id="2_s3bb0"]
+[ext_resource type="Texture2D" uid="uid://doacfbwf2hfw1" path="res://Assets/Level assets/Pixel purple gem.png" id="2_jp42a"]
 
 [sub_resource type="Gradient" id="Gradient_b75hx"]
 colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
@@ -17,8 +17,65 @@ gravity = Vector3(0, 9.8, 0)
 color = Color(0.435294, 1, 0.92549, 1)
 color_ramp = SubResource("GradientTexture1D_6e0tu")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c55oa"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4rk2"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clslb"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hvxw"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfho8"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxwx1"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgxn8"]
+atlas = ExtResource("2_jp42a")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ns4o6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c55oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4rk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clslb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hvxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfho8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxwx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgxn8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_pc1w0"]
-radius = 5.0
+radius = 6.72365
 
 [sub_resource type="Animation" id="Animation_ja34t"]
 resource_name = "Float"
@@ -63,16 +120,16 @@ collision_mask = 18
 script = ExtResource("1_wh40d")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-1.56083, 3.96623)
+position = Vector2(-0.0388249, 0.405031)
+lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_x3u3n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_s3bb0")
+sprite_frames = SubResource("SpriteFrames_ns4o6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.64605, 2.11798)
+position = Vector2(0.0798831, 0.188994)
 shape = SubResource("CircleShape2D_pc1w0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

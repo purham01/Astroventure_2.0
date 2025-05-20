@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://br2aite2suv0n"]
+[gd_scene load_steps=43 format=4 uid="uid://br2aite2suv0n"]
 
 [ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_sfeck"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="2_104i5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://clsbi1oem8s8c" path="res://Assets/Conveyor belt/conveyor belt.png" id="11_ac46s"]
 [ext_resource type="PackedScene" uid="uid://dkj3rnw1dt08h" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform2.tscn" id="15_ua6dm"]
 [ext_resource type="PackedScene" uid="uid://odaarr34e35i" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform3.tscn" id="16_oh7b0"]
+[ext_resource type="PackedScene" uid="uid://bukecgthamxpo" path="res://Scenes/UI/tutorial_popup.tscn" id="17_oh7b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_heqr1"]
 texture = ExtResource("6_btaoe")
@@ -1564,8 +1565,11 @@ galaxy_medal_time = 40.0
 nebula_medal_time = 60.0
 supernova_medal_time = 90.0
 
+[node name="PlayerGhost" parent="." index="5"]
+visible = false
+
 [node name="Player" parent="." index="8"]
-position = Vector2(1216, -856)
+position = Vector2(24, 144)
 ACCELARATION = 1000.0
 FRICTION = 1000.0
 
@@ -1577,7 +1581,6 @@ tile_set = SubResource("TileSet_yawj3")
 tile_map_data = PackedByteArray("AACJALn/AQAAAAAAAACKALn/AQAAAAAAAACLALn/AQAAAAAAAACPALb/AQAAAAAAAACQALb/AQAAAAAAAACRALb/AQAAAAAAAACKALP/AQAAAAAAAACJALP/AQAAAAAAAACIALP/AQAAAAAAAACKAK7/AQAAAAAAAACLAK7/AQAAAAAAAACMAK7/AQAAAAAAAAA=")
 
 [node name="CollisionShape2D" parent="Rooms/Room" index="0"]
-visible = false
 shape = SubResource("RectangleShape2D_3w2cn")
 
 [node name="Checkpoint" parent="Rooms/Room/Checkpoints" index="0"]
@@ -1594,7 +1597,6 @@ shape = SubResource("SegmentShape2D_hy0i3")
 position = Vector2(240, -180)
 
 [node name="CollisionShape2D" parent="Rooms/Room2" index="0"]
-visible = false
 position = Vector2(160, 89.25)
 shape = SubResource("RectangleShape2D_qk8a6")
 
@@ -1618,7 +1620,6 @@ shape = SubResource("SegmentShape2D_rl6y3")
 position = Vector2(240, -180)
 
 [node name="CollisionShape2D" parent="Rooms/Room3" index="0"]
-visible = false
 position = Vector2(416, -90)
 shape = SubResource("RectangleShape2D_maf2v")
 
@@ -1789,6 +1790,9 @@ position = Vector2(792, -760)
 [node name="RightEye" parent="Eyes" index="1"]
 position = Vector2(1544, -752)
 
+[node name="Mask" parent="." index="13"]
+position = Vector2(92, 108)
+
 [node name="EndLevelItem" parent="EndLevelItemContainer" index="0" instance=ExtResource("4_hy0i3")]
 position = Vector2(1310, -1000)
 
@@ -1809,6 +1813,10 @@ position = Vector2(1120, -744)
 
 [node name="DestinationPoint" parent="MovingPlatform3" index="1"]
 position = Vector2(16, -64)
+
+[node name="TutorialPopup" parent="." index="22" instance=ExtResource("17_oh7b0")]
+visible = false
+position = Vector2(93, 86)
 
 [editable path="Player"]
 [editable path="Rooms/Room"]

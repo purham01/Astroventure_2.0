@@ -62,15 +62,15 @@ func fetch_ghost_data(player_UID : String, level_codename : String):
 	if FileAccess.file_exists(path):
 		var modified_time = FileAccess.get_modified_time(path)
 		var modified_time_firebase = result.get("updated")
-		modified_time = Time.get_unix_time_from_datetime_string(modified_time)
+
 		
 		modified_time_firebase = modified_time_firebase.split(".")
-		#modified_time = Time.get_datetime_string_from_unix_time(modified_time)
+		modified_time_firebase = Time.get_unix_time_from_datetime_string(modified_time_firebase[0])
 		
 		print("Last modified time: ",modified_time)
 		print("Last modified time firebase: ",modified_time_firebase)
 		
-		if modified_time < modified_time_firebase[0]:
+		if modified_time < modified_time_firebase:
 			download_ghost_data(path, firebase_path)
 			return
 		

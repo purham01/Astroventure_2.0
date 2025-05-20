@@ -30,6 +30,7 @@ var is_paused = false
 
 func _ready() -> void:
 	ConfigFileHandler.input_type_changed.connect(change_input_type)
+	Events.connect("open_leaderboard", open_leaderboard)
 	await Events.level_setup_done
 	if leaderboard_id != "" and level_codename != "":
 		leaderboard_ui.level_codename = level_codename
@@ -37,6 +38,10 @@ func _ready() -> void:
 		if Save.save_data.get(level_codename).get("BestTime") != 0.0:
 			leaderboard_button.disabled = false
 
+func open_leaderboard():
+	get_tree().paused = true
+	_on_leaderboard_button_pressed()
+	show()
 
 func change_input_type():
 	if ConfigFileHandler.input_type == 0 and !info_labels_keyboard.visible:
@@ -60,6 +65,7 @@ func _input(event):
 		
 	if event.is_action_pressed("UIBack") and get_tree().paused:
 		_on_back_button_pressed()
+		
 
 func reset_tabs():
 	secondary_menu_container.current_tab.hide()

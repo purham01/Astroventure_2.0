@@ -41,3 +41,7 @@ signal collected_right_eye
 signal inserted_left_eye
 
 signal inserted_right_eye
+
+signal open_leaderboard
+
+signal enable_leaderboard_ghosts

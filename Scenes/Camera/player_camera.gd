@@ -36,6 +36,7 @@ func _ready() -> void:
 	smoothing = follow_smoothing
 	setup_antigravity()
 	CameraShake.player_camera = self
+	CameraShake.camera_transition_duration = camera_transition_duration
 
 
 func _physics_process(delta: float) -> void:

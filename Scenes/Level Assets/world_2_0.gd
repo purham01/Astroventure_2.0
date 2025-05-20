@@ -38,7 +38,9 @@ extends Node2D
 @onready var stars: Node = $Stars
 @onready var left_eye: StaticBody2D = %LeftEye
 @onready var right_eye: StaticBody2D = %RightEye
+@onready var mask: Node2D = $Mask
 
+@onready var player_ghost: Node2D = $PlayerGhost
 
 
 var level_time = 0.0
@@ -52,6 +54,8 @@ var level_complete = false
 func _ready():
 	set_stars()
 	set_eyes()
+	set_mask()
+	setup_player_ghost()
 	
 	
 	RenderingServer.set_default_clear_color(Color.BLACK)
@@ -78,6 +82,34 @@ func _ready():
 	level_completed.leaderboard.level_codename = level_codename
 	#addObjects()
 	set_medal_times()
+	Events.emit_signal("level_setup_done")
+
+func setup_player_ghost():
+	var dict : Dictionary = Save.save_data.get(level_codename)
+	
+	var left_eye_inserted = dict.get("LeftEyeInserted")
+	var right_eye_inserted = dict.get("RightEyeInserted")
+	if left_eye_inserted and right_eye_inserted:
+		player_ghost.dont_run = false
+		Events.emit_signal("enable_leaderboard_ghosts")
+	elif left_eye_inserted or right_eye_inserted:
+		player_ghost.dont_run = false
+	else:
+		player_ghost.dont_run = true
+
+func set_mask():
+	mask.level_codename = level_codename
+	var dict : Dictionary = Save.save_data.get(level_codename)
+	
+	mask.left_eye_inserted = dict.get("LeftEyeInserted")
+	mask.right_eye_inserted = dict.get("RightEyeInserted")
+	mask.left_eye_collected = dict.get("LeftEyeCollected")
+	mask.right_eye_collected = dict.get("RightEyeCollected")
+	
+	if dict.get("BestTime") != 0.0 and (dict.get("LeftEyeCollected") or dict.get("RightEyeCollected")):
+		mask.set_sprite()
+		mask.collision_shape_2d.disabled = false
+		mask.show()
 
 func set_eyes():
 	left_eye.level_codename = level_codename
@@ -152,6 +184,9 @@ func set_medal_times():
 		#scene_tile_instance.position = place_at
 
 func _process(delta):
+	if player_ghost.dont_run or player_ghost.ready_to_run and player.starting_level:
+		player.starting_level = false
+	
 	if player_has_first_moved and !level_complete:
 		level_time = Time.get_ticks_msec() - start_level_msec
 		if timer:
@@ -249,11 +284,12 @@ func left_eye_inserted():
 	popup_label.text = "You have inserted the Left Eye of %s!" % [deity_name]
 	if !right_eye_inserted:
 		popup_label.text += "\nYou may now race against your own ghost"
+		popup_label.text += "\nRestart the level in order to see it"
 	else:
 		popup_label.text += "\nYou may now race against the ghosts of other players"
 		popup_label.text += "\nGo to the leaderboard in order to select your foe"
 	popup_container.show()
-	popup_timer.start()
+	popup_timer.start(10.0)
 
 func right_eye_inserted():
 	var dict : Dictionary = Save.save_data.get(level_codename)
@@ -272,7 +308,7 @@ func right_eye_inserted():
 		popup_label.text += "\nYou may now race against the ghosts of other players"
 		popup_label.text += "\nGo to the leaderboard in order to select your foe"
 	popup_container.show()
-	popup_timer.start()
+	popup_timer.start(10.0)
 
 func _on_popup_timer_timeout() -> void:
 	animation_player.play("popup_fade")

@@ -1,7 +1,9 @@
 extends Area2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-var spawn_gravity_dir = ""
+enum spawn_gravity_dir_enum {down = 0, up = 1, left = 2, right = 3}
+
+@export var spawn_gravity_dir = spawn_gravity_dir_enum.down
 
 func _on_body_entered(body):
 	#animated_sprite_2d.play("Active")

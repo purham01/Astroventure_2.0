@@ -1,10 +1,11 @@
 extends "gravity_state.gd"
 
 func enter_state():
-	Player.change_state(Player.STATES.gravity_transition)
-	
-	await Events.enter_portal
-	Player.rotation_degrees = -90
+	if !Player.playerDead:
+		Player.change_state(Player.STATES.gravity_transition)
+		await Events.enter_portal
+	Player.rotation_degrees = 270
+	Events.emit_signal("change_gravity", 270)
 	Player.set_up_direction(Vector2.LEFT)
 	Player.dash_particles.process_material.gravity = Vector3(9.8, 0.0, 0.0)
 	#if Player.prev_gs == GRAVITY_STATES.left:

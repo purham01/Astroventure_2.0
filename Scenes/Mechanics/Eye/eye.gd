@@ -7,6 +7,9 @@ extends StaticBody2D
 var knockback_amount = Vector2(200, 200)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+func _ready():
+	Events.connect("change_gravity", change_gravity)
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if body.name == "Player":
@@ -42,3 +45,17 @@ func save_eye_data(key):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "bounce":
 		animation_player.play
+
+func change_gravity(new_rotation_degrees):
+	var tween = get_tree().create_tween()
+	
+	if new_rotation_degrees == 0 and rotation_degrees == 270:
+		new_rotation_degrees = 360
+	elif abs(rotation_degrees - new_rotation_degrees) > 180:
+		new_rotation_degrees = new_rotation_degrees - 360
+
+	
+	tween.tween_property(self, "rotation_degrees", new_rotation_degrees, CameraShake.camera_transition_duration)
+	await tween.finished
+	if rotation_degrees == -360 or rotation_degrees == 360:
+		rotation_degrees = 0

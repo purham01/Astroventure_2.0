@@ -2436,7 +2436,6 @@ metadata/_tab_index = 2
 layout_mode = 2
 level_codename = "Earth"
 leaderboard_id = "30915"
-dont_accept_input = true
 
 [node name="TabContainer2" type="TabContainer" parent="Control/ColorRect/ColorRect"]
 visible = false

@@ -8,7 +8,7 @@ func _on_body_entered(body):
 		animation_player.play("enter_portal")
 		await Events.enter_portal
 		body.global_position = global_position
-		Events.emit_signal("change_gravity", 180)
+		
 		
 		await Events.exit_portal
 		animation_player.play("exit_portal")

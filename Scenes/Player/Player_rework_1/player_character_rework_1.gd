@@ -132,11 +132,13 @@ var corner_correction_amount = 3 #pixels
 #respawn stuff
 var playerDead = false
 @onready var starting_position = global_position
+var starting_gravity 
 
 var endLevel = false
 
 var inTransition = false
 var starting_level = true
+var disable_player_movement = false
 
 var fuel_tank_offset = {
 	"idle,0" : Vector2(0,-10),
@@ -186,6 +188,7 @@ func _ready() -> void:
 		gravity_state.Player = self
 	current_gs = GRAVITY_STATES.down
 	prev_gs = GRAVITY_STATES.down
+	starting_gravity = GRAVITY_STATES.down
 	
 	follower_controller.Player = self
 	#print(max_jump_velocity)
@@ -218,7 +221,7 @@ func _physics_process(delta: float) -> void:
 		current_gs.attempt_correction_up(3)
 		
 		handle_jump_buffer()
-		
+	if !disable_player_movement:
 		if is_dashing:
 			move_and_collide(velocity * delta)
 		else:
@@ -227,7 +230,7 @@ func _physics_process(delta: float) -> void:
 		#print("player velocity: ", velocity)
 		#print("Wall direction: ", sign(wall_direction))
 		#print("Movement input x: ", sign(movement_input.x))
-		current_gs._assign_animation(delta)
+	current_gs._assign_animation(delta)
 	#print(is_on_wall())
 
 func manage_fuel_tank_anim():
@@ -264,6 +267,8 @@ func stamina_reset():
 
 func _input(event: InputEvent) -> void:
 	#add condition to check if valid actions in the input map are pressed, not any action
+	if starting_level: 
+		return
 	if (event is InputEventKey 
 		or event is InputEventJoypadButton
 		or event is InputEventJoypadMotion): 
@@ -386,11 +391,20 @@ func _on_hazard_detector_body_entered(body: Node2D) -> void:
 func respawn():
 	change_state(STATES.dead)
 	
-func set_spawn(new_position, spawn_gravity_dir):
+func set_spawn(new_position, spawn_gravity_dir_new):
 	starting_position = new_position
+	match spawn_gravity_dir_new:
+		0:
+			starting_gravity = GRAVITY_STATES.down
+		1: 
+			starting_gravity = GRAVITY_STATES.up
+		2:
+			starting_gravity = GRAVITY_STATES.left
+		3:
+			starting_gravity = GRAVITY_STATES.right
 	
 func _end_level_anim():
-	playerDead = true
+	disable_player_movement = true
 	Events.pickup_stars.emit()
 	endLevel = true
 	animation_player.play("end_level")

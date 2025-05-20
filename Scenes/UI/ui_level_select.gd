@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var communications: MarginContainer = $Control/ColorRect/ColorRect/TabContainer/Communications
 @onready var collectibles: MarginContainer = $Control/ColorRect/ColorRect/TabContainer/Collectibles
 @onready var leaderboard: MarginContainer = $Control/ColorRect/ColorRect/TabContainer/Leaderboard
+@onready var leaderboard_ui: Control = $Control/ColorRect/ColorRect/TabContainer/Leaderboard/LeaderboardUI
 
 @onready var star_grid: GridContainer = %StarGrid
 @onready var medal_label: RichTextLabel = %MedalLabel
@@ -102,42 +103,67 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 3.70\nTemp: 167°C\nDanger: [color=green]LOW[/color]"
 			dialog = mercury_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Mercury"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Mercury")
 		PlanetNames.Venus:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 8.87\nTemp: 464°C\nDanger: [color=orange]MEDIUM[/color]"
 			dialog = venus_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Venus"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Venus")
 		PlanetNames.Earth:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 9.80\nTemp: 15°C\nDanger: [color=green]LOW[/color]"
 			dialog = earth_text
+			leaderboard_ui.leaderboard_id = "30915"
+			leaderboard_ui.level_codename = "Earth"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Earth")
 		PlanetNames.Mars:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 3.71\nTemp: -65°C\nDanger: [color=orange]MEDIUM[/color]"
 			dialog = mars_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Mars"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Mars")
 		PlanetNames.Jupiter:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 24.79\nTemp: -110°C\nDanger: [color=red]HIGH[/color]"
 			dialog = jupiter_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Jupiter"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Jupiter")
 		PlanetNames.Saturn:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 10.44\nTemp: -140°C\nDanger: [color=green]LOW[/color]"
 			dialog = saturn_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Saturn"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Saturn")
 		PlanetNames.Uranus:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 8.87\nTemp: -195°C\nDanger: [color=red]HIGH[/color]"
 			dialog = uranus_text
+			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.level_codename = "Uranus"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Uranus")
 		PlanetNames.Neptune:
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 11.15\nTemp: -200°C\nDanger: [color=orange]MEDIUM[/color]"
 			dialog = neptune_text
+			leaderboard_ui.leaderboard_id = "30961"
+			leaderboard_ui.level_codename = "Neptune"
+			leaderboard_ui.refresh_scores()
 			load_collectibles("Neptune")
+			
 
 	show()
 	phraseNum = 0
@@ -155,6 +181,8 @@ func load_collectibles(level_codename):
 	else:
 		tab_container.set_tab_disabled(1, false)
 		tab_container.set_tab_disabled(2, false)
+		
+	
 		
 	var medal = dict.get("Medal")
 	

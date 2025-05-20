@@ -30,12 +30,12 @@ func enter_state():
 
 	#Player.shader_animation_player.play("dash_start") 
 	
-	FreezeFrameManager.freeze_frame(0.1)
+	FreezeFrameManager.freeze_frame(0.05)
 	Player.current_gs.dash()
 	
 	
 	Player.change_fuel_tank_state_empty()
-	Player.player_camera.apply_shake(2 * ConfigFileHandler.camera_shake) 
+	Player.player_camera.apply_shake(1 * ConfigFileHandler.camera_shake) 
 	if ConfigFileHandler.input_type:
 		Input.start_joy_vibration(0, 1 * ConfigFileHandler.controller_vibration, 1 * ConfigFileHandler.controller_vibration, 0.2)
 		Input.start_joy_vibration(0, 1 * ConfigFileHandler.controller_vibration, 0, 0.4)
