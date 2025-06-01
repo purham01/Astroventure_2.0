@@ -18,6 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.flashing_animation_player.stop()
 		collision_shape_2d.set_deferred("disabled", true)
 		sprite_2d.visible = false
+		#FreezeFrameManager.freeze_frame(0.05)
 		reset_timer.start()
 
 

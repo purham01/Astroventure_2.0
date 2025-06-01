@@ -22,7 +22,7 @@ var room_pause: bool = false
 var rng = RandomNumberGenerator.new()
 var shakeStrength: float = 0.0
 
-@export var camera_transition_duration = 0.5
+@export var camera_transition_duration = 1.0
 
 @onready var shake_timer: Timer = $Timer
 
@@ -139,6 +139,8 @@ func setup_antigravity():
 
 func change_gravity(new_rotation_degrees):
 	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SPRING)
 	#print( abs(rotation_degrees - new_rotation_degrees))
 	#print("New rotation: ",new_rotation_degrees)
 	if new_rotation_degrees == 0 and rotation_degrees == 270:

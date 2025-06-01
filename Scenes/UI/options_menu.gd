@@ -23,6 +23,7 @@ extends MarginContainer
 @onready var general_button: Button = %GeneralButton
 @onready var show_tutorials: CheckButton = %"Show tutorials"
 @onready var player_ghost: CheckButton = %PlayerGhost
+@onready var shader_settings: OptionButton = $GeneralOptions/ShaderSettings
 
 @onready var window_mode: OptionButton = %WindowMode
 @onready var resolutions: OptionButton = %Resolutions
@@ -98,7 +99,7 @@ func _on_general_button_button_up() -> void:
 	current_tab = general_options
 	options_menu_tab.hide()
 	general_options.show()
-	camera_shake.grab_focus()
+	shader_settings.grab_focus()
 
 
 func _on_master_volume_drag_ended(value_changed: bool) -> void:

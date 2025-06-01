@@ -23,7 +23,8 @@ func update(delta):
 
 func enter_state():
 	Player.last_direction = Vector2(-Player.wall_direction,0)
-	
+	#jump.set_parameter("Parameter 1", randf())
+	#jump.play()
 	Player.animated_sprite.play("jump")
 	
 	Player.terrain_sm.instant_reset_movement_values()

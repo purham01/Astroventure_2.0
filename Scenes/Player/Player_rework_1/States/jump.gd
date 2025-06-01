@@ -1,5 +1,7 @@
 extends "state.gd"
 
+#@onready var walk: FmodEventEmitter2D = $"../../Walk"
+
 func update(delta):
 	Player.current_gs.gravity(delta)
 	Player.player_movement(delta)
@@ -24,5 +26,7 @@ func update(delta):
 func enter_state():
 
 	Player.animated_sprite.play("jump")
+	#walk.set_parameter("Parameter 1", randf())
+	#walk.play()
 
 	Player.current_gs.jump()

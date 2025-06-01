@@ -4,3 +4,8 @@
 
 [node name="DEAD" type="Node"]
 script = ExtResource("1_e04mw")
+
+[node name="RespawnDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+ignore_time_scale = true

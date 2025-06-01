@@ -224,6 +224,6 @@ libraries = {
 }
 
 [connection signal="timeout" from="ActiveTimer" to="." method="_on_active_timer_timeout"]
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

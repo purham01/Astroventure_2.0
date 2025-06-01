@@ -63,7 +63,7 @@ func _input(event):
 			reset_tabs()
 			hide()
 		
-	if event.is_action_pressed("UIBack") and get_tree().paused:
+	if (event.is_action_pressed("UIBack") or event.is_action_pressed("UIBackC")) and get_tree().paused:
 		_on_back_button_pressed()
 		
 

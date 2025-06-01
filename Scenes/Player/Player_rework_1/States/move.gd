@@ -1,6 +1,9 @@
 extends "state.gd"
 
+#@onready var walk: FmodEventEmitter2D = $"../../Walk"
+
 func update(delta):
+	#play_walking_sfx()
 	Player.current_gs.gravity(delta)
 	Player.player_movement(delta)
 	
@@ -27,3 +30,9 @@ func enter_state():
 		Player.can_dash = true
 		Player.change_fuel_tank_state_full()
 	Player.animated_sprite.play("run")
+
+#func play_walking_sfx():
+	#if Player.animated_sprite.animation == "run":
+		#if Player.animated_sprite.frame == 0 or Player.animated_sprite.frame == 4 or Player.animated_sprite.frame == 6:
+				#walk.set_parameter("Parameter 1", randf())
+				#walk.play()

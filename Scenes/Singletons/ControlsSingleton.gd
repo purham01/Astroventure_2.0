@@ -8,7 +8,18 @@ var input_actions = {
 	"Jump" : "Jump",
 	"Dash" : "Dash",
 	"Climb" : "Climb",
-	"Pause" : "Pause"
+	"Interact" : "Interact",
+	
+	"ShipForward" : "Ship forward",
+	"ShipBack" : "Ship backward",
+	"ShipSteerRight" : "Ship steer right",
+	"ShipSteerLeft" : "Ship steer left",
+	"ShipBoost" : "Ship boost",
+	
+	"Pause" : "Pause",
+	"UIConfirm" : "UI confirm",
+	"UIBack" : "UI back",
+	
 }
 
 var key_icons = {
@@ -96,7 +107,18 @@ var input_actions_controller = {
 	"JumpC" : "Jump",
 	"DashC" : "Dash",
 	"ClimbC" : "Climb",
-	"PauseC" : "Pause"
+	"InteractC" : "Interact",
+	
+	"ShipForwardC" : "Ship forward",
+	"ShipBackC" : "Ship backward",
+	"ShipSteerRightC" : "Ship steer right",
+	"ShipSteerLeftC" : "Ship steer left",
+	"ShipBoostC" : "Ship boost",
+	
+	"PauseC" : "Pause",
+	"UIConfirmC" : "UI confirm",
+	"UIBackC" : "UI back",
+	
 }
 
 var button_icons = {

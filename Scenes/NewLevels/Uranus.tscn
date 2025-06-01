@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=4 uid="uid://cd8q0nnpbb58c"]
+
+[ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_y0tbe"]
+[ext_resource type="Texture2D" uid="uid://bj8na1xhnaok0" path="res://Assets/Backgrounds/cave/1.png" id="2_uxon7"]
+[ext_resource type="Texture2D" uid="uid://br70crlw1pe6x" path="res://Assets/Backgrounds/cave/2.png" id="3_tovsr"]
+[ext_resource type="Texture2D" uid="uid://dcttovqk57dvm" path="res://Assets/Backgrounds/cave/3fx.png" id="4_cr1hk"]
+[ext_resource type="Texture2D" uid="uid://bedpso0x7md6q" path="res://Assets/Backgrounds/cave/4.png" id="5_7vv2i"]
+[ext_resource type="Texture2D" uid="uid://cni1gyatdv2jd" path="res://Assets/Backgrounds/cave/5.png" id="6_v8keb"]
+[ext_resource type="Texture2D" uid="uid://0gwx21jqwa2g" path="res://Assets/Backgrounds/cave/6fx.png" id="7_n5xnf"]
+[ext_resource type="Texture2D" uid="uid://cywkdwjxyohh0" path="res://Assets/Backgrounds/cave/7.png" id="8_grbk3"]
+[ext_resource type="Texture2D" uid="uid://crl03nlu2ir5h" path="res://Assets/Backgrounds/cave/8fx.png" id="9_m62ms"]
+[ext_resource type="Texture2D" uid="uid://beyt7yrq4fe3i" path="res://Assets/Backgrounds/cave/9.png" id="10_nvi06"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7nn8"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4k7y0"]
+resource_local_to_scene = true
+b = Vector2(24, 0)
+
+[node name="Uranus" instance=ExtResource("1_y0tbe")]
+level_codename = "Uranus"
+deity_name = "Uranus"
+developing_level = true
+
+[node name="Background" parent="Background" index="0"]
+visible = false
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" index="1"]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_uxon7")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" index="2"]
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D2" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("3_tovsr")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" index="3"]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D3" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("4_cr1hk")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" index="4"]
+scroll_scale = Vector2(0.25, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D4" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("5_7vv2i")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background" index="5"]
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D5" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("6_v8keb")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D6" type="Parallax2D" parent="Background" index="6"]
+scroll_scale = Vector2(0.35, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D6" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("7_n5xnf")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D7" type="Parallax2D" parent="Background" index="7"]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D7" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("8_grbk3")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D8" type="Parallax2D" parent="Background" index="8"]
+scroll_scale = Vector2(0.45, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D8" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("9_m62ms")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D9" type="Parallax2D" parent="Background" index="9"]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D9" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("10_nvi06")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." index="8"]
+position = Vector2(26, 153)
+
+[node name="Ground" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAABABYAAAABAAIAAAACABYAAAABAAIAAAADABYAAAABAAIAAAAFABYAAAABAAIAAAAEABYAAAABAAIAAAAGABYAAAABAAIAAAAIABUAAAABAAEAAAAHABYAAAABAAIAAAAJABUAAAABAAEAAAAKABUAAAABAAEAAAALABUAAAABAAEAAAAHABUAAAABAAEAAAAGABUAAAABAAEAAAABABUAAAABAAEAAAAAABUAAAAAAAEAAAACABUAAAABAAEAAAADABUAAAABAAEAAAAEABUAAAABAAEAAAAFABUAAAABAAEAAAAAABYAAAAAAAIAAAAIABYAAAABAAIAAAAJABYAAAABAAIAAAAKABYAAAABAAIAAAAMABUAAAABAAEAAAALABYAAAABAAIAAAANABUAAAABAAEAAAAQABUAAAABAAEAAAAPABUAAAABAAEAAAAOABUAAAABAAEAAAASABUAAAABAAEAAAARABUAAAABAAEAAAAUABUAAAABAAEAAAATABUAAAABAAEAAAAWABUAAAABAAEAAAAVABUAAAABAAEAAAAXABUAAAABAAEAAAAYABUAAAABAAEAAAAZABUAAAABAAEAAAAaABUAAAABAAEAAAAbABUAAAABAAEAAAAcABUAAAABAAEAAAAdABUAAAABAAEAAAAeABUAAAABAAEAAAAfABUAAAABAAEAAAAgABUAAAABAAEAAAAdABYAAAABAAIAAAAbABYAAAABAAIAAAAcABYAAAABAAIAAAAYABYAAAABAAIAAAAZABYAAAABAAIAAAAaABYAAAABAAIAAAAVABYAAAABAAIAAAAWABYAAAABAAIAAAAXABYAAAABAAIAAAASABYAAAABAAIAAAATABYAAAABAAIAAAAUABYAAAABAAIAAAARABYAAAABAAIAAAAQABYAAAABAAIAAAAPABYAAAABAAIAAAAOABYAAAABAAIAAAANABYAAAABAAIAAAAMABYAAAABAAIAAAAfABYAAAABAAIAAAAeABYAAAABAAIAAAAgABYAAAABAAIAAAAhABYAAAABAAIAAAAiABYAAAABAAIAAAAjABYAAAABAAIAAAAkABYAAAABAAIAAAAkABUAAAABAAEAAAAlABUAAAABAAEAAAAmABUAAAABAAEAAAAnABUAAAACAAEAAAAnABYAAAACAAIAAAAnABQAAAACAAAAAAAmABQAAAABAAAAAAAlABQAAAABAAAAAAAkABQAAAABAAAAAAAjABQAAAABAAAAAAAiABUAAAABAAEAAAAjABUAAAABAAEAAAAmABYAAAABAAIAAAAlABYAAAABAAIAAAAiABQAAAABAAAAAAAhABQAAAABAAAAAAAgABQAAAABAAAAAAAhABUAAAABAAEAAAAfABQAAAABAAAAAAAeABQAAAABAAAAAAAdABQAAAABAAAAAAAcABQAAAABAAAAAAAbABQAAAABAAAAAAAZABQAAAABAAAAAAAaABQAAAABAAAAAAAYABQAAAABAAAAAAAXABQAAAABAAAAAAAWABQAAAABAAAAAAAVABQAAAABAAAAAAAUABQAAAABAAAAAAATABQAAAABAAAAAAASABQAAAABAAAAAAARABQAAAABAAAAAAAQABQAAAABAAAAAAAPABQAAAABAAAAAAAOABQAAAABAAAAAAANABQAAAABAAAAAAAMABQAAAABAAAAAAALABQAAAABAAAAAAAKABQAAAABAAAAAAAJABQAAAABAAAAAAAIABQAAAABAAAAAAAHABQAAAABAAAAAAAGABQAAAABAAAAAAAFABQAAAABAAAAAAAEABQAAAABAAAAAAADABQAAAABAAAAAAACABQAAAABAAAAAAABABQAAAABAAAAAAAAABQAAAAAAAAAAAA=")
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_n7nn8")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_4k7y0")
+
+[editable path="Rooms/Room"]

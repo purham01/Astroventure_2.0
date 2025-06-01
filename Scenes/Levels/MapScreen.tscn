@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c20by7l4tiaml"]
+[gd_scene load_steps=27 format=3 uid="uid://c20by7l4tiaml"]
 
 [ext_resource type="Script" uid="uid://p5vko0wka2xq" path="res://Scenes/Levels/MapScreen.gd" id="1_058mk"]
 [ext_resource type="PackedScene" uid="uid://deuo0m6mfokye" path="res://Scenes/Level Assets/ship.tscn" id="1_lgnu1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctkfjm18a7q21" path="res://Scenes/Level Assets/Planets/venus.tscn" id="5_tdnmj"]
 [ext_resource type="PackedScene" uid="uid://bn6n6p7mpq8kw" path="res://Scenes/Level Assets/Planets/sun.tscn" id="7_sueuh"]
 [ext_resource type="PackedScene" uid="uid://bgto26pd61fic" path="res://Scenes/Level Assets/Planets/mars.tscn" id="9_17ieb"]
+[ext_resource type="PackedScene" uid="uid://bprbfwwmf1daq" path="res://Scenes/NewLevels/Earth.tscn" id="9_o1bcs"]
 [ext_resource type="PackedScene" uid="uid://br2aite2suv0n" path="res://Scenes/Levels/Test_level.tscn" id="9_qvgeh"]
 [ext_resource type="PackedScene" uid="uid://cg35qg6nmwyem" path="res://Scenes/Level Assets/Planets/saturn.tscn" id="10_vhbnl"]
 [ext_resource type="PackedScene" uid="uid://cv6d2x8w5d2tc" path="res://Scenes/Level Assets/Planets/jupiter.tscn" id="10_vwetg"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bmapv4seantau" path="res://Scenes/NewLevels/Neptune.tscn" id="15_h8kd6"]
 [ext_resource type="PackedScene" uid="uid://7a8w0j1m350r" path="res://Scenes/Level Assets/Planets/uranus.tscn" id="16_6fiog"]
 [ext_resource type="PackedScene" uid="uid://bjbrkn1uecc05" path="res://Scenes/Level Assets/Planets/neptune.tscn" id="16_s6ejm"]
+[ext_resource type="PackedScene" uid="uid://ccnirjwuixvcj" path="res://Scenes/UI/tutorial_panel.tscn" id="18_e0rbw"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="22_y8gi4"]
 [ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="25_e0pxr"]
 
@@ -53,6 +55,7 @@ point_count = 33
 script = ExtResource("1_058mk")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 776.0
 offset_top = -432.0
 offset_right = 914.0
@@ -200,7 +203,7 @@ rotates = false
 
 [node name="Earth" parent="EarthPath/EarthPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("13_d0emp")]
 scale = Vector2(0.15, 0.15)
-level = ExtResource("9_qvgeh")
+level = ExtResource("9_o1bcs")
 ship = NodePath("../../../Ship")
 
 [node name="Label2" type="Label" parent="EarthPath/EarthPathFollow2D"]
@@ -245,6 +248,7 @@ rotates = false
 
 [node name="Jupiter" parent="JupiterPath2D/JupiterPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("10_vwetg")]
 scale = Vector2(0.2, 0.2)
+level = ExtResource("9_qvgeh")
 speed = 2
 ship = NodePath("../../../Ship")
 planet_name = 4
@@ -326,6 +330,56 @@ position = Vector2(360, 0)
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(0, 180)
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ControlsPanel" type="PanelContainer" parent="CanvasLayer2"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -93.0
+offset_right = 94.0
+offset_bottom = 31.0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/ControlsPanel"]
+layout_mode = 2
+
+[node name="TutorialPanel" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Ship forward"
+action = "ShipForward"
+
+[node name="TutorialPanel2" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Ship backward"
+action = "ShipBack"
+
+[node name="TutorialPanel3" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Ship steer left"
+action = "ShipSteerLeft"
+
+[node name="TutorialPanel4" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Ship steer right"
+action = "ShipSteerRight"
+
+[node name="TutorialPanel5" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Ship boost"
+action = "ShipBoost"
+
+[node name="TutorialPanel6" parent="CanvasLayer2/ControlsPanel/VBoxContainer" instance=ExtResource("18_e0rbw")]
+layout_mode = 2
+label_text = "Interact with planets"
+action = "UIConfirm"
+
+[node name="Timer" type="Timer" parent="CanvasLayer2/ControlsPanel"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [node name="UI" parent="." instance=ExtResource("14_10y4k")]
 visible = false
 
@@ -342,4 +396,9 @@ process_mode = 3
 stream = ExtResource("25_e0pxr")
 autoplay = true
 
+[connection signal="timeout" from="CanvasLayer2/ControlsPanel/Timer" to="." method="_on_timer_timeout"]
+
 [editable path="CanvasLayer/PauseMenu"]
+[editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer"]
+[editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer/InputSettings"]
+[editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer/InputSettingsController"]

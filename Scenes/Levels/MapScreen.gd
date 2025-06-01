@@ -42,6 +42,7 @@ jupiter_path_follow_2d,saturn_path_follow_2d,uranus_path_follow_2d,neptune_path_
 @onready var neptune_marker = $NeptunePath2D/NeptunePathFollow2D/NeptuneMarker
 
 
+@onready var controls_panel: PanelContainer = $CanvasLayer2/ControlsPanel
 
 var rng = RandomNumberGenerator.new()
 
@@ -63,3 +64,7 @@ func _process(delta):
 	saturn_label.global_position = saturn_marker.global_position
 	uranus_label.global_position = uranus_marker.global_position
 	neptune_label.global_position = neptune_marker.global_position
+
+
+func _on_timer_timeout() -> void:
+	controls_panel.hide()

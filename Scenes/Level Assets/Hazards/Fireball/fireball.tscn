@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://bd0otcxk7a8fa"]
+
+[ext_resource type="Script" uid="uid://bsxgbs1nosh15" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.gd" id="1_m8grk"]
+[ext_resource type="Texture2D" uid="uid://3e6m01x3amfb" path="res://Assets/Level assets/Fireball/FB500-1.png" id="1_u3uiq"]
+[ext_resource type="Texture2D" uid="uid://xf0j6yi3hw1j" path="res://Assets/Level assets/Fireball/FB500-2.png" id="2_tmwk2"]
+[ext_resource type="Texture2D" uid="uid://cvko03c5n4ivy" path="res://Assets/Level assets/Fireball/FB500-3.png" id="3_7625o"]
+[ext_resource type="Texture2D" uid="uid://dw6srqujxjlfm" path="res://Assets/Level assets/Fireball/FB500-4.png" id="4_j4vjs"]
+[ext_resource type="Texture2D" uid="uid://ddrqaf5a4ia6o" path="res://Assets/Level assets/Fireball/FB500-5.png" id="5_m8grk"]
+[ext_resource type="Texture2D" uid="uid://burtvaictlgn8" path="res://Assets/Level assets/Fireball/B500-2.PNG" id="6_j4vjs"]
+[ext_resource type="Texture2D" uid="uid://cdb0s3138dkvw" path="res://Assets/Level assets/Fireball/B500-3.PNG" id="7_m8grk"]
+[ext_resource type="Texture2D" uid="uid://c13oookj0qgpe" path="res://Assets/Level assets/Fireball/B500-4.PNG" id="8_8xwqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3incd"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xwqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u3uiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tmwk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7625o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j4vjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m8grk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awybc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_j4vjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m8grk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8xwqd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Fireball" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_m8grk")
+speed = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3incd")
+
+[node name="Fireball" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_8xwqd")
+autoplay = "default"
+frame_progress = 0.570982
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+top_level = true
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_awybc")
+frame = 2
+frame_progress = 1.0
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="DirectionMarker" type="Marker2D" parent="."]
+position = Vector2(63, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

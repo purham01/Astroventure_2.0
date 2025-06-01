@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxbokkpntvafe"]
+[gd_scene load_steps=19 format=3 uid="uid://dxbokkpntvafe"]
 
 [ext_resource type="PackedScene" uid="uid://dkkor7cqf3sc2" path="res://Scenes/Level Assets/world.tscn" id="1_ocyqg"]
 [ext_resource type="Resource" uid="uid://btop77c1so5py" path="res://Resources/Planet movements/MercuryMarsMovement.tres" id="2_k6tkx"]
 [ext_resource type="PackedScene" uid="uid://dlm6l3ap225j8" path="res://Scenes/Level Assets/SafeZones/sigurna_zona_medium.tscn" id="3_aat10"]
+[ext_resource type="PackedScene" uid="uid://d1d14kox88kcc" path="res://Scenes/Level Assets/heat.tscn" id="3_d1l5x"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_hj3ex"]
 [ext_resource type="PackedScene" uid="uid://bk7dqiarkbwq5" path="res://Scenes/Level Assets/Asteroids/asteroid.tscn" id="3_y830s"]
 [ext_resource type="PackedScene" uid="uid://dmqkrm6q5rijx" path="res://Scenes/Level Assets/SafeZones/sigurna_zona_big.tscn" id="4_2ydyn"]
@@ -10,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="4_hlxr6"]
 [ext_resource type="PackedScene" uid="uid://bsfimydkpnvog" path="res://Scenes/Level Assets/SafeZones/sigurna_zona.tscn" id="6_5qijd"]
 [ext_resource type="Texture2D" uid="uid://cnb2affsu4dxb" path="res://Assets/Backgrounds/Stars 3.png" id="9_pxyhu"]
-[ext_resource type="Script" uid="uid://tlddodk2igeq" path="res://Scenes/Levels/daynightcycle.gd" id="10_avtf7"]
-[ext_resource type="Texture2D" uid="uid://bhnqefwa7dall" path="res://Assets/daynightcycle-gradient-texture.tres" id="11_xdaev"]
 [ext_resource type="Texture2D" uid="uid://cclear00mep78" path="res://Assets/heart.png" id="13_a12fb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrjd8"]
@@ -124,13 +123,8 @@ expand_mode = 5
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="DayNightCycle" type="CanvasModulate" parent="CanvasLayer3" index="1"]
+[node name="DayNightCycle" parent="CanvasLayer3" index="1" instance=ExtResource("3_d1l5x")]
 position = Vector2(90.0805, 54)
-scale = Vector2(1.00089, 1)
-color = Color(0.603922, 0.819608, 1, 1)
-script = ExtResource("10_avtf7")
-gradient = ExtResource("11_xdaev")
-INITIAL_HOUR = 18
 
 [node name="CanvasLayer2" parent="." index="3"]
 visible = false
@@ -299,7 +293,5 @@ position = Vector2(186, 22.9993)
 
 [node name="CollisionShape2D_Right" parent="WorldBoundary" index="1"]
 position = Vector2(-411.011, -3007)
-
-[connection signal="sun_kill" from="CanvasLayer3/DayNightCycle" to="Player" method="respawn"]
 
 [editable path="Rooms/Room"]

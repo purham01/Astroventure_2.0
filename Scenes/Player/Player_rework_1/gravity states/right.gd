@@ -93,8 +93,9 @@ func climb_movement(delta):
 
 func climb_edge():
 	Player.velocity.x = -120
-	await get_tree().create_timer(0.05).timeout
-	Player.velocity.y = -100 * Player.last_direction.x
+	if Player.hazard_direction == 0:
+		await get_tree().create_timer(0.05).timeout
+		Player.velocity.y = -100 * Player.last_direction.x
 	
 
 func attempt_correction_up(amount: int):

@@ -22,9 +22,23 @@ var acceleration_multiplier = base_acceleration_multiplier
 var reset_movement = false
 
 @onready var current_terrain_type = 1
+var player
 
+@export var conveyor_belt_speed = 600.0
+
+func _ready():
+	player = get_parent()
+	
 func _physics_process(delta: float) -> void:
 	reset_movement_values(delta)
+	_terrain_movement(delta)
+
+func _terrain_movement(delta):
+	if current_terrain_type==8:
+		#conveyor left
+		player.velocity.x-= conveyor_belt_speed *delta
+	elif current_terrain_type == 16:
+		player.velocity.x+= conveyor_belt_speed *delta
 
 func _on_terrain_detector_terrain_entered(terrain_type):
 	reset_movement_speed_jump_timer.stop()
@@ -47,6 +61,8 @@ func _on_terrain_detector_terrain_entered(terrain_type):
 	elif terrain_type==1:
 		#print("Changing movement to normal")
 		reset_movement = true
+	elif terrain_type==8 or terrain_type == 16:
+		return
 	else:
 		#print("Starting reset timer")
 		if !reset_movement:

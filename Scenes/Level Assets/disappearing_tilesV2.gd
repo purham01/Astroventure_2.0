@@ -9,6 +9,7 @@ extends Node2D
 
 func _ready():
 	reset_tiles()
+	Events.player_dead.connect(reset_tiles)
 	
 
 #func _process(delta):

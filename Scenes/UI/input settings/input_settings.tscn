@@ -845,7 +845,7 @@ follow_focus = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_top = NodePath("../../ResetButton")
+focus_neighbor_top = NodePath("../../BackButton")
 
 [node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("1_rfmwi")]
 layout_mode = 2
@@ -900,12 +900,12 @@ text = "to clear keybind"
 
 [node name="ResetButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../ScrollContainer/ActionList")
+focus_neighbor_bottom = NodePath("../BackButton")
 text = "Reset all to default"
 
 [node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ScrollContainer/ActionList")
 text = "Back"
 
 [node name="PopUp" type="MarginContainer" parent="PanelContainer"]

@@ -41,7 +41,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if active and !uptime_timer.is_stopped():
 		#print("Wind ", windspeed * wind_direction )
-		player.velocity += windspeed * wind_direction
+		player.velocity += windspeed * wind_direction * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

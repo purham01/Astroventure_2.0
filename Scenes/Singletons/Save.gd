@@ -59,7 +59,7 @@ func _ready() -> void:
 	
 	if err == false:
 		print("No save file found")
-		save_game()
+		#save_game()
 		#return
 	else:
 		print("Save file found")
@@ -97,6 +97,8 @@ func login_account():
 	var guestLoginResponse = await LL_Authentication.GuestSession.new(playerIdentifier).send()
 	if(!guestLoginResponse.success) :
 		printerr("Guest login failed with reason: " + guestLoginResponse.error_data.to_string())
+		player_UID = config.get_value("account","player_uid")
+		Events.emit_signal("player_logged_in")
 		return
 	
 	var check = config.has_section_key("account","player_uid")
@@ -106,7 +108,7 @@ func login_account():
 		
 	config.save(ACCOUNT_FILE_PATH)
 	
-	player_UID = guestLoginResponse.public_uid
+	
 	
 	print("Logged in player UID: ", player_UID)
 	

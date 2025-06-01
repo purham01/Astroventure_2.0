@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://uw72ymyhfc6n"]
+[gd_scene load_steps=8 format=3 uid="uid://uw72ymyhfc6n"]
 
 [ext_resource type="Script" uid="uid://b2f3klngm27k5" path="res://Scenes/Level Assets/Rooms/room.gd" id="1_a16lv"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="2_odell"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_ssykf"]
+[ext_resource type="Texture2D" uid="uid://djqoxxt2kb6qi" path="res://Assets/Light/light64x64.png" id="4_odell"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knkxl"]
 resource_local_to_scene = true
@@ -52,6 +53,24 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckIfFromBelow"]
 shape = SubResource("SegmentShape2D_ssykf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(28, 99)
+color = Color(0.898, 0, 1, 1)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("4_odell")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1.5, 0.113, 1.5, 1)
+offset_left = 85.0
+offset_top = 35.0
+offset_right = 149.0
+offset_bottom = 99.0
+texture = ExtResource("4_odell")
 
 [connection signal="area_entered" from="CheckIfFromBelow" to="." method="_on_check_if_from_below_area_entered"]
 [connection signal="body_entered" from="CheckIfFromBelow" to="." method="_on_check_if_from_below_body_entered"]

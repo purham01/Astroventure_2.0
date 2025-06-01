@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1whiv3y38xsy"]
+[gd_scene load_steps=8 format=3 uid="uid://b1whiv3y38xsy"]
 
 [ext_resource type="Script" uid="uid://b7431hcow0gc0" path="res://Scenes/UI/options_menu.gd" id="1_s2riy"]
+[ext_resource type="PackedScene" uid="uid://dtrkbrbd4hrb" path="res://Scenes/UI/shader_settings.tscn" id="2_dod7e"]
 [ext_resource type="PackedScene" uid="uid://bx1uhf5c673a6" path="res://Scenes/UI/window_mode.tscn" id="2_s2riy"]
 [ext_resource type="PackedScene" uid="uid://cgsqbhdl46x4x" path="res://Scenes/UI/resolutions_button.tscn" id="3_dod7e"]
 [ext_resource type="PackedScene" uid="uid://b2cntusndfn4j" path="res://Scenes/UI/volume_slider.tscn" id="4_gcjgb"]
@@ -36,7 +37,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_top = NodePath("../ControlsButton2")
+focus_neighbor_top = NodePath("../BackButton")
 text = "General"
 
 [node name="VideoButton" type="Button" parent="OptionsMenuTab"]
@@ -61,11 +62,10 @@ text = "Keyboard config"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../GeneralButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 text = "Controller config"
 
 [node name="BackButton" type="Button" parent="OptionsMenuTab"]
-visible = false
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../GeneralButton")
@@ -83,10 +83,8 @@ text = "General
 "
 horizontal_alignment = 1
 
-[node name="ShaderSettings" type="OptionButton" parent="GeneralOptions"]
+[node name="ShaderSettings" parent="GeneralOptions" instance=ExtResource("2_dod7e")]
 layout_mode = 2
-item_count = 1
-popup/item_0/id = 0
 
 [node name="Show tutorials" type="CheckButton" parent="GeneralOptions"]
 unique_name_in_owner = true
@@ -124,6 +122,7 @@ text = "Controller vibration"
 
 [node name="Slider2" type="HFlowContainer" parent="GeneralOptions"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
 
 [node name="Controller vibration" type="HSlider" parent="GeneralOptions/Slider2"]
 layout_mode = 2
@@ -139,9 +138,9 @@ text = "75%"
 clip_text = true
 
 [node name="BackButton" type="Button" parent="GeneralOptions"]
-visible = false
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ShaderSettings")
 text = "Back"
 
 [node name="VideoMenuTab" type="VBoxContainer" parent="."]
@@ -168,7 +167,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
 [node name="BackButton" type="Button" parent="VideoMenuTab"]
-visible = false
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../WindowMode")
@@ -191,6 +189,7 @@ text = "Master volume"
 
 [node name="Slider" type="HFlowContainer" parent="AudioOptionsTab"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
 
 [node name="MasterVolume" parent="AudioOptionsTab/Slider" instance=ExtResource("4_gcjgb")]
 unique_name_in_owner = true
@@ -246,9 +245,9 @@ text = "75%"
 clip_text = true
 
 [node name="BackButton" type="Button" parent="AudioOptionsTab"]
-visible = false
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Slider")
 text = "Back"
 
 [node name="InputSettings" parent="." instance=ExtResource("5_qmfxs")]
@@ -260,6 +259,9 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="BackButton" parent="InputSettingsController/PanelContainer/MarginContainer/VBoxContainer" index="4"]
+focus_neighbor_top = NodePath("../ResetButton")
 
 [connection signal="button_up" from="OptionsMenuTab/GeneralButton" to="." method="_on_general_button_button_up"]
 [connection signal="button_up" from="OptionsMenuTab/VideoButton" to="." method="_on_video_button_button_up"]

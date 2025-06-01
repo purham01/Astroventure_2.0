@@ -178,7 +178,6 @@ modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_etnh7")
 
 [node name="CollisionArea" type="StaticBody2D" parent="."]
-collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]

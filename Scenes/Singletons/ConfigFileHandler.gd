@@ -4,6 +4,7 @@ extends Node
 const SETTINGS_FILE_PATH = "user://settings.cfg"
 
 signal input_type_changed
+signal controls_changed
 
 var resolutions = {
 	"3840x2160": Vector2i(3840,2160),
@@ -24,6 +25,13 @@ var window_modes = [
 	"Windowed",
 	"Borderless Window",
 	"Borderless Fullscreen"
+]
+
+var shader_options = [
+	"None",
+	"CRT",
+	"Chromatic",
+	"Grayscale"
 ]
 
 var input_type = 0
@@ -53,9 +61,11 @@ func _load_settings():
 	if err != OK:
 		print("Failed to load")
 		_load_default_settings()
-		var general_settings = load_general_settings()
-		change_window_mode(general_settings.get("window_mode"))
-		#set_resolution(resolutions.get(general_settings.get("resolution")))
+		
+		var video_settings = load_video_settings()
+		change_window_mode(video_settings.get("window_mode"))
+		set_resolution(resolutions.get(video_settings.get("resolution")))
+		
 		return
 	else:
 		var general_settings = load_general_settings()
@@ -63,8 +73,10 @@ func _load_settings():
 		camera_shake = general_settings.get("camera_shake")
 		show_player_ghost = general_settings.get("show_player_ghost")
 		show_tutorials = general_settings.get("show_tutorials")
-		change_window_mode(general_settings.get("window_mode"))
-		#set_resolution(resolutions.get(general_settings.get("resolution")))
+		
+		var video_settings = load_video_settings()
+		change_window_mode(video_settings.get("window_mode"))
+		set_resolution(resolutions.get(video_settings.get("resolution")))
 		
 		print("Loaded settings")
 
@@ -74,12 +86,13 @@ func _load_default_settings():
 	
 	print(DisplayServer.screen_get_size())
 	
+	config.set_value("general", "shader_setting", 0)
 	config.set_value("general", "controller_vibration", 1)
 	config.set_value("general", "camera_shake", 1)
 	config.set_value("general", "show_tutorials", true)
 	config.set_value("general", "show_player_ghost", true)
 	
-	config.set_value("video", "window_mode", 1)
+	config.set_value("video", "window_mode", 0)
 	config.set_value("video", "resolution", "1280x720")
 	
 	config.set_value("audio", "master_volume", 0.75)
@@ -102,9 +115,27 @@ func load_default_keyboard_controls():
 	config.set_value("keybindings", "MoveDown_0", "S")
 	config.set_value("keybindings", "MoveDown_1", "Down")
 	config.set_value("keybindings", "Jump_0", "J")
+	config.set_value("keybindings", "Jump_1", "C")
 	config.set_value("keybindings", "Climb_0", "K")
+	config.set_value("keybindings", "Climb_1", "Z")
+	config.set_value("keybindings", "Climb_2", "Y")
 	config.set_value("keybindings", "Dash_0", "L")
+	config.set_value("keybindings", "Dash_1", "X")
+	config.set_value("keybindings", "Interact_0", "E")
+	
+	config.set_value("keybindings", "ShipSteerLeft_0", "A")
+	config.set_value("keybindings", "ShipSteerLeft_1", "Left")
+	config.set_value("keybindings", "ShipSteerRight_0", "D")
+	config.set_value("keybindings", "ShipSteerRight_1", "Right")
+	config.set_value("keybindings", "ShipForward_0", "W")
+	config.set_value("keybindings", "ShipForward_1", "Up")
+	config.set_value("keybindings", "ShipBack_0", "S")
+	config.set_value("keybindings", "ShipBack_1", "Down")
+	config.set_value("keybindings", "ShipBoost_0", "Shift")
+	
 	config.set_value("keybindings", "Pause_0", "Escape")
+	config.set_value("keybindings", "UIConfirm_0", "J")
+	config.set_value("keybindings", "UIBack_0", "K")
 	
 	config.save(SETTINGS_FILE_PATH)
 
@@ -128,7 +159,21 @@ func load_default_controller_controls():
 	config.set_value("controller", "ClimbC_3", "Joypad Motion on Axis 5 (Joystick 2 Y-Axis, Right Trigger, Sony R2, Xbox RT) with Value 1.00")
 	config.set_value("controller", "DashC_0", "Joypad Button 2 (Left Action, Sony Square, Xbox X, Nintendo Y)")
 	config.set_value("controller", "DashC_1", "Joypad Button 1 (Right Action, Sony Circle, Xbox B, Nintendo A)")
+	
+	config.set_value("controller", "InteractC_0", "Joypad Button 3 (Top Action, Sony Triangle, Xbox Y, Nintendo X)")
+	
+	config.set_value("controller", "ShipSteerLeftC_0", "Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value -1.00")
+	config.set_value("controller", "ShipSteerLeftC_1", "Joypad Button 13 (D-pad Left)")
+	config.set_value("controller", "ShipSteerRightC_0", "Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value 1.00")
+	config.set_value("controller", "ShipSteerRightC_1", "Joypad Button 14 (D-pad Right)")
+	config.set_value("controller", "ShipForwardC_0", "Joypad Button 0 (Bottom Action, Sony Cross, Xbox A, Nintendo B)")
+	config.set_value("controller", "ShipBackC_0", "Joypad Button 1 (Right Action, Sony Circle, Xbox B, Nintendo A)")
+	config.set_value("controller", "ShipBoostC_0", "Joypad Button 2 (Left Action, Sony Square, Xbox X, Nintendo Y)")
+	
 	config.set_value("controller", "PauseC_0", "Joypad Button 6 (Start, Xbox Menu, Nintendo +)")
+	config.set_value("controller", "UIConfirmC_0", "Joypad Button 0 (Bottom Action, Sony Cross, Xbox A, Nintendo B)")
+	config.set_value("controller", "UIBackC_0", "Joypad Button 1 (Right Action, Sony Circle, Xbox B, Nintendo A)")
+	
 	
 	config.save(SETTINGS_FILE_PATH)
 
@@ -271,9 +316,13 @@ func change_window_mode(index):
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 
 
+
 func set_resolution(value):
 	get_window().size = value
 	ConfigFileHandler.center_window()
+
+
+
 
 
 func save_general_settings(key : String, value):

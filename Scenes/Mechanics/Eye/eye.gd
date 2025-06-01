@@ -5,7 +5,7 @@ extends StaticBody2D
 
 @export var level_codename = ""
 var knockback_amount = Vector2(200, 200)
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer2
 
 func _ready():
 	Events.connect("change_gravity", change_gravity)

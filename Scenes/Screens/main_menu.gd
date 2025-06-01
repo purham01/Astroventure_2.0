@@ -11,6 +11,7 @@ extends Control
 @onready var info_labels_controller: HBoxContainer = $InfoLabelsController
 @onready var secondary_menu_container: MarginContainer = %SecondaryMenuContainer
 @onready var info_labels_keyboard_enter_name: HBoxContainer = $InfoLabelsKeyboardEnterName
+@onready var options_button: Button = %OptionsButton
 
 var player_name = ""
 var current_tab = main_menu_layer
@@ -27,7 +28,7 @@ func _ready():
 	ConfigFileHandler.input_type_changed.connect(change_input_type)
 
 func _input(event):
-	if event.is_action_pressed("UIBack") and current_tab == secondary_menu_container:
+	if (event.is_action_pressed("UIBack") or event.is_action_pressed("UIBackC") ) and current_tab == secondary_menu_container:
 		_on_back_button_pressed()
 
 	if current_tab == new_game_start_layer and event.is_action_pressed("ui_cancel"):
@@ -45,6 +46,7 @@ func _on_back_button_pressed():
 		
 	if secondary_menu_container.current_tab == secondary_menu_container.root_tab:
 		current_tab = main_menu_layer
+		options_button.grab_focus()
 
 func change_input_type():
 	if current_tab == new_game_start_layer:
@@ -100,5 +102,5 @@ func _on_enter_name_text_submitted(new_text: String) -> void:
 	
 	await Events.new_game_started
 	await LevelTransition.fade_to_black_menu()
-	get_tree().change_scene_to_file("res://Scenes/Levels/Test_level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/NewLevels/Earth.tscn")
 	LevelTransition.fade_from_black()

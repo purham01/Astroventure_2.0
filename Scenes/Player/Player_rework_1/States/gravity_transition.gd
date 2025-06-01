@@ -1,6 +1,6 @@
 extends "state.gd"
 
-@export var transition_duration = 1.10
+@export var transition_duration = 1.60
 @onready var transition_timer: Timer = $TransitionTimer
 
 func update(delta):

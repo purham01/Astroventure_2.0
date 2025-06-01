@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8yd44clm2sy4"]
+[gd_scene load_steps=19 format=3 uid="uid://c8yd44clm2sy4"]
 
 [ext_resource type="Script" uid="uid://bfnyn168obu1p" path="res://Scenes/Level Assets/end_level_item.gd" id="1_wh40d"]
+[ext_resource type="Texture2D" uid="uid://djqoxxt2kb6qi" path="res://Assets/Light/light64x64.png" id="2_c55oa"]
 [ext_resource type="Texture2D" uid="uid://doacfbwf2hfw1" path="res://Assets/Level assets/Pixel purple gem.png" id="2_jp42a"]
 
 [sub_resource type="Gradient" id="Gradient_b75hx"]
@@ -118,6 +119,14 @@ _data = {
 collision_layer = 0
 collision_mask = 18
 script = ExtResource("1_wh40d")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+color = Color(0.898, 0, 1, 1)
+energy = 2.54
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_c55oa")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-0.0388249, 0.405031)

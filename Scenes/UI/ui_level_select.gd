@@ -135,7 +135,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 24.79\nTemp: -110°C\nDanger: [color=red]HIGH[/color]"
 			dialog = jupiter_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31052"
 			leaderboard_ui.level_codename = "Jupiter"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Jupiter")
@@ -234,7 +234,7 @@ func load_collectibles(level_codename):
 
 func _process(delta):
 	indicator.visible = finished and !no_more_dialogue
-	if Input.is_action_just_pressed("ui_accept") and !disable_dialogue:
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("UIConfirm")  or Input.is_action_just_pressed("UIConfirmC")) and !disable_dialogue:
 		if finished:
 			nextPhrase()
 		else:

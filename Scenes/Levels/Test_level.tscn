@@ -1,12 +1,18 @@
-[gd_scene load_steps=43 format=4 uid="uid://br2aite2suv0n"]
+[gd_scene load_steps=48 format=4 uid="uid://br2aite2suv0n"]
 
 [ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_sfeck"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="2_104i5"]
+[ext_resource type="Texture2D" uid="uid://ym2qhy42cm6x" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-back.png" id="2_heqr1"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_02d5s"]
+[ext_resource type="Texture2D" uid="uid://c8v8hbkscb4f8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-stars.png" id="3_k7cjt"]
 [ext_resource type="PackedScene" uid="uid://cpqt3q3yiqvyw" path="res://Scenes/Level Assets/Bouncy things/jump_pad.tscn" id="3_rl6y3"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="4_13ciy"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_hy0i3"]
+[ext_resource type="Texture2D" uid="uid://dqc8sl2ifg1ky" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png" id="4_p66lr"]
+[ext_resource type="Texture2D" uid="uid://b20uvt1nx1hea" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/prop-planet-small.png" id="5_nqoti"]
 [ext_resource type="Texture2D" uid="uid://bydn3n01bwby8" path="res://Assets/Tilesets/tileset02.png" id="6_btaoe"]
+[ext_resource type="Texture2D" uid="uid://dbd66vfyjsvc8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-2.png" id="6_wgpjf"]
+[ext_resource type="Texture2D" uid="uid://dp08te4y26o4w" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-1.png" id="7_fc7kd"]
 [ext_resource type="Texture2D" uid="uid://b0tnjrwiqoers" path="res://Assets/Tilesets/tileset01.png" id="7_ouqcg"]
 [ext_resource type="PackedScene" uid="uid://udqq8jaeqnqx" path="res://Scenes/Level Assets/Destructible walls/destructible_wall.tscn" id="7_qk8a6"]
 [ext_resource type="PackedScene" uid="uid://rgqyrmwg1sxi" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform1.tscn" id="8_maf2v"]
@@ -16,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://clsbi1oem8s8c" path="res://Assets/Conveyor belt/conveyor belt.png" id="11_ac46s"]
 [ext_resource type="PackedScene" uid="uid://dkj3rnw1dt08h" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform2.tscn" id="15_ua6dm"]
 [ext_resource type="PackedScene" uid="uid://odaarr34e35i" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform3.tscn" id="16_oh7b0"]
-[ext_resource type="PackedScene" uid="uid://bukecgthamxpo" path="res://Scenes/UI/tutorial_popup.tscn" id="17_oh7b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_heqr1"]
 texture = ExtResource("6_btaoe")
@@ -1556,21 +1561,89 @@ size = Vector2(320, 293.255)
 resource_local_to_scene = true
 b = Vector2(37, 0)
 
-[node name="Earth" instance=ExtResource("1_sfeck")]
-leaderboard_id = "30915"
-level_codename = "Earth"
-deity_name = "Gaia"
+[node name="Jupiter" instance=ExtResource("1_sfeck")]
+leaderboard_id = "31052"
+level_codename = "Jupiter"
+deity_name = "Jupiter"
+developing_level = true
 star_destroyer_medal_time = 25.0
 galaxy_medal_time = 40.0
 nebula_medal_time = 60.0
 supernova_medal_time = 90.0
 
-[node name="PlayerGhost" parent="." index="5"]
+[node name="Background" parent="Background" index="0"]
 visible = false
 
+[node name="Parallax2D" type="Parallax2D" parent="Background" index="1"]
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(1, 0)
+repeat_times = 3
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_heqr1")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" index="2"]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Background" type="TextureRect" parent="Background/Parallax2D2" index="0"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("3_k7cjt")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" index="3"]
+scroll_scale = Vector2(0.7, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(1.5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D3" index="0"]
+position = Vector2(-232, 63)
+texture = ExtResource("4_p66lr")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" index="4"]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D4" index="0"]
+position = Vector2(229, 112)
+texture = ExtResource("5_nqoti")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background" index="5"]
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(-27, -69)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(4, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D5" index="0"]
+position = Vector2(229, 112)
+texture = ExtResource("6_wgpjf")
+
+[node name="Parallax2D6" type="Parallax2D" parent="Background" index="6"]
+scroll_scale = Vector2(0.6, 0)
+scroll_offset = Vector2(-118, 9)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(3, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D6" index="0"]
+position = Vector2(229, 112)
+texture = ExtResource("7_fc7kd")
+
 [node name="Player" parent="." index="8"]
-position = Vector2(24, 144)
-ACCELARATION = 1000.0
+position = Vector2(26, 143)
 FRICTION = 1000.0
 
 [node name="Ground" parent="TileMap" index="0"]
@@ -1813,10 +1886,6 @@ position = Vector2(1120, -744)
 
 [node name="DestinationPoint" parent="MovingPlatform3" index="1"]
 position = Vector2(16, -64)
-
-[node name="TutorialPopup" parent="." index="22" instance=ExtResource("17_oh7b0")]
-visible = false
-position = Vector2(93, 86)
 
 [editable path="Player"]
 [editable path="Rooms/Room"]

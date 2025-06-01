@@ -7,6 +7,7 @@ extends Control
 
 @onready var reset_button: Button = $PanelContainer/MarginContainer/VBoxContainer/ResetButton
 @onready var scroll_container: ScrollContainer = %ScrollContainer
+@onready var back_button: Button = $PanelContainer/MarginContainer/VBoxContainer/BackButton
 
 @onready var key_label_text: Label = $PanelContainer/PopUp/PanelContainer/VBoxContainer/KeyLabelText
 @onready var pop_up: MarginContainer = $PanelContainer/PopUp
@@ -18,16 +19,7 @@ var remapping_button = null
 var first_button : Button = null
 var focused_button = null
 
-var input_actions = {
-	"MoveUpC": "Move up",
-	"MoveLeftC": "Move left",
-	"MoveDownC": "Move down",
-	"MoveRightC": "Move right",
-	"JumpC" : "Jump",
-	"DashC" : "Dash",
-	"ClimbC" : "Climb",
-	"PauseC" : "Pause"
-}
+var input_actions = ControlsSingleton.input_actions_controller
 
 var button_icons = {
 	"Joypad Button 2 (Left Action, Sony Square, Xbox X, Nintendo Y)" : 0,
@@ -98,8 +90,8 @@ func _create_action_list():
 		button.focus_exited.connect(_on_input_button_focus_exited)
 		if first_button == null: first_button = button
 	
-	first_button.focus_neighbor_top = first_button.get_path_to(reset_button)
-	reset_button.focus_neighbor_bottom = reset_button.get_path_to(first_button)
+	first_button.focus_neighbor_top = first_button.get_path_to(back_button)
+	back_button.focus_neighbor_bottom = back_button.get_path_to(first_button)
 
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
@@ -179,6 +171,7 @@ func _input(event):
 			
 			pop_up.hide()
 			accept_event()
+			ConfigFileHandler.controls_changed.emit()
 	
 	else:
 		if event.is_action_pressed("ClearKeybind") and focused_button != null:
@@ -236,6 +229,7 @@ func _on_reset_button_button_up() -> void:
 	first_button = null
 	_load_keybindings_from_settings()
 	_create_action_list()
+	ConfigFileHandler.controls_changed.emit()
 
 
 func _on_pop_up_timer_timeout() -> void:
@@ -243,3 +237,7 @@ func _on_pop_up_timer_timeout() -> void:
 	is_remapping = false
 	action_to_remap = null
 	remapping_button = null
+
+
+func _on_back_button_pressed() -> void:
+	pass # Replace with function body.

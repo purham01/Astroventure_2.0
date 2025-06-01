@@ -11,3 +11,4 @@ extends Node
 @onready var dead: Node = $DEAD
 @onready var transition: Node = $TRANSITION
 @onready var gravity_transition: Node = $GRAVITY_TRANSITION
+@onready var special_jump: Node = $SPECIAL_JUMP

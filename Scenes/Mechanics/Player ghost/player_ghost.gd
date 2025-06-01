@@ -62,6 +62,7 @@ func _ready() -> void:
 	if ConfigFileHandler.show_player_ghost == false:
 		dont_run = true
 		visible = false
+		ready_to_run = true
 		return
 	
 	if Save.player_UID == "":

@@ -19,8 +19,10 @@ func update(delta):
 func enter_state():
 	Player.animated_sprite.play("dash")
 	
+	#dash.set_parameter("Parameter 1", randf())
+	#dash.play()
 	Player.is_dashing = true
-	Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_DO_NOTHING
+	#Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_DO_NOTHING
 	Player.can_dash = false
 	#Player.dash_buffer.stop()
 	dashing = true
@@ -61,5 +63,5 @@ func _on_timer_timeout() -> void:
 	dashing = false
 
 
-func _on_reset_on_platform_leave_timeout() -> void:
-	Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_ADD_VELOCITY
+#func _on_reset_on_platform_leave_timeout() -> void:
+	#Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_ADD_VELOCITY

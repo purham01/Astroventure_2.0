@@ -8,6 +8,7 @@ extends Control
 @onready var key_label_text: Label = $PanelContainer/PopUp/PanelContainer/VBoxContainer/KeyLabelText
 @onready var pop_up: MarginContainer = $PanelContainer/PopUp
 @onready var pop_up_timer: Timer = $PanelContainer/PopUp/PopUpTimer
+@onready var back_button: Button = $PanelContainer/MarginContainer/VBoxContainer/BackButton
 
 @onready var reset_button: Button = $PanelContainer/MarginContainer/VBoxContainer/ResetButton
 @onready var scroll_container: ScrollContainer = %ScrollContainer
@@ -18,16 +19,7 @@ var remapping_button = null
 var first_button : Button = null
 var focused_button = null
 
-var input_actions = {
-	"MoveUp": "Move up",
-	"MoveLeft": "Move left",
-	"MoveDown": "Move down",
-	"MoveRight": "Move right",
-	"Jump" : "Jump",
-	"Dash" : "Dash",
-	"Climb" : "Climb",
-	"Pause" : "Pause"
-}
+var input_actions = ControlsSingleton.input_actions
 
 var key_icons = {
 	"Escape" : 0,
@@ -150,9 +142,9 @@ func _create_action_list():
 		button.focus_entered.connect(_on_input_button_focus_entered.bind(button,action))
 		button.focus_exited.connect(_on_input_button_focus_exited)
 		if first_button == null: first_button = button
-	
-		first_button.focus_neighbor_top = first_button.get_path_to(reset_button)
-		reset_button.focus_neighbor_bottom = reset_button.get_path_to(first_button)
+
+	first_button.focus_neighbor_top = first_button.get_path_to(back_button)
+	back_button.focus_neighbor_bottom = back_button.get_path_to(first_button)
 
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
@@ -218,6 +210,7 @@ func _input(event):
 			
 			pop_up.hide()
 			accept_event()
+			ConfigFileHandler.controls_changed.emit()
 	
 	else:
 		if event.is_action_pressed("ClearKeybind") and focused_button != null:
@@ -263,15 +256,6 @@ func _update_action_list(button, event):
 		#print(wide_key_icons[key_name])
 		key_anim_sprite.frame = wide_key_icons[key_name]
 	
-
-	elif key_name in mouse_icons:
-		var key_icon_instance = key_icon_scene.instantiate()
-		var key_anim_sprite = key_icon_instance.find_child("AnimKeySprite")
-		button.find_child("keyIcons").add_child(key_icon_instance)
-		key_anim_sprite.play("mouse")
-		key_anim_sprite.frame = mouse_icons[key_name]
-		
-	
 	else:
 		var key_label_instance = key_label_scene.instantiate()
 		button.find_child("keyIcons").add_child(key_label_instance)
@@ -284,6 +268,7 @@ func _on_reset_button_button_up() -> void:
 	first_button = null
 	_load_keybindings_from_settings()
 	_create_action_list()
+	ConfigFileHandler.controls_changed.emit()
 
 
 func _on_pop_up_timer_timeout() -> void:
@@ -291,3 +276,7 @@ func _on_pop_up_timer_timeout() -> void:
 	is_remapping = false
 	action_to_remap = null
 	remapping_button = null
+
+
+func _on_back_button_pressed() -> void:
+	pass # Replace with function body.

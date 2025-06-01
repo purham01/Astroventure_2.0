@@ -54,6 +54,12 @@ const jump_h_boost = 20
 @onready var WALL_JUMP_VELOCITY = Vector2(wall_jump_h_speed, wall_jump_v_speed)
 @onready var WALL_JUMP_VELOCITY_NEUTRAL = Vector2(wall_jump_h_speed/2.0, wall_jump_v_speed)
 var wall_direction = 1
+var hazard_direction = 0
+@onready var left_hazard_raycasts: Node2D = $HazardRaycasts/Left
+@onready var right_hazard_raycasts: Node2D = $HazardRaycasts/Right
+@onready var hazard_detector_collision_shape: CollisionShape2D = $HazardDetector/CollisionShape2D
+
+
 
 #animation
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -77,8 +83,8 @@ var prev_state = null
 var can_dash = true
 var is_dashing = false
 var dash_direction = Vector2.ZERO
-@export var dash_speed = 220
-@export var end_dash_speed = 140
+@export var dash_speed = 220.0
+@export var end_dash_speed = 140.0
 @export var grav_portal_boost = 250.0
 
 @export var slide_friction = 0.9
@@ -214,6 +220,7 @@ func _physics_process(delta: float) -> void:
 	if !playerDead:
 		player_input()
 		_update_wall_direction()
+		_update_hazard_direction()
 		stamina_reset_check()
 		
 		calc_max_fall_speed(delta)
@@ -221,7 +228,7 @@ func _physics_process(delta: float) -> void:
 		current_gs.attempt_correction_up(3)
 		
 		handle_jump_buffer()
-	if !disable_player_movement:
+	if !disable_player_movement and !playerDead:
 		if is_dashing:
 			move_and_collide(velocity * delta)
 		else:
@@ -344,6 +351,26 @@ func _check_is_valid_wall(wall_raycasts):
 			return true
 	return false
 
+func _update_hazard_direction():
+	var is_near_wall_left = _check_for_hazards(left_hazard_raycasts)
+	var is_near_wall_right = _check_for_hazards(right_hazard_raycasts)
+	
+	if is_near_wall_left and is_near_wall_right:
+		hazard_direction = movement_input.x
+	else:
+		hazard_direction = -int(is_near_wall_left) + int(is_near_wall_right)
+	
+
+func _check_for_hazards(hazard_raycasts):
+	for raycast : RayCast2D in hazard_raycasts.get_children():
+		raycast.force_raycast_update()
+		if raycast.is_colliding():
+			#var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
+			#if dot > PI * 0.35 && dot < PI * 0.55: 
+			return true
+	return false
+
+
 func squish_reset(delta):
 	animated_sprite.scale.x = move_toward(animated_sprite.scale.x, 1, 1*delta)
 	animated_sprite.scale.y = move_toward(animated_sprite.scale.y, 1, 1*delta)
@@ -367,7 +394,7 @@ func _on_room_detector_area_entered(area: Area2D) -> void:
 	
 	# Changes camera's current room and size. check camera script for more info
 	player_camera.change_room(collision_shape.global_position, size)
-	
+	change_state(STATES.transition)
 	#adds vertical boost if coming from below
 	if area.entrance_from_below:
 		current_gs.vertical_boost()
@@ -382,7 +409,7 @@ func handle_jump_buffer():
 	#if can_dash and dash_input:
 		#dash_buffer.start()
 
-func _on_hazard_detector_entered(area: Area2D) -> void:
+func _on_hazard_detector_area_entered(area: Area2D) -> void:
 	respawn()
 
 func _on_hazard_detector_body_entered(body: Node2D) -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d4ftpysdqfd4"]
+
+[node name="FmodBanks" type="Node"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/Character.bank", "res://Banks/Env.bank", "res://Banks/UI.bank"]

@@ -88,8 +88,9 @@ func climb_movement(delta):
 
 func climb_edge():
 	Player.velocity.y = -120
-	await get_tree().create_timer(0.05).timeout
-	Player.velocity.x = 100 * Player.last_direction.x
+	if Player.hazard_direction == 0:
+		await get_tree().create_timer(0.05).timeout
+		Player.velocity.x = 100 * Player.last_direction.x
 	
 
 func attempt_correction_up(amount: int):
@@ -141,12 +142,13 @@ func attempt_correction_down(amount: int):
 						return
 
 func vertical_boost():
-	Player.change_state(Player.STATES.transition)
+	
 	Player.animated_sprite.play("jump")
 	Player.velocity.x = 0
 	Player.velocity.y = -250
 
 func jump_pad():
+	Player.change_state(Player.STATES.special_jump)
 	Player.velocity.y = -325
 	Player.terrain_sm.instant_reset_movement_values()
 	Player.current_stamina = Player.max_stamina

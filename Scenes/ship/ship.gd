@@ -12,18 +12,26 @@ var rotation_direction = 0
 
 
 func get_input():
-	rotation_direction = Input.get_axis("ui_left", "ui_right")
-	velocity -= transform.y * Input.get_axis("ui_down", "ui_up") * speed
-	if Input.is_action_pressed("boost"):
-		speed = speed_boost
-	else:
-		speed = speed_default
+	if ConfigFileHandler.input_type == 0:
+		rotation_direction = Input.get_axis("ShipSteerLeft", "ShipSteerRight")
+		velocity -= transform.y * Input.get_axis("ShipBack", "ShipForward") * speed
+		if Input.is_action_pressed("ShipBoost"):
+			speed = speed_boost
+		else:
+			speed = speed_default
+	elif ConfigFileHandler.input_type == 1:
+		rotation_direction = Input.get_axis("ShipSteerLeftC", "ShipSteerRightC")
+		velocity -= transform.y * Input.get_axis("ShipBackC", "ShipForwardC") * speed
+		if Input.is_action_pressed("ShipBoostC"):
+			speed = speed_boost
+		else:
+			speed = speed_default
 
 
 func handle_animations():
-	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ShipForwardC") or Input.is_action_pressed("ShipBackC") or Input.is_action_pressed("ShipForward") or Input.is_action_pressed("ShipBack"): 
 		animated_sprite.play("fire")
-		if Input.is_action_pressed("boost"):
+		if Input.is_action_pressed("ShipBoost") or Input.is_action_pressed("ShipBoostC"):
 			animated_sprite.play("boost")
 	else:
 		animated_sprite.play("default")

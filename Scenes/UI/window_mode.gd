@@ -3,6 +3,7 @@ extends OptionButton
 func _ready() -> void:
 	add_resolutions()
 	update_button_values()
+	
 
 func add_resolutions():
 	for r in ConfigFileHandler.window_modes:

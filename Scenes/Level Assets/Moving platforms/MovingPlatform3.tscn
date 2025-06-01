@@ -10,13 +10,14 @@ size = Vector2(32, 16)
 size = Vector2(32, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsty"]
-size = Vector2(2.1228, 15.9965)
+size = Vector2(2.1228, 13.9982)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqbr"]
-size = Vector2(2.1228, 15.9311)
+size = Vector2(2.1228, 13.9655)
 
 [node name="MovingPlatform" type="Node2D"]
 script = ExtResource("1_u6d6j")
+wiggle_room_time = 0.1
 metadata/_edit_group_ = true
 
 [node name="StartPoint" type="Marker2D" parent="."]
@@ -27,6 +28,7 @@ position = Vector2(97, 1)
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
 position = Vector2(16, 0)
+collision_layer = 65
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
@@ -52,7 +54,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide"]
-position = Vector2(-16, 8)
+position = Vector2(-16, 8.99912)
 shape = SubResource("RectangleShape2D_5dsty")
 
 [node name="PlayerOnSide2" type="Area2D" parent="Platform"]
@@ -61,7 +63,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide2"]
-position = Vector2(-7.9427, 0.51578)
+position = Vector2(-7.9427, 1.49855)
 shape = SubResource("RectangleShape2D_5pqbr")
 
 [node name="WiggleRoomTimer" type="Timer" parent="."]

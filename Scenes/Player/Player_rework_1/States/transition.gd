@@ -8,6 +8,8 @@ func update(delta):
 	Player.player_movement(delta)
 	if !Player.inTransition or Player.is_on_floor():
 		return STATES.idle
+	if Player.dash_input and Player.can_dash:
+		return STATES.dash
 
 func enter_state():
 	Player.inTransition = true

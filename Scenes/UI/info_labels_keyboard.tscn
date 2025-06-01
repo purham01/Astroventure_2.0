@@ -1,5 +1,6 @@
-[gd_scene load_steps=80 format=3 uid="uid://b5u7j0j7vil4q"]
+[gd_scene load_steps=81 format=3 uid="uid://b5u7j0j7vil4q"]
 
+[ext_resource type="Script" uid="uid://bamtp3pqay24d" path="res://Scenes/UI/info_labels_keyboard.gd" id="1_biu17"]
 [ext_resource type="Texture2D" uid="uid://b4antot7fc5r" path="res://Assets/UI/gdb-keyboard-2.png" id="1_r7n01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yprk2"]
@@ -570,6 +571,7 @@ offset_top = -15.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
+script = ExtResource("1_biu17")
 
 [node name="Confirm" type="Label" parent="."]
 layout_mode = 2

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccbleybg3v3i8"]
+[gd_scene load_steps=9 format=3 uid="uid://ccbleybg3v3i8"]
 
+[ext_resource type="Script" uid="uid://c54a1rvqpl8th" path="res://Scenes/Singletons/ShaderEffect/shader_effect.gd" id="1_1n1we"]
 [ext_resource type="Shader" uid="uid://obrcgbgio3sy" path="res://Scenes/Singletons/ShaderEffect/CRT.gdshader" id="1_cuiba"]
 [ext_resource type="Shader" uid="uid://chx38oorf4g22" path="res://Scenes/Singletons/ShaderEffect/Chromatic.gdshader" id="2_yhyho"]
 [ext_resource type="Shader" uid="uid://cw6ie7q6qoejh" path="res://Scenes/Singletons/ShaderEffect/Grayscale.gdshader" id="3_836r3"]
@@ -7,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_836r3"]
 shader = ExtResource("1_cuiba")
 shader_parameter/curvature = 7.0
-shader_parameter/vignette_multiplier = 2.0
+shader_parameter/vignette_multiplier = 1.0
 shader_parameter/brightness = 1.25
 
 [sub_resource type="QuadMesh" id="QuadMesh_836r3"]
@@ -27,6 +28,7 @@ shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.0
 
 [node name="ShaderEffect" type="Node2D"]
+script = ExtResource("1_1n1we")
 
 [node name="CRT" type="CanvasLayer" parent="."]
 layer = 100
