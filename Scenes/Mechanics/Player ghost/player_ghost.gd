@@ -61,7 +61,7 @@ func _ready() -> void:
 	Events.connect("player_first_move", start_moving)
 	if ConfigFileHandler.show_player_ghost == false:
 		dont_run = true
-		visible = false
+		#visible = false
 		ready_to_run = true
 		return
 	
@@ -84,7 +84,7 @@ func _ready() -> void:
 	if !disable:
 		global_transform = _ghost_data[0].global_transform
 		visual.global_transform = _ghost_data[0].global_transform
-		visible = true
+		#visible = true
 		ready_to_run = true
 
 func _process(delta: float) -> void:

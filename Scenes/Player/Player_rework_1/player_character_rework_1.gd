@@ -182,6 +182,12 @@ var fuel_tank_offset = {
 	
 }
 
+#effets
+@onready var dust = preload("res://Scenes/Effects/dust.tscn")
+@onready var slide_particles_left: GPUParticles2D = %SlideParticlesLeft
+@onready var slide_particles_right: GPUParticles2D = %SlideParticlesRight
+@onready var jump_marker: Marker2D = $ParticleManager/JumpMarker
+
 func _ready() -> void:
 	for state in STATES.get_children():
 		state.STATES = STATES
@@ -389,12 +395,11 @@ func calc_max_fall_speed(delta):
 
 func _on_room_detector_area_entered(area: Area2D) -> void:
 	# Gets collision shape and size of room
+	change_state(STATES.transition)
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
-	
 	# Changes camera's current room and size. check camera script for more info
 	player_camera.change_room(collision_shape.global_position, size)
-	change_state(STATES.transition)
 	#adds vertical boost if coming from below
 	if area.entrance_from_below:
 		current_gs.vertical_boost()
@@ -435,7 +440,15 @@ func _end_level_anim():
 	Events.pickup_stars.emit()
 	endLevel = true
 	animation_player.play("end_level")
+	FmodBanks.continue_game.play()
 
 func _on_animated_sprite_animation_finished():
 	if animated_sprite.animation == "poof" and endLevel:
 		animated_sprite.visible= false
+
+func instantiate_dust():
+	var instance = dust.instantiate()
+	instance.global_position = jump_marker.global_position
+	instance.rotation = rotation
+	
+	get_tree().root.get_child(0).add_child(instance)

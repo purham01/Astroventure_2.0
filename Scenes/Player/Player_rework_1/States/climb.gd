@@ -3,6 +3,7 @@ extends "state.gd"
 var was_looking_back = false
 
 func update(delta):
+	play_walking_sfx()
 	change_animation()
 	Player.current_gs.climb_movement(delta)
 	
@@ -37,13 +38,23 @@ func update(delta):
 			return STATES.fall
 	return null
 
+func play_walking_sfx():
+	if Player.animated_sprite.animation == "climb":
+		if Player.animated_sprite.frame == 2:
+				FmodBanks.walk.set_parameter("Parameter 1", randf())
+				FmodBanks.walk.play()
+
 func enter_state():
+	FmodBanks.walk.set_parameter("Parameter 1", randf())
+	FmodBanks.walk.play()
 	print(Player.last_direction)
 	print(Player.wall_direction)
 	Player.terrain_sm.instant_reset_movement_values()
 
 func exit_state():
 	was_looking_back = false
+	Player.slide_particles_left.emitting = false
+	Player.slide_particles_right.emitting = false
 
 func change_animation():
 	if Player.movement_input.y < 0:

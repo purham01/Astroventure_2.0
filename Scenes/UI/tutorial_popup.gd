@@ -10,7 +10,9 @@ func _ready():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.name == "Ship":
 		animation_player.play("show_popup")
+		FmodBanks.popup_open.play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player" or body.name == "Ship":
 		animation_player.play("hide_popup")
+		#FmodBanks.popup_close.play()

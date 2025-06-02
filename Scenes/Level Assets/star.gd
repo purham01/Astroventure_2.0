@@ -99,6 +99,7 @@ func save_star_data():
 func _on_animated_sprite_2d_animation_finished():
 	if star_location != null:
 		star_location.queue_free()
+		
 	queue_free()
 
 
@@ -136,3 +137,9 @@ func change_gravity(new_rotation_degrees):
 	await tween.finished
 	if rotation_degrees == -360 or rotation_degrees == 360:
 		rotation_degrees = 0
+
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "pickup":
+		FmodBanks.collect.play()

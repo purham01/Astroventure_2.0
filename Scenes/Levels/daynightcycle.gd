@@ -12,8 +12,7 @@ var past_minute:float = -1.0
 var playerSafe:bool = false
 var returning = true
 
-@onready var level_animation = $"../../LevelAnimation"
-
+@onready var level_animation: AnimationPlayer = $"../../LevelAnimation"
 
 @export var gradient:GradientTexture1D
 @export var INGAME_SPEED = 100
@@ -25,6 +24,7 @@ var returning = true
 func _ready():
 	time = INGAME_TO_REAL_MINUTE * INITIAL_HOUR * MINUTES_PER_HOUR
 	Events.player_safe.connect(_set_playerSafe)
+	Events.player_dead.connect(reset)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,18 +34,18 @@ func _process(delta):
 	
 	if(value>=0.4) and !level_animation.is_playing() and !returning:
 		level_animation.play("flashing")
-	if (value>=0.7) and level_animation.is_playing():
+	if (value>=0.7) and level_animation.is_playing() and !returning:
 		level_animation.play("red_flashing")
-	if (value >= 0.9999 and level_animation.is_playing()):
-		level_animation.play("RESET")
+	if (value >= 0.999 and level_animation.is_playing()):
+		if !playerSafe:
+			sun_kill.emit()
+		level_animation.play("stop")
 		returning = true
 	
 	
 	if value<0.4:
 		returning = false
-	
-	if(value >= 0.999) and !playerSafe:
-		sun_kill.emit()
+
 	self.color = gradient.gradient.sample(value)
 	_recalculate_time()
 
@@ -62,4 +62,8 @@ func _recalculate_time():
 	#print(int(hour))
 	if past_minute != minute:
 		time_tick.emit(day,hour,minute)
-	
+
+func reset():
+	time = INGAME_TO_REAL_MINUTE * INITIAL_HOUR * MINUTES_PER_HOUR
+	level_animation.play("stop")
+	returning = false

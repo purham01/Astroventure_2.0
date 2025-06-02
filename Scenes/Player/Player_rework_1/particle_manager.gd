@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var ghost_node : PackedScene
 @onready var dash_ghost_timer: Timer = $DashGhostTimer

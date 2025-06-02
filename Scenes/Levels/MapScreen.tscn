@@ -16,11 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://bkvs6f6irfekt" path="res://Scenes/Level Assets/Planets/earth.tscn" id="13_d0emp"]
 [ext_resource type="PackedScene" uid="uid://hj7yxl4lnnor" path="res://Scenes/UI/ui_level_select.tscn" id="14_10y4k"]
 [ext_resource type="PackedScene" uid="uid://bmapv4seantau" path="res://Scenes/NewLevels/Neptune.tscn" id="15_h8kd6"]
+[ext_resource type="PackedScene" uid="uid://cd8q0nnpbb58c" path="res://Scenes/NewLevels/Uranus.tscn" id="15_o1bcs"]
 [ext_resource type="PackedScene" uid="uid://7a8w0j1m350r" path="res://Scenes/Level Assets/Planets/uranus.tscn" id="16_6fiog"]
 [ext_resource type="PackedScene" uid="uid://bjbrkn1uecc05" path="res://Scenes/Level Assets/Planets/neptune.tscn" id="16_s6ejm"]
 [ext_resource type="PackedScene" uid="uid://ccnirjwuixvcj" path="res://Scenes/UI/tutorial_panel.tscn" id="18_e0rbw"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="22_y8gi4"]
-[ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="25_e0pxr"]
 
 [sub_resource type="Curve2D" id="Curve2D_l5f74"]
 _data = {
@@ -53,6 +53,12 @@ point_count = 33
 
 [node name="MapScreen" type="Node2D"]
 script = ExtResource("1_058mk")
+
+[node name="Music" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Music/MainMenu"
+event_guid = "{18be84f7-44ce-4262-bc04-04c4ac45f487}"
+autoplay = true
+process_mode = 3
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -285,6 +291,7 @@ rotates = false
 
 [node name="Uranus" parent="UranusPath2D/UranusPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("16_6fiog")]
 scale = Vector2(0.11404, 0.11404)
+level = ExtResource("15_o1bcs")
 speed = 1
 ship = NodePath("../../../Ship")
 
@@ -391,14 +398,10 @@ visible = false
 [node name="LeaderboardButton" parent="CanvasLayer/PauseMenu/PanelContainer/PauseMenuContainer/PauseMenuTab" index="4"]
 visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("25_e0pxr")
-autoplay = true
-
 [connection signal="timeout" from="CanvasLayer2/ControlsPanel/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="CanvasLayer/PauseMenu"]
+[editable path="CanvasLayer/PauseMenu/PanelContainer/PauseMenuContainer/LeaderboardUI"]
 [editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer"]
 [editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer/InputSettings"]
 [editable path="CanvasLayer/PauseMenu/PanelContainer/SecondaryMenuContainer/InputSettingsController"]

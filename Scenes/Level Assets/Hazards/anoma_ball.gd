@@ -6,6 +6,9 @@ extends Node2D
 var reverse = false
 var time_to_turn = 0.5
 
+func _ready() -> void:
+	Events.connect("player_dead",reset)
+
 func _process(delta):
 	if not reverse:
 		path.set_progress(path.get_progress() + speed * delta)
@@ -17,3 +20,9 @@ func _process(delta):
 		if path.progress_ratio == 0:
 			await get_tree().create_timer(time_to_turn).timeout
 			reverse = false
+
+func reset():
+	reverse = false
+	path.set_progress(0)
+	
+	

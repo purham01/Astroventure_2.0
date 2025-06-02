@@ -77,67 +77,78 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="GENERAL" type="Label" parent="GeneralOptions"]
+[node name="PanelContainer" type="PanelContainer" parent="GeneralOptions"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GeneralOptions/PanelContainer"]
+layout_mode = 2
+
+[node name="GENERAL" type="Label" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "General
 "
 horizontal_alignment = 1
 
-[node name="ShaderSettings" parent="GeneralOptions" instance=ExtResource("2_dod7e")]
+[node name="ShaderSettings" parent="GeneralOptions/PanelContainer/VBoxContainer" instance=ExtResource("2_dod7e")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Show tutorials" type="CheckButton" parent="GeneralOptions"]
+[node name="Show tutorials" type="CheckButton" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Show tutorials"
 
-[node name="PlayerGhost" type="CheckButton" parent="GeneralOptions"]
+[node name="PlayerGhost" type="CheckButton" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Player ghost"
 
-[node name="Camera shake" type="Label" parent="GeneralOptions"]
+[node name="Camera shake" type="Label" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Camera shake"
 
-[node name="Slider" type="HFlowContainer" parent="GeneralOptions"]
+[node name="Slider" type="HFlowContainer" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CameraShake" type="HSlider" parent="GeneralOptions/Slider"]
+[node name="CameraShake" type="HSlider" parent="GeneralOptions/PanelContainer/VBoxContainer/Slider"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.1
 
-[node name="CameraShakeValue" type="Label" parent="GeneralOptions/Slider"]
+[node name="CameraShakeValue" type="Label" parent="GeneralOptions/PanelContainer/VBoxContainer/Slider"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "75%"
 clip_text = true
 
-[node name="Controller vibration" type="Label" parent="GeneralOptions"]
+[node name="Controller vibration" type="Label" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Controller vibration"
 
-[node name="Slider2" type="HFlowContainer" parent="GeneralOptions"]
+[node name="Slider2" type="HFlowContainer" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../BackButton")
 
-[node name="Controller vibration" type="HSlider" parent="GeneralOptions/Slider2"]
+[node name="Controller vibration" type="HSlider" parent="GeneralOptions/PanelContainer/VBoxContainer/Slider2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.1
 
-[node name="ControllerVibrationValue" type="Label" parent="GeneralOptions/Slider2"]
+[node name="ControllerVibrationValue" type="Label" parent="GeneralOptions/PanelContainer/VBoxContainer/Slider2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "75%"
 clip_text = true
 
-[node name="BackButton" type="Button" parent="GeneralOptions"]
+[node name="BackButton" type="Button" parent="GeneralOptions/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ShaderSettings")
@@ -149,24 +160,30 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VideoMenuTab"]
+[node name="PanelContainer" type="PanelContainer" parent="VideoMenuTab"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VideoMenuTab/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VideoMenuTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Video"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindowMode" parent="VideoMenuTab" instance=ExtResource("2_s2riy")]
+[node name="WindowMode" parent="VideoMenuTab/PanelContainer/VBoxContainer" instance=ExtResource("2_s2riy")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../BackButton")
 theme_override_font_sizes/font_size = 8
 
-[node name="Resolutions" parent="VideoMenuTab" instance=ExtResource("3_dod7e")]
+[node name="Resolutions" parent="VideoMenuTab/PanelContainer/VBoxContainer" instance=ExtResource("3_dod7e")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
-[node name="BackButton" type="Button" parent="VideoMenuTab"]
+[node name="BackButton" type="Button" parent="VideoMenuTab/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../WindowMode")
@@ -178,25 +195,32 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="AUDIO" type="Label" parent="AudioOptionsTab"]
+[node name="PanelContainer" type="PanelContainer" parent="AudioOptionsTab"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptionsTab/PanelContainer"]
+layout_mode = 2
+
+[node name="AUDIO" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="Master" type="Label" parent="AudioOptionsTab"]
+[node name="Master" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Master volume"
 
-[node name="Slider" type="HFlowContainer" parent="AudioOptionsTab"]
+[node name="Slider" type="HFlowContainer" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../BackButton")
 
-[node name="MasterVolume" parent="AudioOptionsTab/Slider" instance=ExtResource("4_gcjgb")]
+[node name="MasterVolume" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider" instance=ExtResource("4_gcjgb")]
 unique_name_in_owner = true
 layout_mode = 2
 bus_name = "Master"
+bus_path = "bus:/"
 
-[node name="MasterVolumeValue" type="Label" parent="AudioOptionsTab/Slider"]
+[node name="MasterVolumeValue" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
@@ -204,19 +228,20 @@ size_flags_horizontal = 8
 text = "75%"
 clip_text = true
 
-[node name="Music" type="Label" parent="AudioOptionsTab"]
+[node name="Music" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music volume"
 
-[node name="Slider2" type="HFlowContainer" parent="AudioOptionsTab"]
+[node name="Slider2" type="HFlowContainer" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicVolume" parent="AudioOptionsTab/Slider2" instance=ExtResource("4_gcjgb")]
+[node name="MusicVolume" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider2" instance=ExtResource("4_gcjgb")]
 unique_name_in_owner = true
 layout_mode = 2
 bus_name = "Music"
+bus_path = "bus:/Music"
 
-[node name="MusicVolumeValue" type="Label" parent="AudioOptionsTab/Slider2"]
+[node name="MusicVolumeValue" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
@@ -224,19 +249,20 @@ size_flags_horizontal = 8
 text = "75%"
 clip_text = true
 
-[node name="Sound effects" type="Label" parent="AudioOptionsTab"]
+[node name="Sound effects" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sound effects"
 
-[node name="Slider3" type="HFlowContainer" parent="AudioOptionsTab"]
+[node name="Slider3" type="HFlowContainer" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SFXVolume" parent="AudioOptionsTab/Slider3" instance=ExtResource("4_gcjgb")]
+[node name="SFXVolume" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider3" instance=ExtResource("4_gcjgb")]
 unique_name_in_owner = true
 layout_mode = 2
 bus_name = "SFX"
+bus_path = "bus:/SFX"
 
-[node name="SFXVolumeValue" type="Label" parent="AudioOptionsTab/Slider3"]
+[node name="SFXVolumeValue" type="Label" parent="AudioOptionsTab/PanelContainer/VBoxContainer/Slider3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
@@ -244,7 +270,7 @@ size_flags_horizontal = 8
 text = "75%"
 clip_text = true
 
-[node name="BackButton" type="Button" parent="AudioOptionsTab"]
+[node name="BackButton" type="Button" parent="AudioOptionsTab/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Slider")
@@ -264,21 +290,34 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../ResetButton")
 
 [connection signal="button_up" from="OptionsMenuTab/GeneralButton" to="." method="_on_general_button_button_up"]
+[connection signal="pressed" from="OptionsMenuTab/GeneralButton" to="." method="_button_pressed_sfx"]
 [connection signal="button_up" from="OptionsMenuTab/VideoButton" to="." method="_on_video_button_button_up"]
+[connection signal="pressed" from="OptionsMenuTab/VideoButton" to="." method="_button_pressed_sfx"]
 [connection signal="button_up" from="OptionsMenuTab/AudioButton" to="." method="_on_audio_button_button_up"]
+[connection signal="pressed" from="OptionsMenuTab/AudioButton" to="." method="_button_pressed_sfx"]
 [connection signal="button_up" from="OptionsMenuTab/ControlsButton" to="." method="_on_controls_button_button_up"]
+[connection signal="pressed" from="OptionsMenuTab/ControlsButton" to="." method="_button_pressed_sfx"]
 [connection signal="button_up" from="OptionsMenuTab/ControlsButton2" to="." method="_on_controls_button_2_button_up"]
-[connection signal="toggled" from="GeneralOptions/Show tutorials" to="." method="_on_show_tutorials_toggled"]
-[connection signal="toggled" from="GeneralOptions/PlayerGhost" to="." method="_on_player_ghost_toggled"]
-[connection signal="value_changed" from="GeneralOptions/Slider/CameraShake" to="." method="_on_camera_shake_value_changed"]
-[connection signal="value_changed" from="GeneralOptions/Slider2/Controller vibration" to="." method="_on_controller_vibration_value_changed"]
-[connection signal="item_selected" from="VideoMenuTab/WindowMode" to="." method="_on_window_mode_item_selected"]
-[connection signal="drag_ended" from="AudioOptionsTab/Slider/MasterVolume" to="." method="_on_master_volume_drag_ended"]
-[connection signal="value_changed" from="AudioOptionsTab/Slider/MasterVolume" to="." method="_on_master_volume_value_changed"]
-[connection signal="drag_ended" from="AudioOptionsTab/Slider2/MusicVolume" to="." method="_on_music_volume_drag_ended"]
-[connection signal="value_changed" from="AudioOptionsTab/Slider2/MusicVolume" to="." method="_on_music_volume_value_changed"]
-[connection signal="drag_ended" from="AudioOptionsTab/Slider3/SFXVolume" to="." method="_on_sfx_volume_drag_ended"]
-[connection signal="value_changed" from="AudioOptionsTab/Slider3/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="OptionsMenuTab/ControlsButton2" to="." method="_button_pressed_sfx"]
+[connection signal="pressed" from="OptionsMenuTab/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="GeneralOptions/PanelContainer/VBoxContainer/ShaderSettings" to="." method="_button_pressed_sfx"]
+[connection signal="pressed" from="GeneralOptions/PanelContainer/VBoxContainer/Show tutorials" to="." method="_button_pressed_sfx"]
+[connection signal="toggled" from="GeneralOptions/PanelContainer/VBoxContainer/Show tutorials" to="." method="_on_show_tutorials_toggled"]
+[connection signal="pressed" from="GeneralOptions/PanelContainer/VBoxContainer/PlayerGhost" to="." method="_button_pressed_sfx"]
+[connection signal="toggled" from="GeneralOptions/PanelContainer/VBoxContainer/PlayerGhost" to="." method="_on_player_ghost_toggled"]
+[connection signal="value_changed" from="GeneralOptions/PanelContainer/VBoxContainer/Slider/CameraShake" to="." method="_on_camera_shake_value_changed"]
+[connection signal="value_changed" from="GeneralOptions/PanelContainer/VBoxContainer/Slider2/Controller vibration" to="." method="_on_controller_vibration_value_changed"]
+[connection signal="pressed" from="GeneralOptions/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="VideoMenuTab/PanelContainer/VBoxContainer/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="pressed" from="VideoMenuTab/PanelContainer/VBoxContainer/WindowMode" to="." method="_button_pressed_sfx"]
+[connection signal="pressed" from="VideoMenuTab/PanelContainer/VBoxContainer/Resolutions" to="." method="_button_pressed_sfx"]
+[connection signal="pressed" from="VideoMenuTab/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="AudioOptionsTab/PanelContainer/VBoxContainer/Slider/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="AudioOptionsTab/PanelContainer/VBoxContainer/Slider2/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="AudioOptionsTab/PanelContainer/VBoxContainer/Slider3/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="AudioOptionsTab/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="InputSettings/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="InputSettingsController/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="InputSettings"]
 [editable path="InputSettingsController"]

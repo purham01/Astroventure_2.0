@@ -19,7 +19,7 @@ General/is_memory_tracking_enabled=false
 "Software Format/raw_speaker_count"=0
 General/default_listener_count=1
 General/banks_path="res://Banks"
-General/should_load_by_name=true
+General/should_load_by_name=false
 DSP/dsp_buffer_size=512
 DSP/dsp_buffer_count=4
 "3D Settings/doppler_scale"=1.0
@@ -45,8 +45,6 @@ Save="*res://Scenes/Singletons/Save.gd"
 Events="*res://Scenes/Singletons/Events.gd"
 LevelTransition="*res://Scenes/Singletons/level_transition.tscn"
 Globals="*res://Scenes/Singletons/Globals.gd"
-PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
-Analytics="*res://addons/quiver_analytics/analytics.tscn"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 FreezeFrameManager="*res://Scenes/Singletons/FreezeFrameManager.gd"
 ConfigFileHandler="*res://Scenes/Singletons/ConfigFileHandler.gd"
@@ -54,7 +52,6 @@ GUI="*res://Scenes/Singletons/gui_autoload.gd"
 ShaderEffect="*res://Scenes/Singletons/ShaderEffect/ShaderEffect.tscn"
 Console="*res://addons/console/console.gd"
 LeaderboardManager="*res://Scenes/Mechanics/Leaderboards/LeaderboardManager.tscn"
-Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
 CameraShake="*res://Scenes/Singletons/CameraShake.gd"
 ControlsSingleton="*res://Scenes/Singletons/ControlsSingleton.gd"
 LootLockerSDK="*res://addons/LootLockerSDK/LootLockerSDK.gd"
@@ -71,7 +68,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/quiver_analytics/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg")
 
 [gui]
 
@@ -340,10 +337,6 @@ UIConfirmC={
 2d_physics/layer_6="drop"
 2d_physics/layer_7="platform"
 2d_physics/layer_8="room"
-
-[quiver]
-
-general/auth_token="8O3V0f4dyws4hR7GGlyz2DYjQLA3rOEb3mTttNS4"
 
 [rendering]
 

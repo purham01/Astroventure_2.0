@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://odaarr34e35i"]
+
+[ext_resource type="Script" uid="uid://nyxq5nq87ycf" path="res://Scenes/Level Assets/Objects/Moving platforms/moving_platform.gd" id="1_u6d6j"]
+[ext_resource type="Texture2D" uid="uid://b34wa4b4re773" path="res://Assets/Level assets/Moving platforms/moving_platform3.png" id="2_u6d6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o84ea"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvlcv"]
+size = Vector2(32, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsty"]
+size = Vector2(2.1228, 13.9982)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqbr"]
+size = Vector2(2.1228, 13.9655)
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_u6d6j")
+wiggle_room_time = 0.1
+metadata/_edit_group_ = true
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="DestinationPoint" type="Marker2D" parent="."]
+position = Vector2(97, 1)
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+position = Vector2(16, 0)
+collision_layer = 65
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(-16, 0)
+texture = ExtResource("2_u6d6j")
+centered = false
+region_rect = Rect2(272, 32, 48, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_o84ea")
+
+[node name="PlayerOnTop" type="Area2D" parent="Platform"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnTop"]
+position = Vector2(-9.53674e-07, 0)
+shape = SubResource("RectangleShape2D_cvlcv")
+
+[node name="PlayerOnSide" type="Area2D" parent="Platform"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide"]
+position = Vector2(-16, 8.99912)
+shape = SubResource("RectangleShape2D_5dsty")
+
+[node name="PlayerOnSide2" type="Area2D" parent="Platform"]
+position = Vector2(23.9427, 7.48422)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlayerOnSide2"]
+position = Vector2(-7.9427, 1.49855)
+shape = SubResource("RectangleShape2D_5pqbr")
+
+[node name="WiggleRoomTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="Platform/PlayerOnTop" to="." method="_on_player_on_top_body_entered"]
+[connection signal="body_exited" from="Platform/PlayerOnTop" to="." method="_on_player_on_top_body_exited"]
+[connection signal="body_entered" from="Platform/PlayerOnSide" to="." method="_on_player_on_side_body_entered"]
+[connection signal="body_exited" from="Platform/PlayerOnSide" to="." method="_on_player_on_side_body_exited"]
+[connection signal="body_entered" from="Platform/PlayerOnSide2" to="." method="_on_player_on_side_body_entered"]
+[connection signal="body_exited" from="Platform/PlayerOnSide2" to="." method="_on_player_on_side_body_exited"]

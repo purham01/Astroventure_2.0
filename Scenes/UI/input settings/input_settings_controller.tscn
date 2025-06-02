@@ -396,4 +396,5 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_button_up"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_button_pressed_sfx"]
 [connection signal="timeout" from="PanelContainer/PopUp/PopUpTimer" to="." method="_on_pop_up_timer_timeout"]

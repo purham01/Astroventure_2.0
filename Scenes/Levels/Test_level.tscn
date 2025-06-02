@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ym2qhy42cm6x" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-back.png" id="2_heqr1"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="3_02d5s"]
 [ext_resource type="Texture2D" uid="uid://c8v8hbkscb4f8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-stars.png" id="3_k7cjt"]
-[ext_resource type="PackedScene" uid="uid://cpqt3q3yiqvyw" path="res://Scenes/Level Assets/Bouncy things/jump_pad.tscn" id="3_rl6y3"]
+[ext_resource type="PackedScene" uid="uid://cpqt3q3yiqvyw" path="res://Scenes/Level Assets/Objects/Bouncy things/jump_pad.tscn" id="3_rl6y3"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="4_13ciy"]
 [ext_resource type="PackedScene" uid="uid://c8yd44clm2sy4" path="res://Scenes/Level Assets/EndLevelItem.tscn" id="4_hy0i3"]
 [ext_resource type="Texture2D" uid="uid://dqc8sl2ifg1ky" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png" id="4_p66lr"]
@@ -14,14 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://dbd66vfyjsvc8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-2.png" id="6_wgpjf"]
 [ext_resource type="Texture2D" uid="uid://dp08te4y26o4w" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-1.png" id="7_fc7kd"]
 [ext_resource type="Texture2D" uid="uid://b0tnjrwiqoers" path="res://Assets/Tilesets/tileset01.png" id="7_ouqcg"]
-[ext_resource type="PackedScene" uid="uid://udqq8jaeqnqx" path="res://Scenes/Level Assets/Destructible walls/destructible_wall.tscn" id="7_qk8a6"]
-[ext_resource type="PackedScene" uid="uid://rgqyrmwg1sxi" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform1.tscn" id="8_maf2v"]
+[ext_resource type="PackedScene" uid="uid://udqq8jaeqnqx" path="res://Scenes/Level Assets/Objects/Destructible walls/destructible_wall.tscn" id="7_qk8a6"]
+[ext_resource type="PackedScene" uid="uid://rgqyrmwg1sxi" path="res://Scenes/Level Assets/Objects/Moving platforms/MovingPlatform1.tscn" id="8_maf2v"]
 [ext_resource type="Texture2D" uid="uid://bdxyqhrom31d7" path="res://Assets/Level assets/Spikes/spikes_8x8.png" id="8_ua6dm"]
 [ext_resource type="Texture2D" uid="uid://du1k4g0bjef2k" path="res://Assets/Tilesets/platform.png" id="9_oh7b0"]
 [ext_resource type="Texture2D" uid="uid://e3y2a3f24uju" path="res://Assets/Tilesets/tileset03.png" id="10_ppu7w"]
 [ext_resource type="Texture2D" uid="uid://clsbi1oem8s8c" path="res://Assets/Conveyor belt/conveyor belt.png" id="11_ac46s"]
-[ext_resource type="PackedScene" uid="uid://dkj3rnw1dt08h" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform2.tscn" id="15_ua6dm"]
-[ext_resource type="PackedScene" uid="uid://odaarr34e35i" path="res://Scenes/Level Assets/Moving platforms/MovingPlatform3.tscn" id="16_oh7b0"]
+[ext_resource type="PackedScene" uid="uid://dkj3rnw1dt08h" path="res://Scenes/Level Assets/Objects/Moving platforms/MovingPlatform2.tscn" id="15_ua6dm"]
+[ext_resource type="PackedScene" uid="uid://odaarr34e35i" path="res://Scenes/Level Assets/Objects/Moving platforms/MovingPlatform3.tscn" id="16_oh7b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_heqr1"]
 texture = ExtResource("6_btaoe")
@@ -1565,7 +1565,6 @@ b = Vector2(37, 0)
 leaderboard_id = "31052"
 level_codename = "Jupiter"
 deity_name = "Jupiter"
-developing_level = true
 star_destroyer_medal_time = 25.0
 galaxy_medal_time = 40.0
 nebula_medal_time = 60.0

@@ -174,8 +174,6 @@ script = ExtResource("1_oj2md")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_top = 3.16
-offset_bottom = 3.16
 
 [node name="PanelContainer" type="PanelContainer" parent="Anchor"]
 layout_mode = 1

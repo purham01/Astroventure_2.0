@@ -45,3 +45,5 @@ signal inserted_right_eye
 signal open_leaderboard
 
 signal enable_leaderboard_ghosts
+
+signal changed_sfx_volume

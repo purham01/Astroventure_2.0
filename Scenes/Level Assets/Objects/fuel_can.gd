@@ -19,6 +19,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		collision_shape_2d.set_deferred("disabled", true)
 		sprite_2d.visible = false
 		#FreezeFrameManager.freeze_frame(0.05)
+		FmodBanks.portal_enter.play()
 		reset_timer.start()
 
 

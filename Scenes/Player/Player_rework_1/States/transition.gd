@@ -4,9 +4,12 @@ extends "state.gd"
 @onready var transition_timer: Timer = $TransitionTimer
 
 func update(delta):
+	if Engine.time_scale == 0:
+		return null
 	Player.current_gs.gravity(delta)
 	Player.player_movement(delta)
-	if !Player.inTransition or Player.is_on_floor():
+	
+	if (!Player.inTransition or Player.is_on_floor()):
 		return STATES.idle
 	if Player.dash_input and Player.can_dash:
 		return STATES.dash

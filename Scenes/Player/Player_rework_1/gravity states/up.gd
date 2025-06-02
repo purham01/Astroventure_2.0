@@ -8,6 +8,8 @@ func enter_state():
 	Events.emit_signal("change_gravity", 180)
 	Player.set_up_direction(Vector2.DOWN)
 	Player.dash_particles.process_material.gravity = Vector3(0.0, -9.8, 0.0)
+	Player.slide_particles_left.process_material.gravity = Vector3(0.0, -9.8, 0.0)
+	Player.slide_particles_right.process_material.gravity = Vector3(0.0, -9.8, 0.0)
 	#if Player.prev_gs == GRAVITY_STATES.down:
 	#	Player.position.y -= 16
 	#elif Player.prev_gs == GRAVITY_STATES.right or GRAVITY_STATES.left:
@@ -79,12 +81,25 @@ func slide_movement(delta):
 	Player.velocity.y = -Player.slide_down_speed
 
 func climb_movement(delta):
-	if Player.movement_input.y > 0:
-		Player.velocity.y = Player.climb_up_speed
+	if Player.movement_input.y < 0:
+		Player.slide_particles_left.emitting = false
+		Player.slide_particles_right.emitting = false
+		Player.velocity.y = -Player.climb_up_speed
 		Player.current_stamina -= Player.climb_stamina * delta
-	elif Player.movement_input.y < 0:
-		Player.velocity.y = Player.climb_down_speed
+	elif Player.movement_input.y > 0:
+		Player.velocity.y = -Player.climb_down_speed
+		
+		if Player.is_on_floor():
+			Player.slide_particles_left.emitting = false
+			Player.slide_particles_right.emitting = false
+		elif Player.wall_direction == -1 and Player.slide_particles_left.emitting == false:
+			Player.slide_particles_left.emitting = true
+		elif Player.wall_direction == 1 and Player.slide_particles_right.emitting == false:
+			Player.slide_particles_right.emitting = true
+			
 	else:
+		Player.slide_particles_left.emitting = false
+		Player.slide_particles_right.emitting = false
 		Player.velocity.y = 0
 		Player.current_stamina -= Player.hold_stamina * delta
 

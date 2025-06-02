@@ -248,6 +248,7 @@ func _process(delta):
 		disable_dialogue = false
 
 func _on_begin_button_button_up():
+	FmodBanks.select.play()
 	await LevelTransition.fade_to_black()
 	if not next_level is PackedScene: 
 		await LevelTransition.fade_from_black()
@@ -257,6 +258,7 @@ func _on_begin_button_button_up():
 
 
 func _on_abort_button_button_up():
+	FmodBanks.cancel.play()
 	Globals.disable_input = true
 	disable_input_timer.start()
 	hide()
@@ -274,7 +276,10 @@ func _on_visibility_changed() -> void:
 
 
 func _on_tab_container_tab_changed(tab: int) -> void:
+	
 	if tab == 0:
 		disable_dialogue = false
 	else: 
 		disable_dialogue = true
+	if FmodBanks.select != null:
+		FmodBanks.select.play()

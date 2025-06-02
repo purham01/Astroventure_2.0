@@ -1,19 +1,18 @@
-[gd_scene load_steps=52 format=4 uid="uid://bmapv4seantau"]
+[gd_scene load_steps=51 format=4 uid="uid://bmapv4seantau"]
 
 [ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_s5ua6"]
-[ext_resource type="AudioStream" uid="uid://c3tdxiqi2w2qr" path="res://Assets/Musics/Lofi/Sofa.mp3" id="2_85ixm"]
-[ext_resource type="PackedScene" uid="uid://c5w7n2c5dadc6" path="res://Scenes/Level Assets/AntiGravity/grav_up_checker.tscn" id="2_mxtxm"]
+[ext_resource type="PackedScene" uid="uid://c5w7n2c5dadc6" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_up_checker.tscn" id="2_mxtxm"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="2_soor5"]
-[ext_resource type="PackedScene" uid="uid://cgg7ik74nny1u" path="res://Scenes/Level Assets/AntiGravity/grav_right_checker.tscn" id="3_511x5"]
+[ext_resource type="PackedScene" uid="uid://cgg7ik74nny1u" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_right_checker.tscn" id="3_511x5"]
 [ext_resource type="Texture2D" uid="uid://bj8na1xhnaok0" path="res://Assets/Backgrounds/cave/1.png" id="3_oc2yd"]
 [ext_resource type="Script" uid="uid://cv1pci6ddoat1" path="res://Scenes/NewLevels/NeptuneCameraScript.gd" id="3_q1fkb"]
-[ext_resource type="PackedScene" uid="uid://udqq8jaeqnqx" path="res://Scenes/Level Assets/Destructible walls/destructible_wall.tscn" id="3_uryfl"]
-[ext_resource type="PackedScene" uid="uid://b3vq6pqyijpqj" path="res://Scenes/Level Assets/AntiGravity/grav_down_checker.tscn" id="4_4ahn7"]
+[ext_resource type="PackedScene" uid="uid://udqq8jaeqnqx" path="res://Scenes/Level Assets/Objects/Destructible walls/destructible_wall.tscn" id="3_uryfl"]
+[ext_resource type="PackedScene" uid="uid://b3vq6pqyijpqj" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_down_checker.tscn" id="4_4ahn7"]
 [ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="4_ff1af"]
 [ext_resource type="PackedScene" uid="uid://iqsopd1ey4aw" path="res://Scenes/Level Assets/star.tscn" id="4_jfjm8"]
 [ext_resource type="Texture2D" uid="uid://br70crlw1pe6x" path="res://Assets/Backgrounds/cave/2.png" id="4_q1fkb"]
 [ext_resource type="Texture2D" uid="uid://dcttovqk57dvm" path="res://Assets/Backgrounds/cave/3fx.png" id="5_pwo4i"]
-[ext_resource type="PackedScene" uid="uid://bkbccvep5acik" path="res://Scenes/Level Assets/AntiGravity/grav_left_checker.tscn" id="6_4uhso"]
+[ext_resource type="PackedScene" uid="uid://bkbccvep5acik" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_left_checker.tscn" id="6_4uhso"]
 [ext_resource type="PackedScene" uid="uid://cpxt6004ikd2h" path="res://Scenes/Level Assets/Objects/fuel_can.tscn" id="6_b5tkl"]
 [ext_resource type="Texture2D" uid="uid://bedpso0x7md6q" path="res://Assets/Backgrounds/cave/4.png" id="6_ncom4"]
 [ext_resource type="Texture2D" uid="uid://cni1gyatdv2jd" path="res://Assets/Backgrounds/cave/5.png" id="7_raubc"]
@@ -143,8 +142,9 @@ galaxy_medal_time = 100.0
 nebula_medal_time = 200.0
 supernova_medal_time = 300.0
 
-[node name="MusicPlayer" parent="." index="1"]
-stream = ExtResource("2_85ixm")
+[node name="Music" parent="." index="0"]
+event_name = "event:/Music/Neptune"
+event_guid = "{0a332554-34e0-4874-af4c-da5c2b1da318}"
 
 [node name="Background" parent="Background" index="0"]
 visible = false
@@ -442,7 +442,7 @@ position = Vector2(26, 11)
 rotation = 3.14159
 spawn_gravity_dir = 1
 
-[node name="CollisionShape2D" parent="Rooms/Room7/Checkpoints/Checkpoint" index="1"]
+[node name="CollisionShape2D" parent="Rooms/Room7/Checkpoints/Checkpoint" index="0"]
 position = Vector2(2.75, -18.5)
 shape = SubResource("RectangleShape2D_w00wa")
 
@@ -708,10 +708,6 @@ position = Vector2(1779, 131)
 position = Vector2(40, -119)
 rotation = 3.14159
 
-[node name="Anchor" parent="TutorialPopup" index="0"]
-offset_top = 0.0
-offset_bottom = 0.0
-
 [node name="Label" type="Label" parent="TutorialPopup/Anchor/PanelContainer/VBoxContainer" index="0"]
 layout_mode = 2
 text = "Gravitational anomalies on Neptune
@@ -725,10 +721,6 @@ position = Vector2(2.41399e-06, 44)
 [node name="TutorialPopup2" parent="." index="24" instance=ExtResource("23_pwo4i")]
 position = Vector2(526, -130)
 rotation = 4.71239
-
-[node name="Anchor" parent="TutorialPopup2" index="0"]
-offset_top = 0.0
-offset_bottom = 0.0
 
 [node name="Label" type="Label" parent="TutorialPopup2/Anchor/PanelContainer/VBoxContainer" index="0"]
 layout_mode = 2

@@ -93,13 +93,18 @@ func interact():
 	if left_eye_inserted and right_eye_inserted:
 		Events.open_leaderboard.emit() 
 	elif left_eye_collected and !left_eye_inserted:
+		FmodBanks.eye_sfx.play()
 		Events.inserted_left_eye.emit()
 		dict.set("LeftEyeInserted",true)
 		left_eye_inserted = true
 		Save.save_data.set(level_codename, dict)
 		Save.save_game()
 		set_sprite()
+		if right_eye_inserted and left_eye_inserted:
+			Events.emit_signal("enable_leaderboard_ghosts")
+		
 	elif right_eye_collected and !right_eye_inserted:
+		FmodBanks.eye_sfx.play()
 		Events.inserted_right_eye.emit()
 		dict.set("RightEyeInserted",true)
 		right_eye_inserted = true
@@ -107,8 +112,8 @@ func interact():
 		Save.save_game()
 		set_sprite()
 	
-	if right_eye_inserted and left_eye_inserted:
-		Events.emit_signal("enable_leaderboard_ghosts")
+		if right_eye_inserted and left_eye_inserted:
+			Events.emit_signal("enable_leaderboard_ghosts")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

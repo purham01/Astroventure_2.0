@@ -108,7 +108,9 @@ func _ready() -> void:
 	_create_action_list()
 	#first_button.grab_focus()
 
-
+func _button_pressed_sfx():
+	FmodBanks.select.play()
+	
 func _load_keybindings_from_settings():
 	var keybindings = ConfigFileHandler.load_keybindings()
 	for action : String in keybindings.keys():
@@ -148,10 +150,17 @@ func _create_action_list():
 
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
+		
 		var events = InputMap.action_get_events(action)
 		if events.size() >= 4:
+			FmodBanks.error.play()
+			var tween = get_tree().create_tween()
+			button.modulate = Color(1,0,0,1)
+			tween.tween_property(button, "modulate", Color(1,1,1,1), 1.0)
 			print("Action already has 4 keybinds")
+			await tween.finished
 			return
+		FmodBanks.select.play()
 		is_remapping = true
 		action_to_remap = action
 		remapping_button = button
@@ -273,10 +282,7 @@ func _on_reset_button_button_up() -> void:
 
 func _on_pop_up_timer_timeout() -> void:
 	pop_up.hide()
+	FmodBanks.cancel.play()
 	is_remapping = false
 	action_to_remap = null
 	remapping_button = null
-
-
-func _on_back_button_pressed() -> void:
-	pass # Replace with function body.

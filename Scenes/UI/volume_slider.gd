@@ -2,8 +2,11 @@ extends HSlider
 
 @export
 var bus_name: String
+@export
+var bus_path : String
 
 var bus_index: int
+
 
 func _ready() -> void:
 	bus_index = AudioServer.get_bus_index(bus_name)
@@ -14,7 +17,5 @@ func _ready() -> void:
 	#)
 
 func _on_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(
-		bus_index,
-		linear_to_db(value)
-	)
+	var bus = FmodServer.get_bus(bus_path)
+	bus.set_volume(value)

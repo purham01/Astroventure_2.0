@@ -7,8 +7,8 @@ extends Node
 @export var base_acceleration_multiplier := 1.0
 
 @export var ice_speed_multiplier = 1.6
-@export var ice_friction_multiplier = 0.1
-@export var ice_acceleration_multiplier = 0.2
+@export var ice_friction_multiplier = 0.05
+@export var ice_acceleration_multiplier = 0.1
 
 @export var mud_speed_multiplier = 0.3
 @export var mud_friction_multiplier = 2.0

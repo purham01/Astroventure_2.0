@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5w7n2c5dadc6"]
+
+[ext_resource type="Script" uid="uid://bl1gis7h7plhr" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_up_checker.gd" id="1_qkiok"]
+[ext_resource type="SpriteFrames" uid="uid://ycubue12pjvq" path="res://Scenes/Level Assets/Objects/AntiGravity/portal_anim.tres" id="2_lci2f"]
+[ext_resource type="Shader" uid="uid://cm47s6wgte0af" path="res://addons/eye_dropper/eye_dropper.gdshader" id="2_rrx6t"]
+[ext_resource type="Texture2D" uid="uid://c15ah6h2mq75j" path="res://Assets/Level assets/Portals/green_portal_palette.png" id="3_ddag5"]
+[ext_resource type="Texture2D" uid="uid://cnyiem7gl5hxh" path="res://Assets/Level assets/Portals/blue_portal_palette.png" id="4_y1mui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5n5n"]
+size = Vector2(10, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2fg2"]
+shader = ExtResource("2_rrx6t")
+shader_parameter/palette_array_size = 0
+shader_parameter/input_palette_texture = ExtResource("3_ddag5")
+shader_parameter/output_palette_texture = ExtResource("4_y1mui")
+shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_4ouwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xl0sw"]
+resource_name = "enter_portal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x6ib7"]
+resource_name = "exit_portal"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6ib7"]
+_data = {
+&"RESET": SubResource("Animation_4ouwy"),
+&"enter_portal": SubResource("Animation_xl0sw"),
+&"exit_portal": SubResource("Animation_x6ib7")
+}
+
+[node name="GravUpChecker" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_qkiok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_r5n5n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_t2fg2")
+position = Vector2(0, -1)
+rotation = 1.5708
+sprite_frames = ExtResource("2_lci2f")
+animation = &"portal"
+autoplay = "portal"
+frame_progress = 0.957525
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x6ib7")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

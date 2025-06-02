@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd0otcxk7a8fa"]
+[gd_scene load_steps=14 format=3 uid="uid://bd0otcxk7a8fa"]
 
 [ext_resource type="Script" uid="uid://bsxgbs1nosh15" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.gd" id="1_m8grk"]
 [ext_resource type="Texture2D" uid="uid://3e6m01x3amfb" path="res://Assets/Level assets/Fireball/FB500-1.png" id="1_u3uiq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://burtvaictlgn8" path="res://Assets/Level assets/Fireball/B500-2.PNG" id="6_j4vjs"]
 [ext_resource type="Texture2D" uid="uid://cdb0s3138dkvw" path="res://Assets/Level assets/Fireball/B500-3.PNG" id="7_m8grk"]
 [ext_resource type="Texture2D" uid="uid://c13oookj0qgpe" path="res://Assets/Level assets/Fireball/B500-4.PNG" id="8_8xwqd"]
+[ext_resource type="Texture2D" uid="uid://djqoxxt2kb6qi" path="res://Assets/Light/light64x64.png" id="10_8xwqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3incd"]
 radius = 7.0
@@ -59,6 +60,12 @@ collision_mask = 3
 script = ExtResource("1_m8grk")
 speed = 50
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.5
+blend_mode = 2
+texture = ExtResource("10_8xwqd")
+texture_scale = 1.5
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3incd")
 
@@ -66,15 +73,13 @@ shape = SubResource("CircleShape2D_3incd")
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_8xwqd")
 autoplay = "default"
-frame_progress = 0.570982
+frame_progress = 0.512609
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
 visible = false
 top_level = true
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_awybc")
-frame = 2
-frame_progress = 1.0
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true

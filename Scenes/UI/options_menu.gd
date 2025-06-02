@@ -16,14 +16,17 @@ extends MarginContainer
 @onready var sfx_volume_value: Label = %SFXVolumeValue
 
 #general
-@onready var camera_shake: HSlider = $GeneralOptions/Slider/CameraShake
-@onready var camera_shake_value: Label = $GeneralOptions/Slider/CameraShakeValue
-@onready var controller_vibration: HSlider = $"GeneralOptions/Slider2/Controller vibration"
-@onready var controller_vibration_value: Label = $GeneralOptions/Slider2/ControllerVibrationValue
+@onready var camera_shake: HSlider = %CameraShake
+@onready var camera_shake_value: Label = %CameraShakeValue
+@onready var controller_vibration: HSlider = %"Controller vibration"
+@onready var controller_vibration_value: Label = %ControllerVibrationValue
+
+
 @onready var general_button: Button = %GeneralButton
 @onready var show_tutorials: CheckButton = %"Show tutorials"
 @onready var player_ghost: CheckButton = %PlayerGhost
-@onready var shader_settings: OptionButton = $GeneralOptions/ShaderSettings
+@onready var shader_settings: OptionButton = %ShaderSettings
+
 
 @onready var window_mode: OptionButton = %WindowMode
 @onready var resolutions: OptionButton = %Resolutions
@@ -31,6 +34,7 @@ extends MarginContainer
 
 var current_tab = null
 var previous_tabs = []
+var loading = false
 
 @export var root_tab : Control
 
@@ -38,11 +42,20 @@ func _ready() -> void:
 	_load_options()
 	current_tab = root_tab
 
+
+func _button_pressed_sfx():
+	if !loading:
+		FmodBanks.select.play()
+
 func _load_options():
+	loading = true
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	master_volume.value = audio_settings.master_volume
+	master_volume_value.text = str(master_volume.value*100) + "%"
 	music_volume.value = audio_settings.music_volume
+	music_volume_value.text = str(music_volume.value*100) + "%"
 	sfx_volume.value = audio_settings.sfx_volume
+	sfx_volume_value.text = str(sfx_volume.value*100) + "%"
 	
 	camera_shake.value = ConfigFileHandler.camera_shake
 	controller_vibration.value = ConfigFileHandler.controller_vibration
@@ -51,10 +64,11 @@ func _load_options():
 	
 	show_tutorials.button_pressed = ConfigFileHandler.show_tutorials
 	player_ghost.button_pressed = ConfigFileHandler.show_player_ghost
-	
+	loading = false
 	
 
 func _on_back_button_pressed():
+	FmodBanks.cancel.play()
 	current_tab.hide()
 	current_tab = previous_tabs[previous_tabs.size()-1][0]
 	previous_tabs[previous_tabs.size()-1][1].grab_focus()
@@ -102,39 +116,34 @@ func _on_general_button_button_up() -> void:
 	shader_settings.grab_focus()
 
 
-func _on_master_volume_drag_ended(value_changed: bool) -> void:
-	if value_changed:
-		ConfigFileHandler.save_audio_settings("master_volume", master_volume.value)
-
-func _on_music_volume_drag_ended(value_changed: bool) -> void:
-	if value_changed:
-		ConfigFileHandler.save_audio_settings("music_volume", music_volume.value)
-		
-func _on_sfx_volume_drag_ended(value_changed: bool) -> void:
-	if value_changed:
-		ConfigFileHandler.save_audio_settings("sfx_volume", sfx_volume.value)
-
 
 func _on_master_volume_value_changed(value: float) -> void:
 	master_volume_value.text = str(value*100) + "%"
+	ConfigFileHandler.save_audio_settings("master_volume", master_volume.value)
+	_button_pressed_sfx()
 
 func _on_music_volume_value_changed(value: float) -> void:
 	music_volume_value.text = str(value*100) + "%"
+	ConfigFileHandler.save_audio_settings("music_volume", value)
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	sfx_volume_value.text = str(value*100) + "%"
-
+	ConfigFileHandler.save_audio_settings("sfx_volume", value)
+	Events.changed_sfx_volume.emit(value)
+	_button_pressed_sfx()
 
 func _on_camera_shake_value_changed(value: float) -> void:
 	camera_shake_value.text = str(value*100) + "%"
 	ConfigFileHandler.save_general_settings("camera_shake",value)
 	ConfigFileHandler.camera_shake = value
+	_button_pressed_sfx()
 
 
 func _on_controller_vibration_value_changed(value: float) -> void:
 	controller_vibration_value.text = str(value*100) + "%"
 	ConfigFileHandler.save_general_settings("controller_vibration",value)
 	ConfigFileHandler.controller_vibration = value
+	_button_pressed_sfx()
 
 
 func _on_player_ghost_toggled(toggled_on: bool) -> void:

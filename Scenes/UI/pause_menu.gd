@@ -38,6 +38,10 @@ func _ready() -> void:
 		if Save.save_data.get(level_codename).get("BestTime") != 0.0:
 			leaderboard_button.disabled = false
 
+			
+func _button_pressed_sfx():
+	FmodBanks.select.play()
+
 func open_leaderboard():
 	get_tree().paused = true
 	_on_leaderboard_button_pressed()
@@ -55,10 +59,12 @@ func _input(event):
 	if event.is_action_pressed("Pause") or event.is_action_pressed("PauseC"):
 		print("Pause")
 		if visible == false:
+			FmodBanks.pause.play()
 			get_tree().paused = true
 			show()
 			resume_button.grab_focus()
 		else:
+			FmodBanks.unpause.play()
 			get_tree().paused = false
 			reset_tabs()
 			hide()
@@ -76,6 +82,7 @@ func reset_tabs():
 
 func _on_back_button_pressed():
 	if current_tab == leaderboard_ui:
+		FmodBanks.cancel.play()
 		leaderboard_ui.hide()
 		pause_menu_tab.show()
 		current_tab = pause_menu_tab
@@ -88,31 +95,37 @@ func _on_back_button_pressed():
 		secondary_menu_container._on_back_button_pressed()
 
 func _on_retry_button_pressed():
+	_button_pressed_sfx()
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
 func _on_quit_button_pressed():
+	_button_pressed_sfx()
 	get_tree().quit()
 
 
 func _on_main_menu_button_pressed():
+	_button_pressed_sfx()
 	get_tree().paused = false
 	await LevelTransition.fade_to_black()
 	get_tree().change_scene_to_file("res://Scenes/Screens/main_menu.tscn")
 	
 
 func _on_resume_button_pressed():
+	_button_pressed_sfx()
 	get_tree().paused = false
 	hide()
 
 
 func _on_map_screen_button_pressed():
+	_button_pressed_sfx()
 	await LevelTransition.fade_to_black()
 	get_tree().change_scene_to_file("res://Scenes/Levels/MapScreen.tscn")
 
 func _on_options_pressed():
+	_button_pressed_sfx()
 	secondary_menu_container.previous_tabs.append([pause_menu_tab, options])
 	secondary_menu_container.current_tab = secondary_menu_container.options_menu_tab
 	secondary_menu_container.previous_tabs[secondary_menu_container.previous_tabs.size()-1][0].hide()
@@ -122,6 +135,7 @@ func _on_options_pressed():
 
 
 func _on_leaderboard_button_pressed() -> void:
+	_button_pressed_sfx()
 	current_tab = leaderboard_ui
 	leaderboard_ui.score_list.grab_focus()
 	leaderboard_ui.show()

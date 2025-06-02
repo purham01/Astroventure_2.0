@@ -41,8 +41,12 @@ func _input(event):
 		change_input_type()
 
 func _on_back_button_pressed():
+	
 	if !secondary_menu_container.previous_tabs.is_empty():
 		secondary_menu_container._on_back_button_pressed()
+	else:
+		FmodBanks.cancel.play()
+	
 		
 	if secondary_menu_container.current_tab == secondary_menu_container.root_tab:
 		current_tab = main_menu_layer
@@ -78,6 +82,7 @@ func _on_quit_pressed():
 
 
 func _on_continue_button_button_up() -> void:
+	FmodBanks.continue_game.play()
 	await LevelTransition.fade_to_black_menu()
 	get_tree().change_scene_to_file("res://Scenes/Levels/MapScreen.tscn")
 	LevelTransition.fade_from_black()
@@ -99,8 +104,12 @@ func _on_enter_name_text_submitted(new_text: String) -> void:
 	
 	Save.new_game(player_name)
 	
-	
+	FmodBanks.continue_game.play()
 	await Events.new_game_started
 	await LevelTransition.fade_to_black_menu()
 	get_tree().change_scene_to_file("res://Scenes/NewLevels/Earth.tscn")
 	LevelTransition.fade_from_black()
+
+
+func _on_button_pressed_sfx() -> void:
+	FmodBanks.select.play()

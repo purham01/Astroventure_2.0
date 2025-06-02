@@ -3,13 +3,14 @@ extends "state.gd"
 @onready var respawn_transition_1: AnimatedSprite2D = %RespawnTransition1
 @onready var respawn_transition_2: AnimatedSprite2D = %RespawnTransition2
 @onready var respawn_delay: Timer = $RespawnDelay
-
 func update(delta):
 	if !Player.playerDead:
 		return STATES.idle
 
 func enter_state():
 	print("Respawning player")
+	FmodBanks.die.set_parameter("Parameter 1", randf())
+	FmodBanks.die.play()
 	Player.playerDead = true
 	Player.hazard_detector_collision_shape.set_deferred("disabled", true)
 	Player.follower_controller.star_counter = 0
@@ -27,10 +28,13 @@ func enter_state():
 
 	await(Player.animated_sprite.animation_finished)
 	Player.animated_sprite.hide()
+	
 	respawn_transition_1.show()
 	respawn_transition_1.play("default")
 	
+	FmodBanks.respawn.play()
 	await respawn_transition_1.animation_finished
+	FmodBanks.respawn_2.play()
 	Events.player_dead.emit()
 	respawn_delay.start()
 	Events.enter_portal.emit()

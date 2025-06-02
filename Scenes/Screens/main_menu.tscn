@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1llbuplgaq0g"]
+[gd_scene load_steps=10 format=3 uid="uid://d1llbuplgaq0g"]
 
 [ext_resource type="Script" uid="uid://c8j05r0h1csu3" path="res://Scenes/Screens/main_menu.gd" id="1_4lr2w"]
-[ext_resource type="Texture2D" uid="uid://dcoyclq8dtwjm" path="res://Assets/Backgrounds/Main Menu background/Space Background (11).png" id="3_61u4g"]
 [ext_resource type="Shader" uid="uid://be7hwch7dpxgp" path="res://Aesthethics/Shaders/starfield.gdshader" id="3_obgim"]
 [ext_resource type="FontFile" uid="uid://y40yurqaewrq" path="res://Crang.ttf" id="4_a4oju"]
-[ext_resource type="AudioStream" uid="uid://djcu764clkphe" path="res://Assets/Musics/Lofi/Caramel Macchiato.mp3" id="6_fpw74"]
 [ext_resource type="PackedScene" uid="uid://b1whiv3y38xsy" path="res://Scenes/UI/options_menu.tscn" id="6_ip1ff"]
 [ext_resource type="PackedScene" uid="uid://b5u7j0j7vil4q" path="res://Scenes/UI/info_labels_keyboard.tscn" id="8_u5uru"]
 [ext_resource type="PackedScene" uid="uid://dtx87k5yhexec" path="res://Scenes/UI/info_labels_controller.tscn" id="9_uj0d6"]
@@ -39,6 +37,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_4lr2w")
 
+[node name="Music" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Music/MainMenu"
+event_guid = "{18be84f7-44ce-4262-bc04-04c4ac45f487}"
+autoplay = true
+process_mode = 3
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
@@ -50,13 +54,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_right = 360.0
-offset_bottom = 180.0
-texture = ExtResource("3_61u4g")
-expand_mode = 5
 
 [node name="NewGameCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -177,16 +174,12 @@ unique_name_in_owner = true
 layout_mode = 2
 root_tab = NodePath("../../MainMenuLayer")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_fpw74")
-autoplay = true
-bus = &"Music"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="InfoLabelsKeyboardEnterName" parent="." instance=ExtResource("8_u5uru")]
 visible = false
 layout_mode = 1
+script = null
 
 [node name="AnimKeySprite" parent="InfoLabelsKeyboardEnterName/ConfirmIcon" index="0"]
 animation = &"wide_keys"
@@ -204,16 +197,15 @@ offset_left = -74.0
 offset_top = -15.0
 
 [connection signal="button_up" from="MainMenuLayer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/ContinueButton" to="." method="_on_button_pressed_sfx"]
 [connection signal="pressed" from="MainMenuLayer/VBoxContainer/NewGameButton" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/NewGameButton" to="." method="_on_button_pressed_sfx"]
 [connection signal="pressed" from="MainMenuLayer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/OptionsButton" to="." method="_on_button_pressed_sfx"]
+[connection signal="pressed" from="MainMenuLayer/VBoxContainer/QuitButton" to="." method="_on_button_pressed_sfx"]
 [connection signal="pressed" from="MainMenuLayer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="text_submitted" from="NewGameStartLayer/NewGameStartLayer/VBoxContainer/EnterName" to="." method="_on_enter_name_text_submitted"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/OptionsMenuTab/BackButton" to="OptionsMenuLayer/SecondaryMenuContainer" method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/GeneralOptions/BackButton" to="OptionsMenuLayer/SecondaryMenuContainer" method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/VideoMenuTab/BackButton" to="OptionsMenuLayer/SecondaryMenuContainer" method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/AudioOptionsTab/BackButton" to="OptionsMenuLayer/SecondaryMenuContainer" method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/InputSettings/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/InputSettingsController/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionsMenuLayer/SecondaryMenuContainer/InputSettings/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenuLayer/SecondaryMenuContainer/InputSettings" method="_on_back_button_pressed"]
 
 [editable path="OptionsMenuLayer/SecondaryMenuContainer"]
 [editable path="OptionsMenuLayer/SecondaryMenuContainer/InputSettings"]

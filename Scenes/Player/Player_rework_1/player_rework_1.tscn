@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://u0n6wc1k3cuo"]
+[gd_scene load_steps=86 format=3 uid="uid://u0n6wc1k3cuo"]
 
 [ext_resource type="Script" uid="uid://bmfn5bj1epfaa" path="res://Scenes/Player/Player_rework_1/player_character_rework_1.gd" id="1_kqp0r"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="2_a8ty3"]
@@ -29,12 +29,11 @@
 [ext_resource type="PackedScene" uid="uid://c1ukhf4rqiy2t" path="res://Scenes/Player/Player_rework_1/follower_controller.tscn" id="23_jnrrg"]
 [ext_resource type="PackedScene" uid="uid://dxpncgwyh5be5" path="res://Scenes/Player/Player_rework_1/particle_manager.tscn" id="24_j20j7"]
 [ext_resource type="Texture2D" uid="uid://ccnkqphxc85uw" path="res://Assets/Player/Astronaut/fueltank.png" id="26_vpm28"]
-[ext_resource type="Texture2D" uid="uid://bvrixyehvqh47" path="res://Assets/Light/light32x32.png" id="27_j20j7"]
+[ext_resource type="PackedScene" uid="uid://cgcfgn45eogf6" path="res://Scenes/Effects/slide_particles.tscn" id="27_a8dk5"]
 [ext_resource type="Material" uid="uid://cjsa6imddi3b1" path="res://Scenes/Level Assets/Hazards/Laser/laser.tres" id="28_ia5kp"]
 [ext_resource type="Texture2D" uid="uid://c74thsehsi0py" path="res://Assets/Effects/FX052_nyknck/FX052_01.png" id="28_kfo7b"]
 [ext_resource type="Texture2D" uid="uid://c2lkbvrsjybri" path="res://Assets/Effects/FX052_nyknck/FX052_02.png" id="29_g4ll7"]
 [ext_resource type="Texture2D" uid="uid://bkywwmqjicvyb" path="res://Assets/Effects/FX052_nyknck/FX052_03.png" id="30_a8dk5"]
-[ext_resource type="Material" uid="uid://kq3dhwyy6hy8" path="res://Aesthethics/transition1.tres" id="30_dylui"]
 [ext_resource type="Texture2D" uid="uid://bglmiaeobkuus" path="res://Assets/Slash03/Slash03-01-128x128.png" id="31_ia5kp"]
 [ext_resource type="Texture2D" uid="uid://boqdaxf28c4qw" path="res://Assets/Effects/FX052_nyknck/FX052_04.png" id="31_n6ltq"]
 [ext_resource type="Texture2D" uid="uid://dwncm4jiuxo13" path="res://Assets/Slash03/Slash03-02-128x128.png" id="32_vl7lo"]
@@ -44,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://bbeuqrseww5f5" path="res://Assets/Slash03/Slash03-05-128x128.png" id="35_kfo7b"]
 [ext_resource type="Texture2D" uid="uid://cg6v0phx8plg6" path="res://Assets/Slash03/Slash03-06-128x128.png" id="36_g4ll7"]
 [ext_resource type="Texture2D" uid="uid://0qgqbycfc3ku" path="res://Assets/Slash03/Slash03-07-128x128.png" id="37_a8dk5"]
+[ext_resource type="Shader" uid="uid://cm47s6wgte0af" path="res://addons/eye_dropper/eye_dropper.gdshader" id="37_g4ll7"]
 [ext_resource type="Texture2D" uid="uid://b75b0perc42cv" path="res://Assets/Slash03/Slash03-08-128x128.png" id="38_n6ltq"]
 [ext_resource type="Texture2D" uid="uid://di78dyop73q28" path="res://Assets/Slash03/Slash03-09-128x128.png" id="39_wehti"]
 [ext_resource type="Texture2D" uid="uid://cim0u7h7pqrb3" path="res://Assets/Slash03/Slash03-10-128x128.png" id="40_6n4hr"]
@@ -54,7 +54,6 @@
 [ext_resource type="Texture2D" uid="uid://bwfv7dw8ee4g2" path="res://Assets/Slash03/Slash03-15-128x128.png" id="45_7fugp"]
 [ext_resource type="Texture2D" uid="uid://cs0d32trjt3p6" path="res://Assets/Slash03/Slash03-16-128x128.png" id="46_is3vp"]
 [ext_resource type="Texture2D" uid="uid://ctm86odm0ygm" path="res://Assets/Slash03/Slash03-17-128x128.png" id="47_jt7f0"]
-[ext_resource type="Material" uid="uid://bxqky01uq2od5" path="res://Aesthethics/transition2.tres" id="48_qfjve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpm28"]
 atlas = ExtResource("26_vpm28")
@@ -370,6 +369,12 @@ _data = {
 &"grav_change_2": SubResource("Animation_gynca")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8dk5"]
+shader = ExtResource("37_g4ll7")
+shader_parameter/palette_array_size = 2
+shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vekii"]
 animations = [{
 "frames": [{
@@ -428,6 +433,12 @@ animations = [{
 "name": &"default",
 "speed": 45.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6ltq"]
+shader = ExtResource("37_g4ll7")
+shader_parameter/palette_array_size = 1
+shader_parameter/input_palette_array = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -493,10 +504,27 @@ script = ExtResource("19_vpm28")
 [node name="ParticleManager" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("24_j20j7")]
 animated_sprite = NodePath("../Spaceman")
 
+[node name="JumpMarker" type="Marker2D" parent="ParticleManager"]
+position = Vector2(0, -8)
+
+[node name="WallJumpMarkerLeft" type="Marker2D" parent="ParticleManager"]
+position = Vector2(-5, -6)
+
+[node name="SlideParticlesLeft" parent="ParticleManager/WallJumpMarkerLeft" instance=ExtResource("27_a8dk5")]
+unique_name_in_owner = true
+emitting = false
+
+[node name="WallJumpMarkerRight" type="Marker2D" parent="ParticleManager"]
+position = Vector2(4, -6)
+
+[node name="SlideParticlesRight" parent="ParticleManager/WallJumpMarkerRight" instance=ExtResource("27_a8dk5")]
+unique_name_in_owner = true
+emitting = false
+
 [node name="Spaceman" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = ExtResource("2_a8ty3")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -10)
 
@@ -682,13 +710,19 @@ position = Vector2(0, -8)
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("35_a8dk5")
+texture_scale = 1.5
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(0, -8)
-enabled = false
+energy = 7.55
 blend_mode = 2
-texture = ExtResource("27_j20j7")
+range_layer_max = 2
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("35_a8dk5")
+texture_scale = 1.5
 
 [node name="WallSlideCooldown" type="Timer" parent="."]
 wait_time = 0.2
@@ -768,7 +802,7 @@ vertical_alignment = 1
 [node name="RespawnTransition1" type="AnimatedSprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-material = ExtResource("30_dylui")
+material = SubResource("ShaderMaterial_a8dk5")
 scale = Vector2(2.5, 1.40625)
 sprite_frames = SubResource("SpriteFrames_vekii")
 frame = 16
@@ -778,7 +812,7 @@ centered = false
 [node name="RespawnTransition2" type="AnimatedSprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-material = ExtResource("48_qfjve")
+material = SubResource("ShaderMaterial_n6ltq")
 scale = Vector2(2.5, 1.40625)
 sprite_frames = SubResource("SpriteFrames_vekii")
 frame = 16
@@ -787,7 +821,7 @@ centered = false
 
 [connection signal="animation_finished" from="Spaceman" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="animation_finished" from="Spaceman/FuelTank" to="." method="_on_animated_sprite_animation_finished"]
-[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_entered"]
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]
 [connection signal="terrain_entered" from="TerrainDetector" to="TERRAIN SM" method="_on_terrain_detector_terrain_entered"]
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]

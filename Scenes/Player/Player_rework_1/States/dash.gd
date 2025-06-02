@@ -1,6 +1,5 @@
 extends "state.gd"
 
-
 var dashing = false
 @export var dash_duration = 0.15
 @onready var dash_timer: Timer = $DashTimer
@@ -19,8 +18,8 @@ func update(delta):
 func enter_state():
 	Player.animated_sprite.play("dash")
 	
-	#dash.set_parameter("Parameter 1", randf())
-	#dash.play()
+	FmodBanks.dash.set_parameter("Parameter 1", randf())
+	FmodBanks.dash.play()
 	Player.is_dashing = true
 	#Player.platform_on_leave = CharacterBody2D.PLATFORM_ON_LEAVE_DO_NOTHING
 	Player.can_dash = false

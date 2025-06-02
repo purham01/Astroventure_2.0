@@ -14,11 +14,23 @@ extends Area2D
 @export var cooldown_time = 1.0
 @export var start_delay_time = 0.0
 
+enum impact {down = 0, left = 1, right = 2}
+
+@export var impact_dir = impact.down
+
 func _ready() -> void:
 	
 	if start_delay_enable:
 		disabled = true
 		start_delay.start(start_delay_time)
+
+	match impact_dir:
+		0:
+			explosion.rotation_degrees = 90
+		1:
+			explosion.rotation_degrees = 180
+		2:
+			explosion.rotation_degrees = 0
 
 func _physics_process(delta):
 	if !disabled:
@@ -28,7 +40,8 @@ func _physics_process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Ground":
 		explosion.global_position = global_position
-		explosion.rotation = -rotation + start_position.direction_to(direction_marker.global_position).angle_to(start_position.direction_to(body.global_position))
+		#explosion.rotation = -rotation + start_position.direction_to(direction_marker.global_position).angle_to(start_position.direction_to(body.global_position))
+
 		disabled = true
 		collision_shape_2d.set_deferred("disabled", true)
 		fireball.hide()

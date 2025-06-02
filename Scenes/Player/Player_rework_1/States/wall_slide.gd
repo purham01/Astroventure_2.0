@@ -1,5 +1,8 @@
 extends "state.gd"
 
+
+
+
 func update(delta):
 	Player.current_gs.slide_movement(delta)
 	
@@ -22,9 +25,15 @@ func update(delta):
 	return null
 
 func enter_state():
+	if Player.wall_direction == -1:
+		Player.slide_particles_left.emitting = true
+	elif Player.wall_direction == 1:
+		Player.slide_particles_right.emitting = true
 	Player.animated_sprite.play("wallslide")
 
 	Player.terrain_sm.instant_reset_movement_values()
 
 func exit_state():
 	Player.wall_slide_cooldown.start()
+	Player.slide_particles_left.emitting = false
+	Player.slide_particles_right.emitting = false

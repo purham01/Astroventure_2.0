@@ -21,6 +21,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			eye_sprite.hide()
 			poof.show()
 			poof.play("default")
+			FmodBanks.eye_sfx.play()
 			emit_collected_signal()
 		else:
 			animation_player.play("bounce")

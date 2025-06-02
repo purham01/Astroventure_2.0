@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=4 uid="uid://cm3dwv5c1goye"]
 
 [ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_vu3nb"]
-[ext_resource type="PackedScene" uid="uid://b3vq6pqyijpqj" path="res://Scenes/Level Assets/AntiGravity/grav_down_checker.tscn" id="2_ht0ur"]
-[ext_resource type="PackedScene" uid="uid://c5w7n2c5dadc6" path="res://Scenes/Level Assets/AntiGravity/grav_up_checker.tscn" id="3_48d8i"]
-[ext_resource type="PackedScene" uid="uid://cgg7ik74nny1u" path="res://Scenes/Level Assets/AntiGravity/grav_right_checker.tscn" id="4_oblh5"]
-[ext_resource type="PackedScene" uid="uid://bkbccvep5acik" path="res://Scenes/Level Assets/AntiGravity/grav_left_checker.tscn" id="5_yov1t"]
+[ext_resource type="PackedScene" uid="uid://b3vq6pqyijpqj" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_down_checker.tscn" id="2_ht0ur"]
+[ext_resource type="PackedScene" uid="uid://c5w7n2c5dadc6" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_up_checker.tscn" id="3_48d8i"]
+[ext_resource type="PackedScene" uid="uid://cgg7ik74nny1u" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_right_checker.tscn" id="4_oblh5"]
+[ext_resource type="PackedScene" uid="uid://bkbccvep5acik" path="res://Scenes/Level Assets/Objects/AntiGravity/grav_left_checker.tscn" id="5_yov1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mx4b"]
 resource_local_to_scene = true

@@ -7,7 +7,6 @@ extends Node2D
 @onready var level_time_label = %LevelTimeLabel
 @onready var pause_menu = $HUD/PauseMenu
 @onready var player = $Player
-@onready var music_player = $MusicPlayer
 @onready var player_camera: Camera2D = $PlayerCamera
 
 @onready var popup_label: Label = %PopupLabel
@@ -20,7 +19,6 @@ extends Node2D
 @export var countdown = false
 @export var timer = false
 @export var scene_tile_name : PackedScene
-@export var music : AudioStreamOggVorbis
 @export var leaderboard_id : String 
 @export var level_codename : String
 @export var deity_name : String
@@ -91,9 +89,11 @@ func setup_player_ghost():
 	var right_eye_inserted = dict.get("RightEyeInserted")
 	if left_eye_inserted and right_eye_inserted:
 		player_ghost.dont_run = false
+		player_ghost.visible = true
 		Events.emit_signal("enable_leaderboard_ghosts")
 	elif left_eye_inserted or right_eye_inserted:
 		player_ghost.dont_run = false
+		player_ghost.visible = true
 	else:
 		player_ghost.dont_run = true
 

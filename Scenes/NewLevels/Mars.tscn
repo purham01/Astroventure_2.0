@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=4 uid="uid://bpvcj6otk0wyq"]
+
+[ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_1kb0b"]
+[ext_resource type="PackedScene" uid="uid://chhrwfgisexef" path="res://Scenes/Level Assets/Objects/Torch/torch.tscn" id="2_42d3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42d3b"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yf3by"]
+resource_local_to_scene = true
+b = Vector2(24, 0)
+
+[node name="Mars" instance=ExtResource("1_1kb0b")]
+level_codename = "Mars"
+deity_name = "Mars"
+
+[node name="Background" parent="Background" index="0"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Torches" type="Node" parent="." index="5"]
+
+[node name="Torch" parent="Torches" index="0" instance=ExtResource("2_42d3b")]
+position = Vector2(146, 95)
+
+[node name="Player" parent="." index="9"]
+position = Vector2(33, 148)
+
+[node name="Ground" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAAAABUAAQAAAAMAAAABABUAAQABAAMAAAACABUAAQABAAMAAAADABUAAQABAAMAAAAEABUAAQABAAMAAAAFABUAAQABAAMAAAAGABUAAQABAAMAAAAHABUAAQABAAMAAAAIABUAAQABAAMAAAAJABUAAQABAAMAAAAKABUAAQAGAAMAAAALABUAAQAFAAMAAAAMABUAAQABAAMAAAANABUAAQABAAMAAAAOABUAAQABAAMAAAAPABUAAQABAAMAAAAQABUAAQABAAMAAAARABUAAQAGAAMAAAASABUAAQABAAIAAAATABUAAQABAAIAAAAUABUAAQABAAIAAAAVABUAAQACAAIAAAAKABQAAQAAAAAAAAALABQAAQAHAAIAAAALABMAAQAEAAAAAAAMABMAAQABAAMAAAANABMAAQABAAMAAAAOABMAAQABAAMAAAAPABMAAQACAAMAAAAQABIAAQAAAAMAAAARABIAAQAGAAAAAAASABEAAQADAAAAAAASABIAAQAIAAIAAAATABIAAQACAAAAAAATABMAAQACAAEAAAASABMAAQABAAEAAAASABQAAQABAAEAAAARABQAAQAAAAEAAAARABMAAQAAAAEAAAAUABEAAQAAAAMAAAAVABEAAQABAAMAAAAWABEAAQABAAMAAAAXABEAAQAGAAAAAAAYABEAAQACAAAAAAAYABIAAQACAAIAAAAXABIAAQAEAAEAAAAXABMAAQADAAEAAAAXABQAAQAHAAMAAAAWABQAAQABAAMAAAAVABQAAQAFAAAAAAAUABQAAQABAAAAAAATABQAAQAFAAIAAAA=")
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+shape = SubResource("RectangleShape2D_42d3b")
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_yf3by")
+
+[editable path="Rooms/Room"]

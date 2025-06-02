@@ -3,7 +3,7 @@ extends "state.gd"
 @onready var coyote_time: Timer = $CoyoteTime
 @export var coyote_duration = 0.2
 var can_jump = true
-
+@onready var jump_marker: Marker2D = $"../../ParticleManager/JumpMarker"
 
 
 func update(delta):
@@ -14,10 +14,14 @@ func update(delta):
 		return STATES.dash
 	
 	if Player.is_on_floor() and !Player.jump_buffer.is_stopped():
+		Player.instantiate_dust()
 		return STATES.jump
 		
 	elif Player.is_on_floor():
 		Player.animated_sprite.scale = Vector2(Player.squash_x, Player.squash_y)
+		FmodBanks.walk.set_parameter("Parameter 1", randf())
+		FmodBanks.walk.play()
+		Player.instantiate_dust()
 		return STATES.idle
 		
 	if sign(Player.last_direction.x) == sign(Player.wall_direction) and Player.climb_input and Player.current_stamina > 0 and (Player.is_on_wall() or Player.wall_direction != 0):

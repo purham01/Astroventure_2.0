@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://csamvsn3d74t7"]
+
+[ext_resource type="Texture2D" uid="uid://bb2lrdacrav3d" path="res://Assets/Effects/dust/dust1.png" id="1_1by5f"]
+[ext_resource type="Texture2D" uid="uid://bccu8leqvgufm" path="res://Assets/Effects/dust/dust2.png" id="2_vjm4r"]
+[ext_resource type="Texture2D" uid="uid://wpox1egb43e7" path="res://Assets/Effects/dust/dust3.png" id="3_kibrj"]
+[ext_resource type="Texture2D" uid="uid://dlqr71dqwfbvf" path="res://Assets/Effects/dust/dust4.png" id="4_thmt7"]
+[ext_resource type="Script" uid="uid://b2jtmfdvdv33w" path="res://Scenes/Effects/dust.gd" id="5_vjm4r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b1na"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1by5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vjm4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kibrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_thmt7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Dust" type="AnimatedSprite2D"]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_3b1na")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("5_vjm4r")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

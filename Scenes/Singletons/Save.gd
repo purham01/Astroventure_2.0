@@ -66,7 +66,7 @@ func _ready() -> void:
 		load_game()
 		login_account()
 		print("Loaded save")
-		print("Save data: ", save_data)
+		#print("Save data: ", save_data)
 	
 	
 	
@@ -77,7 +77,7 @@ func _ready() -> void:
 	Events.loaded_save.emit()
 
 func on_login_succeeded(auth):
-	print("Login succesful")
+	print("Firebase login succesful")
 	#print(auth)
 	Firebase.Auth.save_auth(auth)
 	
@@ -92,17 +92,21 @@ func login_account():
 		return
 	else:
 		playerIdentifier = config.get_value("account", "player_id")
+		var check = config.has_section_key("account","player_uid")
+		if check:
+			player_UID = config.get_value("account","player_uid")
 		print("Loaded account")
 	
 	var guestLoginResponse = await LL_Authentication.GuestSession.new(playerIdentifier).send()
 	if(!guestLoginResponse.success) :
 		printerr("Guest login failed with reason: " + guestLoginResponse.error_data.to_string())
-		player_UID = config.get_value("account","player_uid")
 		Events.emit_signal("player_logged_in")
 		return
+	else:
+		print("Logged into server with: ", str(guestLoginResponse.public_uid))
 	
+
 	var check = config.has_section_key("account","player_uid")
-	
 	if !check:
 		config.set_value("account", "player_uid", str(guestLoginResponse.public_uid))
 		
@@ -151,7 +155,7 @@ func new_game(player_name : String):
 
 
 func save_game():
-	print("Saving data: ", save_data)
+	#print("Saving data: ", save_data)
 	var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	var json_string = JSON.stringify(save_data)
 	save_file.store_line(json_string)
@@ -175,13 +179,13 @@ func load_game():
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()
 
-		print("Json string: ", json_string)
+		#print("Json string: ", json_string)
 		# Creates the helper class to interact with JSON.
 		var json = JSON.new()
 
 		# Check if there is any error while parsing the JSON string, skip in case of failure.
 		var parse_result = json.parse(json_string)
-		print("Parse result: ", parse_result)
+		#print("Parse result: ", parse_result)
 		if not parse_result == OK:
 			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 			continue
