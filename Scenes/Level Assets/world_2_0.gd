@@ -83,6 +83,12 @@ func _ready():
 	Events.emit_signal("level_setup_done")
 
 func setup_player_ghost():
+	if ConfigFileHandler.show_player_ghost == false:
+		player_ghost.dont_run = true
+		player_ghost.visible = false
+		player_ghost.ready_to_run = true
+		return
+
 	var dict : Dictionary = Save.save_data.get(level_codename)
 	
 	var left_eye_inserted = dict.get("LeftEyeInserted")

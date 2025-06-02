@@ -147,10 +147,12 @@ func _on_controller_vibration_value_changed(value: float) -> void:
 
 
 func _on_player_ghost_toggled(toggled_on: bool) -> void:
+	ConfigFileHandler.show_player_ghost = toggled_on
 	ConfigFileHandler.save_general_settings("show_player_ghost", toggled_on)
 
 
 func _on_show_tutorials_toggled(toggled_on: bool) -> void:
+	ConfigFileHandler.show_tutorials = toggled_on
 	ConfigFileHandler.save_general_settings("show_tutorials", toggled_on)
 
 

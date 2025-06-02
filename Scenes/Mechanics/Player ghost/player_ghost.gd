@@ -59,11 +59,6 @@ var ready_to_run = true
 func _ready() -> void:
 	ready_to_run = false
 	Events.connect("player_first_move", start_moving)
-	if ConfigFileHandler.show_player_ghost == false:
-		dont_run = true
-		#visible = false
-		ready_to_run = true
-		return
 	
 	if Save.player_UID == "":
 		await Events.player_logged_in
