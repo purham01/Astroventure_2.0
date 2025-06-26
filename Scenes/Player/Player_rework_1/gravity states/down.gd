@@ -155,7 +155,6 @@ func attempt_correction_down(amount: int):
 						return
 
 func vertical_boost():
-	
 	Player.animated_sprite.play("jump")
 	Player.velocity.x = 0
 	Player.velocity.y = -250
@@ -202,7 +201,6 @@ func end_dash():
 
 func grav_portal_boost():
 	if Player.movement_input != Vector2.ZERO:
-		
 		Player.velocity = Player.movement_input.normalized() * Player.grav_portal_boost
 	else:
 		Player.velocity.y += Player.grav_portal_boost

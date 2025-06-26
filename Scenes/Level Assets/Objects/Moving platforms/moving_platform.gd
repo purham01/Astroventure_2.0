@@ -107,17 +107,12 @@ func acceleration(delta: float):
 
 func move(delta: float):
 	var direction
-
-	
 	if moving_forward:
 		direction = start_point.position.direction_to(destination_point.position)
-		
-		
 		if (platform.position + direction * speed * delta).direction_to(destination_point.position) * direction_modificator >= Vector2.ZERO:
 			platform.position = destination_point.position
 		else:
 			platform.position += direction * speed * delta
-		#last_velocity = PhysicsServer2D.body_get_state(platform.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY)
 	
 	if moving_backward:
 		direction = destination_point.position.direction_to(start_point.position)
@@ -125,7 +120,6 @@ func move(delta: float):
 			platform.position = start_point.position
 		else:
 			platform.position += direction * speed * delta
-		#last_velocity = PhysicsServer2D.body_get_state(platform.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY)
 
 
 func _on_player_on_top_body_entered(body: Node2D) -> void:

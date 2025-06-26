@@ -9,7 +9,7 @@ func update(delta):
 	if Player.dash_input and Player.can_dash:
 		return STATES.dash
 	
-	if Player.current_gs.velocity_x_equals():
+	if Player.current_gs.velocity_x_equals() and Player.movement_input.x == 0:
 		return STATES.idle
 		
 	if Player.current_gs.velocity_y_greater_than():
@@ -18,7 +18,7 @@ func update(delta):
 	if Player.jump_input_actuation:
 		return STATES.jump
 
-	if Player.wall_direction != 0 and Player.climb_input and Player.is_on_wall():
+	if sign(Player.last_direction.x) == sign(Player.wall_direction) and Player.climb_input and (Player.is_on_wall() or Player.wall_direction != 0):
 		return STATES.climb
 		
 	return null

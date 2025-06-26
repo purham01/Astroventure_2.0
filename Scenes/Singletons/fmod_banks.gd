@@ -27,3 +27,6 @@ extends Node
 @onready var eye_sfx: FmodEventEmitter2D = $Eye/EyeSfx
 @onready var continue_game: FmodEventEmitter2D = $UI/ContinueGame
 @onready var end_game: FmodEventEmitter2D = $UI/EndGame
+
+@onready var shoot: FmodEventEmitter2D = $Fireball/Shoot
+@onready var impact: FmodEventEmitter2D = $Fireball/Impact

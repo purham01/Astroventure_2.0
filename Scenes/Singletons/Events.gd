@@ -47,3 +47,7 @@ signal open_leaderboard
 signal enable_leaderboard_ghosts
 
 signal changed_sfx_volume
+
+signal make_dark
+
+signal make_light

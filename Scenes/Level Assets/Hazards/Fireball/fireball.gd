@@ -47,6 +47,7 @@ func _on_body_entered(body: Node2D) -> void:
 		fireball.hide()
 		explosion.show()
 		explosion.play("default")
+		#FmodBanks.impact.play()
 		
 		await explosion.animation_finished
 		cooldown.start(cooldown_time)
@@ -59,6 +60,7 @@ func _on_cooldown_timeout() -> void:
 	fireball.show()
 	collision_shape_2d.set_deferred("disabled", false)
 	disabled = false
+	#FmodBanks.shoot.play()
 
 
 func _on_start_delay_timeout() -> void:

@@ -39,6 +39,9 @@ extends Node2D
 @onready var mask: Node2D = $Mask
 
 @onready var player_ghost: Node2D = $PlayerGhost
+@onready var darkness: CanvasModulate = $Darkness
+@onready var darkness_background: CanvasLayer = $"Darkness background"
+
 
 
 var level_time = 0.0
@@ -66,6 +69,9 @@ func _ready():
 	Events.inserted_left_eye.connect(left_eye_inserted)
 	Events.inserted_right_eye.connect(right_eye_inserted)
 	
+	Events.make_dark.connect(make_dark)
+	Events.make_light.connect(make_light)
+	
 	get_tree().paused = true
 	LevelTransition.fade_from_black()
 	if countdown:
@@ -82,6 +88,15 @@ func _ready():
 	set_medal_times()
 	Events.emit_signal("level_setup_done")
 
+
+func make_dark():
+	darkness.show()
+	darkness_background.show()
+	
+func make_light():
+	darkness.hide()
+	darkness_background.hide()
+	
 func setup_player_ghost():
 	if ConfigFileHandler.show_player_ghost == false:
 		player_ghost.dont_run = true

@@ -5,6 +5,9 @@ extends Area2D
 var entrance_from_below = false
 @export var entrance_from_below_toggle = true
 @onready var check_from_below_col_shape: CollisionShape2D = $CheckIfFromBelow/CollisionShape2D
+@export var darkness = false
+
+
 
 func _ready() -> void:
 	
@@ -14,6 +17,7 @@ func _ready() -> void:
 	if !entrance_from_below_toggle:
 		check_from_below_col_shape.set_deferred("disabled", true)
 	
+
 
 
 func _on_check_if_from_below_body_entered(body: Node2D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c20by7l4tiaml"]
+[gd_scene load_steps=30 format=3 uid="uid://c20by7l4tiaml"]
 
 [ext_resource type="Script" uid="uid://p5vko0wka2xq" path="res://Scenes/Levels/MapScreen.gd" id="1_058mk"]
 [ext_resource type="PackedScene" uid="uid://deuo0m6mfokye" path="res://Scenes/Level Assets/ship.tscn" id="1_lgnu1"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bukvrsgmj0cs4" path="res://Scenes/Level Assets/Planets/mercury.tscn" id="3_aswoj"]
 [ext_resource type="Curve2D" uid="uid://e35xfv8uj64m" path="res://Scenes/Level Assets/Planets/circle.tres" id="3_u58ap"]
 [ext_resource type="PackedScene" uid="uid://ctkfjm18a7q21" path="res://Scenes/Level Assets/Planets/venus.tscn" id="5_tdnmj"]
+[ext_resource type="PackedScene" uid="uid://13506wsd4ofi" path="res://Scenes/NewLevels/Mercury.tscn" id="6_qlwcd"]
+[ext_resource type="PackedScene" uid="uid://dt8g0141cneit" path="res://Scenes/NewLevels/Venus.tscn" id="7_50dng"]
 [ext_resource type="PackedScene" uid="uid://bn6n6p7mpq8kw" path="res://Scenes/Level Assets/Planets/sun.tscn" id="7_sueuh"]
 [ext_resource type="PackedScene" uid="uid://bgto26pd61fic" path="res://Scenes/Level Assets/Planets/mars.tscn" id="9_17ieb"]
 [ext_resource type="PackedScene" uid="uid://bprbfwwmf1daq" path="res://Scenes/NewLevels/Earth.tscn" id="9_o1bcs"]
@@ -13,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cg35qg6nmwyem" path="res://Scenes/Level Assets/Planets/saturn.tscn" id="10_vhbnl"]
 [ext_resource type="PackedScene" uid="uid://cv6d2x8w5d2tc" path="res://Scenes/Level Assets/Planets/jupiter.tscn" id="10_vwetg"]
 [ext_resource type="FontFile" uid="uid://db0nhncrd0qq2" path="res://Aesthethics/pixel_font.ttf" id="11_odxjm"]
+[ext_resource type="PackedScene" uid="uid://bpvcj6otk0wyq" path="res://Scenes/NewLevels/Mars.tscn" id="12_yign3"]
 [ext_resource type="PackedScene" uid="uid://bkvs6f6irfekt" path="res://Scenes/Level Assets/Planets/earth.tscn" id="13_d0emp"]
 [ext_resource type="PackedScene" uid="uid://hj7yxl4lnnor" path="res://Scenes/UI/ui_level_select.tscn" id="14_10y4k"]
 [ext_resource type="PackedScene" uid="uid://bmapv4seantau" path="res://Scenes/NewLevels/Neptune.tscn" id="15_h8kd6"]
@@ -163,6 +166,7 @@ rotates = false
 
 [node name="Mercury" parent="MercuryPath/MercuryPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("3_aswoj")]
 scale = Vector2(0.2, 0.2)
+level = ExtResource("6_qlwcd")
 speed = 15
 ship = NodePath("../../../Ship")
 
@@ -181,6 +185,7 @@ rotates = false
 
 [node name="Venus" parent="VenusPath/VenusPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("5_tdnmj")]
 scale = Vector2(0.25, 0.25)
+level = ExtResource("7_50dng")
 speed = 10
 ship = NodePath("../../../Ship")
 
@@ -236,6 +241,7 @@ rotates = false
 
 [node name="Mars" parent="MarsPath/MarsPathFollow2D" node_paths=PackedStringArray("ship") instance=ExtResource("9_17ieb")]
 scale = Vector2(0.09, 0.09)
+level = ExtResource("12_yign3")
 speed = 2
 ship = NodePath("../../../Ship")
 planet_name = 3

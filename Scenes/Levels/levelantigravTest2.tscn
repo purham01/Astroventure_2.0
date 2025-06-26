@@ -16,7 +16,7 @@ b = Vector2(24, 0)
 
 [node name="World" instance=ExtResource("1_vu3nb")]
 
-[node name="Player" parent="." index="8"]
+[node name="Player" parent="." index="10"]
 position = Vector2(119, 143)
 
 [node name="Ground" parent="TileMap" index="0"]

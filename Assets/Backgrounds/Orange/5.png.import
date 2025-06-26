@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxcvd6wid5jsy"
-path="res://.godot/imported/Orange-bg.png-1c79567795ceaa97125b5730f45bff84.ctex"
+uid="uid://dbjoqs225lf56"
+path="res://.godot/imported/5.png-3d871faa15b2f08e414d34664d6383e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Backgrounds/Orange-bg.png"
-dest_files=["res://.godot/imported/Orange-bg.png-1c79567795ceaa97125b5730f45bff84.ctex"]
+source_file="res://Assets/Backgrounds/Orange/5.png"
+dest_files=["res://.godot/imported/5.png-3d871faa15b2f08e414d34664d6383e5.ctex"]
 
 [params]
 

@@ -8,10 +8,11 @@ func update(delta):
 		return STATES.idle
 
 func enter_state():
+	Player.playerDead = true
 	print("Respawning player")
 	FmodBanks.die.set_parameter("Parameter 1", randf())
 	FmodBanks.die.play()
-	Player.playerDead = true
+	
 	Player.hazard_detector_collision_shape.set_deferred("disabled", true)
 	Player.follower_controller.star_counter = 0
 	

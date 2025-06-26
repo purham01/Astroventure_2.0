@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwsb7utpqgxk6"]
+[gd_scene load_steps=2 format=3 uid="uid://bwsb7utpqgxk6"]
 
 [ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="1_r7qxx"]
-[ext_resource type="Script" uid="uid://0lyaej4yknb7" path="res://addons/quiver_leaderboards/leaderboard_ui.gd" id="2_gf2ha"]
 
 [node name="LeaderboardUI" type="Control"]
 layout_mode = 3
@@ -13,8 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("1_r7qxx")
-script = ExtResource("2_gf2ha")
-leaderboard_id = "astroventure-earth-4Wzz"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

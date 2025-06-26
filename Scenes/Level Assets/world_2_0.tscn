@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cdfi0he5jt0wv"]
+[gd_scene load_steps=51 format=3 uid="uid://cdfi0he5jt0wv"]
 
 [ext_resource type="Script" uid="uid://bldqjmcn4e4jr" path="res://Scenes/Level Assets/world_2_0.gd" id="1_5l86q"]
 [ext_resource type="Script" uid="uid://b371os08yv8t8" path="res://Scenes/Levels/DisappearingTilesScript.gd" id="3_00xho"]
@@ -6,22 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://r7ntx6orfvyd" path="res://Scenes/Level Assets/disappearing_tilesV2.tscn" id="4_5l86q"]
 [ext_resource type="PackedScene" uid="uid://73u2mwbq763g" path="res://Scenes/Camera/player_camera.tscn" id="4_f1h0e"]
 [ext_resource type="PackedScene" uid="uid://u0n6wc1k3cuo" path="res://Scenes/Player/Player_rework_1/player_rework_1.tscn" id="4_fwkpg"]
+[ext_resource type="Texture2D" uid="uid://ym2qhy42cm6x" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-back.png" id="5_bq8dv"]
 [ext_resource type="PackedScene" uid="uid://crvqb588f1wim" path="res://Scenes/Mechanics/Player ghost/ghost_recorder.tscn" id="5_tt42e"]
 [ext_resource type="PackedScene" uid="uid://wr2wk4qcaavh" path="res://Scenes/Mechanics/Player ghost/PlayerGhost.tscn" id="6_dkgty"]
 [ext_resource type="PackedScene" uid="uid://uw72ymyhfc6n" path="res://Scenes/Level Assets/Rooms/room.tscn" id="6_fwkpg"]
+[ext_resource type="Texture2D" uid="uid://c8v8hbkscb4f8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/blue-stars.png" id="6_s1d7t"]
 [ext_resource type="PackedScene" uid="uid://e5byije8qotb" path="res://Scenes/UI/pause_menu.tscn" id="7_00xho"]
 [ext_resource type="Texture2D" uid="uid://bydn3n01bwby8" path="res://Assets/Tilesets/tileset02.png" id="7_cf2l8"]
+[ext_resource type="Texture2D" uid="uid://dqc8sl2ifg1ky" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png" id="7_q0n3y"]
 [ext_resource type="PackedScene" uid="uid://cv1202d8pg8ct" path="res://Scenes/UI/level_completed.tscn" id="8_5l86q"]
+[ext_resource type="Texture2D" uid="uid://b20uvt1nx1hea" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/prop-planet-small.png" id="8_qmu0s"]
+[ext_resource type="Texture2D" uid="uid://dbd66vfyjsvc8" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-2.png" id="9_uoa1s"]
+[ext_resource type="Texture2D" uid="uid://dp08te4y26o4w" path="res://Assets/Backgrounds/space_background_pack/Assets/Blue Version/layered/asteroid-1.png" id="10_7xp6i"]
 [ext_resource type="Texture2D" uid="uid://e3y2a3f24uju" path="res://Assets/Tilesets/tileset03.png" id="11_f1h0e"]
 [ext_resource type="Texture2D" uid="uid://clsbi1oem8s8c" path="res://Assets/Conveyor belt/conveyor belt.png" id="12_c2lkw"]
 [ext_resource type="Texture2D" uid="uid://bdxyqhrom31d7" path="res://Assets/Level assets/Spikes/spikes_8x8.png" id="13_00xho"]
 [ext_resource type="Texture2D" uid="uid://b0tnjrwiqoers" path="res://Assets/Tilesets/tileset01.png" id="13_fwkpg"]
 [ext_resource type="Texture2D" uid="uid://du1k4g0bjef2k" path="res://Assets/Tilesets/platform.png" id="14_00xho"]
 [ext_resource type="Texture2D" uid="uid://bqa6apy138023" path="res://Assets/Tilesets/disappering_tiles.png" id="15_5l86q"]
+[ext_resource type="Texture2D" uid="uid://bhvdlt40jxwrl" path="res://Assets/Conveyor belt/conveyor belt blue.png" id="15_makt8"]
 [ext_resource type="Texture2D" uid="uid://joyuxfqx7o2p" path="res://Assets/Tilesets/tileset04.png" id="15_vacqs"]
 [ext_resource type="PackedScene" uid="uid://5tkxcljxj5jd" path="res://Scenes/Mechanics/Eye/left_eye.tscn" id="18_xnp7t"]
 [ext_resource type="PackedScene" uid="uid://b85gm65kfw0jh" path="res://Scenes/Mechanics/Eye/right_eye.tscn" id="19_vacqs"]
 [ext_resource type="PackedScene" uid="uid://clujxrm1w4sgn" path="res://Scenes/Mechanics/Eye/mask.tscn" id="21_makt8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bq8dv"]
 
 [sub_resource type="Environment" id="Environment_cf2l8"]
 background_mode = 3
@@ -1634,6 +1643,62 @@ texture_region_size = Vector2i(8, 8)
 8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 8:4/0/custom_data_0 = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq8dv"]
+texture = ExtResource("15_makt8")
+texture_region_size = Vector2i(8, 8)
+1:0/animation_columns = 8
+1:0/animation_separation = Vector2i(2, 0)
+1:0/animation_speed = 5.0
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/animation_frame_2/duration = 1.0
+1:0/animation_frame_3/duration = 1.0
+1:0/animation_frame_4/duration = 1.0
+1:0/animation_frame_5/duration = 1.0
+1:0/animation_frame_6/duration = 1.0
+1:0/animation_frame_7/duration = 1.0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 2
+1:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0/terrains_peering_bit/right_side = 2
+1:0/0/terrains_peering_bit/left_side = 2
+1:0/0/custom_data_0 = 16
+2:0/animation_columns = 8
+2:0/animation_separation = Vector2i(2, 0)
+2:0/animation_speed = 5.0
+2:0/animation_frame_0/duration = 1.0
+2:0/animation_frame_1/duration = 1.0
+2:0/animation_frame_2/duration = 1.0
+2:0/animation_frame_3/duration = 1.0
+2:0/animation_frame_4/duration = 1.0
+2:0/animation_frame_5/duration = 1.0
+2:0/animation_frame_6/duration = 1.0
+2:0/animation_frame_7/duration = 1.0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0/terrains_peering_bit/left_side = 2
+2:0/0/custom_data_0 = 16
+0:0/animation_columns = 8
+0:0/animation_separation = Vector2i(2, 0)
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 2
+0:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:0/0/terrains_peering_bit/right_side = 2
+0:0/0/custom_data_0 = 16
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_78wvy"]
 texture = ExtResource("12_c2lkw")
 texture_region_size = Vector2i(8, 8)
@@ -1651,19 +1716,16 @@ texture_region_size = Vector2i(8, 8)
 0:0/animation_frame_7/duration = 1.0
 0:0/0 = 0
 0:0/0/terrain_set = 0
-0:0/0/terrain = 2
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-0:0/0/terrains_peering_bit/right_side = 2
-0:0/0/custom_data_0 = 16
+0:0/0/terrain = 1
+0:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:0/0/terrains_peering_bit/right_side = 1
+0:0/0/custom_data_0 = 8
 0:0/1 = 1
 0:0/1/transpose = true
 0:0/4 = 4
 0:0/4/flip_v = true
 0:0/4/terrain_set = 0
-0:0/4/terrain = 1
-0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-0:0/4/terrains_peering_bit/right_side = 1
-0:0/4/custom_data_0 = 8
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 0.406102, 4, -4, 4, 4, -4, 0.507627)
 1:0/next_alternative_id = 4
 1:0/animation_columns = 8
 1:0/animation_separation = Vector2i(2, 0)
@@ -1678,21 +1740,17 @@ texture_region_size = Vector2i(8, 8)
 1:0/animation_frame_7/duration = 1.0
 1:0/0 = 0
 1:0/0/terrain_set = 0
-1:0/0/terrain = 2
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-1:0/0/terrains_peering_bit/right_side = 2
-1:0/0/terrains_peering_bit/left_side = 2
-1:0/0/custom_data_0 = 16
+1:0/0/terrain = 1
+1:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0/terrains_peering_bit/right_side = 1
+1:0/0/terrains_peering_bit/left_side = 1
+1:0/0/custom_data_0 = 8
 1:0/1 = 1
 1:0/1/transpose = true
 1:0/3 = 3
 1:0/3/flip_v = true
 1:0/3/terrain_set = 0
-1:0/3/terrain = 1
 1:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-1:0/3/terrains_peering_bit/right_side = 1
-1:0/3/terrains_peering_bit/left_side = 1
-1:0/3/custom_data_0 = 8
 2:0/next_alternative_id = 4
 2:0/animation_columns = 8
 2:0/animation_separation = Vector2i(2, 0)
@@ -1707,19 +1765,16 @@ texture_region_size = Vector2i(8, 8)
 2:0/animation_frame_7/duration = 1.0
 2:0/0 = 0
 2:0/0/terrain_set = 0
-2:0/0/terrain = 2
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-2:0/0/terrains_peering_bit/left_side = 2
-2:0/0/custom_data_0 = 16
+2:0/0/terrain = 1
+2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0/terrains_peering_bit/left_side = 1
+2:0/0/custom_data_0 = 8
 2:0/1 = 1
 2:0/1/transpose = true
 2:0/3 = 3
 2:0/3/flip_v = true
 2:0/3/terrain_set = 0
-2:0/3/terrain = 1
-2:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-2:0/3/terrains_peering_bit/left_side = 1
-2:0/3/custom_data_0 = 8
+2:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -0.203052, 4, -0.101525, -4, 4)
 
 [sub_resource type="TileSet" id="TileSet_5l86q"]
 tile_size = Vector2i(8, 8)
@@ -1753,6 +1808,7 @@ sources/0 = SubResource("TileSetAtlasSource_xnp7t")
 sources/4 = SubResource("TileSetAtlasSource_sf84y")
 sources/7 = SubResource("TileSetAtlasSource_78wvy")
 sources/5 = SubResource("TileSetAtlasSource_phigq")
+sources/6 = SubResource("TileSetAtlasSource_bq8dv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r21ls"]
 texture = ExtResource("15_5l86q")
@@ -1905,6 +1961,23 @@ _data = {
 script = ExtResource("1_5l86q")
 timer = true
 
+[node name="Darkness" type="CanvasModulate" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_bq8dv")
+color = Color(0, 0, 0, 1)
+
+[node name="Darkness background" type="CanvasLayer" parent="."]
+layer = -1
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Darkness background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Music" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/Music/MainMenu"
 event_guid = "{18be84f7-44ce-4262-bc04-04c4ac45f487}"
@@ -1923,15 +1996,86 @@ layer = -3
 follow_viewport_enabled = true
 
 [node name="Background" type="TextureRect" parent="Background"]
+visible = false
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("3_cf2l8")
 expand_mode = 5
 
-[node name="Darkness" type="CanvasModulate" parent="."]
+[node name="Parallax background" type="Node2D" parent="Background"]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(1, 0)
+repeat_times = 3
+
+[node name="Background" type="TextureRect" parent="Background/Parallax background/Parallax2D"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("5_bq8dv")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Background" type="TextureRect" parent="Background/Parallax background/Parallax2D2"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("6_s1d7t")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.7, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(1.5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax background/Parallax2D3"]
+position = Vector2(-232, 63)
+texture = ExtResource("7_q0n3y")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax background/Parallax2D4"]
+position = Vector2(229, 112)
+texture = ExtResource("8_qmu0s")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(-27, -69)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(4, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax background/Parallax2D5"]
+position = Vector2(229, 112)
+texture = ExtResource("9_uoa1s")
+
+[node name="Parallax2D6" type="Parallax2D" parent="Background/Parallax background"]
+scroll_scale = Vector2(0.6, 0)
+scroll_offset = Vector2(-118, 9)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(3, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax background/Parallax2D6"]
+position = Vector2(229, 112)
+texture = ExtResource("10_7xp6i")
+
+[node name="Color" type="CanvasModulate" parent="."]
 visible = false
 material = SubResource("CanvasItemMaterial_vacqs")
-color = Color(0, 0, 0, 1)
+color = Color(0.987656, 0.957198, 1, 1)
 
 [node name="PlayerGhost" parent="." instance=ExtResource("6_dkgty")]
 visible = false
@@ -1966,7 +2110,7 @@ tile_set = SubResource("TileSet_00xho")
 [node name="Room" parent="Rooms" instance=ExtResource("6_fwkpg")]
 entrance_from_below_toggle = false
 
-[node name="CollisionShape2D" parent="Rooms/Room" index="0"]
+[node name="CollisionShape2D" parent="Rooms/Room" index="1"]
 shape = SubResource("RectangleShape2D_4rxrd")
 
 [node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]

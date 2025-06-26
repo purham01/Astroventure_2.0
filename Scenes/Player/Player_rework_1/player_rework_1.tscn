@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://u0n6wc1k3cuo"]
+[gd_scene load_steps=89 format=3 uid="uid://u0n6wc1k3cuo"]
 
 [ext_resource type="Script" uid="uid://bmfn5bj1epfaa" path="res://Scenes/Player/Player_rework_1/player_character_rework_1.gd" id="1_kqp0r"]
 [ext_resource type="SpriteFrames" uid="uid://dl3ymlg6n87id" path="res://Aesthethics/spacemanCharacter.tres" id="2_a8ty3"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cg6v0phx8plg6" path="res://Assets/Slash03/Slash03-06-128x128.png" id="36_g4ll7"]
 [ext_resource type="Texture2D" uid="uid://0qgqbycfc3ku" path="res://Assets/Slash03/Slash03-07-128x128.png" id="37_a8dk5"]
 [ext_resource type="Shader" uid="uid://cm47s6wgte0af" path="res://addons/eye_dropper/eye_dropper.gdshader" id="37_g4ll7"]
+[ext_resource type="Script" uid="uid://dd4wsdqrk6kqs" path="res://Scenes/Player/Player_rework_1/light.gd" id="37_n6ltq"]
 [ext_resource type="Texture2D" uid="uid://b75b0perc42cv" path="res://Assets/Slash03/Slash03-08-128x128.png" id="38_n6ltq"]
 [ext_resource type="Texture2D" uid="uid://di78dyop73q28" path="res://Assets/Slash03/Slash03-09-128x128.png" id="39_wehti"]
 [ext_resource type="Texture2D" uid="uid://cim0u7h7pqrb3" path="res://Assets/Slash03/Slash03-10-128x128.png" id="40_6n4hr"]
@@ -134,7 +135,7 @@ color = Color(0.66925, 0.878765, 0.996094, 1)
 color_ramp = SubResource("GradientTexture1D_vpm28")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pagqt"]
-size = Vector2(10, 15)
+size = Vector2(8, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_327wf"]
 size = Vector2(6, 12)
@@ -144,6 +145,16 @@ size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xkw4"]
 size = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_a8dk5"]
+offsets = PackedFloat32Array(0.369077, 0.690773, 0.885287, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.67451, 1, 1, 1, 0.470588, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6ltq"]
+gradient = SubResource("Gradient_a8dk5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Animation" id="Animation_g1ca6"]
 length = 0.001
@@ -628,6 +639,7 @@ position = Vector2(0, -2)
 target_position = Vector2(7, 0)
 
 [node name="HazardRaycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="Left" type="Node2D" parent="HazardRaycasts"]
 
@@ -705,12 +717,11 @@ target_position = Vector2(0, -5)
 [node name="GhostMarker" type="Marker2D" parent="."]
 position = Vector2(0, -16)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PlayerLight" type="PointLight2D" parent="."]
 position = Vector2(0, -8)
 blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("35_a8dk5")
-texture_scale = 1.5
+texture = SubResource("GradientTexture2D_n6ltq")
+script = ExtResource("37_n6ltq")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 visible = false

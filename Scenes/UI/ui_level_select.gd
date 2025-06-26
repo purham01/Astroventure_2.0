@@ -103,7 +103,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 3.70\nTemp: 167°C\nDanger: [color=green]LOW[/color]"
 			dialog = mercury_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31067"
 			leaderboard_ui.level_codename = "Mercury"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Mercury")
@@ -111,7 +111,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 8.87\nTemp: 464°C\nDanger: [color=orange]MEDIUM[/color]"
 			dialog = venus_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31068"
 			leaderboard_ui.level_codename = "Venus"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Venus")
@@ -127,7 +127,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 3.71\nTemp: -65°C\nDanger: [color=orange]MEDIUM[/color]"
 			dialog = mars_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31066"
 			leaderboard_ui.level_codename = "Mars"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Mars")
@@ -143,7 +143,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 10.44\nTemp: -140°C\nDanger: [color=green]LOW[/color]"
 			dialog = saturn_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31069"
 			leaderboard_ui.level_codename = "Saturn"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Saturn")
@@ -151,7 +151,7 @@ func pass_parameters(level : PackedScene, sprite_frames : SpriteFrames, planet_n
 			planet_name_label.text  = str(PlanetNames.keys()[planet_name])
 			planet_stats.text = "[center]Gravity: 8.87\nTemp: -195°C\nDanger: [color=red]HIGH[/color]"
 			dialog = uranus_text
-			leaderboard_ui.leaderboard_id = ""
+			leaderboard_ui.leaderboard_id = "31065"
 			leaderboard_ui.level_codename = "Uranus"
 			leaderboard_ui.refresh_scores()
 			load_collectibles("Uranus")

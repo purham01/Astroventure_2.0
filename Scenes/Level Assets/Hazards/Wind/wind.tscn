@@ -1,55 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://due354p3o700i"]
+[gd_scene load_steps=9 format=3 uid="uid://due354p3o700i"]
 
 [ext_resource type="Script" uid="uid://coy4g54e6b3xa" path="res://Scenes/Level Assets/Hazards/Wind/wind.gd" id="1_6boby"]
+[ext_resource type="Material" uid="uid://c4iv2uvxw88u8" path="res://Scenes/Level Assets/Hazards/Wind/wind_uptime.tres" id="2_f5u3x"]
+[ext_resource type="Material" uid="uid://ddsquwtno0uqa" path="res://Scenes/Level Assets/Hazards/Wind/wind_downtime.tres" id="2_y6aso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btaoe"]
 size = Vector2(320, 180)
+
+[sub_resource type="Gradient" id="Gradient_y6aso"]
+offsets = PackedFloat32Array(0, 0.504983, 1)
+colors = PackedColorArray(0.168627, 1, 0.796078, 0, 0.16718, 1, 0.795777, 1, 0.168627, 1, 0.796078, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ich3w"]
+gradient = SubResource("Gradient_y6aso")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jy8xv"]
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(103.625, 105.505, 1)
-initial_velocity_min = 40.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="GDScript" id="GDScript_6boby"]
-script/source = "extends GPUParticles2D
-
-@export var player : CharacterBody2D
-@export var windspeed : float
-@export var average_time : float
-
-var timer = 0
-var active = false
-
-@onready var mat : ParticleProcessMaterial = get_process_material()
-
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(delta):
-	if active:
-		timer += delta
-		if timer >= average_time:
-			timer = 0
-			windspeed *= -1
-			mat.direction.x *= -1
-		if not player.is_on_floor():
-			player.velocity.x += windspeed
-
-
-func _on_wind_body_entered(body):
-	emitting = true
-	active = true
-
-
-func _on_wind_body_exited(body):
-	emitting = false
-	active = false
-	timer = 0
-"
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 10, 0)
+color = Color(0.16718, 1, 0.795777, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r3gjy"]
 particle_flag_disable_z = true
@@ -57,13 +33,13 @@ emission_shape = 3
 emission_box_extents = Vector3(103.625, 105.505, 1)
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, 10, 0)
+color = Color(0.16718, 1, 0.795777, 1)
 
 [node name="Wind" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_6boby")
-windspeed = 60.0
 uptime = 5.0
 downtime = 5.0
 wind_direction = Vector2(1, 0)
@@ -74,16 +50,35 @@ shape = SubResource("RectangleShape2D_btaoe")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="WindTrailDowntime" type="GPUParticles2D" parent="CanvasLayer"]
+position = Vector2(150, 96)
+emitting = false
+amount = 25
+texture = SubResource("GradientTexture2D_ich3w")
+lifetime = 2.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = ExtResource("2_y6aso")
+
+[node name="WindTrailUptime" type="GPUParticles2D" parent="CanvasLayer"]
+position = Vector2(28, 88)
+emitting = false
+amount = 50
+texture = SubResource("GradientTexture2D_ich3w")
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = ExtResource("2_f5u3x")
+
 [node name="WindParticlesUptime" type="GPUParticles2D" parent="CanvasLayer"]
 position = Vector2(160, 90)
 scale = Vector2(1.865, 0.905)
 emitting = false
 amount = 100
-lifetime = 2.0
+lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_jy8xv")
-script = SubResource("GDScript_6boby")
-windspeed = 8.0
-average_time = 7.0
 
 [node name="WindParticlesDowntime" type="GPUParticles2D" parent="CanvasLayer"]
 position = Vector2(160, 90)
@@ -92,9 +87,6 @@ emitting = false
 amount = 50
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_r3gjy")
-script = SubResource("GDScript_6boby")
-windspeed = 8.0
-average_time = 7.0
 
 [node name="UptimeTimer" type="Timer" parent="."]
 one_shot = true

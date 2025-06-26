@@ -127,3 +127,19 @@ event_guid = "{6a03bceb-9011-43f5-a298-1b1b3aac35fe}"
 [node name="EyeSfx" type="FmodEventEmitter2D" parent="Eye"]
 event_name = "event:/Env/EyeCollect"
 event_guid = "{1a98254e-27ec-4d26-b033-84647804d5ce}"
+
+[node name="Fireball" type="Node" parent="."]
+
+[node name="Shoot" type="FmodEventEmitter2D" parent="Fireball"]
+event_name = "event:/Env/FireballLaunch"
+event_guid = "{14e771b1-5632-4823-b7d7-e8f9da9960b5}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Impact" type="FmodEventEmitter2D" parent="Fireball"]
+event_name = "event:/Env/FireballImpact"
+event_guid = "{0368354d-e541-41a1-b4fc-c6e5f8a7d2f3}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3

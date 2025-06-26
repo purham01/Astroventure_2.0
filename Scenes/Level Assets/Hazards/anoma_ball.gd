@@ -1,13 +1,15 @@
-extends Node2D
+extends Path2D
 
 @onready var path = $PathFollow2D
 @export var speed = 100
 
 var reverse = false
 var time_to_turn = 0.5
+@export var loop = false
 
 func _ready() -> void:
 	Events.connect("player_dead",reset)
+	path.loop = loop
 
 func _process(delta):
 	if not reverse:

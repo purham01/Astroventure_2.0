@@ -55,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.03333, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(8.287, 0.14, 0.342, 1), Color(9.944, 0.141, 0.341, 1), Color(0.428, 3, 3, 1)]
+"values": [Color(0.428, 3, 3, 1), Color(0.428, 3, 3, 1), Color(74.033, 0.14, 0.342, 1)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -127,7 +127,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.428, 3, 3, 1), Color(8.287, 0.14, 0.342, 1), Color(9.944, 0.141, 0.341, 1)]
+"values": [Color(8.287, 0.14, 0.342, 1), Color(0.428, 3, 3, 1), Color(0.428, 3, 3, 1)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -195,7 +195,7 @@ process_material = ExtResource("2_d1xvi")
 
 [node name="Laser" type="RayCast2D" parent="."]
 target_position = Vector2(2000, 0)
-collision_mask = 3
+collision_mask = 67
 
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
@@ -224,6 +224,6 @@ libraries = {
 }
 
 [connection signal="timeout" from="ActiveTimer" to="." method="_on_active_timer_timeout"]
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

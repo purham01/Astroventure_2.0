@@ -400,6 +400,12 @@ func _on_room_detector_area_entered(area: Area2D) -> void:
 	var size: Vector2 = collision_shape.shape.extents * 2
 	# Changes camera's current room and size. check camera script for more info
 	player_camera.change_room(collision_shape.global_position, size)
+	
+	if area.darkness == true:
+		Events.emit_signal("make_dark")
+	else:
+		Events.emit_signal("make_light")
+		
 	#adds vertical boost if coming from below
 	if area.entrance_from_below:
 		current_gs.vertical_boost()
@@ -421,7 +427,8 @@ func _on_hazard_detector_body_entered(body: Node2D) -> void:
 	respawn()
 
 func respawn():
-	change_state(STATES.dead)
+	if !playerDead:
+		change_state(STATES.dead)
 	
 func set_spawn(new_position, spawn_gravity_dir_new):
 	starting_position = new_position

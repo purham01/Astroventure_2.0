@@ -22,9 +22,11 @@ var acceleration_multiplier = base_acceleration_multiplier
 var reset_movement = false
 
 @onready var current_terrain_type = 1
+@onready var prev_terrain_type = 1
 var player
 
-@export var conveyor_belt_speed = 600.0
+@export var conveyor_belt_speed = 60.0
+@export var conveyor_belt_acceleration = 600.0
 
 func _ready():
 	player = get_parent()
@@ -36,16 +38,38 @@ func _physics_process(delta: float) -> void:
 func _terrain_movement(delta):
 	if current_terrain_type==8:
 		#conveyor left
-		player.velocity.x-= conveyor_belt_speed *delta
-	elif current_terrain_type == 16:
-		player.velocity.x+= conveyor_belt_speed *delta
+		if player.movement_input.x == -1:
+			acceleration_multiplier = 1
+			speed_multiplier = 2
+		else:
+			acceleration_multiplier = 0.7
+			#speed_multiplier = conveyor_belt_speed / player.SPEED 
+			speed_multiplier = 0.3
+		player.velocity.x = move_toward(player.velocity.x, -conveyor_belt_speed, conveyor_belt_acceleration*delta)
 
+	elif current_terrain_type == 16:
+		if player.movement_input.x == 1:
+			acceleration_multiplier = 1
+			speed_multiplier = 2
+		else:
+			acceleration_multiplier = 0.7
+			speed_multiplier = 0.3
+			
+			#speed_multiplier = conveyor_belt_speed / player.SPEED 
+		player.velocity.x = move_toward(player.velocity.x, conveyor_belt_speed, conveyor_belt_acceleration*delta)
+	#print(speed_multiplier)
+	
 func _on_terrain_detector_terrain_entered(terrain_type):
 	reset_movement_speed_jump_timer.stop()
 	
 	#print("Terrain type entered: ", terrain_type)
-
+	prev_terrain_type = current_terrain_type
 	current_terrain_type = terrain_type
+	
+	if prev_terrain_type == 8 or prev_terrain_type == 16:
+		friction_multiplier = base_friction_multiplier
+		acceleration_multiplier = base_acceleration_multiplier
+		speed_multiplier = base_speed_multiplier
 	
 	if terrain_type == 4:
 		reset_movement = false
@@ -60,9 +84,17 @@ func _on_terrain_detector_terrain_entered(terrain_type):
 		acceleration_multiplier= ice_acceleration_multiplier
 	elif terrain_type==1:
 		#print("Changing movement to normal")
+		
 		reset_movement = true
-	elif terrain_type==8 or terrain_type == 16:
-		return
+	elif terrain_type==8:
+		#player.velocity.x = -conveyor_belt_speed
+		friction_multiplier = 0
+		
+		
+	elif terrain_type == 16:
+		#player.velocity.x = conveyor_belt_speed
+		friction_multiplier = 0
+
 	else:
 		#print("Starting reset timer")
 		if !reset_movement:

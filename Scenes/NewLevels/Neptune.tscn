@@ -142,126 +142,249 @@ galaxy_medal_time = 100.0
 nebula_medal_time = 200.0
 supernova_medal_time = 300.0
 
-[node name="Music" parent="." index="0"]
+[node name="Music" parent="." index="2"]
 event_name = "event:/Music/Neptune"
 event_guid = "{0a332554-34e0-4874-af4c-da5c2b1da318}"
 
-[node name="Background" parent="Background" index="0"]
-visible = false
-
-[node name="Node" type="Node2D" parent="Background" index="1"]
+[node name="Parallax background2" type="Node2D" parent="Background" index="1"]
 script = ExtResource("3_q1fkb")
 
-[node name="Parallax2D" type="Parallax2D" parent="Background/Node" index="0"]
+[node name="Parallax2D" type="Parallax2D" parent="Background/Parallax background2" index="0"]
 scroll_scale = Vector2(0.1, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("3_oc2yd")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D2" type="Parallax2D" parent="Background/Node" index="1"]
+[node name="Parallax2D2" type="Parallax2D" parent="Background/Parallax background2" index="1"]
 scroll_scale = Vector2(0.15, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D2" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D2" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("4_q1fkb")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D3" type="Parallax2D" parent="Background/Node" index="2"]
+[node name="Parallax2D3" type="Parallax2D" parent="Background/Parallax background2" index="2"]
 scroll_scale = Vector2(0.2, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D3" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D3" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("5_pwo4i")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D4" type="Parallax2D" parent="Background/Node" index="3"]
+[node name="Parallax2D4" type="Parallax2D" parent="Background/Parallax background2" index="3"]
 scroll_scale = Vector2(0.25, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D4" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D4" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("6_ncom4")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D5" type="Parallax2D" parent="Background/Node" index="4"]
+[node name="Parallax2D5" type="Parallax2D" parent="Background/Parallax background2" index="4"]
 scroll_scale = Vector2(0.3, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D5" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D5" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("7_raubc")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D6" type="Parallax2D" parent="Background/Node" index="5"]
+[node name="Parallax2D6" type="Parallax2D" parent="Background/Parallax background2" index="5"]
 scroll_scale = Vector2(0.35, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D6" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D6" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("8_rr8lr")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D7" type="Parallax2D" parent="Background/Node" index="6"]
+[node name="Parallax2D7" type="Parallax2D" parent="Background/Parallax background2" index="6"]
 scroll_scale = Vector2(0.4, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D7" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D7" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("9_j38hx")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D8" type="Parallax2D" parent="Background/Node" index="7"]
+[node name="Parallax2D8" type="Parallax2D" parent="Background/Parallax background2" index="7"]
 scroll_scale = Vector2(0.45, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D8" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D8" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("10_oifs4")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Parallax2D9" type="Parallax2D" parent="Background/Node" index="8"]
+[node name="Parallax2D9" type="Parallax2D" parent="Background/Parallax background2" index="8"]
 scroll_scale = Vector2(0.5, 0)
 repeat_size = Vector2(320, 180)
 repeat_times = 4
 
-[node name="Background" type="TextureRect" parent="Background/Node/Parallax2D9" index="0"]
+[node name="Background" type="TextureRect" parent="Background/Parallax background2/Parallax2D9" index="0"]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("11_rgkiw")
 expand_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Player" parent="." index="8"]
-position = Vector2(45, 145)
+[node name="Parallax background" parent="Background" index="2"]
+visible = false
+
+[node name="Player" parent="." index="10"]
+position = Vector2(43, 135)
+
+[node name="AntiGravityNodes" type="Node" parent="." index="11"]
+
+[node name="GravUpChecker" parent="AntiGravityNodes" index="0" instance=ExtResource("2_mxtxm")]
+position = Vector2(246, 155)
+
+[node name="GravUpChecker2" parent="AntiGravityNodes" index="1" instance=ExtResource("2_mxtxm")]
+position = Vector2(511, 586)
+
+[node name="GravUpChecker3" parent="AntiGravityNodes" index="2" instance=ExtResource("2_mxtxm")]
+position = Vector2(2, -150)
+
+[node name="GravUpChecker10" parent="AntiGravityNodes" index="3" instance=ExtResource("2_mxtxm")]
+position = Vector2(82, -57)
+
+[node name="GravRightChecker" parent="AntiGravityNodes" index="4" instance=ExtResource("3_511x5")]
+position = Vector2(500, -120)
+
+[node name="GravRightChecker5" parent="AntiGravityNodes" index="5" instance=ExtResource("3_511x5")]
+position = Vector2(961, 68)
+
+[node name="GravRightChecker6" parent="AntiGravityNodes" index="6" instance=ExtResource("3_511x5")]
+position = Vector2(875, 152)
+
+[node name="GravRightChecker7" parent="AntiGravityNodes" index="7" instance=ExtResource("3_511x5")]
+position = Vector2(914, 152)
+
+[node name="GravRightChecker2" parent="AntiGravityNodes" index="8" instance=ExtResource("3_511x5")]
+position = Vector2(-237, 88)
+
+[node name="GravDownChecker" parent="AntiGravityNodes" index="9" instance=ExtResource("4_4ahn7")]
+position = Vector2(191, 35)
+
+[node name="GravDownChecker2" parent="AntiGravityNodes" index="10" instance=ExtResource("4_4ahn7")]
+position = Vector2(81, -173)
+
+[node name="GravLeftChecker" parent="AntiGravityNodes" index="11" instance=ExtResource("6_4uhso")]
+position = Vector2(772, 149)
+
+[node name="GravLeftChecker3" parent="AntiGravityNodes" index="12" instance=ExtResource("6_4uhso")]
+position = Vector2(486, 45)
+
+[node name="GravLeftChecker4" parent="AntiGravityNodes" index="13" instance=ExtResource("6_4uhso")]
+position = Vector2(749, 493)
+
+[node name="GravLeftChecker5" parent="AntiGravityNodes" index="14" instance=ExtResource("6_4uhso")]
+position = Vector2(646, 569)
+
+[node name="GravRightChecker3" parent="AntiGravityNodes" index="15" instance=ExtResource("3_511x5")]
+position = Vector2(480, 449)
+
+[node name="GravRightChecker4" parent="AntiGravityNodes" index="16" instance=ExtResource("3_511x5")]
+position = Vector2(394, 575)
+
+[node name="GravDownChecker3" parent="AntiGravityNodes" index="17" instance=ExtResource("4_4ahn7")]
+position = Vector2(923, 392)
+
+[node name="GravDownChecker6" parent="AntiGravityNodes" index="18" instance=ExtResource("4_4ahn7")]
+position = Vector2(1073, 394)
+
+[node name="GravDownChecker4" parent="AntiGravityNodes" index="19" instance=ExtResource("4_4ahn7")]
+position = Vector2(823, 469)
+
+[node name="GravDownChecker5" parent="AntiGravityNodes" index="20" instance=ExtResource("4_4ahn7")]
+position = Vector2(797, 533)
+
+[node name="GravUpChecker4" parent="AntiGravityNodes" index="21" instance=ExtResource("2_mxtxm")]
+position = Vector2(996, 560)
+
+[node name="GravUpChecker5" parent="AntiGravityNodes" index="22" instance=ExtResource("2_mxtxm")]
+position = Vector2(1148, 584)
+
+[node name="GravRightChecker8" parent="AntiGravityNodes" index="23" instance=ExtResource("3_511x5")]
+position = Vector2(1394, 508)
+
+[node name="GravDownChecker7" parent="AntiGravityNodes" index="24" instance=ExtResource("4_4ahn7")]
+position = Vector2(1728, 782)
+
+[node name="GravUpChecker6" parent="AntiGravityNodes" index="25" instance=ExtResource("2_mxtxm")]
+position = Vector2(1406, 775)
+
+[node name="GravLeftChecker2" parent="AntiGravityNodes" index="26" instance=ExtResource("6_4uhso")]
+position = Vector2(1649, 669)
+
+[node name="GravUpChecker7" parent="AntiGravityNodes" index="27" instance=ExtResource("2_mxtxm")]
+position = Vector2(1681, 71)
+
+[node name="GravUpChecker8" parent="AntiGravityNodes" index="28" instance=ExtResource("2_mxtxm")]
+position = Vector2(1714, 111)
+
+[node name="GravDownChecker8" parent="AntiGravityNodes" index="29" instance=ExtResource("4_4ahn7")]
+position = Vector2(1721, 337)
+
+[node name="GravDownChecker9" parent="AntiGravityNodes" index="30" instance=ExtResource("4_4ahn7")]
+position = Vector2(1721, 337)
+
+[node name="GravDownChecker10" parent="AntiGravityNodes" index="31" instance=ExtResource("4_4ahn7")]
+position = Vector2(1794, 223)
+
+[node name="GravRightChecker9" parent="AntiGravityNodes" index="32" instance=ExtResource("3_511x5")]
+position = Vector2(1752, 100)
+
+[node name="GravRightChecker10" parent="AntiGravityNodes" index="33" instance=ExtResource("3_511x5")]
+position = Vector2(1808, 171)
+
+[node name="GravRightChecker11" parent="AntiGravityNodes" index="34" instance=ExtResource("3_511x5")]
+position = Vector2(1750, 309)
+
+[node name="GravDownChecker11" parent="AntiGravityNodes" index="35" instance=ExtResource("4_4ahn7")]
+position = Vector2(1243, 811)
+
+[node name="GravUpChecker9" parent="AntiGravityNodes" index="36" instance=ExtResource("2_mxtxm")]
+position = Vector2(1011, 939)
+
+[node name="FuelCans" type="Node" parent="." index="12"]
+
+[node name="FuelCan" parent="FuelCans" index="0" instance=ExtResource("6_b5tkl")]
+position = Vector2(-93, -128)
+rotation = 3.14159
+
+[node name="FuelCan2" parent="FuelCans" index="1" instance=ExtResource("6_b5tkl")]
+position = Vector2(769, 33)
+rotation = 3.14159
 
 [node name="Ground" parent="TileMap" index="0"]
 position = Vector2(-4, 1)
@@ -280,9 +403,6 @@ position = Vector2(46, 145)
 
 [node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
 shape = SubResource("SegmentShape2D_511x5")
-
-[node name="PointLight2D" parent="Rooms/Room" index="5"]
-position = Vector2(296, 29)
 
 [node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_soor5")]
 position = Vector2(-224, -214)
@@ -513,129 +633,6 @@ spawn_gravity_dir = 2
 [node name="CollisionShape2D" parent="Rooms/Room10/CheckIfFromBelow" index="0"]
 shape = SubResource("SegmentShape2D_olmoc")
 
-[node name="AntiGravityNodes" type="Node" parent="." index="11"]
-
-[node name="GravUpChecker" parent="AntiGravityNodes" index="0" instance=ExtResource("2_mxtxm")]
-position = Vector2(246, 155)
-
-[node name="GravUpChecker2" parent="AntiGravityNodes" index="1" instance=ExtResource("2_mxtxm")]
-position = Vector2(511, 586)
-
-[node name="GravUpChecker3" parent="AntiGravityNodes" index="2" instance=ExtResource("2_mxtxm")]
-position = Vector2(2, -150)
-
-[node name="GravUpChecker10" parent="AntiGravityNodes" index="3" instance=ExtResource("2_mxtxm")]
-position = Vector2(83, -55)
-
-[node name="GravRightChecker" parent="AntiGravityNodes" index="4" instance=ExtResource("3_511x5")]
-position = Vector2(500, -120)
-
-[node name="GravRightChecker5" parent="AntiGravityNodes" index="5" instance=ExtResource("3_511x5")]
-position = Vector2(961, 68)
-
-[node name="GravRightChecker6" parent="AntiGravityNodes" index="6" instance=ExtResource("3_511x5")]
-position = Vector2(875, 152)
-
-[node name="GravRightChecker7" parent="AntiGravityNodes" index="7" instance=ExtResource("3_511x5")]
-position = Vector2(914, 152)
-
-[node name="GravRightChecker2" parent="AntiGravityNodes" index="8" instance=ExtResource("3_511x5")]
-position = Vector2(-237, 88)
-
-[node name="GravDownChecker" parent="AntiGravityNodes" index="9" instance=ExtResource("4_4ahn7")]
-position = Vector2(189, 33)
-
-[node name="GravDownChecker2" parent="AntiGravityNodes" index="10" instance=ExtResource("4_4ahn7")]
-position = Vector2(81, -173)
-
-[node name="GravLeftChecker" parent="AntiGravityNodes" index="11" instance=ExtResource("6_4uhso")]
-position = Vector2(772, 149)
-
-[node name="GravLeftChecker3" parent="AntiGravityNodes" index="12" instance=ExtResource("6_4uhso")]
-position = Vector2(486, 45)
-
-[node name="GravLeftChecker4" parent="AntiGravityNodes" index="13" instance=ExtResource("6_4uhso")]
-position = Vector2(749, 493)
-
-[node name="GravLeftChecker5" parent="AntiGravityNodes" index="14" instance=ExtResource("6_4uhso")]
-position = Vector2(646, 569)
-
-[node name="GravRightChecker3" parent="AntiGravityNodes" index="15" instance=ExtResource("3_511x5")]
-position = Vector2(480, 449)
-
-[node name="GravRightChecker4" parent="AntiGravityNodes" index="16" instance=ExtResource("3_511x5")]
-position = Vector2(394, 575)
-
-[node name="GravDownChecker3" parent="AntiGravityNodes" index="17" instance=ExtResource("4_4ahn7")]
-position = Vector2(923, 392)
-
-[node name="GravDownChecker6" parent="AntiGravityNodes" index="18" instance=ExtResource("4_4ahn7")]
-position = Vector2(1073, 394)
-
-[node name="GravDownChecker4" parent="AntiGravityNodes" index="19" instance=ExtResource("4_4ahn7")]
-position = Vector2(823, 469)
-
-[node name="GravDownChecker5" parent="AntiGravityNodes" index="20" instance=ExtResource("4_4ahn7")]
-position = Vector2(797, 533)
-
-[node name="GravUpChecker4" parent="AntiGravityNodes" index="21" instance=ExtResource("2_mxtxm")]
-position = Vector2(996, 560)
-
-[node name="GravUpChecker5" parent="AntiGravityNodes" index="22" instance=ExtResource("2_mxtxm")]
-position = Vector2(1148, 584)
-
-[node name="GravRightChecker8" parent="AntiGravityNodes" index="23" instance=ExtResource("3_511x5")]
-position = Vector2(1394, 508)
-
-[node name="GravDownChecker7" parent="AntiGravityNodes" index="24" instance=ExtResource("4_4ahn7")]
-position = Vector2(1728, 782)
-
-[node name="GravUpChecker6" parent="AntiGravityNodes" index="25" instance=ExtResource("2_mxtxm")]
-position = Vector2(1406, 775)
-
-[node name="GravLeftChecker2" parent="AntiGravityNodes" index="26" instance=ExtResource("6_4uhso")]
-position = Vector2(1649, 669)
-
-[node name="GravUpChecker7" parent="AntiGravityNodes" index="27" instance=ExtResource("2_mxtxm")]
-position = Vector2(1681, 71)
-
-[node name="GravUpChecker8" parent="AntiGravityNodes" index="28" instance=ExtResource("2_mxtxm")]
-position = Vector2(1714, 111)
-
-[node name="GravDownChecker8" parent="AntiGravityNodes" index="29" instance=ExtResource("4_4ahn7")]
-position = Vector2(1721, 337)
-
-[node name="GravDownChecker9" parent="AntiGravityNodes" index="30" instance=ExtResource("4_4ahn7")]
-position = Vector2(1721, 337)
-
-[node name="GravDownChecker10" parent="AntiGravityNodes" index="31" instance=ExtResource("4_4ahn7")]
-position = Vector2(1794, 223)
-
-[node name="GravRightChecker9" parent="AntiGravityNodes" index="32" instance=ExtResource("3_511x5")]
-position = Vector2(1752, 100)
-
-[node name="GravRightChecker10" parent="AntiGravityNodes" index="33" instance=ExtResource("3_511x5")]
-position = Vector2(1808, 171)
-
-[node name="GravRightChecker11" parent="AntiGravityNodes" index="34" instance=ExtResource("3_511x5")]
-position = Vector2(1750, 309)
-
-[node name="GravDownChecker11" parent="AntiGravityNodes" index="35" instance=ExtResource("4_4ahn7")]
-position = Vector2(1243, 811)
-
-[node name="GravUpChecker9" parent="AntiGravityNodes" index="36" instance=ExtResource("2_mxtxm")]
-position = Vector2(1011, 939)
-
-[node name="FuelCans" type="Node" parent="." index="12"]
-
-[node name="FuelCan" parent="FuelCans" index="0" instance=ExtResource("6_b5tkl")]
-position = Vector2(-93, -128)
-rotation = 3.14159
-
-[node name="FuelCan2" parent="FuelCans" index="1" instance=ExtResource("6_b5tkl")]
-position = Vector2(769, 33)
-rotation = 3.14159
-
 [node name="Star2" parent="Stars" index="0" instance=ExtResource("4_jfjm8")]
 position = Vector2(646, 87)
 
@@ -688,7 +685,7 @@ position = Vector2(-201, 89)
 [node name="RightEye" parent="Eyes" index="1"]
 position = Vector2(1138, 917)
 
-[node name="Mask" parent="." index="15"]
+[node name="Mask" parent="." index="17"]
 position = Vector2(45, 124)
 
 [node name="EndLevelItem" parent="EndLevelItemContainer" index="0" instance=ExtResource("11_ngm1j")]
