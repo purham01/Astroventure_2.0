@@ -1,0 +1,200 @@
+[gd_scene load_steps=23 format=3 uid="uid://b85gm65kfw0jh"]
+
+[ext_resource type="Script" uid="uid://bpiomcsx00q3x" path="res://Scenes/Mechanics/Eye/right_eye.gd" id="1_iwxqs"]
+[ext_resource type="Texture2D" uid="uid://btfedrqiquxnl" path="res://Assets/Level assets/Eye/eye.png" id="2_6l12j"]
+[ext_resource type="Texture2D" uid="uid://c5xpo4f0v14f7" path="res://Assets/FX/Smoke/FX001/FX001_01.png" id="3_bqer6"]
+[ext_resource type="Texture2D" uid="uid://ctnwvfxxl47bg" path="res://Assets/FX/Smoke/FX001/FX001_02.png" id="4_1wl0k"]
+[ext_resource type="Texture2D" uid="uid://i1n855pquwvf" path="res://Assets/FX/Smoke/FX001/FX001_03.png" id="5_oi5b0"]
+[ext_resource type="Texture2D" uid="uid://kvvrl6t4n37s" path="res://Assets/FX/Smoke/FX001/FX001_04.png" id="6_embcx"]
+[ext_resource type="Texture2D" uid="uid://jeiijbotteg1" path="res://Assets/FX/Smoke/FX001/FX001_05.png" id="7_fy10g"]
+
+[sub_resource type="Gradient" id="Gradient_iwxqs"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_384d3"]
+gradient = SubResource("Gradient_iwxqs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6l12j"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, 9.8, 0)
+scale_max = 2.0
+color = Color(0.435294, 1, 0.92549, 1)
+color_ramp = SubResource("GradientTexture1D_384d3")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hktsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hktsr"]
+atlas = ExtResource("2_6l12j")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10vj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hktsr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jimtn"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai1wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bqer6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1wl0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oi5b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_embcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fy10g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_ar35v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iwxqs"]
+resource_name = "bounce"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, -0.5), Vector2(-1, 0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_616j4"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ar35v"]
+_data = {
+&"RESET": SubResource("Animation_ar35v"),
+&"bounce": SubResource("Animation_iwxqs"),
+&"float": SubResource("Animation_616j4")
+}
+
+[sub_resource type="Animation" id="Animation_bqer6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6l12j"]
+resource_name = "bounce"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0.5), Vector2(-1, -0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1wl0k"]
+_data = {
+&"RESET": SubResource("Animation_bqer6"),
+&"bounce": SubResource("Animation_6l12j")
+}
+
+[node name="RightEye" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_iwxqs")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 4)
+process_material = SubResource("ParticleProcessMaterial_6l12j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hktsr")
+
+[node name="EyeSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_10vj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jimtn")
+
+[node name="Poof" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ai1wn")
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ar35v")
+}
+autoplay = "float"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1wl0k")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="Poof" to="." method="_on_poof_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

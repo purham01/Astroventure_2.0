@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceqa0hliictfq"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6fakb"]
+b = Vector2(0, 181)
+
+[node name="LevelBorder" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_6fakb")

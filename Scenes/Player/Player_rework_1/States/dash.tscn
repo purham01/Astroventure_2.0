@@ -8,4 +8,17 @@ script = ExtResource("1_3vghj")
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashRefillCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="ResetOnPlatformLeave" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ResetOnPlatformLeave" to="." method="_on_reset_on_platform_leave_timeout"]

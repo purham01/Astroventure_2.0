@@ -1,0 +1,229 @@
+[gd_scene load_steps=7 format=3 uid="uid://bncotowh63yxt"]
+
+[ext_resource type="Script" uid="uid://bg8mf2rsunxtx" path="res://Scenes/Level Assets/Hazards/Laser/laser.gd" id="1_nbs54"]
+[ext_resource type="Material" uid="uid://cjsa6imddi3b1" path="res://Scenes/Level Assets/Hazards/Laser/laser.tres" id="2_d1xvi"]
+
+[sub_resource type="Animation" id="Animation_jvct5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.428, 3, 3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d1xvi"]
+resource_name = "charge_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.5, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.428, 3, 3, 1), Color(0.428, 3, 3, 1), Color(74.033, 0.14, 0.342, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_can_damage"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_active_timer"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.73333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_emitting_particles"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2s3hg"]
+resource_name = "shut_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.0, 0.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(8.287, 0.14, 0.342, 1), Color(0.428, 3, 3, 1), Color(0.428, 3, 3, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.433333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_can_damage"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_cooldown_timer"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_emitting_particles"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvct5"]
+_data = {
+&"RESET": SubResource("Animation_jvct5"),
+&"charge_up": SubResource("Animation_d1xvi"),
+&"shut_down": SubResource("Animation_2s3hg")
+}
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_nbs54")
+
+[node name="End" type="GPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(2000, 0)
+emitting = false
+amount = 20
+lifetime = 0.3
+process_material = ExtResource("2_d1xvi")
+
+[node name="Laser" type="RayCast2D" parent="."]
+target_position = Vector2(2000, 0)
+collision_mask = 67
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+points = PackedVector2Array(0, 0, 2000, 0, 2000, 0)
+width = 2.0
+default_color = Color(0.428, 3, 3, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ActiveTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="StartDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jvct5")
+}
+
+[connection signal="timeout" from="ActiveTimer" to="." method="_on_active_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

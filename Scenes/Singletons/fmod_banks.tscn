@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4ftpysdqfd4"]
+
+[ext_resource type="Script" uid="uid://bbud2g4eu43fv" path="res://Scenes/Singletons/fmod_banks.gd" id="1_5gegd"]
+
+[node name="FmodBanks" type="Node"]
+process_mode = 3
+script = ExtResource("1_5gegd")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/Character.bank", "res://Banks/Env.bank", "res://Banks/UI.bank"]
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Dash" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Character/Dash"
+event_guid = "{c4e8e1ee-f01b-43b3-b550-eafb35f306d3}"
+volume = 0.5
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Walk" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Character/Walk"
+event_guid = "{dc573f03-a182-4d49-80b0-90a09e42a890}"
+volume = 0.2
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Die" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Character/Die"
+event_guid = "{0c00edc4-c430-45af-a867-adbf23d2918e}"
+volume = 0.5
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Respawn" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Character/Respawn"
+event_guid = "{55729676-0604-4d5b-a063-804d8e06b67d}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Respawn2" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Character/Respawn"
+event_guid = "{55729676-0604-4d5b-a063-804d8e06b67d}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 1.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Star" type="Node" parent="."]
+
+[node name="Collect" type="FmodEventEmitter2D" parent="Star"]
+event_name = "event:/Env/Pickup"
+event_guid = "{ae442000-6af1-49b9-b9d7-6a97310895d2}"
+volume = 0.5
+
+[node name="Portal" type="Node" parent="."]
+
+[node name="PortalEnter" type="FmodEventEmitter2D" parent="Portal"]
+event_name = "event:/Env/PortalEnter"
+event_guid = "{d4d37bc4-61cc-4b6f-80b8-c9433dd1101c}"
+volume = 0.5
+
+[node name="PortalExit" type="FmodEventEmitter2D" parent="Portal"]
+event_name = "event:/Env/PortalLaunch"
+event_guid = "{3588b707-7a23-4f2b-a734-3bbf21e87908}"
+
+[node name="DestructbleWall" type="Node" parent="."]
+
+[node name="DestroyWall" type="FmodEventEmitter2D" parent="DestructbleWall"]
+event_name = "event:/Env/Destroy wall"
+event_guid = "{446846ae-7780-4736-9255-e8a71969321b}"
+volume = 0.2
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Select" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/Select"
+event_guid = "{1ebfddf4-eb9d-45b5-aa06-6711e7cef590}"
+
+[node name="Cancel" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/Cancel"
+event_guid = "{d070dcfb-5eeb-4c1a-90f7-e5a4168694f9}"
+
+[node name="Pause" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/Pause"
+event_guid = "{0d2c266f-ac46-4fa7-9e43-8331bebaf342}"
+
+[node name="Unpause" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/Unpause"
+event_guid = "{8f65936f-1b26-4d51-a410-b833aa797163}"
+
+[node name="PopupOpen" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/PopupOpen"
+event_guid = "{6b864f98-e8b1-42bc-ad6b-32c2f0a4feea}"
+
+[node name="PopupClose" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/PopupClose"
+event_guid = "{d38fdfca-862a-4dce-9bf9-bc204df5567d}"
+
+[node name="Error" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/Error"
+event_guid = "{5a788254-cd5e-4e13-9378-a067487ca885}"
+
+[node name="ContinueGame" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/ContinueGame"
+event_guid = "{fd70ed96-455f-47f1-883d-b214014879a1}"
+
+[node name="EndGame" type="FmodEventEmitter2D" parent="UI"]
+event_name = "event:/UI/EndLevel"
+event_guid = "{bdadc85e-2f1d-447a-bd9b-f56092ae10e8}"
+
+[node name="MovingPlatform" type="Node" parent="."]
+
+[node name="Start" type="FmodEventEmitter2D" parent="MovingPlatform"]
+event_name = "event:/Env/PlatformThumpStart"
+event_guid = "{36fcd322-2cfe-47f9-bfb4-38d5b62878f4}"
+
+[node name="End" type="FmodEventEmitter2D" parent="MovingPlatform"]
+event_name = "event:/Env/PlatformThumpEnd"
+event_guid = "{6a03bceb-9011-43f5-a298-1b1b3aac35fe}"
+
+[node name="Eye" type="Node" parent="."]
+
+[node name="EyeSfx" type="FmodEventEmitter2D" parent="Eye"]
+event_name = "event:/Env/EyeCollect"
+event_guid = "{1a98254e-27ec-4d26-b033-84647804d5ce}"
+
+[node name="Fireball" type="Node" parent="."]
+
+[node name="Shoot" type="FmodEventEmitter2D" parent="Fireball"]
+event_name = "event:/Env/FireballLaunch"
+event_guid = "{14e771b1-5632-4823-b7d7-e8f9da9960b5}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3
+
+[node name="Impact" type="FmodEventEmitter2D" parent="Fireball"]
+event_name = "event:/Env/FireballImpact"
+event_guid = "{0368354d-e541-41a1-b4fc-c6e5f8a7d2f3}"
+"fmod_parameters/Parameter 1/id" = -7058765999489323271
+"fmod_parameters/Parameter 1" = 0.0
+"fmod_parameters/Parameter 1/variant_type" = 3

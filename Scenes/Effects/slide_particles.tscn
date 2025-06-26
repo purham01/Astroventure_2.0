@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgcfgn45eogf6"]
+
+[ext_resource type="Material" uid="uid://cjsa6imddi3b1" path="res://Scenes/Level Assets/Hazards/Laser/laser.tres" id="1_ky71i"]
+
+[node name="SlideParticles" type="GPUParticles2D"]
+z_index = 2
+amount = 20
+lifetime = 0.3
+process_material = ExtResource("1_ky71i")

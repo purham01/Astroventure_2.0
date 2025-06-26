@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://uw72ymyhfc6n"]
+
+[ext_resource type="Script" uid="uid://b2f3klngm27k5" path="res://Scenes/Level Assets/Rooms/room.gd" id="1_a16lv"]
+[ext_resource type="PackedScene" uid="uid://ckccbppd7eifa" path="res://Scenes/Level Assets/Checkpoint.tscn" id="2_odell"]
+[ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_ssykf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knkxl"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a16lv"]
+size = Vector2(320, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ssykf"]
+resource_local_to_scene = true
+b = Vector2(37, 0)
+
+[node name="Room" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_a16lv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(160, 90)
+shape = SubResource("RectangleShape2D_knkxl")
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("2_odell")]
+position = Vector2(25, 177)
+
+[node name="DeathZones" type="Node2D" parent="."]
+
+[node name="HazardArea" parent="DeathZones" instance=ExtResource("2_ssykf")]
+position = Vector2(160, 181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZones/HazardArea"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_a16lv")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Objects"]
+position = Vector2(160, 90.5)
+scale = Vector2(16, 9.05)
+
+[node name="CheckIfFromBelow" type="Area2D" parent="."]
+position = Vector2(0, 181)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckIfFromBelow"]
+shape = SubResource("SegmentShape2D_ssykf")
+
+[connection signal="area_entered" from="CheckIfFromBelow" to="." method="_on_check_if_from_below_area_entered"]
+[connection signal="body_entered" from="CheckIfFromBelow" to="." method="_on_check_if_from_below_body_entered"]

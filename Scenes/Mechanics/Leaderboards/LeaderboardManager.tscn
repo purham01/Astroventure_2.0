@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp5gkjfebyap4"]
+
+[ext_resource type="Script" uid="uid://dd8ilfj5ey3c3" path="res://Scenes/Mechanics/Leaderboards/LeaderboardManager.gd" id="1_rlvrh"]
+
+[node name="LeaderboardManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_rlvrh")

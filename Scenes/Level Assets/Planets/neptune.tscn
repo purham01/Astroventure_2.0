@@ -1,7 +1,7 @@
 [gd_scene load_steps=2506 format=3 uid="uid://bjbrkn1uecc05"]
 
 [ext_resource type="PackedScene" uid="uid://d1ytv2b5seb1r" path="res://Scenes/Level Assets/Planets/planet.tscn" id="1_32y2c"]
-[ext_resource type="Texture2D" uid="uid://dhgyautwqmq3l" path="res://Assets/planets_animated/neptune.png" id="2_wty65"]
+[ext_resource type="Texture2D" uid="uid://dhgyautwqmq3l" path="res://Assets/Map/planets_animated/neptune.png" id="2_wty65"]
 
 [sub_resource type="Shader" id="Shader_fmcrq"]
 code = "shader_type canvas_item;

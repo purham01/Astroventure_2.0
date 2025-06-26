@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccnirjwuixvcj"]
+
+[ext_resource type="Script" uid="uid://b6kyt0xl5sp2d" path="res://Scenes/UI/tutorial_panel.gd" id="1_4n1yf"]
+[ext_resource type="PackedScene" uid="uid://bl8m0edmho7a1" path="res://Scenes/UI/input settings/key_icon.tscn" id="1_exvli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oj2md"]
+font_size = 8
+shadow_size = 4
+
+[node name="TutorialPanel" type="VBoxContainer"]
+script = ExtResource("1_4n1yf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "To move press:"
+label_settings = SubResource("LabelSettings_oj2md")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Key" parent="HBoxContainer" instance=ExtResource("1_exvli")]
+layout_mode = 2

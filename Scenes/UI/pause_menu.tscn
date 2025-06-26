@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://e5byije8qotb"]
+[gd_scene load_steps=7 format=3 uid="uid://e5byije8qotb"]
 
 [ext_resource type="Script" uid="uid://gx0qtn2k1qeg" path="res://Scenes/UI/pause_menu.gd" id="1_r6ycr"]
-[ext_resource type="Theme" uid="uid://dejvr5rqllmfx" path="res://Aesthethics/button.tres" id="2_6ekna"]
-[ext_resource type="StyleBox" uid="uid://c5wwtvvt0may2" path="res://Aesthethics/Black9Slice.tres" id="3_gryay"]
+[ext_resource type="PackedScene" uid="uid://bww17enxtm0ty" path="res://Scenes/Mechanics/Leaderboards/leaderboard_ui_level_completed_new.tscn" id="2_kdnb7"]
+[ext_resource type="Theme" uid="uid://df3cix25a47i3" path="res://Assets/UI/pixel_ui_theme/PixelTheme-Magic.tres" id="3_702e2"]
+[ext_resource type="PackedScene" uid="uid://b1whiv3y38xsy" path="res://Scenes/UI/options_menu.tscn" id="3_kdnb7"]
+[ext_resource type="PackedScene" uid="uid://b5u7j0j7vil4q" path="res://Scenes/UI/info_labels_keyboard.tscn" id="4_kdnb7"]
+[ext_resource type="PackedScene" uid="uid://dtx87k5yhexec" path="res://Scenes/UI/info_labels_controller.tscn" id="5_702e2"]
 
 [node name="PauseMenu" type="ColorRect"]
 process_mode = 3
@@ -14,7 +17,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.215686)
 script = ExtResource("1_r6ycr")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="PanelContainer" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,121 +25,104 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseMenuTab" type="VBoxContainer" parent="CenterContainer"]
+[node name="PauseMenuContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 8
+
+[node name="PauseMenuTab" type="VBoxContainer" parent="PanelContainer/PauseMenuContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/PauseMenuTab"]
+[node name="Label" type="Label" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 layout_mode = 2
-theme = ExtResource("2_6ekna")
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+[node name="ResumeButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
 text = "Resume"
 
-[node name="RetryButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+[node name="RetryButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 text = "Retry"
 
-[node name="MapScreenButton" type="Button" parent="CenterContainer/PauseMenuTab"]
-unique_name_in_owner = true
+[node name="MapScreenButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 text = "Map Screen"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/PauseMenuTab"]
+[node name="LeaderboardButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+disabled = true
+text = "Leaderboard"
+
+[node name="Options" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Options" type="Button" parent="CenterContainer/PauseMenuTab"]
-unique_name_in_owner = true
+[node name="QuitButton" type="Button" parent="PanelContainer/PauseMenuContainer/PauseMenuTab"]
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
-text = "Options"
-
-[node name="QuitButton" type="Button" parent="CenterContainer/PauseMenuTab"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResumeButton")
 text = "Quit"
 
-[node name="OptionsMenuTab" type="VBoxContainer" parent="CenterContainer"]
+[node name="LeaderboardUI" parent="PanelContainer/PauseMenuContainer" instance=ExtResource("2_kdnb7")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/OptionsMenuTab"]
+[node name="BackButton" type="Button" parent="PanelContainer/PauseMenuContainer/LeaderboardUI/PanelContainer/VBoxContainer" index="5"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-theme = ExtResource("2_6ekna")
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" type="Button" parent="CenterContainer/OptionsMenuTab"]
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
+theme = ExtResource("3_702e2")
 text = "Back"
 
-[node name="AntiGravityCheck" type="CheckBox" parent="CenterContainer/OptionsMenuTab"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("2_6ekna")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/pressed = ExtResource("3_gryay")
-theme_override_styles/hover_pressed = ExtResource("3_gryay")
-theme_override_styles/focus = ExtResource("3_gryay")
-text = "Inverted Antigravity Controls"
-alignment = 1
+[node name="SecondaryMenuContainer" parent="PanelContainer" node_paths=PackedStringArray("root_tab") instance=ExtResource("3_kdnb7")]
+layout_mode = 1
+root_tab = NodePath("../PauseMenuContainer/PauseMenuTab")
 
-[node name="Label2" type="Label" parent="CenterContainer/OptionsMenuTab"]
-layout_mode = 2
-text = "Camera zoom:"
+[node name="InfoLabelsKeyboard" parent="." instance=ExtResource("4_kdnb7")]
+layout_mode = 1
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CenterContainer/OptionsMenuTab"]
-layout_mode = 2
+[node name="InfoLabelsController" parent="." instance=ExtResource("5_702e2")]
+layout_mode = 1
+offset_left = -74.0
+offset_top = -15.0
 
-[node name="CameraZoom" type="HSlider" parent="CenterContainer/OptionsMenuTab/HFlowContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 0.25
-max_value = 1.0
-step = 0.01
-value = 0.75
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/MapScreenButton" to="." method="_on_map_screen_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/PauseMenuTab/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PanelContainer/PauseMenuContainer/LeaderboardUI/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PanelContainer/SecondaryMenuContainer/InputSettings/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="PanelContainer/SecondaryMenuContainer/InputSettings" method="_on_back_button_pressed"]
 
-[node name="CameraZoomValue" type="Label" parent="CenterContainer/OptionsMenuTab/HFlowContainer"]
-custom_minimum_size = Vector2(21, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-text = "0.75x"
-clip_text = true
-
-[node name="SaveSettings" type="Button" parent="CenterContainer/OptionsMenuTab"]
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
-text = "Apply"
-
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/MapScreenButton" to="." method="_on_map_screen_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuTab/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="CenterContainer/OptionsMenuTab/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="CenterContainer/OptionsMenuTab/AntiGravityCheck" to="." method="_on_anti_gravity_check_pressed"]
-[connection signal="value_changed" from="CenterContainer/OptionsMenuTab/HFlowContainer/CameraZoom" to="." method="_on_camera_zoom_value_changed"]
-[connection signal="pressed" from="CenterContainer/OptionsMenuTab/SaveSettings" to="." method="_on_save_settings_pressed"]
+[editable path="PanelContainer/PauseMenuContainer/LeaderboardUI"]
+[editable path="PanelContainer/SecondaryMenuContainer"]
+[editable path="PanelContainer/SecondaryMenuContainer/InputSettings"]
+[editable path="PanelContainer/SecondaryMenuContainer/InputSettingsController"]

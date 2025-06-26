@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://fcff0272dti5"]
+
+[ext_resource type="Script" uid="uid://hp5xeja5sonu" path="res://Scenes/Player/Player_rework_1/States/special_jump.gd" id="1_yttfs"]
+
+[node name="SPECIAL_JUMP" type="Node"]
+script = ExtResource("1_yttfs")

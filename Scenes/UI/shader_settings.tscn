@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtrkbrbd4hrb"]
+
+[ext_resource type="Script" uid="uid://dygs8fkfua34f" path="res://Scenes/UI/shader_settings.gd" id="1_qy8rj"]
+
+[node name="ShaderSettings" type="OptionButton"]
+script = ExtResource("1_qy8rj")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

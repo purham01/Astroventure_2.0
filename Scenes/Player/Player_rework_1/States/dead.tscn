@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcxk63lth4eyc"]
+
+[ext_resource type="Script" uid="uid://bos07k3dwwb14" path="res://Scenes/Player/Player_rework_1/States/dead.gd" id="1_e04mw"]
+
+[node name="DEAD" type="Node"]
+script = ExtResource("1_e04mw")
+
+[node name="RespawnDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+ignore_time_scale = true

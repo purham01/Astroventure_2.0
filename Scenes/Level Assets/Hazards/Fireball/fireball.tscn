@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd0otcxk7a8fa"]
+
+[ext_resource type="Script" uid="uid://bsxgbs1nosh15" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.gd" id="1_m8grk"]
+[ext_resource type="SpriteFrames" uid="uid://ch73eorunth61" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.tres" id="3_tmwk2"]
+[ext_resource type="Texture2D" uid="uid://burtvaictlgn8" path="res://Assets/Level assets/Fireball/B500-2.PNG" id="6_j4vjs"]
+[ext_resource type="Texture2D" uid="uid://cdb0s3138dkvw" path="res://Assets/Level assets/Fireball/B500-3.PNG" id="7_m8grk"]
+[ext_resource type="Texture2D" uid="uid://c13oookj0qgpe" path="res://Assets/Level assets/Fireball/B500-4.PNG" id="8_8xwqd"]
+[ext_resource type="Texture2D" uid="uid://djqoxxt2kb6qi" path="res://Assets/Light/light64x64.png" id="10_8xwqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3incd"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awybc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_j4vjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m8grk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8xwqd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Fireball" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_m8grk")
+speed = 50
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.5
+blend_mode = 2
+texture = ExtResource("10_8xwqd")
+texture_scale = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3incd")
+
+[node name="Fireball" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("3_tmwk2")
+autoplay = "default"
+frame_progress = 0.882664
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+top_level = true
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_awybc")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="DirectionMarker" type="Marker2D" parent="."]
+position = Vector2(63, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

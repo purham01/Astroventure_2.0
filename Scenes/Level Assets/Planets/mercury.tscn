@@ -82,6 +82,9 @@ planet_name = 0
 material = SubResource("ShaderMaterial_gm1pm")
 sprite_frames = ExtResource("2_dt564")
 
+[node name="PlanetName" parent="CenterContainer" index="0"]
+auto_translate_mode = 2
+
 [node name="Label" parent="CanvasLayer/Marker" index="0"]
 text = "Mercury
 "

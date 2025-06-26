@@ -5,35 +5,37 @@ signal terrain_entered(terrain_type)
 const bitmask : int = 255
 
 enum TerrainType {
-	
 	NORMAL = 1,
-	ICE = 2
+	ICE = 2,
+	MUD = 4,
+	CONVEYOR_LEFT = 8,
+	CONVERYOR_RIGHT = 16
 }
 
-var current_tilemap : TileMap
+var current_tilemap_layer : TileMapLayer
 var current_terrain: int = -1
 var previous_terrain: int = -1
 
 
 func _exit_tree():
-	current_tilemap = null
+	current_tilemap_layer = null
 	current_terrain = -1
 
 
 
 
 func _process_tilemap_collision(body: Node2D, body_rid: RID):
-	current_tilemap = body as TileMap
+	current_tilemap_layer = body as TileMapLayer
 	#print("Yo, i am processoing yo collision")
-	var collided_tile_cords = current_tilemap.get_coords_for_body_rid(body_rid)
+	var collided_tile_cords = current_tilemap_layer.get_coords_for_body_rid(body_rid)
 	
-	for index in current_tilemap.get_layers_count():
-		var tile_data = current_tilemap.get_cell_tile_data(index,collided_tile_cords)
-		if !tile_data is TileData:
-			continue
-		var terrain_mask = tile_data.get_custom_data_by_layer_id(0)
-		_update_terrain(terrain_mask)
-		break
+	#for index in current_tilemap_layer.get_layers_count():
+	var tile_data = current_tilemap_layer.get_cell_tile_data(collided_tile_cords)
+	#if !tile_data is TileData:
+	#	continue
+	var terrain_mask = tile_data.get_custom_data_by_layer_id(0)
+	_update_terrain(terrain_mask)
+	#break
 
 #static func get_custom_data_at(position: Vector2, custom_data_name: String) -> Variant:
 #	var data = get_tile_data_at(position)
@@ -50,12 +52,12 @@ func _update_terrain(terrain_mask: int):
 
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body is TileMap:
+	if body is TileMapLayer:
 		_process_tilemap_collision(body, body_rid)
 
 
 func _on_body_exited(body):
-	if body is TileMap:
+	if body is TileMapLayer:
 		#print("No terrain detected")
 		current_terrain = -1
 		previous_terrain = -1

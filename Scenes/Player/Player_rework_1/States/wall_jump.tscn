@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://fl0bwbbwh7j3"]
+
+[ext_resource type="Script" uid="uid://dge1o63ohj5rp" path="res://Scenes/Player/Player_rework_1/States/wall_jump.gd" id="1_asgnr"]
+
+[node name="WALL_JUMP" type="Node"]
+script = ExtResource("1_asgnr")

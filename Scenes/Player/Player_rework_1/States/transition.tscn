@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcskm82lwlhuv"]
+
+[ext_resource type="Script" uid="uid://b21ms1408qw1m" path="res://Scenes/Player/Player_rework_1/States/transition.gd" id="1_71qrl"]
+
+[node name="TRANSITION" type="Node"]
+script = ExtResource("1_71qrl")
+
+[node name="TransitionTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

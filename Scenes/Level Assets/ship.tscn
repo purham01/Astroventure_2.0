@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://deuo0m6mfokye"]
 
 [ext_resource type="Script" uid="uid://blcef4lwppk3a" path="res://Scenes/ship/ship.gd" id="1_r37o7"]
-[ext_resource type="Texture2D" uid="uid://3icksrm8q0vn" path="res://Assets/Main Ship - Base - Full health-sheet.png" id="2_5n4ew"]
-[ext_resource type="Texture2D" uid="uid://b6oypjj2qcd8i" path="res://Assets/ship.png" id="2_ojjix"]
+[ext_resource type="Texture2D" uid="uid://3icksrm8q0vn" path="res://Assets/Map/Main Ship - Base - Full health-sheet.png" id="2_5n4ew"]
+[ext_resource type="Texture2D" uid="uid://b6oypjj2qcd8i" path="res://Assets/Map/ship.png" id="2_ojjix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cli44"]
 atlas = ExtResource("2_ojjix")
@@ -65,9 +65,8 @@ camera = NodePath("Camera2D")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g2btc")
-animation = &"boost"
+animation = &"fire"
 autoplay = "default"
-frame_progress = 0.359378
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0.528931, -12.4483, 14.5289, 5.55171, 14.5289, 10.5517, 2.52893, 12.5517, -2.47107, 12.5517, -14.4711, 10.5517, -14.4711, 5.55171, -0.471069, -12.4483)

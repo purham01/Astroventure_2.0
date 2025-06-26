@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ch73eorunth61"]
+
+[ext_resource type="Texture2D" uid="uid://3e6m01x3amfb" path="res://Assets/Level assets/Fireball/FB500-1.png" id="1_gtels"]
+[ext_resource type="Texture2D" uid="uid://xf0j6yi3hw1j" path="res://Assets/Level assets/Fireball/FB500-2.png" id="2_smpfs"]
+[ext_resource type="Texture2D" uid="uid://cvko03c5n4ivy" path="res://Assets/Level assets/Fireball/FB500-3.png" id="3_ulnge"]
+[ext_resource type="Texture2D" uid="uid://dw6srqujxjlfm" path="res://Assets/Level assets/Fireball/FB500-4.png" id="4_1xkya"]
+[ext_resource type="Texture2D" uid="uid://ddrqaf5a4ia6o" path="res://Assets/Level assets/Fireball/FB500-5.png" id="5_i4kby"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gtels")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_smpfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ulnge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1xkya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i4kby")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]

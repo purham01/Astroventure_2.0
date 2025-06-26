@@ -1,0 +1,216 @@
+[gd_scene load_steps=14 format=4 uid="uid://13506wsd4ofi"]
+
+[ext_resource type="PackedScene" uid="uid://cdfi0he5jt0wv" path="res://Scenes/Level Assets/world_2_0.tscn" id="1_uoht4"]
+[ext_resource type="PackedScene" uid="uid://bd0otcxk7a8fa" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.tscn" id="2_qinqw"]
+[ext_resource type="Texture2D" uid="uid://cnb2affsu4dxb" path="res://Assets/Backgrounds/Stars 3.png" id="3_16tm8"]
+[ext_resource type="PackedScene" uid="uid://clydvu4qbkgjr" path="res://Scenes/Level Assets/Hazards/Heat/heat.tscn" id="4_kjnfh"]
+[ext_resource type="Texture2D" uid="uid://cclear00mep78" path="res://Assets/heart.png" id="4_wg2ce"]
+[ext_resource type="PackedScene" uid="uid://dmqkrm6q5rijx" path="res://Scenes/Level Assets/SafeZones/sigurna_zona_big.tscn" id="5_wg2ce"]
+
+[sub_resource type="Animation" id="Animation_wqg6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarningHeart/Heart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("WarningHeart/Heart:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_44o3j"]
+resource_name = "flashing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("WarningHeart/Heart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WarningHeart/Heart:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_afp33"]
+resource_name = "red_flashing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("WarningHeart/Heart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WarningHeart/Heart:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wg2ce"]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarningHeart/Heart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hg8g"]
+_data = {
+&"RESET": SubResource("Animation_wqg6a"),
+&"flashing": SubResource("Animation_44o3j"),
+&"red_flashing": SubResource("Animation_afp33"),
+&"stop": SubResource("Animation_wg2ce")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qinqw"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f5rtf"]
+resource_local_to_scene = true
+b = Vector2(24, 0)
+
+[node name="Mercury" instance=ExtResource("1_uoht4")]
+level_codename = "Mercury"
+deity_name = "Mercury"
+developing_level = true
+
+[node name="HeatLayer" type="CanvasLayer" parent="." index="3"]
+layer = -2
+
+[node name="TextureRect" type="TextureRect" parent="HeatLayer" index="0"]
+anchors_preset = -1
+anchor_left = -0.236778
+anchor_top = -0.124
+anchor_right = -0.059
+anchor_bottom = -0.124
+offset_left = 75.769
+offset_top = 22.32
+offset_right = 3471.77
+offset_bottom = 1968.57
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.211671, 0.211671)
+texture = ExtResource("3_16tm8")
+expand_mode = 5
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="DayNightCycle" parent="HeatLayer" index="1" instance=ExtResource("4_kjnfh")]
+position = Vector2(90.0805, 54)
+INITIAL_HOUR = 0
+
+[node name="WarningHeart" type="CanvasLayer" parent="." index="4"]
+
+[node name="Heart" type="TextureRect" parent="WarningHeart" index="0"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = ExtResource("4_wg2ce")
+
+[node name="SafeZones" type="Node" parent="." index="5"]
+
+[node name="Area2D" parent="SafeZones" index="0" instance=ExtResource("5_wg2ce")]
+position = Vector2(18, 86)
+
+[node name="LevelAnimation" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_3hg8g")
+}
+
+[node name="Player" parent="." index="13"]
+position = Vector2(21, 166)
+
+[node name="Ground" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAAAABUAAQAEAAMAAAABABUAAQABAAMAAAACABUAAQABAAMAAAADABUAAQABAAMAAAAEABUAAQABAAMAAAAFABUAAQABAAMAAAAGABUAAQABAAMAAAAHABUAAQABAAMAAAAIABUAAQABAAMAAAAKABUAAQABAAMAAAAJABUAAQABAAMAAAALABUAAQABAAMAAAAMABUAAQABAAMAAAANABUAAQABAAMAAAAOABUAAQABAAMAAAAPABUAAQABAAMAAAAQABUAAQABAAMAAAARABUAAQABAAMAAAASABUAAQABAAMAAAATABUAAQABAAMAAAAUABUAAQABAAMAAAAVABUAAQABAAMAAAAWABUAAQABAAMAAAAXABUAAQABAAMAAAAYABUAAQABAAMAAAAZABUAAQABAAMAAAAaABUAAQABAAMAAAAcABUAAQABAAMAAAAbABUAAQABAAMAAAAdABUAAQABAAMAAAAeABUAAQABAAMAAAAfABUAAQABAAMAAAAgABUAAQABAAMAAAAhABUAAQABAAMAAAAiABUAAQABAAMAAAAjABUAAQABAAMAAAAkABUAAQABAAMAAAAlABUAAQABAAMAAAAmABUAAQABAAMAAAAnABUAAQAHAAMAAAAnABQAAQADAAEAAAAnABMAAQADAAEAAAAnABIAAQADAAEAAAAnABEAAQADAAEAAAAnABAAAQADAAEAAAAnAA8AAQADAAEAAAAnAA4AAQADAAEAAAAnAA0AAQADAAEAAAAnAAwAAQADAAEAAAAnAAsAAQADAAEAAAAnAAoAAQADAAEAAAAnAAkAAQADAAEAAAAnAAgAAQADAAEAAAAnAAcAAQADAAEAAAAnAAYAAQADAAEAAAAnAAUAAQADAAEAAAAnAAQAAQADAAEAAAAnAAMAAQADAAEAAAAnAAIAAQADAAEAAAAnAAEAAQADAAEAAAAnAAAAAQADAAAAAAAAABQAAQADAAEAAAAAABMAAQADAAEAAAAAABIAAQADAAEAAAAAABEAAQADAAEAAAAAABAAAQADAAEAAAAAAA8AAQADAAEAAAAAAA4AAQADAAEAAAAAAA0AAQADAAEAAAAAAAwAAQADAAEAAAAAAAsAAQADAAEAAAAAAAoAAQADAAEAAAAAAAkAAQADAAEAAAAAAAgAAQADAAEAAAAAAAcAAQADAAEAAAAAAAYAAQADAAEAAAAAAAUAAQADAAEAAAAAAAQAAQADAAEAAAAAAAMAAQADAAEAAAAAAAIAAQADAAEAAAAAAAEAAQADAAEAAAAAAAAAAQADAAAAAAA=")
+
+[node name="CollisionShape2D" parent="Rooms/Room" index="1"]
+shape = SubResource("RectangleShape2D_qinqw")
+
+[node name="Checkpoint" parent="Rooms/Room/Checkpoints" index="0"]
+position = Vector2(27, 168)
+
+[node name="Fireball" parent="Rooms/Room/Objects" index="1" instance=ExtResource("2_qinqw")]
+position = Vector2(132, 0)
+rotation = 0.897099
+speed = 250
+start_delay_enable = true
+start_delay_time = 0.2
+
+[node name="Fireball2" parent="Rooms/Room/Objects" index="2" instance=ExtResource("2_qinqw")]
+position = Vector2(63, 2)
+rotation = 0.897099
+speed = 250
+
+[node name="Fireball3" parent="Rooms/Room/Objects" index="3" instance=ExtResource("2_qinqw")]
+position = Vector2(189, 1.90735e-06)
+rotation = 0.897099
+speed = 250
+start_delay_enable = true
+start_delay_time = 0.4
+
+[node name="CollisionShape2D" parent="Rooms/Room/CheckIfFromBelow" index="0"]
+shape = SubResource("SegmentShape2D_f5rtf")
+
+[connection signal="sun_kill" from="HeatLayer/DayNightCycle" to="Player" method="respawn"]
+
+[editable path="Rooms/Room"]
+[editable path="Rooms/Room/Objects/Fireball"]
+[editable path="Rooms/Room/Objects/Fireball2"]
+[editable path="Rooms/Room/Objects/Fireball3"]

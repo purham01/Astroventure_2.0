@@ -3,22 +3,52 @@ extends "state.gd"
 @onready var coyote_time: Timer = $CoyoteTime
 @export var coyote_duration = 0.2
 var can_jump = true
+@onready var jump_marker: Marker2D = $"../../ParticleManager/JumpMarker"
+
 
 func update(delta):
-	Player.gravity(delta)
-	player_movement()
-	if Player.is_on_floor():
-		return STATES.idle
-	if Player.dash_input and Player.can_dash:
+	Player.current_gs.gravity(delta)
+	Player.player_movement(delta)
+	
+	if  Player.dash_input and Player.can_dash:
 		return STATES.dash
-	if Player.get_next_to_wall() != null:
-		return STATES.slide
+	
+	if Player.is_on_floor() and !Player.jump_buffer.is_stopped():
+		Player.instantiate_dust()
+		return STATES.jump
+		
+	elif Player.is_on_floor():
+		Player.animated_sprite.scale = Vector2(Player.squash_x, Player.squash_y)
+		FmodBanks.walk.set_parameter("Parameter 1", randf())
+		FmodBanks.walk.play()
+		Player.instantiate_dust()
+		return STATES.idle
+		
+	if sign(Player.last_direction.x) == sign(Player.wall_direction) and Player.climb_input and Player.current_stamina > 0 and (Player.is_on_wall() or Player.wall_direction != 0):
+		return STATES.climb
+	
+	#no stamina wall slide
+	if Player.climb_input and Player.current_stamina <= 0 and Player.wall_direction != 0 and Player.wall_slide_cooldown.is_stopped():
+		return STATES.wall_slide
+	
+	#has stamina wall slide
+	if sign(Player.movement_input.x) == sign(Player.wall_direction) and Player.wall_direction != 0 and Player.wall_slide_cooldown.is_stopped():
+		return STATES.wall_slide
+		
+	if Player.wall_direction != 0 and Player.jump_input_actuation:
+		return STATES.wall_jump
+		
 	if Player.jump_input_actuation and can_jump:
 		return STATES.jump
+		
 	return null
 
+
 func enter_state():
-	if Player.prev_state == STATES.idle or Player.prev_state == STATES.move or Player.prev_state == STATES.slide:
+
+	Player.animated_sprite.play("fall")
+
+	if Player.prev_state == STATES.idle or Player.prev_state == STATES.move or Player.prev_state == STATES.wall_slide:
 		can_jump = true
 		coyote_time.start(coyote_duration)
 	else:

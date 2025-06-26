@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceqk0mth14hfw"]
+
+[ext_resource type="Script" uid="uid://tqc16hjatxp2" path="res://Scenes/Player/Player_rework_1/terrain_state_manager.gd" id="1_noomi"]
+
+[node name="TERRAIN SM" type="Node"]
+script = ExtResource("1_noomi")
+
+[node name="ResetMovementSpeedJump Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ResetMovementSpeedJump Timer" to="." method="_on_reset_movement_speed_jump_timer_timeout"]

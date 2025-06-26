@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbxitpfb3kgxa"]
 
-[ext_resource type="Texture2D" uid="uid://b2r41lkcilorg" path="res://Assets/spikes.png" id="1_44uhb"]
+[ext_resource type="Texture2D" uid="uid://b2r41lkcilorg" path="res://Assets/Level assets/Spikes/spikes.png" id="1_44uhb"]
 [ext_resource type="Script" uid="uid://dv4glmcmey53e" path="res://Scenes/Level Assets/moving_spikes.gd" id="1_hi60s"]
-[ext_resource type="Texture2D" uid="uid://bfbytecnnvgyh" path="res://Assets/spikes_anim.png" id="2_eodsu"]
+[ext_resource type="Texture2D" uid="uid://bfbytecnnvgyh" path="res://Assets/Level assets/Spikes/spikes_anim.png" id="2_eodsu"]
 [ext_resource type="PackedScene" uid="uid://3mgi3xpbrlny" path="res://Scenes/Level Assets/hazard_area.tscn" id="2_iap5r"]
 
 [sub_resource type="Animation" id="Animation_22a58"]

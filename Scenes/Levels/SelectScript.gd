@@ -54,7 +54,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	if has_overlapping_bodies() and !Globals.disable_input:
-		if Input.is_action_just_released("ui_accept"):
+		if Input.is_action_just_released("UIConfirm") or Input.is_action_just_released("UIConfirmC"):
+			FmodBanks.select.play()
 			get_tree().paused=true
 			UI.pass_parameters(level, planet_sprite_frames, planet_name)
 

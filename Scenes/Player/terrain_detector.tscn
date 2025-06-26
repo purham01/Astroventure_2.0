@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dni4l06vhlqfq" path="res://Scenes/Player/terrain_detector.gd" id="1_gvqb1"]
 
 [node name="TerrainDetector" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_gvqb1")
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

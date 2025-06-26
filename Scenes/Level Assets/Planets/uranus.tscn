@@ -1,7 +1,7 @@
 [gd_scene load_steps=2506 format=3 uid="uid://7a8w0j1m350r"]
 
 [ext_resource type="PackedScene" uid="uid://d1ytv2b5seb1r" path="res://Scenes/Level Assets/Planets/planet.tscn" id="1_e6ubq"]
-[ext_resource type="Texture2D" uid="uid://cti4kx8an3w25" path="res://Assets/planets_animated/uranus.png" id="2_npq2e"]
+[ext_resource type="Texture2D" uid="uid://cti4kx8an3w25" path="res://Assets/Map/planets_animated/uranus.png" id="2_npq2e"]
 
 [sub_resource type="Shader" id="Shader_fmcrq"]
 code = "shader_type canvas_item;

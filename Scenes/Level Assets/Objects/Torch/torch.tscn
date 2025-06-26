@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://chhrwfgisexef"]
+
+[ext_resource type="Script" uid="uid://cw1qdbpug3jls" path="res://Scenes/Level Assets/Objects/Torch/torch.gd" id="1_5iew4"]
+[ext_resource type="Texture2D" uid="uid://djqoxxt2kb6qi" path="res://Assets/Light/light64x64.png" id="3_j6epx"]
+[ext_resource type="SpriteFrames" uid="uid://ch73eorunth61" path="res://Scenes/Level Assets/Hazards/Fireball/fireball.tres" id="3_rs7im"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uegdf"]
+radius = 67.0671
+
+[sub_resource type="Gradient" id="Gradient_a8dk5"]
+offsets = PackedFloat32Array(0, 0.516209, 0.638404, 0.770574, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.85098, 0.690196, 0, 0.741176, 0.815686, 0.47451, 0, 0.788235, 0.439216, 0, 0.0745098, 0.513726, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_utjhi"]
+gradient = SubResource("Gradient_a8dk5")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Torch" type="Node2D"]
+script = ExtResource("1_5iew4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+enabled = false
+color = Color(0.898039, 0.623529, 0, 1)
+blend_mode = 2
+texture = ExtResource("3_j6epx")
+texture_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_uegdf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("3_rs7im")
+autoplay = "default"
+frame_progress = 0.819009
+
+[node name="TorchLight" type="PointLight2D" parent="."]
+enabled = false
+energy = 0.3
+texture = SubResource("GradientTexture2D_utjhi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtxbymlnb1rv"]
+
+[ext_resource type="PackedScene" uid="uid://8hxdce3kvrhk" path="res://Scenes/UI/input settings/key_label.tscn" id="1_qjcbe"]
+[ext_resource type="PackedScene" uid="uid://knuqrp8usasj" path="res://Scenes/UI/input settings/key_icon_controller.tscn" id="2_qjcbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfmwi"]
+bg_color = Color(1, 1, 1, 0.529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11ye1"]
+bg_color = Color(0, 0, 0, 0.411765)
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rfmwi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rfmwi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_11ye1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "action name"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="keyIcons" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LabelInput" parent="MarginContainer/HBoxContainer/keyIcons" instance=ExtResource("1_qjcbe")]
+visible = false
+layout_mode = 2
+
+[node name="Key" parent="MarginContainer/HBoxContainer/keyIcons" instance=ExtResource("2_qjcbe")]
+visible = false
+layout_mode = 2
